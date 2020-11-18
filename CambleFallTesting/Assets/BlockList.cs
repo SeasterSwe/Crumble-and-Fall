@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class BlockList : MonoBehaviour
 {
-    public GameObject[] blocks;
-    private static GameObject[] list;
+    public GameObject[] buildingBlocks;
+    public GameObject[] playerShoots;
+    private static GameObject[] buildList;
+    private static GameObject[] shootList;
     private void Awake()
     {
-        list = blocks;
+        buildList = buildingBlocks;
+        shootList = playerShoots;
     }
     public static GameObject GetARandomBlock()
     {
-        int r = Random.Range(0, list.Length);
-        return list[r];
+        int r = Random.Range(0, buildList.Length);
+        return buildList[r];
+    }
+    public static GameObject GetARandomPlayerShoot()
+    {
+        int r = Random.Range(0, shootList.Length);
+        return shootList[r];
     }
 }

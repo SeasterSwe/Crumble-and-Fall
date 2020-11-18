@@ -51,6 +51,7 @@ public class GameCountdown : MonoBehaviour
         foreach(GameObject obj in blocks)
         {
             obj.GetComponent<Rigidbody2D>().simulated = true;
+            //obj.GetComponent<Rigidbody2D>().freezeRotation = false;
         }
     }
 
