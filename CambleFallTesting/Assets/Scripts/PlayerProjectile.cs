@@ -25,4 +25,9 @@ public class PlayerProjectile : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        hasHit = true;
+    }
 }

@@ -10,8 +10,9 @@ public class Cannon : MonoBehaviour
     public float launchForce;
     public string shootButton;
     public float rotationSpeed;
+    private float nextFire = 0;
 
-    public GameObject block;
+    //public GameObject block;
     public Transform shootPos;
 
     Vector3 point1;
@@ -23,9 +24,10 @@ public class Cannon : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown(shootButton))
+        if (Input.GetButtonDown(shootButton) && nextFire < Time.time)
         {
-            Shoot();
+            nextFire = fireRate + Time.time;
+            Shoot(BlockList.GetARandomBlock());
         }
 
         Rotatation(rotationSpeed);
@@ -33,9 +35,15 @@ public class Cannon : MonoBehaviour
 
     void SetAnglePoints()
     {
-        var localDirection = transform.rotation * transform.forward;
-        point1 = angle1 * localDirection;
-        point2 = -angle2 * localDirection;
+        point1 = (angle1 + transform.localEulerAngles.z) * transform.forward;
+        point2 = (-angle2 + transform.localEulerAngles.z) * transform.forward;
+
+        if(point1.magnitude > point2.magnitude) //så de åker åt samma håll
+        {
+            var tempPoint = point1;
+            point1 = point2;
+            point2 = tempPoint;
+        }
     }
     float lerpVal = 0;
     void Rotatation(float rotationSpeed)
@@ -52,7 +60,7 @@ public class Cannon : MonoBehaviour
             lerpVal = 0;
         }
     }
-    void Shoot()
+    void Shoot(GameObject block)
     {
         GameObject clone = Instantiate(block, shootPos.position, shootPos.rotation);
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
