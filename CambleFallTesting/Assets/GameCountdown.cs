@@ -35,13 +35,23 @@ public class GameCountdown : MonoBehaviour
                 break;
 
             time -= Time.deltaTime;
-            ChangeText(text, Mathf.FloorToInt(time % 60)); //floor to int???
+            ChangeText(text, Mathf.FloorToInt(time)); //floor to int???
             yield return null;
         }
 
         ChangeText("GO GO GO!!!!");
+        ActivateAllBlocks();
 
         yield return new WaitForEndOfFrame();
+    }
+
+    void ActivateAllBlocks()
+    {
+        GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");
+        foreach(GameObject obj in blocks)
+        {
+            obj.GetComponent<Rigidbody2D>().simulated = true;
+        }
     }
 
     void ChangeText(string text)
