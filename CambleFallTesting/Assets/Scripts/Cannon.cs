@@ -27,7 +27,7 @@ public class Cannon : MonoBehaviour
         if (Input.GetButtonDown(shootButton) && nextFire < Time.time)
         {
             nextFire = fireRate + Time.time;
-            Shoot(BlockList.GetARandomBlock());
+            Shoot(BlockList.GetARandomPlayerShoot());
         }
 
         Rotatation(rotationSpeed);
