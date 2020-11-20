@@ -83,7 +83,7 @@ public class SpawnArea : MonoBehaviour
     // spawnar ett block. 
     private void SpawnBlock()
     {
-        GameObject newBlock = Instantiate(blockPreFab, spawnerObject.position, Quaternion.identity);
+        GameObject newBlock = Instantiate(BlockList.GetARandomBlock(), spawnerObject.position, Quaternion.identity);
         BlockType blockScript = newBlock.GetComponent<BlockType>();
     }
 
