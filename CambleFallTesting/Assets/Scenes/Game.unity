@@ -376,6 +376,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   heightCheckingLeft: {fileID: 662598958}
   heightCheckingRight: {fileID: 1660634150}
+  playerLeft: {fileID: 377848824}
+  playerRight: {fileID: 2141234739}
 --- !u!1 &491784205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,6 +1737,10 @@ PrefabInstance:
       value: CannonPlayer2
       objectReference: {fileID: 0}
     - target: {fileID: 1195183946310455975, guid: edf9516364e8cda498059056b84d9b12, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195183946310455975, guid: edf9516364e8cda498059056b84d9b12, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -1794,6 +1800,10 @@ PrefabInstance:
     - target: {fileID: 4667305523563516849, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: m_Name
       value: CannonPlayer1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4667305523563516849, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4667305523563516849, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: m_TagString
