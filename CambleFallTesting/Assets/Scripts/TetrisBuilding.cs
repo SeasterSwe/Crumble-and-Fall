@@ -34,8 +34,8 @@ public class TetrisBuilding : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            NormalDrop();
-            //RayCastDrop();
+            //NormalDrop();
+            RayCastDrop();
 
             nextBlock = BlockList.GetARandomBlock();
             renderer.color = nextBlock.GetComponent<SpriteRenderer>().color;

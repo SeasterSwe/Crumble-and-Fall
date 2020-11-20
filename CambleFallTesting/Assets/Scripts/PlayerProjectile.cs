@@ -16,6 +16,7 @@ public class PlayerProjectile : MonoBehaviour
         if (!hasHit)
         {
             RotateWithVelocity();
+            rb.freezeRotation = false;
         }
     }
 
