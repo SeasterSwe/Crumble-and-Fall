@@ -63,8 +63,12 @@ public class GameCountdown : MonoBehaviour
         GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");
         foreach(GameObject obj in blocks)
         {
-            obj.GetComponent<Rigidbody2D>().simulated = true;
-            //obj.GetComponent<Rigidbody2D>().freezeRotation = false;
+            //TODO: Ful hack
+            if (obj.GetComponent<Rigidbody2D>())
+            {
+                obj.GetComponent<Rigidbody2D>().simulated = true;
+                //obj.GetComponent<Rigidbody2D>().freezeRotation = false;
+            }
         }
     }
 
