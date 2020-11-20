@@ -5,8 +5,8 @@ using UnityEngine;
 public class HeightChecking : MonoBehaviour
 {
     public GameObject playerCannon;
-    public Transform edge1;
-    public Transform edge2;
+    public Transform leftEdge;
+    public Transform rightEdge;
 
     private Vector3[] raycastPos;
     public GameObject obj;
@@ -21,13 +21,13 @@ public class HeightChecking : MonoBehaviour
     private void Start()
     {
         raycastPos = new Vector3[amountOfPointsToCheck];
-        float distBetwean = Vector3.Distance(edge1.position, edge2.position + Vector3.one);
+        float distBetwean = Vector3.Distance(leftEdge.position, rightEdge.position + Vector3.one);
         distBetwean = distBetwean / amountOfPointsToCheck;
 
         for (int i = 0; i < amountOfPointsToCheck; i++)
         {
-            float x = edge1.position.x + (distBetwean * i);
-            raycastPos[i] = new Vector3(x, edge1.position.y, 0);
+            float x = leftEdge.position.x + (distBetwean * i);
+            raycastPos[i] = new Vector3(x, leftEdge.position.y, 0);
 
             if (spawnVizualizeObj)
             {
