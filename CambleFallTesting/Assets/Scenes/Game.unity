@@ -505,6 +505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeafEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 1941262933147204348, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
 --- !u!1 &662598958
