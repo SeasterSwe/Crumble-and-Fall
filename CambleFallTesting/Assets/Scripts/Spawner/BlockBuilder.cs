@@ -24,6 +24,8 @@ public class BlockBuilder : MonoBehaviour
     public float timeBetweenSteps = 0.1f;
     private float timeToNextStep = 0.0f;
 
+    public int numberOfBlocks = 10;
+
     public GameObject blockPreFab;
     private Vector2 spawnAreaSize;
     private float minX;
@@ -67,10 +69,15 @@ public class BlockBuilder : MonoBehaviour
 
         if (Input.GetButtonDown(inputSpawn))
         {
-            SpawnBlock();
-            nextBlockType = (int)Random.Range(0, 3);
-            SetColorByNumber(nextBlockType);
-            GetComponentInChildren<SpriteRenderer>().color = SetColorByNumber(nextBlockType);
+            if (numberOfBlocks > 0)
+            {
+                SpawnBlock();
+                numberOfBlocks--;
+
+                nextBlockType = (int)Random.Range(0, 3);
+                SetColorByNumber(nextBlockType);
+                GetComponentInChildren<SpriteRenderer>().color = SetColorByNumber(nextBlockType);
+            }
         }
 
         GetPlayerTowerHight();

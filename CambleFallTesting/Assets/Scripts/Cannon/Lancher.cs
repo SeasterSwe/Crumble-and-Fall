@@ -88,6 +88,8 @@ public class Lancher : MonoBehaviour
     public void TakeDamage()
     {
         hp--;
+        if (hp < 1)
+            Destroy(gameObject);
     }
     /*
     private void OnDestroy()

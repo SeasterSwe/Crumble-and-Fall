@@ -124,6 +124,7 @@ public class GameMaster : MonoBehaviour
         {
             uiGameInfoText.text = buildText + buildTimeLeft.ToString("F0").PadLeft(2,'0');
             UpdadeUIMeters();
+            UpdateBuildText();
         }
         else
         {
@@ -205,6 +206,7 @@ public class GameMaster : MonoBehaviour
         }
 
         UpdadeUIMeters();
+        UpdateFightText();
 
         if(hpPlayerOne < 1 || hpPlayerTwo < 1 || roundTimeLeft < 0)
         {
@@ -238,10 +240,19 @@ public class GameMaster : MonoBehaviour
         hightMeterOne.UpdateValue(blockBuilderOne.towerHight);
         hightMeterTwo.UpdateValue(blockBuilderTwo.towerHight);
 
+       
+    }
+
+    void UpdateFightText()
+    {
         uiHpPLOne.text = "HP" + hpPlayerOne.ToString();
         uiHpPLTwo.text = "HP" + hpPlayerTwo.ToString();
     }
-
+    void UpdateBuildText()
+    {
+        uiHpPLOne.text = "BlocksLeft " + blockBuilderOne.numberOfBlocks.ToString();
+        uiHpPLTwo.text = "BlocksLeft " + blockBuilderTwo.numberOfBlocks.ToString();
+    }
     //TOGGLE GAMESTATE
     void ToggleGameStateForward()
     {
