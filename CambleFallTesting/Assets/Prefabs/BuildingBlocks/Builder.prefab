@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8305307300840963894}
   - component: {fileID: 8305307300840963897}
   m_Layer: 0
-  m_Name: SpawnControl1
+  m_Name: Builder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 8305307302351108409}
   - component: {fileID: 8305307302351108408}
   m_Layer: 0
-  m_Name: SpawnArea
+  m_Name: BuildArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

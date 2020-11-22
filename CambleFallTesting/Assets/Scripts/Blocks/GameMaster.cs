@@ -8,7 +8,7 @@ using TMPro;
 public class GameMaster : MonoBehaviour
 {
     [Header("GameState")]
-    public TextMeshProUGUI uiCountDown;
+    public TextMeshProUGUI uiGameInfoText;
     public enum gameState { Build, StartFight, Fight, GameOver };
     public gameState currentGameState;
 
@@ -17,8 +17,20 @@ public class GameMaster : MonoBehaviour
     public float buildTime = 30;
     private float buildTimeLeft;
 
+    public BlockBuilder blockBuilderOne;
+    public BlockBuilder blockBuilderTwo;
+
+    [Header("Indicators")]
+    public IndicatorBar hightMeterOne;
+    public IndicatorBar hightMeterTwo;
+
+    public TextMeshProUGUI uiHpPLOne;
+    public TextMeshProUGUI uiHpPLTwo;
+
+   
+
     [Header("Fight")]
-    public string fightText = "Fight /n TimeLeft ";
+    public string fightText = "Fight \n TimeLeft ";
     public float RoundTime = 60;
     private float roundTimeLeft;
 
@@ -29,24 +41,21 @@ public class GameMaster : MonoBehaviour
     public IndicatorBar firePowerPLOne;
     public IndicatorBar firePowerPLTwo;
 
-    public Lancher lancherPLOne;
-    public Lancher lancherPLTwo;
+    private Lancher lancherPLOne;
+    private Lancher lancherPLTwo;
 
-    [Header("HightMeters")]
-    public IndicatorBar hightMeterOne;
-    public IndicatorBar hightMeterTwo;
-
-    public BlockBuilder blockBuilderOne;
-    public BlockBuilder blockBuilderTwo;
+   
 
     // Start is called before the first frame update
     void Start()
     {
-        if(uiCountDown == null)
-        {
-            uiCountDown = FindObjectOfType<TextMeshProUGUI>();
-        }
         buildTimeLeft = buildTime;
+        /*
+        if(uiGameInfoText == null)
+        {
+            uiGameInfoText = FindObjectOfType<TextMeshProUGUI>();
+        }
+       
         
         if(blockBuilderOne == null || blockBuilderTwo == null)
         {
@@ -55,14 +64,16 @@ public class GameMaster : MonoBehaviour
             {
                 if(b.transform.position.x < 0) {
                     blockBuilderOne = b;
+                    blockBuilderOne.playerNumber = 1;
                 }
                 else
                 {
                     blockBuilderTwo = b;
+                    blockBuilderTwo.playerNumber = 2;
                 }
             }
         }
-
+        */
     }
 
     // Update is called once per frame
@@ -101,21 +112,17 @@ public class GameMaster : MonoBehaviour
                 }
                 break;
         }
-       
-       
     }
 
-    void UpdadeUIMeters()
-    {
-        hightMeterOne.UpdateValue(blockBuilderOne.towerHight);
-        hightMeterTwo.UpdateValue(blockBuilderTwo.towerHight);
-    }
+    
+
+    //BUILDMODE
     void BuildMode()
     {
         buildTimeLeft -= Time.deltaTime;
         if (buildTimeLeft > 0)
         {
-            uiCountDown.text = buildText + buildTimeLeft.ToString("F0").PadLeft(2,'0');
+            uiGameInfoText.text = buildText + buildTimeLeft.ToString("F0").PadLeft(2,'0');
             UpdadeUIMeters();
         }
         else
@@ -123,11 +130,12 @@ public class GameMaster : MonoBehaviour
             ToggleGameStateForward();
         }
     }
-    void StartFight(){
 
-        uiCountDown.text = fightText;
+    //STARTFIGHT
+    void StartFight()
+    {
+        uiGameInfoText.text = fightText;
         roundTimeLeft = RoundTime;
-        //Spawn cannons
         SpawnALancher(1);
         SpawnALancher(2);
         ToggleGameStateForward();
@@ -156,48 +164,85 @@ public class GameMaster : MonoBehaviour
         if (pl == 1)
         {
             lancherScript.firePowerUI = firePowerPLOne;
+            lancherScript.blockBuilder = blockBuilderOne;
+            lancherScript.hp = hpPlayerOne;
             lancherPLOne = lancherScript;
         }
         else
         {
             lancherScript.firePowerUI = firePowerPLTwo;
+            lancherScript.blockBuilder = blockBuilderTwo;
+            lancherScript.hp = hpPlayerTwo;
             lancherPLTwo = lancherScript;
         }
-            
     }
 
+    //FIGHTING
     void Fighting()
     {
         roundTimeLeft -= Time.deltaTime;
-        uiCountDown.text = fightText + roundTimeLeft.ToString("F0").PadLeft(2,'0');
-
-        UpdadeUIMeters();
+        uiGameInfoText.text = fightText + roundTimeLeft.ToString("F0").PadLeft(2,'0');
 
         if(lancherPLOne == null)
         {
-            SpawnALancher(1);
             hpPlayerOne--;
+            if(hpPlayerOne > 0)
+                SpawnALancher(1);
+        }
+        else
+        {
+            hpPlayerOne = lancherPLOne.hp;
         }
         if(lancherPLTwo == null)
         {
-            SpawnALancher(2);
             hpPlayerTwo--;
+            if(hpPlayerTwo > 0)
+                SpawnALancher(2);
+        }
+        else
+        {
+            hpPlayerTwo = lancherPLTwo.hp;
         }
 
+        UpdadeUIMeters();
 
-        if (Input.GetKeyDown("k") || roundTimeLeft < 0)
+        if(hpPlayerOne < 1 || hpPlayerTwo < 1 || roundTimeLeft < 0)
         {
             switchStateTo(gameState.GameOver);
         }
     }
 
+    //GAMEOVER
     void GameOver()
     {
-        uiCountDown.text = "Game Over";
+        //Win by highest tower
+        if(blockBuilderOne.towerHight == blockBuilderTwo.towerHight)
+        {
+            uiGameInfoText.text = "Game Over\nDraw";
+        }
+        else if(blockBuilderOne.towerHight < blockBuilderTwo.towerHight)
+        {
+            uiGameInfoText.text = "Game Over\nPlayer 2 Wins";
+        }
+        else
+        {
+            uiGameInfoText.text = "Game Over\nPlayer 1 Wins";
+        }
+        
         print("GameOver");
     }
 
+    //Update UI
+    void UpdadeUIMeters()
+    {
+        hightMeterOne.UpdateValue(blockBuilderOne.towerHight);
+        hightMeterTwo.UpdateValue(blockBuilderTwo.towerHight);
 
+        uiHpPLOne.text = "HP" + hpPlayerOne.ToString();
+        uiHpPLTwo.text = "HP" + hpPlayerTwo.ToString();
+    }
+
+    //TOGGLE GAMESTATE
     void ToggleGameStateForward()
     {
         switch (currentGameState)
@@ -233,6 +278,8 @@ public class GameMaster : MonoBehaviour
                 break;
         }
     }
+
+    
     void switchStateTo(gameState newState)
     {
         switch (newState)

@@ -94,7 +94,7 @@ public class BlockBuilder : MonoBehaviour
     //minX and maxX from SpawnArea box size. 
    private void SpawnAreaSize()
     {
-        GameObject spawnArea = transform.Find("SpawnArea").gameObject; // Hittat vårt objekt
+        GameObject spawnArea = transform.Find("BuildArea").gameObject; // Hittat vårt objekt
         spawnAreaSize = spawnArea.GetComponent<Renderer>().bounds.extents; // Tar ut renderaren från den och använda värdena från bounds
         Vector2 position = new Vector2(transform.position.x, transform.position.y); // Mittposition
 

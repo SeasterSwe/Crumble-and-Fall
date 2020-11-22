@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Lancher : MonoBehaviour
 {
-
+    [Header("Coms")]
     public GameMaster gm;
     public IndicatorBar firePowerUI;
     public float firePowerUIscale = 0.25f;
-    public bool init = false;
-
     public int Player = 0;
+
     [Header("CanonSettings")]
-    public int lancherHP = 5;
+    public int hp;
     public float maxAngle = 135;
     public float minAngle = -135;
     public float angularSpeed = 45;
@@ -20,6 +19,8 @@ public class Lancher : MonoBehaviour
     private Vector3 angle;
 
     public string fireButton = "FirePlayerRight";
+
+    public BlockBuilder blockBuilder;
 
     [Header("ProjectileSettings")]
     public GameObject projectile;
@@ -32,22 +33,22 @@ public class Lancher : MonoBehaviour
     {
         angle = Vector3.up;
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        transform.parent = null;
+        transform.position = blockBuilder.highestBlock.transform.position + Vector3.up;
+        transform.parent = blockBuilder.highestBlock.transform;
+    }
     // Update is called once per frame
     private void Update()
     {
-        if (init)
+        RotateLauncher();
+        FirePower();
+
+        if (Input.GetButtonDown(fireButton))
         {
-            RotateLauncher();
-            FirePower();
-
-            if (Input.GetButtonDown(fireButton))
-            {
-                FireProjectile();
-            }
+            FireProjectile();
         }
-
-        init = true;
     }
 
     void FirePower()
@@ -78,15 +79,19 @@ public class Lancher : MonoBehaviour
 
     void FireProjectile()
     {
-        GameObject myProjectile = Instantiate(projectile, transform.position, transform.rotation);
+        GameObject myProjectile = Instantiate(projectile, transform.position + transform.up, transform.rotation);
         myProjectile.GetComponent<Projectile>().setCatagoryByNumber(Random.Range(0,3));
         myProjectile.GetComponent<Rigidbody2D>().velocity = transform.up * firePower;
         firePower = 0;
     }
 
+    public void TakeDamage()
+    {
+        hp--;
+    }
+    /*
     private void OnDestroy()
     {
-        lancherHP--;
-        
     }
+    */
 }

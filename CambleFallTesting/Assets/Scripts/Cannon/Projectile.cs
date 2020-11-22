@@ -6,16 +6,12 @@ public class Projectile : MonoBehaviour
 {
     public string category;
     
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject.GetComponent<Lancher>())
+        {
+            collision.gameObject.GetComponent<Lancher>().TakeDamage();
+        }
     }
 
     public void setCatagoryByNumber(int n)
