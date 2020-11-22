@@ -71,18 +71,20 @@ public class LinkBlocks : MonoBehaviour
             {
                 if (t.GetComponent<Rigidbody2D>())
                 {
+                    //t.rotation = t.parent.rotation;
                     Vector3 alignPos = t.parent.InverseTransformPoint(t.transform.position);
                     alignPos *= 2;
                     alignPos = new Vector3(Mathf.Round(alignPos.x), Mathf.Round(alignPos.y), alignPos.z);
                     alignPos *= 0.5f;
 
                     t.position = t.parent.TransformPoint(alignPos);
+                    
                     Destroy(t.GetComponent<Rigidbody2D>());
                 }
             }
         }
     }
-
+    /* TODO: Remove
     // Update is called once per frame
     void Update()
     {
@@ -91,4 +93,5 @@ public class LinkBlocks : MonoBehaviour
             CheckLinks();
         }
     }
+    */
 }

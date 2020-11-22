@@ -1,29 +1,30 @@
-﻿//Robban
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockType : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
-    public int playerteam = 1;
-    public string category = "Red";
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        BlockManager.updateLinks = true;
-    }
-
+    public string category;
+    
     // Start is called before the first frame update
     void Start()
     {
-        setColorByCategory();
-        BlockManager.AddBlockToList(gameObject);
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 
     public void setCatagoryByNumber(int n)
     {
-        if(n == 1)
+        if (n == 1)
         {
             category = "Green";
-        }else if(n == 2)
+        }
+        else if (n == 2)
         {
             category = "Blue";
         }
@@ -31,7 +32,6 @@ public class BlockType : MonoBehaviour
         {
             category = "Red";
         }
-
         setColorByCategory();
     }
     public void setColorByCategory()
@@ -53,10 +53,5 @@ public class BlockType : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             category = "Red";
         }
-    }
-
-    private void OnDestroy()
-    {
-        BlockManager.RemoveBlockFromList(gameObject);
     }
 }
