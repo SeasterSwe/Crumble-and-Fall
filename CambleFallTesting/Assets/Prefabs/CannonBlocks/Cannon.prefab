@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7718765375842062722}
   - component: {fileID: 3069589110103659297}
   - component: {fileID: 6747065640094778564}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2932985204948865076}
   - component: {fileID: 7501250408077180485}
   - component: {fileID: 8384000505477268184}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,18 +181,21 @@ MonoBehaviour:
   gm: {fileID: 0}
   firePowerUI: {fileID: 0}
   firePowerUIscale: 0.25
-  init: 0
   Player: 0
-  lancherHP: 5
+  hp: 0
   maxAngle: 135
   minAngle: -135
   angularSpeed: 45
   fireButton: FirePlayerRight
-  blockBuilder: {fileID: 0}
+  elevationScipt: {fileID: 0}
   projectile: {fileID: 336724598848260276, guid: 425317b577618cc4e92f11f1849be63e, type: 3}
   fireSpeed: 10
   firePower: 0
   maxFirePower: 20
+  hight: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!58 &7501250408077180485
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -28,6 +28,9 @@ public class Lancher : MonoBehaviour
     public float firePower = 0;
     public float maxFirePower = 40;
 
+    public float hight;
+    public LayerMask layerMask;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +52,16 @@ public class Lancher : MonoBehaviour
         {
             FireProjectile();
         }
+
+        CastHight();
+        MoveCanon();
+
+    }
+
+    private void MoveCanon()
+    {
+        transform.position += new Vector3(Input.GetAxis("VerticalPlayer1"), Input.GetAxis("HorizontalPlayerRight"),0) * Time.deltaTime;
+
     }
 
     void FirePower()
@@ -91,6 +104,16 @@ public class Lancher : MonoBehaviour
         if (hp < 1)
             Destroy(gameObject);
     }
+
+    public void CastHight()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up * 20, Vector2.down, Mathf.Infinity, layerMask);
+        if (hit.collider)
+        {
+            hight = hit.point.y;
+        }
+    }
+
     /*
     private void OnDestroy()
     {

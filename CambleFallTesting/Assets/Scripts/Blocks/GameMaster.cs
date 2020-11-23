@@ -8,16 +8,16 @@ using TMPro;
 public class GameMaster : MonoBehaviour
 {
     [Header("GameState")]
+    public gameState currentGameState;
     public TextMeshProUGUI uiGameInfoText;
     public enum gameState { Build, StartFight, Fight, GameOver};
-    public gameState currentGameState;
 
     [Header("Indicators")]
     public ElevationCheck evPlOne;
     public ElevationCheck evPlTwo;
 
-    public TextMeshProUGUI uiHpPLOne;
-    public TextMeshProUGUI uiHpPLTwo;
+    public TextMeshProUGUI uiInfoPLOne;
+    public TextMeshProUGUI uiInfoPLTwo;
 
     [Header("BuildMode")]
     public string buildText = "Build time left ";
@@ -160,7 +160,7 @@ public class GameMaster : MonoBehaviour
             lancherParent = evPlTwo.highestBlock.transform;
         }
 
-        GameObject lancher = Instantiate(cannonPreFab, spawnPoint, Quaternion.identity, lancherParent);
+        GameObject lancher = Instantiate(cannonPreFab, spawnPoint, Quaternion.identity);//, lancherParent);
         Lancher lancherScript = lancher.GetComponent<Lancher>();
         lancherScript.Player = pl;
         lancherScript.gm = this;
@@ -239,13 +239,13 @@ public class GameMaster : MonoBehaviour
 
     void UpdateFightText()
     {
-        uiHpPLOne.text = "HP" + hpPlayerOne.ToString();
-        uiHpPLTwo.text = "HP" + hpPlayerTwo.ToString();
+        uiInfoPLOne.text = "HP" + hpPlayerOne.ToString();
+        uiInfoPLTwo.text = "HP" + hpPlayerTwo.ToString();
     }
     void UpdateBuildText()
     {
-        uiHpPLOne.text = "BlocksLeft " + blockBuilderOne.numberOfBlocks.ToString();
-        uiHpPLTwo.text = "BlocksLeft " + blockBuilderTwo.numberOfBlocks.ToString();
+        uiInfoPLOne.text = "BlocksLeft " + blockBuilderOne.numberOfBlocks.ToString();
+        uiInfoPLTwo.text = "BlocksLeft " + blockBuilderTwo.numberOfBlocks.ToString();
     }
     //TOGGLE GAMESTATE
     void ToggleGameStateForward()
