@@ -20,7 +20,7 @@ public class Lancher : MonoBehaviour
 
     public string fireButton = "FirePlayerRight";
 
-    public BlockBuilder blockBuilder;
+    public ElevationCheck elevationScipt;
 
     [Header("ProjectileSettings")]
     public GameObject projectile;
@@ -36,8 +36,8 @@ public class Lancher : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         transform.parent = null;
-        transform.position = blockBuilder.highestBlock.transform.position + Vector3.up;
-        transform.parent = blockBuilder.highestBlock.transform;
+        transform.position = elevationScipt.highestBlock.transform.position + Vector3.up;
+        transform.parent = elevationScipt.highestBlock.transform;
     }
     // Update is called once per frame
     private void Update()

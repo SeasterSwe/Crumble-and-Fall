@@ -9,8 +9,15 @@ public class GameMaster : MonoBehaviour
 {
     [Header("GameState")]
     public TextMeshProUGUI uiGameInfoText;
-    public enum gameState { Build, StartFight, Fight, GameOver };
+    public enum gameState { Build, StartFight, Fight, GameOver};
     public gameState currentGameState;
+
+    [Header("Indicators")]
+    public ElevationCheck evPlOne;
+    public ElevationCheck evPlTwo;
+
+    public TextMeshProUGUI uiHpPLOne;
+    public TextMeshProUGUI uiHpPLTwo;
 
     [Header("BuildMode")]
     public string buildText = "Build time left ";
@@ -20,14 +27,6 @@ public class GameMaster : MonoBehaviour
     public BlockBuilder blockBuilderOne;
     public BlockBuilder blockBuilderTwo;
 
-    [Header("Indicators")]
-    public IndicatorBar hightMeterOne;
-    public IndicatorBar hightMeterTwo;
-
-    public TextMeshProUGUI uiHpPLOne;
-    public TextMeshProUGUI uiHpPLTwo;
-
-   
 
     [Header("Fight")]
     public string fightText = "Fight \n TimeLeft ";
@@ -123,7 +122,6 @@ public class GameMaster : MonoBehaviour
         if (buildTimeLeft > 0)
         {
             uiGameInfoText.text = buildText + buildTimeLeft.ToString("F0").PadLeft(2,'0');
-            UpdadeUIMeters();
             UpdateBuildText();
         }
         else
@@ -148,13 +146,13 @@ public class GameMaster : MonoBehaviour
         Transform lancherParent; 
         if (pl == 1)
         {
-            spawnPoint = blockBuilderOne.highestBlock.transform.position + Vector3.up;
-            lancherParent = blockBuilderOne.highestBlock.transform;
+            spawnPoint = evPlOne.highestBlock.transform.position + Vector3.up;
+            lancherParent = evPlOne.highestBlock.transform;
         }
         else
         {
-            spawnPoint = blockBuilderTwo.highestBlock.transform.position + Vector3.up;
-            lancherParent = blockBuilderTwo.highestBlock.transform;
+            spawnPoint = evPlTwo.highestBlock.transform.position + Vector3.up;
+            lancherParent = evPlTwo.highestBlock.transform;
         }
 
         GameObject lancher = Instantiate(cannonPreFab, spawnPoint, Quaternion.identity, lancherParent);
@@ -165,14 +163,14 @@ public class GameMaster : MonoBehaviour
         if (pl == 1)
         {
             lancherScript.firePowerUI = firePowerPLOne;
-            lancherScript.blockBuilder = blockBuilderOne;
+            lancherScript.elevationScipt = evPlOne;
             lancherScript.hp = hpPlayerOne;
             lancherPLOne = lancherScript;
         }
         else
         {
             lancherScript.firePowerUI = firePowerPLTwo;
-            lancherScript.blockBuilder = blockBuilderTwo;
+            lancherScript.elevationScipt = evPlTwo;
             lancherScript.hp = hpPlayerTwo;
             lancherPLTwo = lancherScript;
         }
@@ -205,7 +203,6 @@ public class GameMaster : MonoBehaviour
             hpPlayerTwo = lancherPLTwo.hp;
         }
 
-        UpdadeUIMeters();
         UpdateFightText();
 
         if(hpPlayerOne < 1 || hpPlayerTwo < 1 || roundTimeLeft < 0)
@@ -218,11 +215,11 @@ public class GameMaster : MonoBehaviour
     void GameOver()
     {
         //Win by highest tower
-        if(blockBuilderOne.towerHight == blockBuilderTwo.towerHight)
+        if(evPlOne.towerHight == evPlTwo.towerHight)
         {
             uiGameInfoText.text = "Game Over\nDraw";
         }
-        else if(blockBuilderOne.towerHight < blockBuilderTwo.towerHight)
+        else if(evPlOne.towerHight < evPlTwo.towerHight)
         {
             uiGameInfoText.text = "Game Over\nPlayer 2 Wins";
         }
@@ -234,14 +231,6 @@ public class GameMaster : MonoBehaviour
         print("GameOver");
     }
 
-    //Update UI
-    void UpdadeUIMeters()
-    {
-        hightMeterOne.UpdateValue(blockBuilderOne.towerHight);
-        hightMeterTwo.UpdateValue(blockBuilderTwo.towerHight);
-
-       
-    }
 
     void UpdateFightText()
     {

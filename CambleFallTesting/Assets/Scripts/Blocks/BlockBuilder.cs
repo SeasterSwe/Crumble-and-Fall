@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-/// <summary>
-/// Creates new blocks by input
-/// Also gets tower hight value
-/// </summary>
+// Creates new blocks by input
+
 public class BlockBuilder : MonoBehaviour
 {
     private Transform spawnerObject;
@@ -34,33 +32,15 @@ public class BlockBuilder : MonoBehaviour
 
     private int nextBlockType = 0;
 
-    public LayerMask blockLayer;
-    public Collider2D highestBlock;
-    public float towerHight;
-    public float groundlevel;
     private void Start()
     {
-        GetGroundLevel();
         SpawnAreaSize();
         spawnerObject = transform.Find("Spawner");
         spawnerPosition = spawnerObject.parent.position;
         nextBlockType = (int) Random.Range(0, 3);
         GetComponentInChildren<SpriteRenderer>().color = SetColorByNumber(nextBlockType);
     }
-    private void GetGroundLevel()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
-        if (hit.collider != null)
-        {
-            groundlevel = hit.point.y;
-            Debug.DrawRay(hit.point, Vector2.one * 100, Color.yellow, 2);
-        }
-        else
-        {
-            Debug.LogError("Spawner cant find Ground");
-        }
-        
-    }
+   
 
     private void Update()
     {
@@ -79,8 +59,6 @@ public class BlockBuilder : MonoBehaviour
                 GetComponentInChildren<SpriteRenderer>().color = SetColorByNumber(nextBlockType);
             }
         }
-
-        GetPlayerTowerHight();
     }
 
     Color SetColorByNumber(int i)
@@ -164,16 +142,5 @@ public class BlockBuilder : MonoBehaviour
         BlockType blockScript = newBlock.GetComponent<BlockType>();
         blockScript.setCatagoryByNumber(nextBlockType);
         blockScript.playerteam = playerNumber;
-    }
-
-    private void GetPlayerTowerHight()
-    {
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position + Vector3.up * 20, spawnAreaSize, 0, Vector2.down, Mathf.Infinity, blockLayer);
-        if (hit)
-        {
-            Debug.DrawRay(hit.point, Vector2.one, Color.yellow);
-            towerHight = hit.point.y - groundlevel;
-            highestBlock = hit.collider;
-        }
     }
 }
