@@ -128,6 +128,11 @@ public class GameMaster : MonoBehaviour
         {
             ToggleGameStateForward();
         }
+
+        if (blockBuilderOne.numberOfBlocks <= 0 && blockBuilderTwo.numberOfBlocks <= 0)
+        {
+            ToggleGameStateForward();
+        }
     }
 
     //STARTFIGHT
