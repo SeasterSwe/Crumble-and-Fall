@@ -8,7 +8,7 @@ using TMPro;
 public class GameState : MonoBehaviour
 {
     [Header("gameState")]
-    public gameStates currentState;
+    public static gameStates currentState;
     public enum gameStates { Build, StartFight, Fight, GameOver};
 
     [Header("Indicators")]
