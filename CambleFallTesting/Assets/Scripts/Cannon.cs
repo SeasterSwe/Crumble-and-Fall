@@ -22,7 +22,7 @@ public class Cannon : MonoBehaviour
     SpriteRenderer loadImage;
     GameObject nextBlock;
     [HideInInspector]
-    public bool canMovePlayer;
+    public bool chargeIsntStarted;
     void Start()
     {
         loadImage = transform.Find("LoadImage").GetComponent<SpriteRenderer>();
@@ -32,7 +32,7 @@ public class Cannon : MonoBehaviour
         nextBlock = BlockList.GetARandomPlayerShoot();
         loadImage.sprite = nextBlock.GetComponent<SpriteRenderer>().sprite;
         loadImage.color = nextBlock.GetComponent<SpriteRenderer>().color;
-        canMovePlayer = true;
+        chargeIsntStarted = true;
     }
     void SetAnglePoints()
     {
@@ -53,13 +53,13 @@ public class Cannon : MonoBehaviour
         if (Input.GetButton(shootButton) && nextFire < Time.time)
         {
             holdTimer += Time.deltaTime;
-            if (canMovePlayer)
+            if (chargeIsntStarted)
                 startPos = transform.position;
 
             if (holdTimer > 0.3f)
             {
                 Charge();
-                canMovePlayer = false;
+                chargeIsntStarted = false;
             }
         }
 
@@ -75,8 +75,9 @@ public class Cannon : MonoBehaviour
             loadImage.sprite = nextBlock.GetComponent<SpriteRenderer>().sprite;
             loadImage.color = nextBlock.GetComponent<SpriteRenderer>().color;
             transform.localScale = Vector3.one;
-            canMovePlayer = true;
+            chargeIsntStarted = true;
         }
+
         Rotatation(rotationSpeed);
     }
     private void Charge()
@@ -86,9 +87,12 @@ public class Cannon : MonoBehaviour
                     chargePower = maxCharge;
 
                 transform.localScale = Vector3.one + (Vector3.one * (chargePower / maxCharge) * 0.6f);
-                transform.position = startPos + (Vector3.up * (chargePower / maxCharge) * 0.6f);
     }
-
+    public float extraYval()
+    {
+        float val = (chargePower / maxCharge) * 0.6f;
+        return val;
+    }
     float lerpVal = 0;
     void Rotatation(float rotationSpeed)
     {
