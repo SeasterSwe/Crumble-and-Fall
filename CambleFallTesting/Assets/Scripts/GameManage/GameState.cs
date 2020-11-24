@@ -4,12 +4,12 @@ using UnityEngine;
 using TMPro;
 
 
-//This script keeps track of Gamestate, timers, UI text and other UI.
-public class GameMaster : MonoBehaviour
+//This script keeps track of gameStates, timers, UI text and other UI.
+public class GameState : MonoBehaviour
 {
-    [Header("GameState")]
-    public gameState currentGameState;
-    public enum gameState { Build, StartFight, Fight, GameOver};
+    [Header("gameState")]
+    public gameStates currentState;
+    public enum gameStates { Build, StartFight, Fight, GameOver};
 
     [Header("Indicators")]
     public TextMeshProUGUI uiGameInfoText;
@@ -33,28 +33,28 @@ public class GameMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Enter function depending of gamestate
-        switch(currentGameState)
+        //Enter function depending of gameStates
+        switch(currentState)
         {
-            case gameState.Build:
+            case gameStates.Build:
                 {
                     BuildMode();
                 }
                 break;
 
-            case gameState.StartFight:
+            case gameStates.StartFight:
                 {
                     StartFight();
                 }
                 break;
 
-            case gameState.Fight:
+            case gameStates.Fight:
                 {
                     Fighting();
                 }
                 break;
 
-            case gameState.GameOver:
+            case gameStates.GameOver:
                 {
                     GameOver();
                 }
@@ -62,7 +62,7 @@ public class GameMaster : MonoBehaviour
 
             default:
                 {
-                    currentGameState = gameState.Build;
+                    currentState = gameStates.Build;
                 }
                 break;
         }
@@ -80,7 +80,7 @@ public class GameMaster : MonoBehaviour
         }
         else
         {
-            ToggleGameStateForward();
+            TogglegameStatesForward();
         }
     }
 
@@ -89,7 +89,7 @@ public class GameMaster : MonoBehaviour
     {
         uiGameInfoText.text = fightText;
         roundTimeLeft = RoundTime;
-        ToggleGameStateForward();
+        TogglegameStatesForward();
     }
     
     //FIGHTING
@@ -100,7 +100,7 @@ public class GameMaster : MonoBehaviour
 
         if(roundTimeLeft < 0)
         {
-            switchStateTo(gameState.GameOver);
+            switchStateTo(gameStates.GameOver);
         }
     }
 
@@ -125,75 +125,75 @@ public class GameMaster : MonoBehaviour
         print("GameOver");
     }
    
-    //TOGGLE GAMESTATE
-    public void ToggleGameStateForward()
+    //TOGGLE gameStates
+    public void TogglegameStatesForward()
     {
-        switch (currentGameState)
+        switch (currentState)
         {
-            case gameState.Build:
+            case gameStates.Build:
                 {
-                    currentGameState = gameState.StartFight;
+                    currentState = gameStates.StartFight;
                 }
                 break;
 
-            case gameState.StartFight:
+            case gameStates.StartFight:
                 {
-                    currentGameState = gameState.Fight;
+                    currentState = gameStates.Fight;
                 }
                 break;
 
-            case gameState.Fight:
+            case gameStates.Fight:
                 {
-                    currentGameState = gameState.GameOver;
+                    currentState = gameStates.GameOver;
                 }
                 break;
 
-            case gameState.GameOver:
+            case gameStates.GameOver:
                 {
-                    currentGameState = gameState.Build;
+                    currentState = gameStates.Build;
                 }
                 break;
 
             default:
                 {
-                    currentGameState = gameState.Build;
+                    currentState = gameStates.Build;
                 }
                 break;
         }
     }
 
     
-    public void switchStateTo(gameState newState)
+    public void switchStateTo(gameStates newState)
     {
         switch (newState)
         {
-            case gameState.Build:
+            case gameStates.Build:
                 {
-                    currentGameState = gameState.Build;
+                    currentState = gameStates.Build;
                 }
                 break;
 
-            case gameState.StartFight:
+            case gameStates.StartFight:
                 {
-                    currentGameState = gameState.StartFight;
+                    currentState = gameStates.StartFight;
                 }
                 break;
 
-            case gameState.Fight:
+            case gameStates.Fight:
                 {
-                    currentGameState = gameState.Fight;
+                    currentState = gameStates.Fight;
                 }
             break;
 
-            case gameState.GameOver:
+            case gameStates.GameOver:
                 {
-                    currentGameState = gameState.GameOver;
+                    currentState = gameStates.GameOver;
                 }
             break;
 
             default:
                 {
-                    currentGameState = gameState.Build;
+                    currentState = gameStates.Build;
                 }
             break;
         }

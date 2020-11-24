@@ -15,7 +15,6 @@ public class BlockBuilder : MonoBehaviour
     private Transform spawnerObject;
 
     [Header("Settings")]
-    public GameMaster gameMaster;
     public LayerMask buildLayer;
     public int playerNumber = 1;
     public string inputHorizontal = "HorizontalPlayer1";
