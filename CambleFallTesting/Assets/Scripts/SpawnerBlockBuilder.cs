@@ -6,6 +6,7 @@ public class SpawnerBlockBuilder : MonoBehaviour
 {
     [Header("Spawners")] // Rubik för publik variablar.
 
+
     [Header("Controls")]
     public string horizontalControl = "HorizontalPlayer1";
     public string fire = "FirePlayerOne";
