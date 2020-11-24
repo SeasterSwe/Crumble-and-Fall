@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class InventoryUI : MonoBehaviour
+public class Inventory : MonoBehaviour
 {
 
     int greenCube = 10;
