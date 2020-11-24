@@ -11,17 +11,28 @@ public class Cannon : MonoBehaviour
     public string shootButton;
     public float rotationSpeed;
     private float nextFire = 1;
-    public float chargeSpeed = 10;
+    public float timeToFullCharge = 10;
+    private float chargeSpeed;
     float chargePower = 1;
     float maxCharge = 20;
-    //public GameObject block;
     public Transform shootPos;
     public GameObject shootEffekt;
     Vector3 point1;
     Vector3 point2;
+    SpriteRenderer loadImage;
+    GameObject nextBlock;
+    [HideInInspector]
+    public bool canMovePlayer;
     void Start()
     {
+        loadImage = transform.Find("LoadImage").GetComponent<SpriteRenderer>();
+        chargeSpeed = maxCharge / timeToFullCharge;
         SetAnglePoints();
+
+        nextBlock = BlockList.GetARandomPlayerShoot();
+        loadImage.sprite = nextBlock.GetComponent<SpriteRenderer>().sprite;
+        loadImage.color = nextBlock.GetComponent<SpriteRenderer>().color;
+        canMovePlayer = true;
     }
     void SetAnglePoints()
     {
@@ -36,24 +47,35 @@ public class Cannon : MonoBehaviour
         }
     }
     float holdTimer = 0.2f;
+    Vector3 startPos = new Vector3();
     void Update()
     {
         if (Input.GetButton(shootButton) && nextFire < Time.time)
         {
             holdTimer += Time.deltaTime;
+            if (canMovePlayer)
+                startPos = transform.position;
+
             if (holdTimer > 0.3f)
             {
                 Charge();
+                canMovePlayer = false;
             }
         }
+
         if (Input.GetButtonUp(shootButton) && nextFire < Time.time)
         {
             holdTimer = 0;
             nextFire = fireRate + Time.time;
-            Shoot(BlockList.GetARandomPlayerShoot(), chargePower);
+            Shoot(nextBlock, chargePower);
             GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, 90, 0));
             chargePower = 1;
+            
+            nextBlock = BlockList.GetARandomPlayerShoot();
+            loadImage.sprite = nextBlock.GetComponent<SpriteRenderer>().sprite;
+            loadImage.color = nextBlock.GetComponent<SpriteRenderer>().color;
             transform.localScale = Vector3.one;
+            canMovePlayer = true;
         }
         Rotatation(rotationSpeed);
     }
@@ -64,6 +86,7 @@ public class Cannon : MonoBehaviour
                     chargePower = maxCharge;
 
                 transform.localScale = Vector3.one + (Vector3.one * (chargePower / maxCharge) * 0.6f);
+                transform.position = startPos + (Vector3.up * (chargePower / maxCharge) * 0.6f);
     }
 
     float lerpVal = 0;

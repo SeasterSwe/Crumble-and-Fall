@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalCube : PlayerProjectile
+public class NormalCube : Projectile
 {
     public override void PlayLaunchSound()
     {

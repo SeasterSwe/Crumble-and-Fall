@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeavyCube : PlayerProjectile
+public class HeavyCube : Projectile
 {
     public override void PlayLaunchSound()
     {

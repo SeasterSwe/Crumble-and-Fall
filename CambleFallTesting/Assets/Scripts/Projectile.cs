@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerProjectile : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     protected Rigidbody2D rb;
     bool hasHit = false;
@@ -31,7 +31,7 @@ public class PlayerProjectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var obj = collision.gameObject;
-        if(obj.CompareTag("Player") && !hasDoneDmg)
+        if (obj.CompareTag("Player") && !hasDoneDmg)
         {
             hasDoneDmg = true;
             obj.GetComponent<CannonHealth>().TakeDmg();
@@ -39,6 +39,7 @@ public class PlayerProjectile : MonoBehaviour
         hasHit = true;
         HitEffekt();
     }
+
     protected virtual void Stats()
     {
 
@@ -50,10 +51,6 @@ public class PlayerProjectile : MonoBehaviour
     }
 
     public virtual void PlayLaunchSound()
-    {
-
-    }
-    protected virtual void IdleSound()
     {
 
     }

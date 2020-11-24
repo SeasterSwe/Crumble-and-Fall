@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FastCube : PlayerProjectile
+public class FastCube : Projectile
 {
     public float velMulti = 1.4f;
     protected override void Start()
