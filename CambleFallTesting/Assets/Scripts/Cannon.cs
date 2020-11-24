@@ -14,6 +14,7 @@ public class Cannon : MonoBehaviour
 
     //public GameObject block;
     public Transform shootPos;
+    public GameObject shootEffekt;
 
     Vector3 point1;
     Vector3 point2;
@@ -21,30 +22,30 @@ public class Cannon : MonoBehaviour
     {
         SetAnglePoints();
     }
-
-    void Update()
-    {
-        if (Input.GetButtonDown(shootButton) && nextFire < Time.time)
-        {
-            nextFire = fireRate + Time.time;
-            Shoot(BlockList.GetARandomBlock());
-        }
-
-        Rotatation(rotationSpeed);
-    }
-
     void SetAnglePoints()
     {
         point1 = (angle1 + transform.localEulerAngles.z) * transform.forward;
         point2 = (-angle2 + transform.localEulerAngles.z) * transform.forward;
 
-        if(point1.magnitude > point2.magnitude) //så de åker åt samma håll
+        if (point1.magnitude > point2.magnitude) //så de åker åt samma håll
         {
             var tempPoint = point1;
             point1 = point2;
             point2 = tempPoint;
         }
     }
+    void Update()
+    {
+        if (Input.GetButtonDown(shootButton) && nextFire < Time.time)
+        {
+            nextFire = fireRate + Time.time;
+            Shoot(BlockList.GetARandomPlayerShoot());
+            GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, 90, 0));
+        }
+
+        Rotatation(rotationSpeed);
+    }
+
     float lerpVal = 0;
     void Rotatation(float rotationSpeed)
     {
@@ -52,7 +53,7 @@ public class Cannon : MonoBehaviour
         transform.localEulerAngles = Vector3.Lerp(point1, point2, lerpVal);
 
         //lerp tar in värde mellan 0 - 1.
-        if (lerpVal >= 1) 
+        if (lerpVal >= 1)
         {
             var tempPoint = point1;
             point1 = point2;

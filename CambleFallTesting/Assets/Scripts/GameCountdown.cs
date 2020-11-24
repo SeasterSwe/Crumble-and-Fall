@@ -12,6 +12,10 @@ public class GameCountdown : MonoBehaviour
     public bool colorChanging = false;
     public Gradient colorGradient;
     private float colorVal = 1;
+    public GameObject heightCheckingLeft; //fixa sen
+    public GameObject heightCheckingRight; //fixa sen
+    public GameObject playerLeft; //fixa sen
+    public GameObject playerRight; //fixa sen
 
     private void Start()
     {
@@ -42,6 +46,15 @@ public class GameCountdown : MonoBehaviour
         ChangeText("GO GO GO!!!!");
         ActivateAllBlocks();
 
+        heightCheckingLeft.SetActive(true);
+        heightCheckingRight.SetActive(true);
+        playerLeft.SetActive(true);
+        playerRight.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+        
+        Destroy(countDownText);
+
         yield return new WaitForEndOfFrame();
     }
 
@@ -51,6 +64,7 @@ public class GameCountdown : MonoBehaviour
         foreach(GameObject obj in blocks)
         {
             obj.GetComponent<Rigidbody2D>().simulated = true;
+            //obj.GetComponent<Rigidbody2D>().freezeRotation = false;
         }
     }
 
