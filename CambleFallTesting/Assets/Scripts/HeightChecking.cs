@@ -18,6 +18,7 @@ public class HeightChecking : MonoBehaviour
     public bool spawnVizualizeObj;
     public bool leftPlayer;
 
+    private Cannon cannon;
     private void Start()
     {
         raycastPos = new Vector3[amountOfPointsToCheck];
@@ -35,6 +36,7 @@ public class HeightChecking : MonoBehaviour
             }
         }
         activePos = playerCannon.transform.position;
+        cannon = playerCannon.GetComponent<Cannon>();
     }
     void Update()
     {
@@ -61,7 +63,7 @@ public class HeightChecking : MonoBehaviour
             }
         }
 
-        if (tempV3.y != activePos.y) //tempV3.y != activePos.y
+        if (tempV3.y != activePos.y && cannon.canMovePlayer == true) //tempV3.y != activePos.y
         {
             activePos = tempV3;
             if (leftPlayer)
