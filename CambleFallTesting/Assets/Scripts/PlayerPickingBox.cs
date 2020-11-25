@@ -7,8 +7,8 @@ public class PlayerPickingBox : MonoBehaviour
     private Blockbuilder blockbuilder;
     private GameObject[] chooseBlocks;
     //private Inventory inventory;
-
-    int ActiveBlock = 0;
+    public string pickButton = "VerticalPlayerOne";
+    int activeBlock = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class PlayerPickingBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetButtonDown(pickButton))
         {
             ChooseBetweenBlocks();
         }
@@ -29,9 +29,9 @@ public class PlayerPickingBox : MonoBehaviour
 
     public void ChooseBetweenBlocks()
     {
-        int nextBlock = ActiveBlock + 1;
+        int nextBlock = activeBlock + 1;
         nextBlock = nextBlock % chooseBlocks.Length;
-        ActiveBlock = nextBlock;
-        blockbuilder.blockPreFab = chooseBlocks[ActiveBlock];
+        activeBlock = nextBlock;
+        blockbuilder.blockPreFab = chooseBlocks[activeBlock];
     }
 }
