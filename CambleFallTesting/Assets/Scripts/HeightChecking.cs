@@ -18,6 +18,7 @@ public class HeightChecking : MonoBehaviour
     public bool spawnVizualizeObj;
     public bool leftPlayer;
 
+    private Cannon cannon;
     private void Start()
     {
         raycastPos = new Vector3[amountOfPointsToCheck];
@@ -35,6 +36,7 @@ public class HeightChecking : MonoBehaviour
             }
         }
         activePos = playerCannon.transform.position;
+        cannon = playerCannon.GetComponent<Cannon>();
     }
     void Update()
     {
@@ -55,7 +57,7 @@ public class HeightChecking : MonoBehaviour
             if (hit.point.y > tempV3.y && hit.collider.CompareTag("Block")) //compareTag
             {
                 if (!leftPlayer)
-                    tempV3 = hit.collider.gameObject.transform.position + Vector3.up; //Fråga inte
+                    tempV3 = hit.collider.gameObject.transform.position + Vector3.up + (Vector3.up  *cannon.extraYval()); //Fråga inte
                 else
                     tempV3 = hit.collider.gameObject.transform.position;
             }
@@ -65,7 +67,7 @@ public class HeightChecking : MonoBehaviour
         {
             activePos = tempV3;
             if (leftPlayer)
-                playerCannon.transform.position = activePos + Vector3.up; //Fråga inte
+                playerCannon.transform.position = activePos + Vector3.up + (Vector3.up * cannon.extraYval()); //Fråga inte
             else
                 playerCannon.transform.position = activePos;
             SwapEffekt();
