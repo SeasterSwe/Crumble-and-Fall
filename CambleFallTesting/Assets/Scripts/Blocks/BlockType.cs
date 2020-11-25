@@ -14,7 +14,7 @@ public class BlockType : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setColorByCategory();
+        //setColorByCategory();
         BlockManager.AddBlockToList(gameObject);
     }
 
