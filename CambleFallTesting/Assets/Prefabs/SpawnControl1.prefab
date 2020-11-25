@@ -92,6 +92,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8305307300840963894}
   - component: {fileID: 8305307300840963897}
+  - component: {fileID: 2064659523}
+  - component: {fileID: 2064659524}
   m_Layer: 0
   m_Name: SpawnControl1
   m_TagString: Untagged
@@ -131,6 +133,38 @@ MonoBehaviour:
   inputSpawn: BuildPlayerOne
   movementSpeed: 5
   blockPreFab: {fileID: 2897106847366328100, guid: ef113fd4bebca5240b323a4cc67dc89b, type: 3}
+  inventory: {fileID: 0}
+--- !u!114 &2064659523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305307300840963896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb36b0bcb401f84fa44b4ee3b519f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  greenCube: 10
+  redCube: 10
+  blueCube: 10
+  uiGreenCubes: {fileID: 0}
+  uiRedCubes: {fileID: 0}
+  uiBlueCubes: {fileID: 0}
+--- !u!114 &2064659524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305307300840963896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe07dc9235efe6e41a0329408fd02b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickButton: VerticalPlayerOne
 --- !u!1 &8305307302351108413
 GameObject:
   m_ObjectHideFlags: 0
