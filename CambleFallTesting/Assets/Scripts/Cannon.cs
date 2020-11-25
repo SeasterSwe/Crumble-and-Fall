@@ -115,4 +115,9 @@ public class Cannon : MonoBehaviour
         float mass = rb.mass;
         rb.AddForce(shootPos.right * ((launchForce * mass) + extraForce), ForceMode2D.Impulse);
     }
+    public void IncreasMaxCharge(float amount)
+    {
+        maxCharge += amount;
+        chargeSpeed = maxCharge / timeToFullCharge;
+    }
 }
