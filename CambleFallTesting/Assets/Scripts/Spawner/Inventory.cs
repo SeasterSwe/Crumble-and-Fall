@@ -6,9 +6,9 @@ using TMPro;
 public class Inventory : MonoBehaviour
 {
 
-    int greenCube = 10;
-    int redCube = 10;
-    int blueCube = 10;
+    public int greenCube = 10;
+    public int redCube = 10;
+    public int blueCube = 10;
     float test = 1;
     float testLeft;
 
@@ -24,6 +24,7 @@ public class Inventory : MonoBehaviour
     
     void Update()
     {
+        /*
         testLeft -= Time.deltaTime;
         if (testLeft < 0)
         {
@@ -33,6 +34,7 @@ public class Inventory : MonoBehaviour
             UpdateUiText();
             testLeft = test;
         }
+        */
     }
 
     public void RemoveFromInventory(string color)
