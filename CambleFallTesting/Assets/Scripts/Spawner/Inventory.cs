@@ -5,37 +5,13 @@ using TMPro;
 
 public class Inventory : MonoBehaviour
 {
-
     public int greenCube = 10;
     public int redCube = 10;
     public int blueCube = 10;
-    float test = 1;
-    float testLeft;
 
     public TextMeshProUGUI uiGreenCubes;
     public TextMeshProUGUI uiRedCubes;
     public TextMeshProUGUI uiBlueCubes;
-
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        /*
-        testLeft -= Time.deltaTime;
-        if (testLeft < 0)
-        {
-            greenCube--;
-            redCube--;
-            blueCube--;
-            UpdateUiText();
-            testLeft = test;
-        }
-        */
-    }
 
     public void RemoveFromInventory(string color)
     {
@@ -58,6 +34,8 @@ public class Inventory : MonoBehaviour
         {
             Debug.Log("Error : Blockcolor does not exist " + transform.name);
         }
+
+        UpdateUiText();
     }
 
     public bool CheckInventory(string color)
@@ -112,6 +90,5 @@ public class Inventory : MonoBehaviour
         uiGreenCubes.text = greenCube.ToString().PadLeft(2, '0');
         uiRedCubes.text = redCube.ToString().PadLeft(2, '0');
         uiBlueCubes.text = blueCube.ToString().PadLeft(2, '0');
-
     }
 }
