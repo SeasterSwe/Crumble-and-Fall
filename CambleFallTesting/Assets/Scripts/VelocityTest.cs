@@ -9,25 +9,31 @@ public class VelocityTest : MonoBehaviour
     public bool isRotated = false;
     private void Update()
     {
-        if (gameObject.transform.rotation.eulerAngles.z > 25 || gameObject.transform.rotation.eulerAngles.z < -25)
-            isRotated = true;
-        else
-            isRotated = false;
-
-        if (!isRotated)
+        //Legit fråga inte
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1f);
+        if (hit.collider != null)
         {
-            if (freeze)
+            if (gameObject.transform.rotation.eulerAngles.z > 25 || gameObject.transform.rotation.eulerAngles.z < -25)
+                isRotated = true;
+            else
+                isRotated = false;
+
+            if (!isRotated)
             {
-                GetComponent<Rigidbody2D>().freezeRotation = true;
+                if (collAmount > 2 && freeze)
+                {
+                    GetComponent<Rigidbody2D>().freezeRotation = true;
+                }
+                else
+                    GetComponent<Rigidbody2D>().freezeRotation = false;
             }
             else
+            {
                 GetComponent<Rigidbody2D>().freezeRotation = false;
+            }
         }
         else
-        {
             GetComponent<Rigidbody2D>().freezeRotation = false;
-        }
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

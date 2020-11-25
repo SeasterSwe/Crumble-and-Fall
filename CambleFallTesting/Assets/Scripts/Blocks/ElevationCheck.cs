@@ -21,18 +21,21 @@ public class ElevationCheck : MonoBehaviour
         GetGroundLevel();
     }
 
-    private void GetGroundLevel()
+    public float GetGroundLevel()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
         if (hit.collider != null)
         {
             groundlevel = hit.point.y;
             Debug.DrawRay(hit.point, Vector2.one * 100, Color.yellow, 2);
+            return groundlevel;
         }
         else
         {
             Debug.LogError("ElevationControler cant find Ground");
         }
+        Debug.LogError("ElevationControler cant find Ground");
+        return 0;
     }
 
     // Update is called once per frame
