@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnArea : MonoBehaviour
+public class Blockbuilder : MonoBehaviour
 {
     private Transform spawnerObject;
 
@@ -14,6 +14,7 @@ public class SpawnArea : MonoBehaviour
     private float minX;
     private float maxX;
     private Vector3 spawnerPosition;
+    private Inventory inventory;
 
     private void Start()
     {
@@ -21,6 +22,8 @@ public class SpawnArea : MonoBehaviour
 
         spawnerObject = transform.Find("Spawner");
         spawnerPosition = spawnerObject.parent.position;
+        inventory = GetComponent<Inventory>();
+        blockPreFab = BlockList.GetARandomBlock();
     }
 
     // minmaxX från spawn areas volym. Sätter x koordinater. 
@@ -47,7 +50,7 @@ public class SpawnArea : MonoBehaviour
         SpawnerLocation();
         AccurateBlockSpawn();
 
-        if (Input.GetButtonDown(inputSpawn))
+        if (Input.GetButtonDown(inputSpawn) && inventory.CheckInventory(blockPreFab.GetComponent<BlockType>().category))
         {
             SpawnBlock();
         }
@@ -83,8 +86,9 @@ public class SpawnArea : MonoBehaviour
     // spawnar ett block. 
     private void SpawnBlock()
     {
-        GameObject newBlock = Instantiate(BlockList.GetARandomBlock(), spawnerObject.position, Quaternion.identity);
-        BlockType blockScript = newBlock.GetComponent<BlockType>();
+        inventory.RemoveFromInventory(blockPreFab.GetComponent<BlockType>().category);
+        GameObject newBlock = Instantiate(blockPreFab, spawnerObject.position, Quaternion.identity);
+        //BlockType blockScript = newBlock.GetComponent<BlockType>();
     }
 
 

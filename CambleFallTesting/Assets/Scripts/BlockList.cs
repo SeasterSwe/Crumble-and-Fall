@@ -6,7 +6,7 @@ public class BlockList : MonoBehaviour
 {
     public GameObject[] buildingBlocks;
     public GameObject[] playerShoots;
-    private static GameObject[] buildList;
+    public static GameObject[] buildList;
     private static GameObject[] shootList;
     private void Awake()
     {
