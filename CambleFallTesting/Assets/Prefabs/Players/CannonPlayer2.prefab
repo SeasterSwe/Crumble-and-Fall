@@ -100,9 +100,12 @@ MonoBehaviour:
   angle2: 60
   fireRate: 0.5
   launchForce: 11.85
-  shootButton: Fire2
+  shootButton: FirePlayerTwo
   rotationSpeed: 0.5
+  timeToFullCharge: 10
   shootPos: {fileID: 1195183948131334514}
+  shootEffekt: {fileID: 0}
+  chargeIsntStarted: 0
 --- !u!1 &1195183947274089669
 GameObject:
   m_ObjectHideFlags: 0

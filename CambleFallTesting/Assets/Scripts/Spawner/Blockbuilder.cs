@@ -7,14 +7,14 @@ public class Blockbuilder : MonoBehaviour
     private Transform spawnerObject;
 
     [Header ("Settings")]
-    public string inputHorizontal = "HorizontalPlayer1";
-    public string inputSpawn = "Fire1";
+    public string inputHorizontal = "HorizontalPlayerOne";
+    public string inputSpawn = "FirePlayerOne";
     public float movementSpeed = 5;
     public GameObject blockPreFab;
     private float minX;
     private float maxX;
     private Vector3 spawnerPosition;
-    private Inventory inventory;
+    public Inventory inventory;
 
     private void Start()
     {
