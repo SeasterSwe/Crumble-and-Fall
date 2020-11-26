@@ -48,6 +48,7 @@ public class CannonHealth : MonoBehaviour
     }
     void Death()
     {
+        //GameState.currentState = GameState.TogglegameStatesForward
         print(gameObject.name + " Lost");
     }
 }

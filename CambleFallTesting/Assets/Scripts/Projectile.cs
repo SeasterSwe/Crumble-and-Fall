@@ -47,7 +47,8 @@ public class Projectile : MonoBehaviour
 
     protected virtual void HitEffekt()
     {
-
+        gameObject.AddComponent<VelocityTest>();
+        Destroy(GetComponent<Projectile>());
     }
 
     public virtual void PlayLaunchSound()
