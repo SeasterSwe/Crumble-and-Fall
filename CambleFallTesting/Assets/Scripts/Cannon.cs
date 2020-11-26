@@ -21,8 +21,10 @@ public class Cannon : MonoBehaviour
     Vector3 point2;
     SpriteRenderer loadImage;
     GameObject nextBlock;
-    [HideInInspector]
-    public bool chargeIsntStarted;
+
+    [HideInInspector] public bool chargeIsntStarted;
+    [HideInInspector] public float bonunsRotationSpeed = 0;
+    [HideInInspector] public float velBouns;
     void Start()
     {
         loadImage = transform.Find("LoadImage").GetComponent<SpriteRenderer>();
@@ -78,7 +80,7 @@ public class Cannon : MonoBehaviour
             chargeIsntStarted = true;
         }
 
-        Rotatation(rotationSpeed);
+        Rotatation(rotationSpeed + bonunsRotationSpeed);
     }
     private void Charge()
     {
@@ -113,7 +115,7 @@ public class Cannon : MonoBehaviour
         GameObject clone = Instantiate(block, shootPos.position, shootPos.rotation);
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
         float mass = rb.mass;
-        rb.AddForce(shootPos.right * ((launchForce * mass) + extraForce), ForceMode2D.Impulse);
+        rb.AddForce(shootPos.right * ((launchForce * mass) + extraForce + velBouns), ForceMode2D.Impulse);
     }
     public void IncreasMaxCharge(float amount)
     {

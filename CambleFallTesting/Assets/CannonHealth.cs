@@ -15,6 +15,7 @@ public class CannonHealth : MonoBehaviour
         foreach(SpriteRenderer child in GetComponentsInChildren<SpriteRenderer>())
             sprites.Add(child);
 
+        sprites.Remove(transform.Find("LoadImage").GetComponent<SpriteRenderer>());
         sprites.Add(GetComponent<SpriteRenderer>());
 
         currentHeatlh = startHealth;
