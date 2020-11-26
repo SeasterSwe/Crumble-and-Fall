@@ -16,6 +16,16 @@ public class Blockbuilder : MonoBehaviour
     private Vector3 spawnerPosition;
     public Inventory inventory;
 
+    private GameObject[] chooseBlocks;
+    //private Inventory inventory;
+    public string pickButton = "VerticalPlayerOne";
+    int activeBlock = 0;
+
+    public Color red = Color.red;
+    public Color green = Color.green;
+    public Color blue = Color.blue;
+
+
     private void Start()
     {
         SpawnAreaSize();
@@ -24,6 +34,8 @@ public class Blockbuilder : MonoBehaviour
         spawnerPosition = spawnerObject.parent.position;
         inventory = GetComponent<Inventory>();
         blockPreFab = BlockList.GetARandomBlock();
+
+        chooseBlocks = BlockList.buildList;
     }
 
     // minmaxX från spawn areas volym. Sätter x koordinater. 
@@ -54,6 +66,13 @@ public class Blockbuilder : MonoBehaviour
         {
             SpawnBlock();
         }
+
+        if (Input.GetButtonDown(pickButton))
+        {
+            ToggleBetweenBlocks();
+        }
+            AimChangeColor();
+
     }
 // flytta höger vänster via input inom minxmaxx intervallet
    private void SpawnerLocation()
@@ -91,5 +110,31 @@ public class Blockbuilder : MonoBehaviour
         //BlockType blockScript = newBlock.GetComponent<BlockType>();
     }
 
+    public void ToggleBetweenBlocks()
+    {
+        int nextBlock = activeBlock + 1;
+        nextBlock = nextBlock % chooseBlocks.Length;
+        activeBlock = nextBlock;
+        blockPreFab = chooseBlocks[activeBlock];
+        
+    }
+
+    public void AimChangeColor()
+    {
+        if (activeBlock == 1)
+        {
+            spawnerObject.GetComponent<SpriteRenderer>().color = green;
+        }
+
+        else if (activeBlock == 2)
+        {
+            spawnerObject.GetComponent<SpriteRenderer>().color = blue;
+        }
+
+        else
+        {
+            spawnerObject.GetComponent<SpriteRenderer>().color = red;
+        }
+    }
 
 }
