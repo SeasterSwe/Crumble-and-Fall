@@ -9,10 +9,13 @@ public class GameState : MonoBehaviour
 {
     [Header("gameState")]
     public static gameStates currentState;
-    public enum gameStates { Build, StartFight, Fight, GameOver};
+    public enum gameStates { Build, StartFight, Fight, StartGameOver, GameOver};
 
     [Header("Indicators")]
     public TextMeshProUGUI uiGameInfoText;
+
+    //TODO : Move to game over;
+    public Canvas canvas;
 
     [Header("BuildMode")]
     public string buildText = "Build time left ";
@@ -23,6 +26,11 @@ public class GameState : MonoBehaviour
     public string fightText = "Fight \n TimeLeft ";
     public float RoundTime = 60;
     private float roundTimeLeft;
+
+    public CannonHealth canonHPOne;
+    public CannonHealth canonHPTwo;
+    public GameOverUIMaster GameOverPreFab;
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +62,11 @@ public class GameState : MonoBehaviour
                 }
                 break;
 
+            case gameStates.StartGameOver:
+                {
+                    StartGameOver();
+                }
+                break;
             case gameStates.GameOver:
                 {
                     GameOver();
@@ -100,33 +113,27 @@ public class GameState : MonoBehaviour
 
         if(roundTimeLeft < 0)
         {
-            switchStateTo(gameStates.GameOver);
+            TogglegameStatesForward();
+            //switchStateTo(gameStates.StartGameOver);
         }
+    }
+
+    void StartGameOver()
+    {
+        //Canvas canvas = FindObjectOfType<Canvas>();
+        Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(canonHPOne.currentHeatlh, canonHPTwo.currentHeatlh);
+        TogglegameStatesForward();
+        print("StartGameOver");
     }
 
     //GAMEOVER
     void GameOver()
     {
-        /*
-        //Win by highest tower
-        if(evPlOne.towerHight == evPlTwo.towerHight)
-        {
-            uiGameInfoText.text = "Game Over\nDraw";
-        }
-        else if(evPlOne.towerHight < evPlTwo.towerHight)
-        {
-            uiGameInfoText.text = "Game Over\nPlayer 2 Wins";
-        }
-        else
-        {
-            uiGameInfoText.text = "Game Over\nPlayer 1 Wins";
-        }
-        */
         print("GameOver");
     }
    
     //TOGGLE gameStates
-    public void TogglegameStatesForward()
+    public static void TogglegameStatesForward()
     {
         switch (currentState)
         {
@@ -144,10 +151,15 @@ public class GameState : MonoBehaviour
 
             case gameStates.Fight:
                 {
-                    currentState = gameStates.GameOver;
+                    currentState = gameStates.StartGameOver;
                 }
                 break;
 
+            case gameStates.StartGameOver:
+                {
+                    currentState = gameStates.GameOver;
+                }
+                break;
             case gameStates.GameOver:
                 {
                     currentState = gameStates.Build;
@@ -163,7 +175,7 @@ public class GameState : MonoBehaviour
     }
 
     
-    public void switchStateTo(gameStates newState)
+    public static void switchStateTo(gameStates newState)
     {
         switch (newState)
         {
@@ -184,6 +196,12 @@ public class GameState : MonoBehaviour
                     currentState = gameStates.Fight;
                 }
             break;
+
+            case gameStates.StartGameOver:
+                {
+                    currentState = gameStates.StartGameOver;
+                }
+                break;
 
             case gameStates.GameOver:
                 {

@@ -7,7 +7,7 @@ public class GameOverUIText : MonoBehaviour
         GetComponent<TextMeshProUGUI>().text = txt;
     }
 
-    public void PlayerWin(int scorePLOne, int scorePLTwo)
+    public void PlayerWin(float scorePLOne, float scorePLTwo)
     {
         if(scorePLOne < scorePLTwo)
         {
