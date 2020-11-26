@@ -6,7 +6,7 @@ using TMPro;
 public class GameCountdown : MonoBehaviour
 {
     public float startTime = 30f;
-    public TextMeshProUGUI countDownText;
+   // public TextMeshProUGUI countDownText;
     public string text;
 
     public bool colorChanging = false;
@@ -27,7 +27,7 @@ public class GameCountdown : MonoBehaviour
         if (colorChanging)
         {
             colorVal = Mathf.PingPong(Time.time, 1);
-            countDownText.color = colorGradient.Evaluate(colorVal);
+        //    countDownText.color = colorGradient.Evaluate(colorVal);
         }
     }
 
@@ -53,7 +53,7 @@ public class GameCountdown : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         
-        Destroy(countDownText);
+      //  Destroy(countDownText);
 
         yield return new WaitForEndOfFrame();
     }
@@ -70,11 +70,11 @@ public class GameCountdown : MonoBehaviour
 
     void ChangeText(string text)
     {
-        countDownText.text = text;
+   //     countDownText.text = text;
     }
 
     void ChangeText(string text, float val)
     {
-        countDownText.text = text + val;
+    //    countDownText.text = text + val;
     }
 }
