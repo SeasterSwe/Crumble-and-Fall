@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  startHealth: 10
+  startHealth: 3
   currentHeatlh: 0
 --- !u!60 &377848826
 PolygonCollider2D:
@@ -1411,6 +1411,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16ac17fba2db1a44b32d48e4eda4e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &936161450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 936161452}
+  - component: {fileID: 936161451}
+  m_Layer: 0
+  m_Name: Generate Pl2
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &936161451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936161450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76804bec0dd1e954090504cb91e37dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generatorActive: 1
+  timeBetweenGenerations: 5
+  inventory: {fileID: 987389101}
+  currentColor: 0
+--- !u!4 &936161452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936161450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 43.77, y: -3.6401687, z: -102.326996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &936765165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,6 +1675,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+--- !u!114 &987389101 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2064659523, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+  m_PrefabInstance: {fileID: 1842023533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb36b0bcb401f84fa44b4ee3b519f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1108217087 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2064659523, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+  m_PrefabInstance: {fileID: 984973918}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb36b0bcb401f84fa44b4ee3b519f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1115281380
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +2113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6758847568963854948, guid: c02cfd2624efb654baed5c6d95c3184e, type: 3}
       propertyPath: m_Name
-      value: ElevationChecker (1)
+      value: ElevationCheckerPl1
       objectReference: {fileID: 0}
     - target: {fileID: 8033901597379817147, guid: c02cfd2624efb654baed5c6d95c3184e, type: 3}
       propertyPath: m_RootOrder
@@ -2205,6 +2274,53 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4785027467126590653, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
   m_PrefabInstance: {fileID: 1126531170}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1614936462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1614936464}
+  - component: {fileID: 1614936463}
+  m_Layer: 0
+  m_Name: Generate Pl1
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1614936463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614936462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76804bec0dd1e954090504cb91e37dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generatorActive: 1
+  timeBetweenGenerations: 5
+  inventory: {fileID: 1108217087}
+  currentColor: 0
+--- !u!4 &1614936464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614936462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 43.77, y: -1.1401687, z: -102.326996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1622961329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,8 +2367,8 @@ MonoBehaviour:
   gS: {fileID: 892778409}
   hpPlOne: {fileID: 377848825}
   hpPlTwo: {fileID: 2141234740}
-  hightPlOne: {fileID: 0}
-  hightPlTwo: {fileID: 0}
+  hightPlOne: {fileID: 1341693687}
+  hightPlTwo: {fileID: 925619253}
 --- !u!1 &1660634150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2429,7 +2545,7 @@ PrefabInstance:
       objectReference: {fileID: 1341693687}
     - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
       propertyPath: RoundTime
-      value: 60
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
       propertyPath: buildTime
@@ -3024,7 +3140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  startHealth: 10
+  startHealth: 3
   currentHeatlh: 0
 --- !u!60 &2141234741
 PolygonCollider2D:
@@ -3184,7 +3300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6758847568963854948, guid: c02cfd2624efb654baed5c6d95c3184e, type: 3}
       propertyPath: m_Name
-      value: ElevationChecker
+      value: ElevationCheckerPl2
       objectReference: {fileID: 0}
     - target: {fileID: 8033901597379817147, guid: c02cfd2624efb654baed5c6d95c3184e, type: 3}
       propertyPath: m_RootOrder
