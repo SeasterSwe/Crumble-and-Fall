@@ -7,7 +7,8 @@ public class CannonHealth : MonoBehaviour
     [HideInInspector]
     public HealthBar healthBar;
     public float startHealth;
-    private float currentHeatlh;
+    //TODO : Private when Lose state is set.
+    public float currentHeatlh;
     private List<SpriteRenderer> sprites = new List<SpriteRenderer>();
     Color blinkColor = new Color(144, 104, 59, 159);
     private void Start()
