@@ -96,7 +96,7 @@ public class Blockbuilder : MonoBehaviour
     private void AccurateBlockSpawn()
     {
         RaycastHit2D hit = Physics2D.BoxCast(spawnerObject.position + Vector3.up * 20, Vector2.one, 0, Vector2.down);
-        if (hit != null)
+        if (hit.collider != null)
         {
             Debug.DrawRay(hit.point, hit.normal, Color.green);
             spawnerObject.position = new Vector3(spawnerObject.position.x, hit.point.y + 0.5f, 0);

@@ -14,8 +14,7 @@ public class GameState : MonoBehaviour
     [Header("Indicators")]
     public TextMeshProUGUI uiGameInfoText;
 
-    //TODO : Move to game over;
-    public Canvas canvas;
+    
 
     [Header("BuildMode")]
     public string buildText = "Build time left ";
@@ -27,8 +26,11 @@ public class GameState : MonoBehaviour
     public float RoundTime = 60;
     private float roundTimeLeft;
 
-    public CannonHealth canonHPOne;
-    public CannonHealth canonHPTwo;
+    [Header("TMP")]
+    //TODO : Move to game over;
+    public Canvas canvas;
+    public ElevationCheck hightOne;
+    public ElevationCheck hightTwo;
     public GameOverUIMaster GameOverPreFab;
 
 
@@ -64,7 +66,7 @@ public class GameState : MonoBehaviour
 
             case gameStates.StartGameOver:
                 {
-                    StartGameOver();
+                    StartGameOver(hightOne.towerHight, hightTwo.towerHight);
                 }
                 break;
             case gameStates.GameOver:
@@ -118,11 +120,10 @@ public class GameState : MonoBehaviour
         }
     }
 
-    void StartGameOver()
+    public void StartGameOver(float scoreOne, float scoreTwo)
     {
-        //Canvas canvas = FindObjectOfType<Canvas>();
-        Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(canonHPOne.currentHeatlh, canonHPTwo.currentHeatlh);
-        TogglegameStatesForward();
+        Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
+        switchStateTo(gameStates.GameOver);
         print("StartGameOver");
     }
 
