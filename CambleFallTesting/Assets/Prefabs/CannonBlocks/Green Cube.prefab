@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 4108293957045262972}
   - component: {fileID: -9035490431013574230}
   - component: {fileID: -7382015902582427988}
+  - component: {fileID: 7168436880911678016}
+  - component: {fileID: 7239528971381115002}
   m_Layer: 2
   m_Name: Green Cube
   m_TagString: Untagged
@@ -360,5 +362,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60b85a1101f470d4fbee91fc6a946140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasDestroyed: 0
+--- !u!58 &7168436880911678016
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369240829330474514}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &7239528971381115002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369240829330474514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9440bead79b6734c94d48fdf6b1f3c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
