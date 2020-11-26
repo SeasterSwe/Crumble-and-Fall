@@ -70,8 +70,8 @@ public class Blockbuilder : MonoBehaviour
         if (Input.GetButtonDown(pickButton))
         {
             ToggleBetweenBlocks();
-        }
             AimChangeColor();
+        }
 
     }
 // flytta höger vänster via input inom minxmaxx intervallet
