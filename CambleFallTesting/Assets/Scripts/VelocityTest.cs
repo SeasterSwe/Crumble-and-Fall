@@ -8,8 +8,7 @@ public class VelocityTest : MonoBehaviour
     public bool freeze = true;
     public bool isRotated = false;
     private void Update()
-    {
-        //Legit fråga inte
+    {    
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1f);
         if (hit.collider != null)
         {
@@ -18,18 +17,19 @@ public class VelocityTest : MonoBehaviour
             else
                 isRotated = false;
 
-            if (!isRotated)
+            if (isRotated)
+                GetComponent<Rigidbody2D>().freezeRotation = false;
+            else
             {
-                if (collAmount > 2 && freeze)
+                if (freeze)
                 {
-                    GetComponent<Rigidbody2D>().freezeRotation = true;
+                    if (collAmount > 2)
+                        GetComponent<Rigidbody2D>().freezeRotation = true;
+                    else
+                        GetComponent<Rigidbody2D>().freezeRotation = false;
                 }
                 else
                     GetComponent<Rigidbody2D>().freezeRotation = false;
-            }
-            else
-            {
-                GetComponent<Rigidbody2D>().freezeRotation = false;
             }
         }
         else
@@ -49,24 +49,24 @@ public class VelocityTest : MonoBehaviour
     {
         if (GetImpactForce(collision) > 350)
         {
-            if (!isRunning)
-                coroutine = StartCoroutine(UnFreezeAndReFreeze());
+            if (!coroutineIsActive)
+                coroutine = StartCoroutine(StopFreeze());
             else
             {
                 StopCoroutine(coroutine);
-                coroutine = StartCoroutine(UnFreezeAndReFreeze());
+                coroutine = StartCoroutine(StopFreeze());
             }
         }
     }
     Coroutine coroutine;
-    bool isRunning = false;
-    IEnumerator UnFreezeAndReFreeze()
+    bool coroutineIsActive = false;
+    IEnumerator StopFreeze()
     {
-        isRunning = true;
+        coroutineIsActive = true;
         freeze = false;
         yield return new WaitForSeconds(5f);
         freeze = true;
-        isRunning = false;
+        coroutineIsActive = false;
     }
     public static float GetImpactForce(Collision2D collision)
     {

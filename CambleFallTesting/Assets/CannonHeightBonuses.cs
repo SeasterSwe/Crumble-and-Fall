@@ -11,7 +11,7 @@ public class CannonHeightBonuses : MonoBehaviour
     public float maxRotationSpeed = 1;
     private float bonusRotationSpeedPerBlock;
 
-    private float maxHeight = 14;        
+    private float maxHeight = 20;        
 
     public ElevationCheck elevationCheck;
     private float currentHeight;
