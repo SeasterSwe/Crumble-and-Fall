@@ -591,7 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8129baaa86514704db9dd367d1c9f573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 10
+  startTime: 30
   countDownText: {fileID: 1281714696}
   text: 'Build period - '
   colorChanging: 0
@@ -2331,11 +2331,11 @@ PrefabInstance:
       objectReference: {fileID: 1684297129}
     - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
       propertyPath: RoundTime
-      value: 5
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
       propertyPath: buildTime
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
       propertyPath: canonHPOne
