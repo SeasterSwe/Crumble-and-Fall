@@ -17,7 +17,7 @@ public class ElevationCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        areaBounds = area.GetComponent<Renderer>().bounds.extents;
+        areaBounds = area.GetComponent<Renderer>().bounds.extents * 2;
         GetGroundLevel();
     }
 
