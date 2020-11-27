@@ -36,6 +36,17 @@ public class Projectile : MonoBehaviour
             hasDoneDmg = true;
             obj.GetComponent<CannonHealth>().TakeDmg();
         }
+        else if(!obj.CompareTag("Block"))
+        {
+
+        }
+        else
+        {
+            gameObject.AddComponent<VelocityTest>();
+            gameObject.layer = 8; //blocks
+            gameObject.tag = "Block";
+            Destroy(GetComponent<Projectile>());
+        }
         hasHit = true;
         HitEffekt();
     }
@@ -47,8 +58,7 @@ public class Projectile : MonoBehaviour
 
     protected virtual void HitEffekt()
     {
-        gameObject.AddComponent<VelocityTest>();
-        Destroy(GetComponent<Projectile>());
+        
     }
 
     public virtual void PlayLaunchSound()
