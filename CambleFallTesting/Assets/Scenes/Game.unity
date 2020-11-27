@@ -660,45 +660,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415068716}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8129baaa86514704db9dd367d1c9f573, type: 3}
+  m_Script: {fileID: 11500000, guid: 38d408baa06104241a852890a2599ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 30
-  text: 'Build period - '
-  colorChanging: 0
-  colorGradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0.3926354, b: 0, a: 1}
-    key2: {r: 1, g: 0.39215687, b: 0, a: 1}
-    key3: {r: 1, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 22359
-    ctime2: 39321
-    ctime3: 65535
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 65535
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 4
-    m_NumAlphaKeys: 2
-  playerLeft: {fileID: 377848824}
-  playerRight: {fileID: 2141234739}
+  cannonPlOne: {fileID: 377848824}
+  cannonPlTwo: {fileID: 2141234739}
 --- !u!114 &482484431 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4785027467531575436, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
@@ -988,43 +956,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1941262933147204345, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.58
+      value: 20.59
       objectReference: {fileID: 0}
     - target: {fileID: 1941262933147204345, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.6
+      value: 6.63
       objectReference: {fileID: 0}
     - target: {fileID: 1941262933147204345, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 1941262933147204345, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.62037724
+      value: -0.4218701
       objectReference: {fileID: 0}
     - target: {fileID: 1941262933147204345, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.6042623
+      value: -0.40335426
       objectReference: {fileID: 0}
     - target: {fileID: 1941262933147204345, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.34887025
+      value: 0.5732398
       objectReference: {fileID: 0}
     - target: {fileID: 1941262933147204345, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.35817418
+      value: 0.5750887
       objectReference: {fileID: 0}
     - target: {fileID: 1941262933147204345, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -330.011
+      value: -378.603
       objectReference: {fileID: 0}
     - target: {fileID: 1941262933147204345, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -88.259
+      value: -88.948
       objectReference: {fileID: 0}
     - target: {fileID: 1941262933147204345, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -89.13
+      value: -89.205
       objectReference: {fileID: 0}
     - target: {fileID: 1941262933147204346, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: TrailModule.enabled
@@ -1037,6 +1005,10 @@ PrefabInstance:
     - target: {fileID: 1941262933147204346, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: TrailModule.lifetime.scalar
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941262933147204346, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1941262933147204346, guid: d54d59a0327e03a449e72076ab0a5ecc, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
