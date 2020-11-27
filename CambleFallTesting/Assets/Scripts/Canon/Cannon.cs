@@ -114,8 +114,11 @@ public class Cannon : MonoBehaviour
     {
         GameObject clone = Instantiate(block, shootPos.position, shootPos.rotation);
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
-        float mass = rb.mass;
-        rb.AddForce(shootPos.right * ((launchForce * mass) + extraForce + velBouns), ForceMode2D.Impulse);
+        float mass = rb.mass/2;
+        float totaltForce = (launchForce * mass) + extraForce + velBouns;
+        rb.AddForce(shootPos.right * totaltForce, ForceMode2D.Impulse);
+        if (totaltForce > 150)
+            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
     public void IncreasMaxCharge(float amount)
     {
