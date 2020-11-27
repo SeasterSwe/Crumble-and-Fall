@@ -52,9 +52,9 @@ MonoBehaviour:
   blockPreFab: {fileID: 2897106847366328100, guid: ef113fd4bebca5240b323a4cc67dc89b, type: 3}
   inventory: {fileID: 0}
   pickButton: VerticalPlayerOne
-  red: {r: 1, g: 0, b: 0.9513254, a: 1}
-  green: {r: 0.40381765, g: 0, b: 1, a: 1}
-  blue: {r: 0, g: 1, b: 0.49468493, a: 1}
+  red: {r: 1, g: 0.41176474, b: 0.4775475, a: 1}
+  green: {r: 0.8942177, g: 0.39215684, b: 1, a: 1}
+  blue: {r: 0.5424528, g: 1, b: 0.91499525, a: 1}
 --- !u!114 &2064659523
 MonoBehaviour:
   m_ObjectHideFlags: 0

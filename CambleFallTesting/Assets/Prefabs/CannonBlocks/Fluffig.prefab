@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4413606423115956060}
   - component: {fileID: -4761252105650515578}
   m_Layer: 2
-  m_Name: NormalCube
+  m_Name: Fluffig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1
