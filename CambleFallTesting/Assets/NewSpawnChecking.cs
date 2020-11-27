@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class NewSpawnChecking : MonoBehaviour
 {
-    [SerializeField] private GameObject cannonObj;
+    private GameObject cannonObj;
     [SerializeField] private ElevationCheck elevationCheck;
     private Cannon cannon;
     private void Start()
     {
+        cannonObj = this.gameObject;
         cannon = cannonObj.GetComponent<Cannon>();
     }
     void Update()
