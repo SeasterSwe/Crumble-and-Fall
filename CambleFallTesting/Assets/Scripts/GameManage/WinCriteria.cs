@@ -23,9 +23,12 @@ public class WinCriteria : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hpPlOne.currentHeatlh <= 0 || hpPlTwo.currentHeatlh <= 0)// || hightPlOne.towerHight == 0 || hightPlTwo.towerHight == 0)
+        if (GameState.currentState == GameState.gameStates.Fight)
         {
-            gS.StartGameOver(hpPlOne.currentHeatlh, hpPlTwo.currentHeatlh);
+            if (hpPlOne.currentHeatlh <= 0 && hpPlOne.isActiveAndEnabled == true || hpPlTwo.currentHeatlh <= 0 && hpPlTwo.isActiveAndEnabled == true) // || hightPlOne.towerHight == 0 || hightPlTwo.towerHight == 0)
+            {
+                gS.StartGameOver(hpPlOne.currentHeatlh, hpPlTwo.currentHeatlh);
+            }
         }
 
 

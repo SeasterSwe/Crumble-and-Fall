@@ -11,7 +11,7 @@ public class CannonHealth : MonoBehaviour
     public float currentHeatlh;
     private List<SpriteRenderer> sprites = new List<SpriteRenderer>();
     Color blinkColor = new Color(144, 104, 59, 159);
-    private void Start()
+    private void Awake()
     {
         foreach(SpriteRenderer child in GetComponentsInChildren<SpriteRenderer>())
             sprites.Add(child);
