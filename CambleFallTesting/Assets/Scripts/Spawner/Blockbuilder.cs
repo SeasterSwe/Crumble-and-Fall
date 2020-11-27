@@ -25,6 +25,8 @@ public class Blockbuilder : MonoBehaviour
     public Color green = Color.green;
     public Color blue = Color.blue;
 
+    public float maxHeight = 10.0f;
+
 
     private void Start()
     {
@@ -105,9 +107,13 @@ public class Blockbuilder : MonoBehaviour
     // spawnar ett block. 
     private void SpawnBlock()
     {
-        inventory.RemoveFromInventory(blockPreFab.GetComponent<BlockType>().category);
-        GameObject newBlock = Instantiate(blockPreFab, spawnerObject.position, Quaternion.identity);
-        //BlockType blockScript = newBlock.GetComponent<BlockType>();
+        
+        if (spawnerObject.position.y <= maxHeight)
+        {
+            inventory.RemoveFromInventory(blockPreFab.GetComponent<BlockType>().category);
+            GameObject newBlock = Instantiate(blockPreFab, spawnerObject.position, Quaternion.identity);
+            //BlockType blockScript = newBlock.GetComponent<BlockType>();
+        }
     }
 
     public void ToggleBetweenBlocks()
