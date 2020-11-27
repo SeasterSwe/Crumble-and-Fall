@@ -21,20 +21,29 @@ public class Cannon : MonoBehaviour
     Vector3 point2;
     SpriteRenderer loadImage;
     GameObject nextBlock;
+    Rigidbody2D nextBlockRB;
 
     [HideInInspector] public bool chargeIsntStarted;
     [HideInInspector] public float bonunsRotationSpeed = 0;
     [HideInInspector] public float velBouns;
+    GameObject[] points;
+    public int numberOfPoints;
+    public GameObject point;
     void Start()
     {
         loadImage = transform.Find("LoadImage").GetComponent<SpriteRenderer>();
         chargeSpeed = maxCharge / timeToFullCharge;
         SetAnglePoints();
 
-        nextBlock = BlockList.GetARandomPlayerShoot();
-        loadImage.sprite = nextBlock.GetComponent<SpriteRenderer>().sprite;
-        loadImage.color = nextBlock.GetComponent<SpriteRenderer>().color;
+        GetANewShootBlock();
+
         chargeIsntStarted = true;
+
+        points = new GameObject[numberOfPoints];
+        for (int i = 0; i < numberOfPoints; i++)
+        {
+            points[i] = Instantiate(point, shootPos.position, Quaternion.identity);
+        }
     }
     void SetAnglePoints()
     {
@@ -72,14 +81,14 @@ public class Cannon : MonoBehaviour
             Shoot(nextBlock, chargePower);
             GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, 90, 0));
             chargePower = 1;
-            
-            nextBlock = BlockList.GetARandomPlayerShoot();
-            loadImage.sprite = nextBlock.GetComponent<SpriteRenderer>().sprite;
-            loadImage.color = nextBlock.GetComponent<SpriteRenderer>().color;
+
+            GetANewShootBlock();
+           
             transform.localScale = Vector3.one;
             chargeIsntStarted = true;
         }
 
+        DrawPoints(numberOfPoints, launchForce + chargePower + velBouns, nextBlockRB.mass);
         Rotatation(rotationSpeed + bonunsRotationSpeed);
     }
     private void Charge()
@@ -120,9 +129,31 @@ public class Cannon : MonoBehaviour
         if (totaltForce > 150)
             rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
+
+    private void GetANewShootBlock()
+    {
+        nextBlock = BlockList.GetARandomPlayerShoot();
+        loadImage.sprite = nextBlock.GetComponent<SpriteRenderer>().sprite;
+        loadImage.color = nextBlock.GetComponent<SpriteRenderer>().color;
+        nextBlockRB = nextBlock.GetComponent<Rigidbody2D>();
+    }
+
     public void IncreasMaxCharge(float amount)
     {
         maxCharge += amount;
         chargeSpeed = maxCharge / timeToFullCharge;
+    }
+
+    void DrawPoints(int amountOfPoints, float force, float mass)
+    {
+        for (int i = 0; i < amountOfPoints; i++)
+        {
+            points[i].transform.position = PointPosition(i * 0.02f, force, mass);
+        }
+    }
+    Vector3 PointPosition(float t, float force, float mass)
+    {
+        Vector3 position = shootPos.position + (shootPos.right * force * t) + 0.5f * ((Vector3)Physics2D.gravity * (t * t) * mass); //formelSak
+        return position;
     }
 }
