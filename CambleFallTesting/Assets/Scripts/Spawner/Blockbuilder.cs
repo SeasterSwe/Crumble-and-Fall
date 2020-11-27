@@ -33,9 +33,11 @@ public class Blockbuilder : MonoBehaviour
         spawnerObject = transform.Find("Spawner");
         spawnerPosition = spawnerObject.parent.position;
         inventory = GetComponent<Inventory>();
-        blockPreFab = BlockList.GetARandomBlock();
-
+        //blockPreFab = BlockList.GetARandomBlock();
         chooseBlocks = BlockList.buildList;
+        blockPreFab = chooseBlocks[activeBlock];
+
+        AimChangeColor();
     }
 
     // minmaxX från spawn areas volym. Sätter x koordinater. 
