@@ -38,6 +38,7 @@ public class GameState : MonoBehaviour
     void Start()
     {
         buildTimeLeft = buildTime;
+        currentState = gameStates.Build;
     }
 
     // Update is called once per frame
