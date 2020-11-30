@@ -1652,6 +1652,22 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.24528301
       objectReference: {fileID: 0}
+    - target: {fileID: 4785027467189955546, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -67.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785027467189955546, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 68.939995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785027467189955546, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 59.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785027467189955546, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -48.53
+      objectReference: {fileID: 0}
     - target: {fileID: 4785027467531575436, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
       propertyPath: m_fontSize
       value: 12
@@ -2743,6 +2759,22 @@ PrefabInstance:
     - target: {fileID: 4785027467189955545, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
       propertyPath: m_Color.r
       value: 0.24705882
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785027467189955546, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -67.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785027467189955546, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 68.939995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785027467189955546, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 59.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785027467189955546, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -48.53
       objectReference: {fileID: 0}
     - target: {fileID: 4785027467531575436, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
       propertyPath: m_fontSize
