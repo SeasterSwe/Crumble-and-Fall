@@ -10,7 +10,7 @@ using UnityEngine;
 
 // Creates new blocks by input
 
-public class BlockBuilder : MonoBehaviour
+public class REFRENCEBLOCKBUILD : MonoBehaviour
 {
     private Transform spawnerObject;
 

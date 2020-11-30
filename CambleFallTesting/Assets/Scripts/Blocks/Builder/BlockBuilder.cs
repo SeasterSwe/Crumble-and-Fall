@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Blockbuilder : MonoBehaviour
+public class BlockBuilder : MonoBehaviour
 {
     private Transform spawnerObject;
 

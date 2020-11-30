@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewSpawnChecking : MonoBehaviour
+public class CannonMovement : MonoBehaviour
 {
     private GameObject cannonObj;
     [SerializeField] private ElevationCheck elevationCheck;

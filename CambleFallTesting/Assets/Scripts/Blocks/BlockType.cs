@@ -34,6 +34,8 @@ public class BlockType : MonoBehaviour
 
         setColorByCategory();
     }
+
+    //TODO : REmove Func
     public void setColorByCategory()
     {
         if (category == "Green")
