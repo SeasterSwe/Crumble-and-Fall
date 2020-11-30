@@ -6,7 +6,7 @@ public class Blockbuilder : MonoBehaviour
 {
     private Transform spawnerObject;
 
-    [Header ("Settings")]
+    [Header("Settings")]
     public string inputHorizontal = "HorizontalPlayerOne";
     public string inputSpawn = "FirePlayerOne";
     public float movementSpeed = 5;
@@ -27,6 +27,8 @@ public class Blockbuilder : MonoBehaviour
 
     public float maxHeight = 10.0f;
 
+    public float spriteAlpha = 0.5f;
+
 
     private void Start()
     {
@@ -38,10 +40,12 @@ public class Blockbuilder : MonoBehaviour
         blockPreFab = BlockList.GetARandomBlock();
 
         chooseBlocks = BlockList.buildList;
+
+        AimChangeColor();
     }
 
     // minmaxX från spawn areas volym. Sätter x koordinater. 
-   private void SpawnAreaSize()
+    private void SpawnAreaSize()
     {
         GameObject spawnArea = transform.Find("SpawnArea").gameObject; // Hittat vårt objekt
         Vector2 size = spawnArea.GetComponent<Renderer>().bounds.extents; // Tar ut renderaren från den och använda värdena från bounds
@@ -76,10 +80,10 @@ public class Blockbuilder : MonoBehaviour
         }
 
     }
-// flytta höger vänster via input inom minxmaxx intervallet
-   private void SpawnerLocation()
+    // flytta höger vänster via input inom minxmaxx intervallet
+    private void SpawnerLocation()
     {
-        spawnerPosition.x += Input.GetAxis(inputHorizontal) * movementSpeed * Time.deltaTime;
+        spawnerPosition.x += Input.GetAxisRaw(inputHorizontal) * movementSpeed * Time.deltaTime;
 
         if (spawnerPosition.x < minX)
         {
@@ -107,7 +111,7 @@ public class Blockbuilder : MonoBehaviour
     // spawnar ett block. 
     private void SpawnBlock()
     {
-        
+
         if (spawnerObject.position.y <= maxHeight)
         {
             inventory.RemoveFromInventory(blockPreFab.GetComponent<BlockType>().category);
@@ -122,25 +126,19 @@ public class Blockbuilder : MonoBehaviour
         nextBlock = nextBlock % chooseBlocks.Length;
         activeBlock = nextBlock;
         blockPreFab = chooseBlocks[activeBlock];
-        
+
     }
 
     public void AimChangeColor()
     {
-        if (activeBlock == 1)
-        {
-            spawnerObject.GetComponent<SpriteRenderer>().color = green;
-        }
+        var spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
-        else if (activeBlock == 2)
-        {
-            spawnerObject.GetComponent<SpriteRenderer>().color = blue;
-        }
+        Color blockColor = spriteRenderer.color;
+        blockColor.a = spriteAlpha;
+        spriteRenderer.color = blockColor;
 
-        else
-        {
-            spawnerObject.GetComponent<SpriteRenderer>().color = red;
-        }
+        spriteRenderer.sprite = blockPreFab.GetComponent<SpriteRenderer>().sprite;
+
     }
 
 }
