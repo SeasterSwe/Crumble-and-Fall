@@ -26,11 +26,14 @@ public class Cannon : MonoBehaviour
     [HideInInspector] public bool chargeIsntStarted;
     [HideInInspector] public float bonunsRotationSpeed = 0;
     [HideInInspector] public float velBouns;
-    GameObject[] points;
+
     public int numberOfPoints;
-    public GameObject point;
+    private List<Vector3> points = new List<Vector3>();
+    LineRenderer line;
     void Start()
     {
+        line = GetComponent<LineRenderer>();
+        line.positionCount = numberOfPoints;
         loadImage = transform.Find("LoadImage").GetComponent<SpriteRenderer>();
         chargeSpeed = maxCharge / timeToFullCharge;
         SetAnglePoints();
@@ -39,11 +42,6 @@ public class Cannon : MonoBehaviour
 
         chargeIsntStarted = true;
 
-        points = new GameObject[numberOfPoints];
-        for (int i = 0; i < numberOfPoints; i++)
-        {
-            points[i] = Instantiate(point, shootPos.position, Quaternion.identity);
-        }
     }
     void SetAnglePoints()
     {
@@ -146,9 +144,11 @@ public class Cannon : MonoBehaviour
 
     void DrawPoints(int amountOfPoints, float force, float mass)
     {
+        points.Clear();
         for (int i = 0; i < amountOfPoints; i++)
         {
-            points[i].transform.position = PointPosition(i * 0.02f, force, mass);
+            points.Add(PointPosition(i * 0.1f, force, mass));
+            line.SetPosition(i, points[i]);
         }
     }
     Vector3 PointPosition(float t, float force, float mass)
