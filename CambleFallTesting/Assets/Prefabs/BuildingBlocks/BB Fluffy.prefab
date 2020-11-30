@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -4319783973822781445}
   - component: {fileID: 472018444814989952}
   m_Layer: 8
-  m_Name: Normal Cube
+  m_Name: BB Fluffy
   m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 6369240829330474514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.141341, y: -2.1662745, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -130,11 +130,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: aa6c6c6c9cf694d42b24de858474dd50, type: 2}
+  m_Material: {fileID: 6200000, guid: 68ce6b2e53ee3b044bbfa4688d011015, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &-6539799831039996785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collAmount: 0
-  freeze: 1
+  freeze: 0
   isRotated: 0
 --- !u!61 &-4263893033066760833
 BoxCollider2D:

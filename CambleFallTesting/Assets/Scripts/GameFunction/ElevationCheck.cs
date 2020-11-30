@@ -12,6 +12,7 @@ public class ElevationCheck : MonoBehaviour
     public Transform uiMeter;
 
     private float groundlevel;
+    public Vector2 highestPoint;
     public Collider2D highestBlock;
 
     // Start is called before the first frame update
@@ -52,6 +53,7 @@ public class ElevationCheck : MonoBehaviour
         {
             Debug.DrawRay(hit.point, Vector2.one, Color.yellow);
             towerHight = hit.point.y - groundlevel;
+            highestPoint = hit.point;
             highestBlock = hit.collider;
         }
     }

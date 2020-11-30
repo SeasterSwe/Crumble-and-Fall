@@ -1316,14 +1316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cde9e841c0eeb74a80543eebbd78b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCannon: {fileID: 377848824}
-  leftEdge: {fileID: 551617636}
-  rightEdge: {fileID: 346440627}
-  obj: {fileID: 1933276326}
-  amountOfPointsToCheck: 10
-  checkRate: 0.1
-  spawnVizualizeObj: 0
-  leftPlayer: 1
 --- !u!4 &662598960
 Transform:
   m_ObjectHideFlags: 0
@@ -3014,14 +3006,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cde9e841c0eeb74a80543eebbd78b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCannon: {fileID: 2141234739}
-  leftEdge: {fileID: 1115281381}
-  rightEdge: {fileID: 739856051}
-  obj: {fileID: 1933276326}
-  amountOfPointsToCheck: 10
-  checkRate: 0.01
-  spawnVizualizeObj: 0
-  leftPlayer: 0
 --- !u!4 &1660634152
 Transform:
   m_ObjectHideFlags: 0
@@ -3165,7 +3149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
       propertyPath: buildTime
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
       propertyPath: canonHPOne

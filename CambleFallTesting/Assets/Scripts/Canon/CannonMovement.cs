@@ -14,6 +14,9 @@ public class CannonMovement : MonoBehaviour
     }
     void Update()
     {
-        cannonObj.transform.position = elevationCheck.highestBlock.gameObject.transform.position + Vector3.up + (Vector3.up * cannon.extraYval());
+        Vector3 pos = cannonObj.transform.position;
+        pos.x = elevationCheck.highestBlock.transform.position.x;
+        pos.y = elevationCheck.highestPoint.y + 0.5f + cannon.extraYval();
+        cannonObj.transform.position = pos;// elevationCheck.highestBlock.gameObject.transform.position + Vector3.up + (Vector3.up * cannon.extraYval());
     }
 }

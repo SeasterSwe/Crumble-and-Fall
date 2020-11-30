@@ -18,14 +18,14 @@ public class Projectile : MonoBehaviour
         if (!hasHit)
         {
             RotateWithVelocity();
-            rb.freezeRotation = false;
+         //   rb.freezeRotation = false;
         }
     }
 
     void RotateWithVelocity()
     {
-        float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg; //quickmath
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg; //quickmath
+        //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
