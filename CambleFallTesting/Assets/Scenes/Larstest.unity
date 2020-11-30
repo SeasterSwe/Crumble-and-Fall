@@ -42319,7 +42319,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTime: 10
-  countDownText: {fileID: 1281714696}
   text: 'Build period - '
   colorChanging: 0
   colorGradient:
@@ -42351,8 +42350,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
-  heightCheckingLeft: {fileID: 662598958}
-  heightCheckingRight: {fileID: 1660634150}
   playerLeft: {fileID: 377848824}
   playerRight: {fileID: 2141234739}
 --- !u!1 &417407946
@@ -53897,14 +53894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cde9e841c0eeb74a80543eebbd78b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCannon: {fileID: 377848824}
-  leftEdge: {fileID: 551617636}
-  rightEdge: {fileID: 346440627}
-  obj: {fileID: 1933276326}
-  amountOfPointsToCheck: 10
-  checkRate: 0.1
-  spawnVizualizeObj: 0
-  leftPlayer: 1
 --- !u!4 &662598960
 Transform:
   m_ObjectHideFlags: 0
@@ -65267,8 +65256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
+  m_HorizontalAxis: HorizontalPlayerOne
+  m_VerticalAxis: VerticalPlayerOne
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -70537,11 +70526,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8305307300840963897, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: inputSpawn
-      value: BuildPlayerLeft
+      value: BuildPlayerTwo
       objectReference: {fileID: 0}
     - target: {fileID: 8305307300840963897, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: inputHorizontal
-      value: HorizontalPlayerLeft
+      value: HorizontalPlayerOne
       objectReference: {fileID: 0}
     - target: {fileID: 8305307302351108410, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: m_LocalScale.x
@@ -84701,14 +84690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cde9e841c0eeb74a80543eebbd78b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCannon: {fileID: 2141234739}
-  leftEdge: {fileID: 1115281381}
-  rightEdge: {fileID: 739856051}
-  obj: {fileID: 1933276326}
-  amountOfPointsToCheck: 10
-  checkRate: 0.01
-  spawnVizualizeObj: 0
-  leftPlayer: 0
 --- !u!4 &1660634152
 Transform:
   m_ObjectHideFlags: 0
@@ -95935,11 +95916,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8305307300840963897, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: inputSpawn
-      value: BuildPlayerRight
+      value: BuildPlayerOne
       objectReference: {fileID: 0}
     - target: {fileID: 8305307300840963897, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: inputHorizontal
-      value: HorizontalPlayerRight
+      value: HorizontalPlayerOne
       objectReference: {fileID: 0}
     - target: {fileID: 8305307302351108410, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: m_LocalScale.x
