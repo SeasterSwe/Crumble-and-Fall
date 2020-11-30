@@ -9,10 +9,12 @@ public class Blockbuilder : MonoBehaviour
     [Header("Settings")]
     public string inputHorizontal = "HorizontalPlayerOne";
     public string inputSpawn = "FirePlayerOne";
-    public float movementSpeed = 5;
+    public float moveStep = 0.5f;
     public GameObject blockPreFab;
     private float minX;
     private float maxX;
+    public float timeBetweenStep = 0.25f;
+    public float timeToNextStep;
     private Vector3 spawnerPosition;
     public Inventory inventory;
 
@@ -26,7 +28,6 @@ public class Blockbuilder : MonoBehaviour
     public Color blue = Color.blue;
 
     public float maxHeight = 10.0f;
-
     public float spriteAlpha = 0.5f;
 
 
@@ -83,8 +84,24 @@ public class Blockbuilder : MonoBehaviour
     // flytta höger vänster via input inom minxmaxx intervallet
     private void SpawnerLocation()
     {
-        spawnerPosition.x += Input.GetAxisRaw(inputHorizontal) * movementSpeed * Time.deltaTime;
+       // spawnerPosition.x += Input.GetAxisRaw(inputHorizontal) * moveStep;
 
+        
+
+        if (Input.GetButton(inputHorizontal))
+        {
+            timeToNextStep -= Time.deltaTime;
+            if (timeToNextStep < 0)
+            {
+                spawnerPosition.x += Input.GetAxisRaw(inputHorizontal) * moveStep;
+                timeToNextStep = timeBetweenStep;
+            }
+        }
+
+        else
+        {
+            timeToNextStep = -1;
+        }
         if (spawnerPosition.x < minX)
         {
             spawnerPosition.x = minX;
