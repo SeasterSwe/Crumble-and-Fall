@@ -1,15 +1,31 @@
 ﻿//Robban
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class BlockType : MonoBehaviour
 {
+    public enum categorys {Fluffy, Speedy, Heavy}
     public int playerteam = 1;
-    public string category = "Red";
+    public categorys category = categorys.Fluffy;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        BlockManager.updateLinks = true;
+        if(category == categorys.Fluffy)
+        {
+            if (collision.transform.GetComponent<BlockType>())
+            {
+                if(collision.transform.GetComponent<BlockType>().category == BlockType.categorys.Fluffy)
+                {
+                    FixedJoint2D fixedJoint = collision.gameObject.AddComponent<FixedJoint2D>();
+                    fixedJoint.connectedBody = transform.GetComponent<Rigidbody2D>();
+                }
+            }
+        }
+        //FluffySpecial.updateLink = true;
     }
+   
 
     // Start is called before the first frame update
     void Start()
@@ -18,42 +34,39 @@ public class BlockType : MonoBehaviour
         BlockManager.AddBlockToList(gameObject);
     }
 
-    public void setCatagoryByNumber(int n)
+    void Update()
     {
-        if(n == 1)
-        {
-            category = "Green";
-        }else if(n == 2)
-        {
-            category = "Blue";
-        }
-        else
-        {
-            category = "Red";
-        }
-
-        setColorByCategory();
+        //colUpt = false;
     }
 
-    //TODO : REmove Func
-    public void setColorByCategory()
+    public void setCatagoryByNumber(int n)
     {
-        if (category == "Green")
+        switch (n)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-        }
-        else if (category == "Blue")
-        {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-        }
-        else if (category == "Yellow")
-        {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
-        }
-        else
-        {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-            category = "Red";
+            case 1:
+                {
+                    category = categorys.Fluffy;
+                }
+                break;
+
+            case 2:
+                {
+                    category = categorys.Speedy;
+                }
+                break;
+
+            case 3:
+                {
+                    category = categorys.Heavy;
+                }
+                break;
+
+            default:
+                {
+                    category = categorys.Speedy;
+                    n = 2;
+                }
+                break;
         }
     }
 

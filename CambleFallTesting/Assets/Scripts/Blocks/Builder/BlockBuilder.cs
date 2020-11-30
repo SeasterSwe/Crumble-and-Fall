@@ -65,7 +65,7 @@ public class BlockBuilder : MonoBehaviour
     {
         SpawnerLocation();
         AccurateBlockSpawn();
-
+        /*
         if (Input.GetButtonDown(inputSpawn) && inventory.CheckInventory(blockPreFab.GetComponent<BlockType>().category))
         {
             SpawnBlock();
@@ -76,6 +76,7 @@ public class BlockBuilder : MonoBehaviour
             ToggleBetweenBlocks();
             AimChangeColor();
         }
+        */
 
     }
 // flytta höger vänster via input inom minxmaxx intervallet
@@ -112,7 +113,7 @@ public class BlockBuilder : MonoBehaviour
         
         if (spawnerObject.position.y <= maxHeight)
         {
-            inventory.RemoveFromInventory(blockPreFab.GetComponent<BlockType>().category);
+           // inventory.RemoveFromInventory(blockPreFab.GetComponent<BlockType>().category);
             GameObject newBlock = Instantiate(blockPreFab, spawnerObject.position, Quaternion.identity);
             //BlockType blockScript = newBlock.GetComponent<BlockType>();
         }
