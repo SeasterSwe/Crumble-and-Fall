@@ -5648,6 +5648,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03510d0ae3fb4514cb41e669f9449bf2, type: 3}
+--- !u!1 &542501832 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8305307300840963896, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+  m_PrefabInstance: {fileID: 1842023533}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &553245967 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4785027467879219164, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
@@ -16001,6 +16006,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1070042585 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8305307300840963896, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+  m_PrefabInstance: {fileID: 984973918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1091153547
 GameObject:
   m_ObjectHideFlags: 0
@@ -26998,6 +27008,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2687615812972337817, guid: d29990f5a5354fa4ca091dd692bd9948, type: 3}
     - target: {fileID: 1195183946310455974, guid: edf9516364e8cda498059056b84d9b12, type: 3}
+      propertyPath: builder
+      value: 
+      objectReference: {fileID: 542501832}
+    - target: {fileID: 1195183946310455974, guid: edf9516364e8cda498059056b84d9b12, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195183946310455974, guid: edf9516364e8cda498059056b84d9b12, type: 3}
       propertyPath: launchForce
       value: 30
       objectReference: {fileID: 0}
@@ -27126,6 +27144,14 @@ PrefabInstance:
       propertyPath: point
       value: 
       objectReference: {fileID: 2687615812972337817, guid: d29990f5a5354fa4ca091dd692bd9948, type: 3}
+    - target: {fileID: 4667305523563516860, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
+      propertyPath: builder
+      value: 
+      objectReference: {fileID: 1070042585}
+    - target: {fileID: 4667305523563516860, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4667305523563516860, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: launchForce
       value: 30
