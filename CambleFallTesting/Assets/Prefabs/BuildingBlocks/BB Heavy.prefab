@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2121244205791743170}
   - component: {fileID: 2768496268054837549}
   m_Layer: 8
-  m_Name: Normal Cube 2
+  m_Name: BB Heavy
   m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,8 +127,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 4
-  m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_LinearDrag: 0.5
+  m_AngularDrag: 0.5
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 657a18f5364371349935eda7f4f6a4fb, type: 2}
   m_Interpolate: 0
@@ -190,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerteam: 1
   category: Green
+  type: 2
 --- !u!61 &2768496268054837549
 BoxCollider2D:
   m_ObjectHideFlags: 0
