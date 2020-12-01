@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4785027467126590652}
   - component: {fileID: 4785027467126590642}
   m_Layer: 5
-  m_Name: InventoryPlayer1
+  m_Name: InventoryPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,6 +172,9 @@ MonoBehaviour:
   greenCube: 10
   redCube: 10
   blueCube: 10
+  iconGreen: {fileID: 4785027468322251488}
+  iconRed: {fileID: 8501745304046633696}
+  iconBlue: {fileID: 8501745304059458208}
   uiGreenCubes: {fileID: 4785027467713509279}
   uiRedCubes: {fileID: 4785027467879219164}
   uiBlueCubes: {fileID: 4785027467531575436}
