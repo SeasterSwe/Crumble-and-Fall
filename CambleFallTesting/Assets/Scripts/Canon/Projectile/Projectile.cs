@@ -30,6 +30,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         var obj = collision.gameObject;
         if (obj.CompareTag("Player") && !hasDoneDmg)
         {
@@ -48,7 +49,7 @@ public class Projectile : MonoBehaviour
             Destroy(GetComponent<Projectile>());
         }
         hasHit = true;
-        HitEffekt();
+        HitEffekt(collision);
     }
 
     protected virtual void Stats()
@@ -56,7 +57,7 @@ public class Projectile : MonoBehaviour
 
     }
 
-    protected virtual void HitEffekt()
+    protected virtual void HitEffekt(Collision2D collision)
     {
         
     }

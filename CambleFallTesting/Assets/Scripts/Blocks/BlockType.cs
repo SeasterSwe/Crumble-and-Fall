@@ -5,6 +5,8 @@ public class BlockType : MonoBehaviour
 {
     public int playerteam = 1;
     public string category = "Red";
+    public enum types {Fluffy, Speedy, Heavy}
+    public types type;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -18,6 +20,17 @@ public class BlockType : MonoBehaviour
         BlockManager.AddBlockToList(gameObject);
     }
 
+    public static bool IsFluffy(GameObject checkObject)
+    {
+        if (checkObject.GetComponent<BlockType>())
+        {
+            if (checkObject.GetComponent<BlockType>().type == types.Fluffy)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     public void setCatagoryByNumber(int n)
     {
         if(n == 1)

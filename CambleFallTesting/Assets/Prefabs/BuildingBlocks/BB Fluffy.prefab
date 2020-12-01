@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -4319783973822781445}
   - component: {fileID: 472018444814989952}
   m_Layer: 8
-  m_Name: Normal Cube
+  m_Name: BB Fluffy
   m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerteam: 1
   category: Blue
+  type: 0
 --- !u!61 &472018444814989952
 BoxCollider2D:
   m_ObjectHideFlags: 0
