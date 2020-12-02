@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(1)]
 public class Cannon : MonoBehaviour
 {
     public float angle1;
@@ -17,11 +18,17 @@ public class Cannon : MonoBehaviour
     float maxCharge = 20;
     public Transform shootPos;
     public GameObject shootEffekt;
+    
     Vector3 point1;
     Vector3 point2;
+
     SpriteRenderer loadImage;
     GameObject nextBlock;
     Rigidbody2D nextBlockRB;
+
+    public GameObject builder;
+    private BlockBuilder blockBuilder;
+    private Inventory inventory;
 
     [HideInInspector] public bool chargeIsntStarted;
     [HideInInspector] public float bonunsRotationSpeed = 0;
@@ -30,18 +37,27 @@ public class Cannon : MonoBehaviour
     public int numberOfPoints;
     private List<Vector3> points = new List<Vector3>();
     LineRenderer line;
+
+    [HideInInspector] public BarBase loadBar;
+    float time;
+
     void Start()
     {
+
         line = GetComponent<LineRenderer>();
         line.positionCount = numberOfPoints;
+
         loadImage = transform.Find("LoadImage").GetComponent<SpriteRenderer>();
         chargeSpeed = maxCharge / timeToFullCharge;
-        SetAnglePoints();
 
-        GetANewShootBlock();
+        blockBuilder = builder.GetComponent<BlockBuilder>();
+        inventory = builder.GetComponent<Inventory>();
+        
+        SetAnglePoints();
 
         chargeIsntStarted = true;
 
+        UpdateLoadImage(blockBuilder.blockPreFab);
     }
     void SetAnglePoints()
     {
@@ -59,7 +75,24 @@ public class Cannon : MonoBehaviour
     Vector3 startPos = new Vector3();
     void Update()
     {
-        if (Input.GetButton(shootButton) && nextFire < Time.time)
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            UpdateLoadImage(blockBuilder.blockPreFab);
+
+        // DrawPoints(numberOfPoints, launchForce + chargePower + velBouns, nextBlockRB.mass);
+        Rotatation(rotationSpeed + bonunsRotationSpeed);
+
+        var block = blockBuilder.blockPreFab.GetComponent<BlockType>().category;
+        nextFire += Time.deltaTime;
+        if (!inventory.CheckInventory(block))
+        {
+            loadBar.UpdateFillAmount(0);
+            OutOfBlocks();
+            return;
+        }
+
+        loadBar.UpdateFillAmount(nextFire / time);
+        //holdCharge
+        if (Input.GetButton(shootButton) && nextFire > time)
         {
             holdTimer += Time.deltaTime;
             if (chargeIsntStarted)
@@ -72,22 +105,20 @@ public class Cannon : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp(shootButton) && nextFire < Time.time)
+        //Shoot      
+        if (Input.GetButtonUp(shootButton) && nextFire > time)
         {
+            inventory.RemoveFromInventory(block);
             holdTimer = 0;
-            nextFire = fireRate + Time.time;
-            Shoot(nextBlock, chargePower);
+            time = fireRate;
+            nextFire = 0;
+            Shoot(blockBuilder.blockPreFab, chargePower);
             GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, 90, 0));
             chargePower = 1;
-
-            GetANewShootBlock();
-           
+            
             transform.localScale = Vector3.one;
             chargeIsntStarted = true;
         }
-
-        DrawPoints(numberOfPoints, launchForce + chargePower + velBouns, nextBlockRB.mass);
-        Rotatation(rotationSpeed + bonunsRotationSpeed);
     }
     private void Charge()
     {
@@ -124,16 +155,29 @@ public class Cannon : MonoBehaviour
         float mass = rb.mass/2;
         float totaltForce = (launchForce * mass) + extraForce + velBouns;
         rb.AddForce(shootPos.right * totaltForce, ForceMode2D.Impulse);
-        if (totaltForce > 150)
+        
+        FixBlockToProjectile(clone);
+        
+        if (totaltForce > 15)
             rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
-
-    private void GetANewShootBlock()
+    private void FixBlockToProjectile(GameObject obj)
     {
-        nextBlock = BlockList.GetARandomPlayerShoot();
-        loadImage.sprite = nextBlock.GetComponent<SpriteRenderer>().sprite;
-        loadImage.color = nextBlock.GetComponent<SpriteRenderer>().color;
-        nextBlockRB = nextBlock.GetComponent<Rigidbody2D>();
+        UpdateLoadImage(obj);
+        nextBlockRB = obj.GetComponent<Rigidbody2D>();
+
+        if (obj.GetComponent<Projectile>() != null)
+            obj.GetComponent<Projectile>().enabled = true;
+
+        //Destroy(obj.GetComponent<VelocityTest>());
+        //obj.GetComponent<VelocityTest>().enabled = false; Lägg till när robert e klar å ta bort ovan
+        obj.layer = 2; //ignoreRayCast
+        obj.tag = "Untagged";
+    }
+    private void UpdateLoadImage(GameObject newBlock)
+    {
+        loadImage.sprite = newBlock.GetComponent<SpriteRenderer>().sprite;
+        loadImage.color = newBlock.GetComponent<SpriteRenderer>().color;
     }
 
     public void IncreasMaxCharge(float amount)
@@ -155,5 +199,10 @@ public class Cannon : MonoBehaviour
     {
         Vector3 position = shootPos.position + (shootPos.right * force * t) + 0.5f * ((Vector3)Physics2D.gravity * (t * t) * mass); //formelSak
         return position;
+    }
+
+    private void OutOfBlocks()
+    {
+
     }
 }

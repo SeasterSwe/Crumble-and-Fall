@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1975805798957326749}
   - component: {fileID: -6031443138071160178}
   m_Layer: 8
-  m_Name: Normal Cube 1
+  m_Name: BB Speedy
   m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
