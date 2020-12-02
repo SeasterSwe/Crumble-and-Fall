@@ -38,6 +38,9 @@ public class Cannon : MonoBehaviour
     private List<Vector3> points = new List<Vector3>();
     LineRenderer line;
 
+    [HideInInspector] public BarBase loadBar;
+    float time;
+
     void Start()
     {
 
@@ -79,11 +82,17 @@ public class Cannon : MonoBehaviour
         Rotatation(rotationSpeed + bonunsRotationSpeed);
 
         var block = blockBuilder.blockPreFab.GetComponent<BlockType>().category;
+        nextFire += Time.deltaTime;
         if (!inventory.CheckInventory(block))
+        {
+            loadBar.UpdateFillAmount(0);
+            OutOfBlocks();
             return;
+        }
 
+        loadBar.UpdateFillAmount(nextFire / time);
         //holdCharge
-        if (Input.GetButton(shootButton) && nextFire < Time.time)
+        if (Input.GetButton(shootButton) && nextFire > time)
         {
             holdTimer += Time.deltaTime;
             if (chargeIsntStarted)
@@ -97,11 +106,12 @@ public class Cannon : MonoBehaviour
         }
 
         //Shoot      
-        if (Input.GetButtonUp(shootButton) && nextFire < Time.time)
+        if (Input.GetButtonUp(shootButton) && nextFire > time)
         {
             inventory.RemoveFromInventory(block);
             holdTimer = 0;
-            nextFire = fireRate + Time.time;
+            time = fireRate;
+            nextFire = 0;
             Shoot(blockBuilder.blockPreFab, chargePower);
             GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, 90, 0));
             chargePower = 1;
@@ -189,5 +199,10 @@ public class Cannon : MonoBehaviour
     {
         Vector3 position = shootPos.position + (shootPos.right * force * t) + 0.5f * ((Vector3)Physics2D.gravity * (t * t) * mass); //formelSak
         return position;
+    }
+
+    private void OutOfBlocks()
+    {
+
     }
 }

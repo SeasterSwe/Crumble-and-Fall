@@ -5,7 +5,7 @@ using UnityEngine;
 public class CannonHealth : MonoBehaviour
 {
     [HideInInspector]
-    public HealthBar healthBar;
+    public BarBase healthBar;
     public float startHealth;
     //TODO : Private when Lose state is set.
     public float currentHeatlh;
@@ -21,6 +21,11 @@ public class CannonHealth : MonoBehaviour
 
         currentHeatlh = startHealth;
     }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //        TakeDmg();
+    //}
     public void TakeDmg(float amount = 1)
     {
         currentHeatlh -= amount;
