@@ -5,10 +5,21 @@ public class BlockType : MonoBehaviour
 {
     public int playerteam = 1;
     public string category = "Red";
+    public enum types {Fluffy, Speedy, Heavy}
+    public types type;
+
+    public enum states { Idle, Flying}
+    public states state = states.Idle;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        BlockManager.updateLinks = true;
+        //        BlockManager.updateLinks = true;
+        OnHitEnter(collision);
+    }
+
+    protected virtual void OnHitEnter(Collision2D collision)
+    {
+
     }
 
     // Start is called before the first frame update
@@ -18,6 +29,17 @@ public class BlockType : MonoBehaviour
         BlockManager.AddBlockToList(gameObject);
     }
 
+    public static bool IsFluffy(GameObject checkObject)
+    {
+        if (checkObject.GetComponent<BlockType>())
+        {
+            if (checkObject.GetComponent<BlockType>().type == types.Fluffy)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     public void setCatagoryByNumber(int n)
     {
         if(n == 1)

@@ -132,16 +132,18 @@ public class BlockBuilder : MonoBehaviour
         if (activeBlock == 1)
         {
             spawnerObject.GetComponent<SpriteRenderer>().color = green;
+            inventory.ScaleSelected("Green");
         }
 
         else if (activeBlock == 2)
         {
             spawnerObject.GetComponent<SpriteRenderer>().color = blue;
+            inventory.ScaleSelected("Blue");
         }
-
         else
         {
             spawnerObject.GetComponent<SpriteRenderer>().color = red;
+            inventory.ScaleSelected("Red");
         }
     }
 
