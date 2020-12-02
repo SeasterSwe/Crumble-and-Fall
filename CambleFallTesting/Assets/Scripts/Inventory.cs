@@ -12,10 +12,6 @@ public class Inventory : MonoBehaviour
     public Transform redIcon;
     public Transform blueIcon;
 
-    public Transform iconGreen;
-    public Transform iconRed;
-    public Transform iconBlue;
-
     public TextMeshProUGUI uiGreenCubes;
     public TextMeshProUGUI uiRedCubes;
     public TextMeshProUGUI uiBlueCubes;
@@ -46,30 +42,6 @@ public class Inventory : MonoBehaviour
         UpdateUiText();
     }
 
-    public void ScaleSelected(string color)
-    {
-        if (color == "Green")
-        {
-                iconGreen.localScale = Vector3.one * 1.25f;
-                iconRed.localScale = Vector3.one;
-                iconBlue.localScale = Vector3.one;
-            return;
-        }
-        else if (color == "Blue")
-        {
-            iconGreen.localScale = Vector3.one;
-            iconRed.localScale = Vector3.one * 1.25f;
-            iconBlue.localScale = Vector3.one;
-            return;
-        }
-        else if (color == "Red")
-        {
-            iconGreen.localScale = Vector3.one;
-            iconRed.localScale = Vector3.one;
-            iconBlue.localScale = Vector3.one * 1.25f;
-            return;
-        }
-    }
     public bool CheckInventory(string color)
     {
         if (color == "Green")

@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockBuilder : MonoBehaviour
+public class Blockbuilder : MonoBehaviour
 {
     private Transform spawnerObject;
 
-    [Header ("Settings")]
+    [Header("Settings")]
     public string inputHorizontal = "HorizontalPlayerOne";
     public string inputSpawn = "FirePlayerOne";
-    public float movementSpeed = 5;
+    public float moveStep = 0.5f;
     public GameObject blockPreFab;
     private float minX;
     private float maxX;
+    public float timeBetweenStep = 0.25f;
+    public float timeToNextStep;
     private Vector3 spawnerPosition;
     public Inventory inventory;
 
@@ -26,6 +28,7 @@ public class BlockBuilder : MonoBehaviour
     public Color blue = Color.blue;
 
     public float maxHeight = 10.0f;
+    public float spriteAlpha = 0.5f;
 
 
     private void Start()
@@ -35,15 +38,15 @@ public class BlockBuilder : MonoBehaviour
         spawnerObject = transform.Find("Spawner");
         spawnerPosition = spawnerObject.parent.position;
         inventory = GetComponent<Inventory>();
-        //blockPreFab = BlockList.GetARandomBlock();
+        blockPreFab = BlockList.GetARandomBlock();
+
         chooseBlocks = BlockList.buildList;
-        blockPreFab = chooseBlocks[activeBlock];
 
         AimChangeColor();
     }
 
     // minmaxX från spawn areas volym. Sätter x koordinater. 
-   private void SpawnAreaSize()
+    private void SpawnAreaSize()
     {
         GameObject spawnArea = transform.Find("SpawnArea").gameObject; // Hittat vårt objekt
         Vector2 size = spawnArea.GetComponent<Renderer>().bounds.extents; // Tar ut renderaren från den och använda värdena från bounds
@@ -78,11 +81,27 @@ public class BlockBuilder : MonoBehaviour
         }
 
     }
-// flytta höger vänster via input inom minxmaxx intervallet
-   private void SpawnerLocation()
+    // flytta höger vänster via input inom minxmaxx intervallet
+    private void SpawnerLocation()
     {
-        spawnerPosition.x += Input.GetAxis(inputHorizontal) * movementSpeed * Time.deltaTime;
+       // spawnerPosition.x += Input.GetAxisRaw(inputHorizontal) * moveStep;
 
+        
+
+        if (Input.GetButton(inputHorizontal))
+        {
+            timeToNextStep -= Time.deltaTime;
+            if (timeToNextStep < 0)
+            {
+                spawnerPosition.x += Input.GetAxisRaw(inputHorizontal) * moveStep;
+                timeToNextStep = timeBetweenStep;
+            }
+        }
+
+        else
+        {
+            timeToNextStep = -1;
+        }
         if (spawnerPosition.x < minX)
         {
             spawnerPosition.x = minX;
@@ -100,7 +119,7 @@ public class BlockBuilder : MonoBehaviour
     private void AccurateBlockSpawn()
     {
         RaycastHit2D hit = Physics2D.BoxCast(spawnerObject.position + Vector3.up * 20, Vector2.one, 0, Vector2.down);
-        if (hit.collider != null)
+        if (hit != null)
         {
             Debug.DrawRay(hit.point, hit.normal, Color.green);
             spawnerObject.position = new Vector3(spawnerObject.position.x, hit.point.y + 0.5f, 0);
@@ -109,7 +128,7 @@ public class BlockBuilder : MonoBehaviour
     // spawnar ett block. 
     private void SpawnBlock()
     {
-        
+
         if (spawnerObject.position.y <= maxHeight)
         {
             inventory.RemoveFromInventory(blockPreFab.GetComponent<BlockType>().category);
@@ -124,27 +143,43 @@ public class BlockBuilder : MonoBehaviour
         nextBlock = nextBlock % chooseBlocks.Length;
         activeBlock = nextBlock;
         blockPreFab = chooseBlocks[activeBlock];
+
+        ScaleImage(blockPreFab.GetComponent<BlockType>().category);
+
+    }
+
+    public void ScaleImage(string blocktype)
+        // Visa inte Robban dehär
+    {
+        if (blocktype == "Green")
+            inventory.uiGreenCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one * 2;
+
+        else
+            inventory.uiGreenCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one;
+
+        if (blocktype == "Blue")
+            inventory.uiBlueCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one * 2;
         
+        else
+            inventory.uiBlueCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one;
+        
+        if (blocktype == "Red")
+            inventory.uiRedCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one * 2;
+        
+        else
+            inventory.uiRedCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one;
     }
 
     public void AimChangeColor()
     {
-        if (activeBlock == 1)
-        {
-            spawnerObject.GetComponent<SpriteRenderer>().color = green;
-            inventory.ScaleSelected("Green");
-        }
+        var spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
-        else if (activeBlock == 2)
-        {
-            spawnerObject.GetComponent<SpriteRenderer>().color = blue;
-            inventory.ScaleSelected("Blue");
-        }
-        else
-        {
-            spawnerObject.GetComponent<SpriteRenderer>().color = red;
-            inventory.ScaleSelected("Red");
-        }
+        Color blockColor = spriteRenderer.color;
+        blockColor.a = spriteAlpha;
+        spriteRenderer.color = blockColor;
+
+        spriteRenderer.sprite = blockPreFab.GetComponent<SpriteRenderer>().sprite;
+
     }
 
 }
