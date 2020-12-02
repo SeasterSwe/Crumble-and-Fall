@@ -252,4 +252,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f2c4f22fb446e4da7be7d72b8ccbe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fragment: {fileID: 141114141079268990, guid: b98183462fd27bc479bae265aa8e88ca, type: 3}
   velMulti: 1.4
