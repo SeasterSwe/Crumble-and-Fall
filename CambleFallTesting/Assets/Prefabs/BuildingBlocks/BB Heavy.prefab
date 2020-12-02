@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerteam: 1
-  category: Green
+  category: Blue
   type: 2
   state: 0
 --- !u!61 &2768496268054837549
