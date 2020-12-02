@@ -49,18 +49,21 @@ public class Inventory : MonoBehaviour
                 iconGreen.localScale = Vector3.one * 1.25f;
                 iconRed.localScale = Vector3.one;
                 iconBlue.localScale = Vector3.one;
+            return;
         }
         else if (color == "Blue")
         {
             iconGreen.localScale = Vector3.one;
             iconRed.localScale = Vector3.one * 1.25f;
             iconBlue.localScale = Vector3.one;
+            return;
         }
         else if (color == "Red")
         {
             iconGreen.localScale = Vector3.one;
             iconRed.localScale = Vector3.one;
             iconBlue.localScale = Vector3.one * 1.25f;
+            return;
         }
     }
     public bool CheckInventory(string color)
