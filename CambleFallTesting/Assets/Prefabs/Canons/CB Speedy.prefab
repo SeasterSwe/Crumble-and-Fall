@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -6080195225684440433}
   - component: {fileID: -2974774007847547077}
   m_Layer: 2
-  m_Name: Snabb
+  m_Name: CB Speedy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 8629a205e3d1ea144a1706087ad5e624, type: 2}
+  m_Material: {fileID: 6200000, guid: aa6c6c6c9cf694d42b24de858474dd50, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4108293957045262972}
   - component: {fileID: 5260981245080242709}
   m_Layer: 2
-  m_Name: HeavyCube
+  m_Name: CB Heavy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 657a18f5364371349935eda7f4f6a4fb, type: 2}
+  m_Material: {fileID: 6200000, guid: 8629a205e3d1ea144a1706087ad5e624, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
