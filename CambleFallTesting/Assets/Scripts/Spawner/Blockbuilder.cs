@@ -144,6 +144,30 @@ public class Blockbuilder : MonoBehaviour
         activeBlock = nextBlock;
         blockPreFab = chooseBlocks[activeBlock];
 
+        ScaleImage(blockPreFab.GetComponent<BlockType>().category);
+
+    }
+
+    public void ScaleImage(string blocktype)
+        // Visa inte Robban dehär
+    {
+        if (blocktype == "Green")
+            inventory.uiGreenCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one * 2;
+
+        else
+            inventory.uiGreenCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one;
+
+        if (blocktype == "Blue")
+            inventory.uiBlueCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one * 2;
+        
+        else
+            inventory.uiBlueCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one;
+        
+        if (blocktype == "Red")
+            inventory.uiRedCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one * 2;
+        
+        else
+            inventory.uiRedCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one;
     }
 
     public void AimChangeColor()

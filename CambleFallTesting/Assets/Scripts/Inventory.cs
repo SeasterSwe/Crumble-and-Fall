@@ -8,6 +8,9 @@ public class Inventory : MonoBehaviour
     public int greenCube = 10;
     public int redCube = 10;
     public int blueCube = 10;
+    public Transform greenIcon;
+    public Transform redIcon;
+    public Transform blueIcon;
 
     public TextMeshProUGUI uiGreenCubes;
     public TextMeshProUGUI uiRedCubes;
@@ -17,6 +20,7 @@ public class Inventory : MonoBehaviour
     {
         if (color == "Green")
         {
+
             greenCube--;
         }
 
@@ -42,7 +46,7 @@ public class Inventory : MonoBehaviour
     {
         if (color == "Green")
         {
-            if (greenCube > 0)
+            if (greenCube > 0) 
             {
                 return (true);
             }
