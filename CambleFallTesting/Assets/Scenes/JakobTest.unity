@@ -16218,6 +16218,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2064659523, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+      propertyPath: iconRed
+      value: 
+      objectReference: {fileID: 1070506427}
+    - target: {fileID: 2064659523, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+      propertyPath: iconBlue
+      value: 
+      objectReference: {fileID: 2010052621}
+    - target: {fileID: 2064659523, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+      propertyPath: iconGreen
+      value: 
+      objectReference: {fileID: 1313536565}
+    - target: {fileID: 2064659523, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: uiRedCubes
       value: 
       objectReference: {fileID: 1381219282}
@@ -16298,6 +16310,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8305307300840963896, guid: 9d30111814877e646b559b8ce77456af, type: 3}
   m_PrefabInstance: {fileID: 984973918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1070506427 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8501745303598162219, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
+  m_PrefabInstance: {fileID: 1126531170}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1091153547
 GameObject:
@@ -26238,6 +26255,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281714694}
   m_CullTransparentMesh: 0
+--- !u!224 &1313536565 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4785027467831034155, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
+  m_PrefabInstance: {fileID: 1126531170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1381219282 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4785027467713509279, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
@@ -26741,6 +26763,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2064659523, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+      propertyPath: iconRed
+      value: 
+      objectReference: {fileID: 2010052621}
+    - target: {fileID: 2064659523, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+      propertyPath: iconBlue
+      value: 
+      objectReference: {fileID: 1313536565}
+    - target: {fileID: 2064659523, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+      propertyPath: iconGreen
+      value: 
+      objectReference: {fileID: 1313536565}
+    - target: {fileID: 2064659523, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: uiRedCubes
       value: 
       objectReference: {fileID: 1461180927}
@@ -27012,6 +27046,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannon: {fileID: 377848824}
   heightOverCannon: 1.5
+--- !u!224 &2010052621 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8501745303569092971, guid: 09152f5c0f4a7c449b00999f8e5b325d, type: 3}
+  m_PrefabInstance: {fileID: 1126531170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2094405429
 GameObject:
   m_ObjectHideFlags: 0

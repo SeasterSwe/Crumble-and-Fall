@@ -169,8 +169,9 @@ public class Cannon : MonoBehaviour
         if (obj.GetComponent<Projectile>() != null)
             obj.GetComponent<Projectile>().enabled = true;
 
-        //Destroy(obj.GetComponent<VelocityTest>());
-        //obj.GetComponent<VelocityTest>().enabled = false; Lägg till när robert e klar å ta bort ovan
+        if(obj.GetComponent<VelocityTest>() != null)
+            obj.GetComponent<VelocityTest>().enabled = false;
+
         obj.layer = 2; //ignoreRayCast
         obj.tag = "Untagged";
     }

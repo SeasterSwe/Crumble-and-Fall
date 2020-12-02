@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -6648937520174678256}
   - component: {fileID: 1975805798957326749}
   - component: {fileID: -6031443138071160178}
+  - component: {fileID: 6218722962349945740}
   m_Layer: 8
   m_Name: BB Speedy
   m_TagString: Block
@@ -190,6 +191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerteam: 1
   category: Red
+  type: 1
+  state: 0
 --- !u!61 &-6031443138071160178
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -216,3 +219,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6218722962349945740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369240829330474514}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f2c4f22fb446e4da7be7d72b8ccbe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velMulti: 1.4

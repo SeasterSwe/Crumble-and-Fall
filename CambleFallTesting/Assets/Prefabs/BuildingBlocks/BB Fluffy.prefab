@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -4319783973822781445}
   - component: {fileID: 472018444814989952}
   - component: {fileID: 5076150456772443069}
+  - component: {fileID: -5837322709008703730}
   m_Layer: 8
   m_Name: BB Fluffy
   m_TagString: Block
@@ -235,3 +236,15 @@ MonoBehaviour:
   category: Red
   type: 0
   state: 0
+--- !u!114 &-5837322709008703730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369240829330474514}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b5ddb166384c74d8be818a4051bf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
