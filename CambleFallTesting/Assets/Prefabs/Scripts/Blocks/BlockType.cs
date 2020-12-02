@@ -26,7 +26,7 @@ public class BlockType : MonoBehaviour
     void Start()
     {
         //setColorByCategory();
-        BlockManager.AddBlockToList(gameObject);
+        //BlockManager.AddBlockToList(gameObject);
     }
 
     public static bool IsFluffy(GameObject checkObject)
@@ -81,6 +81,6 @@ public class BlockType : MonoBehaviour
 
     private void OnDestroy()
     {
-        BlockManager.RemoveBlockFromList(gameObject);
+        //BlockManager.RemoveBlockFromList(gameObject);
     }
 }

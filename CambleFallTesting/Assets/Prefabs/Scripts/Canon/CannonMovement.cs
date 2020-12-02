@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(1)]
 public class CannonMovement : MonoBehaviour
 {
     private GameObject cannonObj;
@@ -14,6 +15,7 @@ public class CannonMovement : MonoBehaviour
     }
     void Update()
     {
-        cannonObj.transform.position = elevationCheck.highestBlock.gameObject.transform.position + Vector3.up + (Vector3.up * cannon.extraYval());
+        if (elevationCheck.highestBlock.gameObject != null)
+            cannonObj.transform.position = elevationCheck.highestBlock.gameObject.transform.position + Vector3.up + (Vector3.up * cannon.extraYval());
     }
 }
