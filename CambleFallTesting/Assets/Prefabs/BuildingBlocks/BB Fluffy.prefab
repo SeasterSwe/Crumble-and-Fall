@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: -4263893033066760833}
   - component: {fileID: -4319783973822781445}
   - component: {fileID: 472018444814989952}
+  - component: {fileID: 5076150456772443069}
   m_Layer: 8
-  m_Name: Normal Cube
+  m_Name: BB Fluffy
   m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,6 +191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerteam: 1
   category: Blue
+  type: 0
+  state: 0
 --- !u!61 &472018444814989952
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -216,3 +219,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5076150456772443069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369240829330474514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd670c2f9d082343aba8299fe8bf0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerteam: 1
+  category: Red
+  type: 0
+  state: 0

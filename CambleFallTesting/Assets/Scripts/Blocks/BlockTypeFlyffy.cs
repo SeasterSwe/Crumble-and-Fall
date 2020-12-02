@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FluffyCube : Projectile
+public class BlockTypeFlyffy : BlockType
 {
-    public override void PlayLaunchSound()
+    protected override void OnHitEnter(Collision2D collision)
     {
-        SoundManager.PlaySound(SoundManager.Sound.NormalBlockShoot, transform.position);
-    }
-
-    protected override void HitEffekt(Collision2D collision)
-    {
+        base.OnHitEnter(collision);
         //base.HitEffekt(collision);
         if (BlockType.IsFluffy(collision.gameObject))
         {
@@ -27,4 +23,5 @@ public class FluffyCube : Projectile
             }
         }
     }
+
 }
