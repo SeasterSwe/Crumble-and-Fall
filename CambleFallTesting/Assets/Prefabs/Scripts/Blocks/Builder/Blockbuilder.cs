@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Blockbuilder : MonoBehaviour
 {
@@ -23,9 +24,13 @@ public class Blockbuilder : MonoBehaviour
     public string pickButton = "VerticalPlayerOne";
     int activeBlock = 0;
 
-    public Color red = Color.red;
-    public Color green = Color.green;
-    public Color blue = Color.blue;
+    public float scaleSize = 1.4f;
+    public Ease selectEase;
+    public Ease unEase;
+
+    //public Color red = Color.red;
+    //public Color green = Color.green;
+    //public Color blue = Color.blue;
 
     public float maxHeight = 10.0f;
     public float spriteAlpha = 0.5f;
@@ -152,22 +157,27 @@ public class Blockbuilder : MonoBehaviour
         // Visa inte Robban dehär
     {
         if (blocktype == "Green")
-            inventory.uiGreenCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one * 2;
+            ScaleText(inventory.uiGreenCubes.gameObject, Vector3.one * scaleSize, selectEase);
 
         else
-            inventory.uiGreenCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one;
+            ScaleText(inventory.uiGreenCubes.gameObject, Vector3.one, unEase);
 
         if (blocktype == "Blue")
-            inventory.uiBlueCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one * 2;
-        
+            ScaleText(inventory.uiBlueCubes.gameObject, Vector3.one * scaleSize, selectEase);
+
         else
-            inventory.uiBlueCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one;
-        
+            ScaleText(inventory.uiBlueCubes.gameObject, Vector3.one, unEase);
+
         if (blocktype == "Red")
-            inventory.uiRedCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one * 2;
-        
+           ScaleText(inventory.uiRedCubes.gameObject, Vector3.one * scaleSize, selectEase);
+
         else
-            inventory.uiRedCubes.gameObject.transform.parent.GetComponent<RectTransform>().localScale = Vector3.one;
+            ScaleText(inventory.uiRedCubes.gameObject, Vector3.one, unEase);
+    }
+
+    private void ScaleText(GameObject text, Vector3 scale, Ease ease)
+    {
+        text.transform.parent.GetComponent<RectTransform>().DOScale(scale, 0.3f).SetEase(ease);
     }
 
     public void AimChangeColor()

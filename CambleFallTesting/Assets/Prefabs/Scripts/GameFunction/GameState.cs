@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using DG.Tweening;
 
 //This script keeps track of gameStates, timers, UI text and other UI.
 public class GameState : MonoBehaviour
@@ -33,6 +33,8 @@ public class GameState : MonoBehaviour
     public ElevationCheck hightTwo;
     public GameOverUIMaster GameOverPreFab;
 
+    public Ease easein;
+    public Ease easeOut;
 
     // Start is called before the first frame update
     void Start()
@@ -93,11 +95,32 @@ public class GameState : MonoBehaviour
         if (buildTimeLeft > 0)
         {
             uiGameInfoText.text = buildText + buildTimeLeft.ToString("F0").PadLeft(2,'0');
+            ScaleText();
         }
         else
         {
             TogglegameStatesForward();
         }
+    }
+
+    bool active = false;
+    void ScaleText()
+    {
+        if(!active)
+        {
+            active = true;
+            uiGameInfoText.rectTransform.DOScale(Vector3.one * 2.5f, 0.5f).SetEase(easein).OnComplete(ResetText);
+        }
+    }
+
+    void ResetText()
+    {
+
+        uiGameInfoText.rectTransform.DOScale(Vector3.one * 2f, 0.5f).SetEase(easeOut).OnComplete(ActiveFalse);
+    }
+    void ActiveFalse()
+    {
+        active = false;
     }
 
     //STARTFIGHT
