@@ -50,50 +50,7 @@ public class BlockType : MonoBehaviour
         }
         return false;
     }
-<<<<<<< Updated upstream
-=======
-    /*
-    //TODO: Remove Function
->>>>>>> Stashed changes
-    public void setCatagoryByNumber(int n)
-    {
-        if(n == 1)
-        {
-            category = "Green";
-        }else if(n == 2)
-        {
-            category = "Blue";
-        }
-        else
-        {
-            category = "Red";
-        }
 
-        setColorByCategory();
-    }
-
-    //TODO : REmove Func
-    public void setColorByCategory()
-    {
-        if (category == "Green")
-        {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-        }
-        else if (category == "Blue")
-        {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-        }
-        else if (category == "Yellow")
-        {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
-        }
-        else
-        {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-            category = "Red";
-        }
-    }
-    */
     private void OnDestroy()
     {
         //BlockManager.RemoveBlockFromList(gameObject);
