@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fragment: {fileID: 141114141079268990, guid: b98183462fd27bc479bae265aa8e88ca, type: 3}
-  exForce: 5
+  exForce: 1
   velMulti: 1.4
 --- !u!96 &1225343612441641402
 TrailRenderer:

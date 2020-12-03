@@ -1442,6 +1442,10 @@ PrefabInstance:
       value: BuildPlayerTwo
       objectReference: {fileID: 0}
     - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+      propertyPath: inputHorizontal
+      value: HorizontalPlayerTwo
+      objectReference: {fileID: 0}
+    - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: timeBetweenStep
       value: 0.1
       objectReference: {fileID: 0}
