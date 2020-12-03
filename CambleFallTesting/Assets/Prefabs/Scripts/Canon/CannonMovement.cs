@@ -9,6 +9,8 @@ public class CannonMovement : MonoBehaviour
     [SerializeField] private ElevationCheck elevationCheck;
     private Cannon cannon;
     public GameObject smoke;
+
+    //Transform target;
     private void Start()
     {
         cannonObj = this.gameObject;
@@ -19,16 +21,34 @@ public class CannonMovement : MonoBehaviour
     {
         if (elevationCheck.highestBlock.gameObject != null)
         {
-            //if (Mathf.Abs(cannonObj.transform.position.y - elevationCheck.highestBlock.gameObject.transform.position.y) > 0.2f)
+            //if (target == null)
+            //    target = elevationCheck.highestBlock.gameObject.transform;
+
+            if (elevationCheck.highestBlock.gameObject.transform.position.y > cannonObj.transform.position.y - 1)
+            {
+                Swap();
+            }
+            else
+                cannonObj.transform.position = elevationCheck.highestBlock.gameObject.transform.position + Vector3.up + (Vector3.up * cannon.extraYval());
+
+            //else if (Mathf.Abs(cannonObj.transform.position.y - elevationCheck.highestBlock.gameObject.transform.position.y) > 1.5f)
             //{
-                cannonObj.transform.position =
-                    elevationCheck.highestBlock.gameObject.transform.position + Vector3.up + (Vector3.up * cannon.extraYval());
+            //    Swap();
             //}
-            //else
-            //    print("Bruh");
+
+            //RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 2f);
+            //if (hit.collider == null)
+            //    cannonObj.transform.position = elevationCheck.highestBlock.gameObject.transform.position + Vector3.up + (Vector3.up * cannon.extraYval());
+
         }
     }
 
+    void Swap()
+    {
+        cannonObj.transform.position =
+            elevationCheck.highestBlock.gameObject.transform.position + Vector3.up + (Vector3.up * cannon.extraYval());
+        GameObject smokeClone = Instantiate(smoke, transform.position, smoke.transform.rotation);
+    }
     IEnumerator MinHjärnaDog()
     {
         yield return new WaitForSeconds(0.08f);
