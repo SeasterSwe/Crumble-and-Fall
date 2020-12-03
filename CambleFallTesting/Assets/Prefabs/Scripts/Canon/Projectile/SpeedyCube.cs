@@ -16,6 +16,7 @@ public class SpeedyCube : Projectile
 
     protected override void HitEffekt(Collision2D collision)
     {
+        print(transform.name + " Is running disabled function");
         Vector2 dir = GetComponent<Rigidbody2D>().velocity;
 
         for (int i = 0; i < 4; i++)

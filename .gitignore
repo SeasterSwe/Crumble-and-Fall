@@ -73,3 +73,9 @@ crashlytics-build.properties
 [Aa]ssets/[Ss]treamingAssets/aa/*
 Fundamentals 15/Assets/Scenes/LinusTest.unity
 Fundamentals 15/Assets/Scenes/LinusTest.unity.meta
+CambleFallTesting/Assets/StreamingAssets/2DAnimationSampleAssetBundles/2DAnimationSampleAssetBundles
+CambleFallTesting/Assets/StreamingAssets/2DAnimationSampleAssetBundles/2DAnimationSampleAssetBundles.manifest
+CambleFallTesting/Assets/StreamingAssets/2DAnimationSampleAssetBundles/rikrpoison
+CambleFallTesting/Assets/StreamingAssets/2DAnimationSampleAssetBundles/rikrpoison.manifest
+CambleFallTesting/Assets/StreamingAssets/2DAnimationSampleAssetBundles/rikrrage
+CambleFallTesting/Assets/StreamingAssets/2DAnimationSampleAssetBundles/rikrrage.manifest
