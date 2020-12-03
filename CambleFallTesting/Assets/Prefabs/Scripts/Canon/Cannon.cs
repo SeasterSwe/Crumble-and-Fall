@@ -172,6 +172,9 @@ public class Cannon : MonoBehaviour
         if(obj.GetComponent<VelocityTest>() != null)
             obj.GetComponent<VelocityTest>().enabled = false;
 
+        if (obj.GetComponent<TrailRenderer>() != null)
+            obj.GetComponent<TrailRenderer>().enabled = true;
+
         obj.layer = 2; //ignoreRayCast
         obj.tag = "Untagged";
     }
