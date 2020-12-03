@@ -27,7 +27,7 @@ public class Cannon : MonoBehaviour
     Rigidbody2D nextBlockRB;
 
     public GameObject builder;
-    private BlockBuilder blockBuilder;
+    private Blockbuilder blockBuilder;
     private Inventory inventory;
 
     [HideInInspector] public bool chargeIsntStarted;
@@ -50,7 +50,7 @@ public class Cannon : MonoBehaviour
         loadImage = transform.Find("LoadImage").GetComponent<SpriteRenderer>();
         chargeSpeed = maxCharge / timeToFullCharge;
 
-        blockBuilder = builder.GetComponent<BlockBuilder>();
+        blockBuilder = builder.GetComponent<Blockbuilder>();
         inventory = builder.GetComponent<Inventory>();
         
         SetAnglePoints();
