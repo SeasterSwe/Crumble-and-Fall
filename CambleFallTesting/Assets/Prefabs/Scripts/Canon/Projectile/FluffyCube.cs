@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class FluffyCube : Projectile
 {
+    private void OnEnable()
+    {
+        GetComponent<Rigidbody2D>().gravityScale = 0;
+    }
+    private void OnDisable()
+    {
+        GetComponent<Rigidbody2D>().gravityScale = 1;
+    }
     public override void PlayLaunchSound()
     {
         SoundManager.PlaySound(SoundManager.Sound.NormalBlockShoot, transform.position);
