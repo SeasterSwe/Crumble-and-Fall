@@ -23,7 +23,7 @@ public class GameState : MonoBehaviour
     private float buildTimeLeft;
 
     [Header("Fight")]
-    private string fightText = "FIGHT";
+    public string fightText = "FIGHT";
     public float RoundTime = 60;
     private float roundTimeLeft;
 
