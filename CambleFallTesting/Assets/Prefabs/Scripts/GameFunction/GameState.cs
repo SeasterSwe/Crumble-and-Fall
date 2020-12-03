@@ -116,7 +116,7 @@ public class GameState : MonoBehaviour
     void ResetText()
     {
 
-        uiGameInfoText.rectTransform.DOScale(Vector3.one * 2f, 0.5f).SetEase(easeOut).OnComplete(ActiveFalse);
+        uiGameInfoText.rectTransform.DOScale(Vector3.one * 2.2f, 0.5f).SetEase(easeOut).OnComplete(ActiveFalse);
     }
     void ActiveFalse()
     {
