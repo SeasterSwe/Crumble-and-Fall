@@ -17,6 +17,16 @@ public class BlockType : MonoBehaviour
         OnHitEnter(collision);
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        OnInsideTrigger(collision);
+    }
+
+    protected virtual void OnInsideTrigger(Collider2D collider)
+    {
+        //Is insideTrigger
+    }
+
     protected virtual void OnHitEnter(Collision2D collision)
     {
 

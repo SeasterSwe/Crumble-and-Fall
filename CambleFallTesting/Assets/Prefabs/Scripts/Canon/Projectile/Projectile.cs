@@ -7,8 +7,11 @@ public class Projectile : MonoBehaviour
     protected Rigidbody2D rb;
     bool hasHit = false;
     bool hasDoneDmg = false;
+
+    bool isProjectile = false;
     protected virtual void Start()
     {
+        print("Start has run");
         rb = GetComponent<Rigidbody2D>();
         PlayLaunchSound();
     }
@@ -30,26 +33,29 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (this.enabled)
+        {
+            print("Has Collided " + transform.name);
+            var obj = collision.gameObject;
+            if (obj.CompareTag("Player") && !hasDoneDmg)
+            {
+                hasDoneDmg = true;
+                obj.GetComponent<CannonHealth>().TakeDmg();
+            }
+            else if (!obj.CompareTag("Block"))
+            {
 
-        var obj = collision.gameObject;
-        if (obj.CompareTag("Player") && !hasDoneDmg)
-        {
-            hasDoneDmg = true;
-            obj.GetComponent<CannonHealth>().TakeDmg();
+            }
+            else
+            {
+                gameObject.AddComponent<VelocityTest>();
+                gameObject.layer = 8; //blocks
+                gameObject.tag = "Block";
+                Destroy(GetComponent<Projectile>());
+            }
+            hasHit = true;
+            HitEffekt(collision);
         }
-        else if(!obj.CompareTag("Block"))
-        {
-
-        }
-        else
-        {
-            gameObject.AddComponent<VelocityTest>();
-            gameObject.layer = 8; //blocks
-            gameObject.tag = "Block";
-            Destroy(GetComponent<Projectile>());
-        }
-        hasHit = true;
-        HitEffekt(collision);
     }
 
     protected virtual void Stats()
