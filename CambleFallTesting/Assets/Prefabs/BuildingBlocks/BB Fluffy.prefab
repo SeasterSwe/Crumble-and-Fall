@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 472018444814989952}
   - component: {fileID: 5076150456772443069}
   - component: {fileID: -5837322709008703730}
-  - component: {fileID: 2519419503710446491}
+  - component: {fileID: -4417708212860908507}
   m_Layer: 8
   m_Name: BB Fluffy
   m_TagString: Block
@@ -232,8 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b5ddb166384c74d8be818a4051bf1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &2519419503710446491
-BoxCollider2D:
+--- !u!96 &-4417708212860908507
+TrailRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}

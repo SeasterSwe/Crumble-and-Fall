@@ -11,6 +11,7 @@ public class CannonHealth : MonoBehaviour
     public float currentHeatlh;
     private List<SpriteRenderer> sprites = new List<SpriteRenderer>();
     Color blinkColor = new Color(144, 104, 59, 159);
+    private Color originalColors;
     private void Awake()
     {
         foreach(SpriteRenderer child in GetComponentsInChildren<SpriteRenderer>())
@@ -19,18 +20,18 @@ public class CannonHealth : MonoBehaviour
         sprites.Remove(transform.Find("LoadImage").GetComponent<SpriteRenderer>());
         sprites.Add(GetComponent<SpriteRenderer>());
 
+        originalColors = sprites[0].color;
         currentHeatlh = startHealth;
     }
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //        TakeDmg();
-    //}
-    public void TakeDmg(float amount = 1)
+
+    public void TakeDmg(float amount = 1, bool playSound = true)
     {
         currentHeatlh -= amount;
         StartCoroutine(FadeSprite(0.3f, 5));
         healthBar.UpdateFillAmount(currentHeatlh / startHealth);
+        if(playSound)
+            SoundManager.PlaySound(SoundManager.Sound.CannonHurtSound);
+
         if (currentHeatlh <= 0)
         {
             Death();
@@ -39,7 +40,6 @@ public class CannonHealth : MonoBehaviour
     IEnumerator FadeSprite(float delay, int amount)
     {
         float t = (delay / 2f);
-        Color originalColor = sprites[0].color;
         for (int i = 0; i < amount; i++)
         {
             foreach(SpriteRenderer sprite in sprites)                        
@@ -47,7 +47,7 @@ public class CannonHealth : MonoBehaviour
             
             yield return new WaitForSeconds(t);
             foreach (SpriteRenderer sprite in sprites)
-                sprite.color = originalColor;
+                sprite.color = originalColors;
 
             yield return new WaitForSeconds(t);
         }

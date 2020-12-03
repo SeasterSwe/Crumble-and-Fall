@@ -12,9 +12,10 @@ public class GameState : MonoBehaviour
     public enum gameStates { Build, StartFight, Fight, StartGameOver, GameOver};
 
     [Header("Indicators")]
-    public TextMeshProUGUI uiGameInfoText;
+    public TextMeshProUGUI uiGameTimeText;
+    public TextMeshProUGUI uiGameStateText;
 
-    
+
 
     [Header("BuildMode")]
     public string buildText = "Build time left ";
@@ -22,7 +23,7 @@ public class GameState : MonoBehaviour
     private float buildTimeLeft;
 
     [Header("Fight")]
-    public string fightText = "Fight \n TimeLeft ";
+    private string fightText = "FIGHT";
     public float RoundTime = 60;
     private float roundTimeLeft;
 
@@ -94,7 +95,8 @@ public class GameState : MonoBehaviour
         buildTimeLeft -= Time.deltaTime;
         if (buildTimeLeft > 0)
         {
-            uiGameInfoText.text = buildText + buildTimeLeft.ToString("F0").PadLeft(2,'0');
+            uiGameStateText.text = buildText;
+            uiGameTimeText.text = buildTimeLeft.ToString("F0").PadLeft(2,'0');
             ScaleText();
         }
         else
@@ -109,14 +111,13 @@ public class GameState : MonoBehaviour
         if(!active)
         {
             active = true;
-            uiGameInfoText.rectTransform.DOScale(Vector3.one * 2.5f, 0.5f).SetEase(easein).OnComplete(ResetText);
+            uiGameTimeText.rectTransform.DOScale(Vector3.one * 2.5f, 0.5f).SetEase(easein).OnComplete(ResetText);
         }
     }
 
     void ResetText()
     {
-
-        uiGameInfoText.rectTransform.DOScale(Vector3.one * 2.2f, 0.5f).SetEase(easeOut).OnComplete(ActiveFalse);
+        uiGameTimeText.rectTransform.DOScale(Vector3.one * 2.2f, 0.5f).SetEase(easeOut).OnComplete(ActiveFalse);
     }
     void ActiveFalse()
     {
@@ -126,7 +127,7 @@ public class GameState : MonoBehaviour
     //STARTFIGHT
     void StartFight()
     {
-        uiGameInfoText.text = fightText;
+        uiGameStateText.text = fightText;
         roundTimeLeft = RoundTime;
         TogglegameStatesForward();
     }
@@ -135,9 +136,9 @@ public class GameState : MonoBehaviour
     void Fighting()
     {
         roundTimeLeft -= Time.deltaTime;
-        uiGameInfoText.text = fightText + roundTimeLeft.ToString("F0").PadLeft(2,'0');
+        uiGameTimeText.text = roundTimeLeft.ToString("F0").PadLeft(2,'0');    
 
-        if(roundTimeLeft < 0)
+        if (roundTimeLeft < 0)
         {
             TogglegameStatesForward();
             //switchStateTo(gameStates.StartGameOver);
