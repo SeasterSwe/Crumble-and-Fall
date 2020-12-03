@@ -135,7 +135,7 @@ public class GameState : MonoBehaviour
     void Fighting()
     {
         roundTimeLeft -= Time.deltaTime;
-        uiGameInfoText.text = fightText + roundTimeLeft.ToString("F0").PadLeft(2,'0');
+        uiGameInfoText.text = roundTimeLeft.ToString("F0").PadLeft(2,'0');
 
         if(roundTimeLeft < 0)
         {
