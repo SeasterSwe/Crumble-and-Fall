@@ -84,6 +84,9 @@ public class Cannon : MonoBehaviour
         nextFire += Time.deltaTime;
         if (!inventory.CheckInventory(block))
         {
+            if (Input.GetButtonDown(shootButton))
+                SoundManager.PlaySound(SoundManager.Sound.CannonOutOfAmmo);
+
             loadBar.UpdateFillAmount(0);
             OutOfBlocks();
             return;

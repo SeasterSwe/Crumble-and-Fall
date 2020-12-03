@@ -11,6 +11,7 @@ public static class SoundManager
         NormalBlockShoot,
         CannonDrownSound,
         CannonHurtSound,
+        CannonOutOfAmmo,
     }
     private static GameObject oneShotGameObject;
     private static AudioSource oneShotAudioSource;
