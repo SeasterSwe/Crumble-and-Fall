@@ -4,7 +4,7 @@ using UnityEngine;
 public class BlockType : MonoBehaviour
 {
     public int playerteam = 1;
-    public string category = "Red";
+    //public string category = "Red";
     public enum types {Fluffy, Speedy, Heavy}
     public types type;
 
@@ -50,6 +50,11 @@ public class BlockType : MonoBehaviour
         }
         return false;
     }
+<<<<<<< Updated upstream
+=======
+    /*
+    //TODO: Remove Function
+>>>>>>> Stashed changes
     public void setCatagoryByNumber(int n)
     {
         if(n == 1)
@@ -88,7 +93,7 @@ public class BlockType : MonoBehaviour
             category = "Red";
         }
     }
-
+    */
     private void OnDestroy()
     {
         //BlockManager.RemoveBlockFromList(gameObject);

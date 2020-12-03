@@ -74,7 +74,7 @@ public class Blockbuilder : MonoBehaviour
         SpawnerLocation();
         AccurateBlockSpawn();
 
-        if (Input.GetButtonDown(inputSpawn) && inventory.CheckInventory(blockPreFab.GetComponent<BlockType>().category))
+        if (Input.GetButtonDown(inputSpawn) && inventory.CheckInventory(blockPreFab.GetComponent<BlockType>().type))
         {
             SpawnBlock();
         }
@@ -136,7 +136,7 @@ public class Blockbuilder : MonoBehaviour
 
         if (spawnerObject.position.y <= maxHeight)
         {
-            inventory.RemoveFromInventory(blockPreFab.GetComponent<BlockType>().category);
+            inventory.RemoveFromInventory(blockPreFab.GetComponent<BlockType>().type);
             GameObject newBlock = Instantiate(blockPreFab, spawnerObject.position, Quaternion.identity);
             //BlockType blockScript = newBlock.GetComponent<BlockType>();
         }
@@ -149,26 +149,26 @@ public class Blockbuilder : MonoBehaviour
         activeBlock = nextBlock;
         blockPreFab = chooseBlocks[activeBlock];
 
-        ScaleImage(blockPreFab.GetComponent<BlockType>().category);
+        ScaleImage(blockPreFab.GetComponent<BlockType>().type);
 
     }
 
-    public void ScaleImage(string blocktype)
-        // Visa inte Robban dehär
+    public void ScaleImage(BlockType.types blocktype)
+        // Visa inte Robban dehär // JAG SÅG DET!!!
     {
-        if (blocktype == "Green")
+        if (blocktype == BlockType.types.Speedy)
             ScaleText(inventory.uiGreenCubes.gameObject, Vector3.one * scaleSize, selectEase);
 
         else
             ScaleText(inventory.uiGreenCubes.gameObject, Vector3.one, unEase);
 
-        if (blocktype == "Blue")
+        if (blocktype == BlockType.types.Heavy)
             ScaleText(inventory.uiBlueCubes.gameObject, Vector3.one * scaleSize, selectEase);
 
         else
             ScaleText(inventory.uiBlueCubes.gameObject, Vector3.one, unEase);
 
-        if (blocktype == "Red")
+        if (blocktype == BlockType.types.Fluffy)
            ScaleText(inventory.uiRedCubes.gameObject, Vector3.one * scaleSize, selectEase);
 
         else

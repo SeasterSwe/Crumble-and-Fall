@@ -80,7 +80,7 @@ public class Cannon : MonoBehaviour
 
         Rotatation(rotationSpeed + bonunsRotationSpeed);
 
-        var block = blockBuilder.blockPreFab.GetComponent<BlockType>().category;
+        var block = blockBuilder.blockPreFab.GetComponent<BlockType>().type;
         nextFire += Time.deltaTime;
         if (!inventory.CheckInventory(block))
         {
