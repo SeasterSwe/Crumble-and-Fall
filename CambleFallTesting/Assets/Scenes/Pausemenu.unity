@@ -196,18 +196,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3926572619528487510, guid: 485bb7f87e9349941b0a1257a70747b6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3926572619967803973, guid: 485bb7f87e9349941b0a1257a70747b6, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3926572619967804088, guid: 485bb7f87e9349941b0a1257a70747b6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5185721107812436832, guid: 485bb7f87e9349941b0a1257a70747b6, type: 3}
       propertyPath: m_Name
       value: PausMenu
