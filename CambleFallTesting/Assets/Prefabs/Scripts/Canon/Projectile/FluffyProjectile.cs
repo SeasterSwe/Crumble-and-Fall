@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FluffyCube : Projectile
+public class FluffyProjectile : Projectile
 {
     private void OnEnable()
     {
@@ -19,6 +19,7 @@ public class FluffyCube : Projectile
 
     protected override void HitEffekt(Collision2D collision)
     {
+        /*
         //base.HitEffekt(collision);
         if (BlockType.IsFluffy(collision.gameObject))
         {
@@ -34,5 +35,6 @@ public class FluffyCube : Projectile
                 joint.connectedBody = collision.gameObject.GetComponent<Rigidbody2D>();
             }
         }
+        -*/
     }
 }

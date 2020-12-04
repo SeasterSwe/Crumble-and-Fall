@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedyCube : Projectile
+public class SpeedyProjectile : Projectile
 {
     public GameObject fragment;
     public float exForce = 5;

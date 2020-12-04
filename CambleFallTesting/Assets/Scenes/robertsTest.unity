@@ -1807,29 +1807,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a1b60d71f8d534d8e5b36291b134cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterParticle: {fileID: 5580052433228493647, guid: 36943ecdbc012cc429406d63226f7b53, type: 3}
---- !u!50 &671954195
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671954190}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &671970586 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5392034486466517099, guid: 8f56289de49ccd54e8fd0c7a647c5d28, type: 3}
   m_PrefabInstance: {fileID: 1050533016}
