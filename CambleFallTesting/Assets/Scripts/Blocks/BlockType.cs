@@ -60,13 +60,6 @@ public class BlockType : MonoBehaviour
 
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //BlockManager.AddBlockToList(gameObject);
-    }
-
     public static bool IsFluffy(GameObject checkObject)
     {
         if (checkObject.GetComponent<BlockType>())
