@@ -8,6 +8,8 @@ public class Inventory : MonoBehaviour
     public int greenCube = 10;
     public int redCube = 10;
     public int blueCube = 10;
+
+    public Sprite empty;
     //public Transform greenIcon;
     //public Transform redIcon;
     //public Transform blueIcon;
@@ -20,22 +22,70 @@ public class Inventory : MonoBehaviour
     public TextMeshProUGUI uiRedCubes;
     public TextMeshProUGUI uiBlueCubes;
 
+    public void AddToInventory(BlockType.types type, int amount)
+    {
+        if (type == BlockType.types.Speedy)
+        {
+            greenCube+= amount;
+            if (greenCube > 0)
+            {
+                uiGreenCubes.color = Color.white;
+            }
+        }
+
+        else if (type == BlockType.types.Heavy)
+        {
+            blueCube+= amount;
+            if (blueCube > 0)
+            {
+                uiBlueCubes.color = Color.white;
+            }
+        }
+
+        else if (type == BlockType.types.Fluffy)
+        {
+            redCube+= amount;
+            if (redCube > 0)
+            {
+                uiRedCubes.color = Color.white;
+            }
+        }
+
+        else
+        {
+            Debug.Log("Error : Blockcolor does not exist " + transform.name);
+        }
+
+        UpdateUiText();
+    }
+
     public void RemoveFromInventory(BlockType.types type)
     {
         if (type == BlockType.types.Speedy)
         {
-
             greenCube--;
+            if(greenCube < 1)
+            {
+                uiGreenCubes.color = Color.red;
+            }
         }
 
         else if (type == BlockType.types.Heavy)
         {
             blueCube--;
+            if (blueCube < 1)
+            {
+                uiBlueCubes.color = Color.red;
+            }
         }
 
         else if (type == BlockType.types.Fluffy)
         {
             redCube--;
+            if (redCube < 1)
+            {
+                uiRedCubes.color = Color.red;
+            }
         }
 
         else

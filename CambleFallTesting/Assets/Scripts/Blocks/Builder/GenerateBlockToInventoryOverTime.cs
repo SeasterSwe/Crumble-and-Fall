@@ -11,8 +11,8 @@ public class GenerateBlockToInventoryOverTime : MonoBehaviour
 
     public Inventory inventory;
 
-    public enum blockType {red, green, blue};
-    public blockType currentColor;
+    // public enum blockType {red, green, blue};
+    public BlockType.types currentBlock = BlockType.types.Fluffy;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +34,7 @@ public class GenerateBlockToInventoryOverTime : MonoBehaviour
             {
                 GenerateBlockToInventory();
                 ToggleColor();
-                inventory.UpdateUiText();
+                //inventory.UpdateUiText();
                 timeLeftToNextGen = timeBetweenGenerations;
             }
         }
@@ -42,18 +42,18 @@ public class GenerateBlockToInventoryOverTime : MonoBehaviour
 
     void GenerateBlockToInventory()
     {
-        switch (currentColor)
+        switch (currentBlock)
         {
-            case blockType.red:
-                inventory.redCube++;
+            case BlockType.types.Fluffy:
+                inventory.AddToInventory(BlockType.types.Fluffy, 1);
                 break;
 
-            case blockType.green:
-                inventory.greenCube++;
+            case BlockType.types.Heavy:
+                inventory.AddToInventory(BlockType.types.Heavy, 1);
                 break;
 
-            case blockType.blue:
-                inventory.blueCube++;
+            case BlockType.types.Speedy:
+                inventory.AddToInventory(BlockType.types.Speedy, 1);
                 break;
 
             default:
@@ -64,22 +64,22 @@ public class GenerateBlockToInventoryOverTime : MonoBehaviour
 
     void ToggleColor()
     {
-        switch (currentColor)
+        switch (currentBlock)
         {
-            case blockType.red: 
-                currentColor = blockType.green; 
-                break; 
-
-            case blockType.green:
-                currentColor = blockType.blue;
+            case BlockType.types.Fluffy:
+                currentBlock = BlockType.types.Heavy;
                 break;
 
-            case blockType.blue: 
-                currentColor = blockType.red; 
-                break; 
+            case BlockType.types.Heavy:
+                currentBlock = BlockType.types.Speedy;
+                break;
+
+            case BlockType.types.Speedy:
+                currentBlock = BlockType.types.Fluffy;
+                break;
 
             default:
-                currentColor = blockType.red;
+                currentBlock = BlockType.types.Fluffy;
                 break;
         }
     }
