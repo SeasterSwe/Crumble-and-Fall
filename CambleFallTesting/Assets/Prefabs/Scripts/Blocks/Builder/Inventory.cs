@@ -20,20 +20,20 @@ public class Inventory : MonoBehaviour
     public TextMeshProUGUI uiRedCubes;
     public TextMeshProUGUI uiBlueCubes;
 
-    public void RemoveFromInventory(string color)
+    public void RemoveFromInventory(BlockType.types type)
     {
-        if (color == "Green")
+        if (type == BlockType.types.Speedy)
         {
 
             greenCube--;
         }
 
-        else if (color == "Blue")
+        else if (type == BlockType.types.Heavy)
         {
             blueCube--;
         }
 
-        else if (color == "Red")
+        else if (type == BlockType.types.Fluffy)
         {
             redCube--;
         }
@@ -70,9 +70,9 @@ public class Inventory : MonoBehaviour
     //        return;
     //    }
     //}
-    public bool CheckInventory(string color)
+    public bool CheckInventory(BlockType.types type)
     {
-        if (color == "Green")
+        if (type == BlockType.types.Speedy)
         {
             if (greenCube > 0) 
             {
@@ -83,8 +83,7 @@ public class Inventory : MonoBehaviour
                 return (false);
             }
         }
-
-        else if (color == "Blue")
+        else if (type == BlockType.types.Heavy)
         {
             if (blueCube > 0)
             {
@@ -95,8 +94,7 @@ public class Inventory : MonoBehaviour
                 return (false);
             }
         }
-
-        else if (color == "Red")
+        else if (type == BlockType.types.Fluffy)
         {
             if (redCube > 0)
             {
@@ -107,7 +105,6 @@ public class Inventory : MonoBehaviour
                 return (false);
             }
         }
-
         else
         {
             Debug.Log("ErrorCubeDoesntExist");
