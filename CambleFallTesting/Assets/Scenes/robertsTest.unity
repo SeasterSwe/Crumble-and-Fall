@@ -753,6 +753,10 @@ PrefabInstance:
       value: CannonPlayer2
       objectReference: {fileID: 0}
     - target: {fileID: 8796790795582154358, guid: edf9516364e8cda498059056b84d9b12, type: 3}
+      propertyPath: smoke
+      value: 
+      objectReference: {fileID: 5452120542206745066, guid: 847fc4b82679de14da5724e6a4689b03, type: 3}
+    - target: {fileID: 8796790795582154358, guid: edf9516364e8cda498059056b84d9b12, type: 3}
       propertyPath: elevationCheck
       value: 
       objectReference: {fileID: 333823373}
@@ -1486,9 +1490,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterParticle: {fileID: 0}
-  speed1: 0
-  speed2: 0
-  count: 10
 --- !u!114 &671970586 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5392034486466517099, guid: 8f56289de49ccd54e8fd0c7a647c5d28, type: 3}
@@ -6506,6 +6507,14 @@ PrefabInstance:
       propertyPath: uiGameInfoText
       value: 
       objectReference: {fileID: 253886327}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: uiGameTimeText
+      value: 
+      objectReference: {fileID: 253886327}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: uiGameStateText
+      value: 
+      objectReference: {fileID: 2135441127}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04f8479515149474899855cff8307b11, type: 3}
 --- !u!1 &734810294
@@ -6617,6 +6626,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 734810295}
     m_Modifications:
+    - target: {fileID: 7506503249154676256, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
+      propertyPath: smoke
+      value: 
+      objectReference: {fileID: 5452120542206745066, guid: 847fc4b82679de14da5724e6a4689b03, type: 3}
     - target: {fileID: 7506503249154676256, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: elevationCheck
       value: 
