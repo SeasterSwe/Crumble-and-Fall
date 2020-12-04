@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class FluffyProjectile : Projectile
 {
+    public float velocityMulti = 0.4f;
+
+    protected override void Start()
+    {
+        base.Start();
+        rb.velocity *= velocityMulti;
+    }
     private void OnEnable()
     {
         GetComponent<Rigidbody2D>().gravityScale = 0;

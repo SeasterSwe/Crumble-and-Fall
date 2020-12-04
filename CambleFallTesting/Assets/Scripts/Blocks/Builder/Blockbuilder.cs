@@ -144,6 +144,7 @@ public class Blockbuilder : MonoBehaviour
 
     public void ToggleBetweenBlocks()
     {
+        //TODO : Change to switch
         int nextBlock = activeBlock + 1;
         nextBlock = nextBlock % chooseBlocks.Length;
         activeBlock = nextBlock;

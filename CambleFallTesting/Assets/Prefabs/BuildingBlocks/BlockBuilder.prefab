@@ -54,9 +54,9 @@ MonoBehaviour:
   timeToNextStep: 0
   inventory: {fileID: 0}
   pickButton: VerticalPlayerOne
-  red: {r: 1, g: 0, b: 0, a: 1}
-  green: {r: 0, g: 1, b: 0, a: 1}
-  blue: {r: 0, g: 0, b: 1, a: 1}
+  scaleSize: 1.4
+  selectEase: 0
+  unEase: 0
   maxHeight: 10
   spriteAlpha: 0.5
 --- !u!114 &1718938604861592196
@@ -74,6 +74,7 @@ MonoBehaviour:
   greenCube: 10
   redCube: 10
   blueCube: 10
+  empty: {fileID: 0}
   uiGreenCubes: {fileID: 0}
   uiRedCubes: {fileID: 0}
   uiBlueCubes: {fileID: 0}
@@ -88,7 +89,6 @@ GameObject:
   - component: {fileID: 8305307302351108410}
   - component: {fileID: 8305307302351108409}
   - component: {fileID: 8305307302351108408}
-  - component: {fileID: 8305307302351108411}
   m_Layer: 0
   m_Name: SpawnArea
   m_TagString: Untagged
@@ -159,19 +159,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8305307302351108411
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8305307302351108413}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8305307302421642150
 GameObject:
   m_ObjectHideFlags: 0

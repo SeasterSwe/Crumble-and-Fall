@@ -5,7 +5,7 @@ public class BlockType : MonoBehaviour
 {
     public int playerteam = 1;
     //public string category = "Red";
-    public enum types {Fluffy, Heavy, Speedy}
+    public enum types {Fluffy, Speedy, Heavy}
     public types type;
 
     public enum states { Idle, Flying}
