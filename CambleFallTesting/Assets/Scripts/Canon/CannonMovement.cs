@@ -10,7 +10,8 @@ public class CannonMovement : MonoBehaviour
     private Cannon cannon;
     public GameObject smoke;
 
-    //Transform target;
+    Transform target;
+    //public bool targetYeeted = false;
     private void Start()
     {
         cannonObj = this.gameObject;
@@ -21,33 +22,42 @@ public class CannonMovement : MonoBehaviour
     {
         if (elevationCheck.highestBlock.gameObject != null)
         {
-            //if (target == null)
-            //    target = elevationCheck.highestBlock.gameObject.transform;
+            if (target == null)
+                target = elevationCheck.highestBlock.gameObject.transform;
 
-            if (elevationCheck.highestBlock.gameObject.transform.position.y > cannonObj.transform.position.y - 1)
+
+            if (target.gameObject.GetComponent<Rigidbody2D>() != null)
             {
-                Swap();
+                if (!(target.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 2))
+                {
+                    float totalDist = Vector2.Distance(target.position, elevationCheck.highestBlock.gameObject.transform.position);
+                    float distX = target.position.x - elevationCheck.highestBlock.gameObject.transform.position.x;
+                    if (totalDist > 1.6 || Mathf.Abs(distX) < 0.6f)
+                        target = elevationCheck.highestBlock.gameObject.transform;
+                }
+
+                //kan bli buggad med fluffy, fix later
+                else if (target.gameObject.GetComponent<Renderer>().isVisible == false)
+                {
+                    //om canonen flyger men landar ej i vatten
+                    if (cannonObj.transform.position.y > -8f)
+                        cannonObj.GetComponent<CannonHealth>().TakeDmg();
+
+                    Swap();
+                }
+
             }
             else
-                cannonObj.transform.position = elevationCheck.highestBlock.gameObject.transform.position + Vector3.up + (Vector3.up * cannon.extraYval());
+                target = elevationCheck.highestBlock.gameObject.transform;
 
-            //else if (Mathf.Abs(cannonObj.transform.position.y - elevationCheck.highestBlock.gameObject.transform.position.y) > 1.5f)
-            //{
-            //    Swap();
-            //}
-
-            //RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 2f);
-            //if (hit.collider == null)
-            //    cannonObj.transform.position = elevationCheck.highestBlock.gameObject.transform.position + Vector3.up + (Vector3.up * cannon.extraYval());
-
+            cannonObj.transform.position = target.position + Vector3.up + (Vector3.up * cannon.extraYval());
         }
     }
 
     void Swap()
     {
-        cannonObj.transform.position =
-            elevationCheck.highestBlock.gameObject.transform.position + Vector3.up + (Vector3.up * cannon.extraYval());
         GameObject smokeClone = Instantiate(smoke, transform.position, smoke.transform.rotation);
+        target = elevationCheck.highestBlock.gameObject.transform;
     }
     IEnumerator MinHjärnaDog()
     {

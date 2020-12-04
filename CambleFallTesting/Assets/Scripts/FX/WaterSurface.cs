@@ -38,6 +38,7 @@ public class WaterSurface : MonoBehaviour
     }
     float t = 0;
     float drownRate = 1f;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player"))
@@ -51,6 +52,12 @@ public class WaterSurface : MonoBehaviour
             GameObject waterBubble = Instantiate(waterParticle, collision.transform.position, waterParticle.transform.rotation);
             collision.GetComponent<CannonHealth>().TakeDmg(1f, false);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+            t = 2;
     }
 
     //void Splash(Vector3 pos)
