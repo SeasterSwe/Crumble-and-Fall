@@ -877,6 +877,10 @@ PrefabInstance:
       value: CannonPlayer2
       objectReference: {fileID: 0}
     - target: {fileID: 8796790795582154358, guid: edf9516364e8cda498059056b84d9b12, type: 3}
+      propertyPath: smoke
+      value: 
+      objectReference: {fileID: 8144194261454832211, guid: 5284f2b04c6f63d408dc524233ded70d, type: 3}
+    - target: {fileID: 8796790795582154358, guid: edf9516364e8cda498059056b84d9b12, type: 3}
       propertyPath: elevationCheck
       value: 
       objectReference: {fileID: 333823373}
@@ -6966,6 +6970,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 734810295}
     m_Modifications:
     - target: {fileID: 7506503249154676256, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
+      propertyPath: smoke
+      value: 
+      objectReference: {fileID: 5452120542206745066, guid: 847fc4b82679de14da5724e6a4689b03, type: 3}
+    - target: {fileID: 7506503249154676256, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: elevationCheck
       value: 
       objectReference: {fileID: 1026241725}
@@ -7276,7 +7284,7 @@ Transform:
   - {fileID: 105779873}
   - {fileID: 1695350141}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &918500547
 GameObject:
@@ -9698,4 +9706,3 @@ Transform:
   m_Father: {fileID: 837966108}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-
