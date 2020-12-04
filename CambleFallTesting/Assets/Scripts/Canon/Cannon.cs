@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -78,13 +78,15 @@ public class Cannon : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             UpdateLoadImage(blockBuilder.blockPreFab);
 
-        // DrawPoints(numberOfPoints, launchForce + chargePower + velBouns, nextBlockRB.mass);
         Rotatation(rotationSpeed + bonunsRotationSpeed);
 
-        var block = blockBuilder.blockPreFab.GetComponent<BlockType>().category;
+        var block = blockBuilder.blockPreFab.GetComponent<BlockType>().type;
         nextFire += Time.deltaTime;
         if (!inventory.CheckInventory(block))
         {
+            if (Input.GetButtonDown(shootButton))
+                SoundManager.PlaySound(SoundManager.Sound.CannonOutOfAmmo);
+
             loadBar.UpdateFillAmount(0);
             OutOfBlocks();
             return;
@@ -157,7 +159,7 @@ public class Cannon : MonoBehaviour
         rb.AddForce(shootPos.right * totaltForce, ForceMode2D.Impulse);
         
         FixBlockToProjectile(clone);
-        
+
         if (totaltForce > 15)
             rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
@@ -171,6 +173,9 @@ public class Cannon : MonoBehaviour
 
         if(obj.GetComponent<VelocityTest>() != null)
             obj.GetComponent<VelocityTest>().enabled = false;
+
+        if (obj.GetComponent<TrailRenderer>() != null)
+            obj.GetComponent<TrailRenderer>().enabled = true;
 
         obj.layer = 2; //ignoreRayCast
         obj.tag = "Untagged";
@@ -187,20 +192,20 @@ public class Cannon : MonoBehaviour
         chargeSpeed = maxCharge / timeToFullCharge;
     }
 
-    void DrawPoints(int amountOfPoints, float force, float mass)
-    {
-        points.Clear();
-        for (int i = 0; i < amountOfPoints; i++)
-        {
-            points.Add(PointPosition(i * 0.1f, force, mass));
-            line.SetPosition(i, points[i]);
-        }
-    }
-    Vector3 PointPosition(float t, float force, float mass)
-    {
-        Vector3 position = shootPos.position + (shootPos.right * force * t) + 0.5f * ((Vector3)Physics2D.gravity * (t * t) * mass); //formelSak
-        return position;
-    }
+    //void DrawPoints(int amountOfPoints, float force, float mass)
+    //{
+    //    points.Clear();
+    //    for (int i = 0; i < amountOfPoints; i++)
+    //    {
+    //        points.Add(PointPosition(i * 0.1f, force, mass));
+    //        line.SetPosition(i, points[i]);
+    //    }
+    //}
+    //Vector3 PointPosition(float t, float force, float mass)
+    //{
+    //    Vector3 position = shootPos.position + (shootPos.right * force * t) + 0.5f * ((Vector3)Physics2D.gravity * (t * t) * mass); //formelSak
+    //    return position;
+    //}
 
     private void OutOfBlocks()
     {

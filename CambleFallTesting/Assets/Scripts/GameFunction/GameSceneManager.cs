@@ -79,10 +79,4 @@ public class GameSceneManager : MonoBehaviour
 		audioSource.clip = clip;
 		audioSource.Play();
     }
-
-	public void QuitGame()
-    {
-		Debug.Log("QUIT");
-		Application.Quit();
-    }
 }
