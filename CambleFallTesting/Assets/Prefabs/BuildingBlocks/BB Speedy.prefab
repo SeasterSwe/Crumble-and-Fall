@@ -363,4 +363,4 @@ MonoBehaviour:
   state: 0
   fragment: {fileID: 141114141079268990, guid: b98183462fd27bc479bae265aa8e88ca, type: 3}
   minForceToScatter: 10
-  reboundForce: 2
+  reboundForce: 0.5
