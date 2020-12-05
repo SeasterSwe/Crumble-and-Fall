@@ -28,7 +28,7 @@ public class Cannon : MonoBehaviour
 
     public GameObject builder;
     private Blockbuilder blockBuilder;
-    private Inventory inventory;
+    public Inventory inventory;
 
     [HideInInspector] public bool chargeIsntStarted;
     [HideInInspector] public float bonunsRotationSpeed = 0;
@@ -51,7 +51,7 @@ public class Cannon : MonoBehaviour
         chargeSpeed = maxCharge / timeToFullCharge;
 
         blockBuilder = builder.GetComponent<Blockbuilder>();
-        inventory = builder.GetComponent<Inventory>();
+        //inventory = builder.GetComponent<Inventory>();
         
         SetAnglePoints();
 

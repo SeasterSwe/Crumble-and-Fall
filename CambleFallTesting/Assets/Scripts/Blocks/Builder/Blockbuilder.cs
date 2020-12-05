@@ -42,7 +42,7 @@ public class Blockbuilder : MonoBehaviour
 
         spawnerObject = transform.Find("Spawner");
         spawnerPosition = spawnerObject.parent.position;
-        inventory = GetComponent<Inventory>();
+        //inventory = GetComponent<Inventory>();
         blockPreFab = BlockList.GetARandomBlock();
 
         chooseBlocks = BlockList.buildList;
@@ -153,27 +153,27 @@ public class Blockbuilder : MonoBehaviour
         ScaleImage(blockPreFab.GetComponent<BlockType>().type);
 
     }
-
+    
     public void ScaleImage(BlockType.types blocktype)
         // Visa inte Robban dehär // JAG SÅG DET!!!
     {
         if (blocktype == BlockType.types.Speedy)
-            ScaleText(inventory.uiGreenCubes.gameObject, Vector3.one * scaleSize, selectEase);
+            ScaleText(inventory.uiSpeedyImg.gameObject, Vector3.one * scaleSize, selectEase);
 
         else
-            ScaleText(inventory.uiGreenCubes.gameObject, Vector3.one, unEase);
+            ScaleText(inventory.uiSpeedyImg.gameObject, Vector3.one, unEase);
 
         if (blocktype == BlockType.types.Heavy)
-            ScaleText(inventory.uiBlueCubes.gameObject, Vector3.one * scaleSize, selectEase);
+            ScaleText(inventory.uiHeavyImg.gameObject, Vector3.one * scaleSize, selectEase);
 
         else
-            ScaleText(inventory.uiBlueCubes.gameObject, Vector3.one, unEase);
+            ScaleText(inventory.uiHeavyImg.gameObject, Vector3.one, unEase);
 
         if (blocktype == BlockType.types.Fluffy)
-           ScaleText(inventory.uiRedCubes.gameObject, Vector3.one * scaleSize, selectEase);
+           ScaleText(inventory.uiFluffyImg.gameObject, Vector3.one * scaleSize, selectEase);
 
         else
-            ScaleText(inventory.uiRedCubes.gameObject, Vector3.one, unEase);
+            ScaleText(inventory.uiFluffyImg.gameObject, Vector3.one, unEase);
     }
 
     private void ScaleText(GameObject text, Vector3 scale, Ease ease)

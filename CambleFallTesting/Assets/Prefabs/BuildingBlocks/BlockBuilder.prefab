@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8305307300840963894}
   - component: {fileID: 193178457106989711}
-  - component: {fileID: 1718938604861592196}
   m_Layer: 0
   m_Name: BlockBuilder
   m_TagString: Untagged
@@ -59,25 +58,6 @@ MonoBehaviour:
   unEase: 0
   maxHeight: 10
   spriteAlpha: 0.5
---- !u!114 &1718938604861592196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8305307300840963896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c4e826605266143a453cd0ac2ddaad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  greenCube: 10
-  redCube: 10
-  blueCube: 10
-  empty: {fileID: 0}
-  uiGreenCubes: {fileID: 0}
-  uiRedCubes: {fileID: 0}
-  uiBlueCubes: {fileID: 0}
 --- !u!1 &8305307302351108413
 GameObject:
   m_ObjectHideFlags: 0

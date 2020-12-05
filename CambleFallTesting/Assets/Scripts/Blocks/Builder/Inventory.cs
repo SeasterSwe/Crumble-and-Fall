@@ -2,52 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
-    public int greenCube = 10;
-    public int redCube = 10;
-    public int blueCube = 10;
+    [Header("Numbers")]
+    public int numberOfSpeedys = 10;
+    public int numberOfHeavys = 10;
+    public int numberOfFluffys = 10;
 
-    public Sprite empty;
-    //public Transform greenIcon;
-    //public Transform redIcon;
-    //public Transform blueIcon;
+    [Header("UI")]
+    public Image uiSpeedyImg;
+    public Image uiHeavyImg;
+    public Image uiFluffyImg;
 
-    //public Transform iconGreen;
-    //public Transform iconRed;
-    //public Transform iconBlue;
-
-    public TextMeshProUGUI uiGreenCubes;
-    public TextMeshProUGUI uiRedCubes;
-    public TextMeshProUGUI uiBlueCubes;
+    public TextMeshProUGUI uiSpeedyTxt;
+    public TextMeshProUGUI uiFluffyTxt;
+    public TextMeshProUGUI uiHeavyTxt;
 
     public void AddToInventory(BlockType.types type, int amount)
     {
         if (type == BlockType.types.Speedy)
         {
-            greenCube+= amount;
-            if (greenCube > 0)
+            numberOfSpeedys+= amount;
+            if (numberOfSpeedys > 0)
             {
-                uiGreenCubes.color = Color.white;
+                uiSpeedyTxt.color = Color.white;
+                uiSpeedyImg.color = Color.white;
             }
         }
 
         else if (type == BlockType.types.Heavy)
         {
-            blueCube+= amount;
-            if (blueCube > 0)
+            numberOfFluffys+= amount;
+            if (numberOfFluffys > 0)
             {
-                uiBlueCubes.color = Color.white;
+                uiHeavyTxt.color = Color.white;
+                uiHeavyImg.color = Color.white;
             }
         }
 
         else if (type == BlockType.types.Fluffy)
         {
-            redCube+= amount;
-            if (redCube > 0)
+            numberOfHeavys+= amount;
+            if (numberOfHeavys > 0)
             {
-                uiRedCubes.color = Color.white;
+                uiFluffyTxt.color = Color.white;
+                uiFluffyImg.color = Color.white;
             }
         }
 
@@ -63,28 +63,31 @@ public class Inventory : MonoBehaviour
     {
         if (type == BlockType.types.Speedy)
         {
-            greenCube--;
-            if(greenCube < 1)
+            numberOfSpeedys--;
+            if(numberOfSpeedys < 1)
             {
-                uiGreenCubes.color = Color.red;
+                uiSpeedyTxt.color = Color.red;
+                uiSpeedyImg.color = Color.red;
             }
         }
 
         else if (type == BlockType.types.Heavy)
         {
-            blueCube--;
-            if (blueCube < 1)
+            numberOfFluffys--;
+            if (numberOfFluffys < 1)
             {
-                uiBlueCubes.color = Color.red;
+                uiHeavyTxt.color = Color.red;
+                uiHeavyImg.color = Color.red;
             }
         }
 
         else if (type == BlockType.types.Fluffy)
         {
-            redCube--;
-            if (redCube < 1)
+            numberOfHeavys--;
+            if (numberOfHeavys < 1)
             {
-                uiRedCubes.color = Color.red;
+                uiFluffyTxt.color = Color.red;
+                uiFluffyImg.color = Color.red;
             }
         }
 
@@ -96,35 +99,11 @@ public class Inventory : MonoBehaviour
         UpdateUiText();
     }
 
-    //public void ScaleSelected(string color)
-    //{
-    //    if (color == "Green")
-    //    {
-    //            iconGreen.localScale = Vector3.one * 1.25f;
-    //            iconRed.localScale = Vector3.one;
-    //            iconBlue.localScale = Vector3.one;
-    //        return;
-    //    }
-    //    else if (color == "Blue")
-    //    {
-    //        iconGreen.localScale = Vector3.one;
-    //        iconRed.localScale = Vector3.one * 1.25f;
-    //        iconBlue.localScale = Vector3.one;
-    //        return;
-    //    }
-    //    else if (color == "Red")
-    //    {
-    //        iconGreen.localScale = Vector3.one;
-    //        iconRed.localScale = Vector3.one;
-    //        iconBlue.localScale = Vector3.one * 1.25f;
-    //        return;
-    //    }
-    //}
     public bool CheckInventory(BlockType.types type)
     {
         if (type == BlockType.types.Speedy)
         {
-            if (greenCube > 0) 
+            if (numberOfSpeedys > 0) 
             {
                 return (true);
             }
@@ -135,7 +114,7 @@ public class Inventory : MonoBehaviour
         }
         else if (type == BlockType.types.Heavy)
         {
-            if (blueCube > 0)
+            if (numberOfFluffys > 0)
             {
                 return (true);
             }
@@ -146,7 +125,7 @@ public class Inventory : MonoBehaviour
         }
         else if (type == BlockType.types.Fluffy)
         {
-            if (redCube > 0)
+            if (numberOfHeavys > 0)
             {
                 return (true);
             }
@@ -166,8 +145,8 @@ public class Inventory : MonoBehaviour
 
     public void UpdateUiText()
     {
-        uiGreenCubes.text = greenCube.ToString().PadLeft(2, '0');
-        uiRedCubes.text = redCube.ToString().PadLeft(2, '0');
-        uiBlueCubes.text = blueCube.ToString().PadLeft(2, '0');
+        uiSpeedyTxt.text = numberOfSpeedys.ToString().PadLeft(2, '0');
+        uiFluffyTxt.text = numberOfHeavys.ToString().PadLeft(2, '0');
+        uiHeavyTxt.text = numberOfFluffys.ToString().PadLeft(2, '0');
     }
 }
