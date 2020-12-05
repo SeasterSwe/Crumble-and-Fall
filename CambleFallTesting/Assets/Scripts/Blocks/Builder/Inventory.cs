@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+
+//TODO : Switch only
 public class Inventory : MonoBehaviour
 {
+    [Header("Settings")]
+    public float selectedScale = 1.2f;
+    public GameObject selectedBlock;
+
     [Header("Numbers")]
     public int numberOfSpeedys = 10;
     public int numberOfHeavys = 10;
@@ -16,55 +22,129 @@ public class Inventory : MonoBehaviour
     public Image uiFluffyImg;
 
     public TextMeshProUGUI uiSpeedyTxt;
-    public TextMeshProUGUI uiFluffyTxt;
     public TextMeshProUGUI uiHeavyTxt;
+    public TextMeshProUGUI uiFluffyTxt;
+
+
+    [Header("BlockPreFabs")]
+    public GameObject speedyBlock;
+    public GameObject heavyBlock;
+    public GameObject fluffyBlock;
+
+    void Start()
+    {
+        selectedBlock = speedyBlock;
+    }
+
+    public GameObject TakeActiveBlockFromInventory()
+    {
+        RemoveFromInventory(selectedBlock.GetComponent<BlockType>().type);
+        return (selectedBlock);
+    }
+    public void TogggleBlock()
+    {
+        //Hej Cristian!!
+        //Den här funktionene sätter "selectedBlock" och scalar inventory
+
+        //Först nollställ alla UI bilders scala
+        uiFluffyImg.rectTransform.localScale = Vector3.one;
+        uiHeavyImg.rectTransform.localScale = Vector3.one;
+        uiSpeedyImg.rectTransform.localScale = Vector3.one;
+
+        //Kolla vilken typ det är, set valt block, skala ui bild
+        BlockType.types type = selectedBlock.GetComponent<BlockType>().type;
+
+        switch (type)
+        {
+            case BlockType.types.Fluffy:
+                {
+                    selectedBlock = speedyBlock;
+                    uiSpeedyImg.rectTransform.localScale = Vector3.one * selectedScale;
+                }
+                break;
+
+            case BlockType.types.Heavy:
+                {
+                    selectedBlock = fluffyBlock;
+                    uiFluffyImg.rectTransform.localScale = Vector3.one * selectedScale;
+                }
+                break;
+
+
+            case BlockType.types.Speedy:
+                {
+                    selectedBlock = heavyBlock;
+                    uiHeavyImg.rectTransform.localScale = Vector3.one * selectedScale;
+                }
+                break;
+
+            default:
+                {
+                    Debug.LogError("Block type does not exist in inventory");
+                    selectedBlock = speedyBlock;
+                }
+                break;
+        }
+    }
 
     public void AddToInventory(BlockType.types type, int amount)
     {
-        if (type == BlockType.types.Speedy)
-        {
-            numberOfSpeedys+= amount;
-            if (numberOfSpeedys > 0)
-            {
-                uiSpeedyTxt.color = Color.white;
-                uiSpeedyImg.color = Color.white;
-            }
-        }
+        //Add a "amount" of blocks "Type" to inventory
+        //Set ui to normal if inventory is larger then 0
 
-        else if (type == BlockType.types.Heavy)
+        switch (type)
         {
-            numberOfFluffys+= amount;
-            if (numberOfFluffys > 0)
-            {
-                uiHeavyTxt.color = Color.white;
-                uiHeavyImg.color = Color.white;
-            }
-        }
+            case BlockType.types.Speedy:
+                {
+                    numberOfSpeedys += amount;
+                    if (numberOfSpeedys > 0)
+                    {
+                        uiSpeedyTxt.color = Color.white;
+                        uiSpeedyImg.color = Color.white;
+                    }
+                    UpdateUiText();
+                }
+                break;
 
-        else if (type == BlockType.types.Fluffy)
-        {
-            numberOfHeavys+= amount;
-            if (numberOfHeavys > 0)
-            {
-                uiFluffyTxt.color = Color.white;
-                uiFluffyImg.color = Color.white;
-            }
-        }
+            case BlockType.types.Heavy:
+                {
+                    numberOfHeavys += amount;
+                    if (numberOfHeavys > 0)
+                    {
+                        uiFluffyTxt.color = Color.white;
+                        uiFluffyImg.color = Color.white;
+                    }
+                    UpdateUiText();
+                }
+                break;
 
-        else
-        {
-            Debug.Log("Error : Blockcolor does not exist " + transform.name);
-        }
+            case BlockType.types.Fluffy:
+                {
+                    numberOfFluffys += amount;
+                    if (numberOfFluffys > 0)
+                    {
+                        uiHeavyTxt.color = Color.white;
+                        uiHeavyImg.color = Color.white;
+                    }
+                    UpdateUiText();
+                }
+                break;
 
-        UpdateUiText();
+
+            default:
+                Debug.Log("Error : Blockcolor does not exist " + transform.name);
+                break;
+        }
     }
 
     public void RemoveFromInventory(BlockType.types type)
     {
+        //Remove blockType from inventory
+        //If inventory for requested type is smaller then 0, set ui to red
         if (type == BlockType.types.Speedy)
         {
             numberOfSpeedys--;
-            if(numberOfSpeedys < 1)
+            if (numberOfSpeedys < 1)
             {
                 uiSpeedyTxt.color = Color.red;
                 uiSpeedyImg.color = Color.red;
@@ -99,11 +179,15 @@ public class Inventory : MonoBehaviour
         UpdateUiText();
     }
 
-    public bool CheckInventory(BlockType.types type)
+    public bool SelectedBlockIsInInventory()
     {
+        //Check if their is a egnuf of "selectedBlock" in inventory
+        //If inventory for requested type is larger then 0, return true else false
+
+        BlockType.types type = selectedBlock.GetComponent<BlockType>().type;
         if (type == BlockType.types.Speedy)
         {
-            if (numberOfSpeedys > 0) 
+            if (numberOfSpeedys > 0)
             {
                 return (true);
             }
@@ -141,6 +225,60 @@ public class Inventory : MonoBehaviour
             return (false);
         }
 
+    }
+    public bool CheckInventoryFor(BlockType.types type)
+    {
+        //Check if their is a block of "type" in inventory
+        //If inventory for requested type is larger then 0, return true else false
+
+        switch (type)
+        {
+            case BlockType.types.Fluffy:
+                {
+                    if (numberOfFluffys > 0)
+                    {
+                        return (true);
+                    }
+                    else
+                    {
+                        return (false);
+                    }
+                }
+                break;
+
+            case BlockType.types.Heavy:
+                {
+                    if (numberOfHeavys > 0)
+                    {
+                        return (true);
+                    }
+                    else
+                    {
+                        return (false);
+                    }
+                }
+                break;
+            case BlockType.types.Speedy:
+                {
+                    if (numberOfSpeedys > 0)
+                    {
+                        return (true);
+                    }
+                    else
+                    {
+                        return (false);
+                    }
+                }
+                break;
+
+            default:
+                {
+                    Debug.LogError("No such Type in Inventory");
+                    return false;
+                }
+                break;
+
+        }
     }
 
     public void UpdateUiText()

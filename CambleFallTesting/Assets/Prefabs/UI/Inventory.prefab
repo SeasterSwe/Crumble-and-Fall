@@ -753,6 +753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c4e826605266143a453cd0ac2ddaad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedScale: 1.2
+  selectedBlock: {fileID: 0}
   numberOfSpeedys: 10
   numberOfHeavys: 10
   numberOfFluffys: 10
@@ -760,8 +762,11 @@ MonoBehaviour:
   uiHeavyImg: {fileID: 1676402277223412206}
   uiFluffyImg: {fileID: 6360780897239614082}
   uiSpeedyTxt: {fileID: 3957187223999209909}
-  uiFluffyTxt: {fileID: 4245363148615849127}
   uiHeavyTxt: {fileID: 3821464404935227842}
+  uiFluffyTxt: {fileID: 4245363148615849127}
+  speedyBlock: {fileID: 6369240829330474514, guid: 0ef146d6ab4ef6d4ea4aae837279e461, type: 3}
+  heavyBlock: {fileID: 6369240829330474514, guid: 184eb979f339f2147a3e5f2f6f14026d, type: 3}
+  fluffyBlock: {fileID: 6369240829330474514, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
 --- !u!1 &6797739405320774844
 GameObject:
   m_ObjectHideFlags: 0

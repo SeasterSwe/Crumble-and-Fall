@@ -19,7 +19,6 @@ public class Blockbuilder : MonoBehaviour
     private Vector3 spawnerPosition;
     public Inventory inventory;
 
-    private GameObject[] chooseBlocks;
     //private Inventory inventory;
     public string pickButton = "VerticalPlayerOne";
     int activeBlock = 0;
@@ -43,9 +42,9 @@ public class Blockbuilder : MonoBehaviour
         spawnerObject = transform.Find("Spawner");
         spawnerPosition = spawnerObject.parent.position;
         //inventory = GetComponent<Inventory>();
-        blockPreFab = BlockList.GetARandomBlock();
+        //blockPreFab;// = BlockList.GetARandomBlock();
 
-        chooseBlocks = BlockList.buildList;
+       // chooseBlocks = BlockList.buildList;
 
         AimChangeColor();
     }
@@ -74,7 +73,7 @@ public class Blockbuilder : MonoBehaviour
         SpawnerLocation();
         AccurateBlockSpawn();
 
-        if (Input.GetButtonDown(inputSpawn) && inventory.CheckInventory(blockPreFab.GetComponent<BlockType>().type))
+        if (Input.GetButtonDown(inputSpawn))
         {
             SpawnBlock();
         }
@@ -82,7 +81,7 @@ public class Blockbuilder : MonoBehaviour
         if (Input.GetButtonDown(pickButton))
         {
             ToggleBetweenBlocks();
-            AimChangeColor();
+            //AimChangeColor();
         }
 
     }
@@ -90,9 +89,6 @@ public class Blockbuilder : MonoBehaviour
     private void SpawnerLocation()
     {
        // spawnerPosition.x += Input.GetAxisRaw(inputHorizontal) * moveStep;
-
-        
-
         if (Input.GetButton(inputHorizontal))
         {
             timeToNextStep -= Time.deltaTime;
@@ -133,17 +129,19 @@ public class Blockbuilder : MonoBehaviour
     // spawnar ett block. 
     private void SpawnBlock()
     {
-
         if (spawnerObject.position.y <= maxHeight)
         {
-            inventory.RemoveFromInventory(blockPreFab.GetComponent<BlockType>().type);
-            GameObject newBlock = Instantiate(blockPreFab, spawnerObject.position, Quaternion.identity);
-            //BlockType blockScript = newBlock.GetComponent<BlockType>();
+            if (inventory.SelectedBlockIsInInventory())
+            {
+                GameObject newBlock = Instantiate(inventory.TakeActiveBlockFromInventory(), spawnerObject.position, Quaternion.identity);
+            }
         }
     }
 
     public void ToggleBetweenBlocks()
     {
+        inventory.TogggleBlock();
+        /*
         //TODO : Change to switch
         int nextBlock = activeBlock + 1;
         nextBlock = nextBlock % chooseBlocks.Length;
@@ -151,9 +149,9 @@ public class Blockbuilder : MonoBehaviour
         blockPreFab = chooseBlocks[activeBlock];
 
         ScaleImage(blockPreFab.GetComponent<BlockType>().type);
-
+        */
     }
-    
+    /*
     public void ScaleImage(BlockType.types blocktype)
         // Visa inte Robban dehär // JAG SÅG DET!!!
     {
@@ -180,7 +178,7 @@ public class Blockbuilder : MonoBehaviour
     {
         text.transform.parent.GetComponent<RectTransform>().DOScale(scale, 0.3f).SetEase(ease);
     }
-
+    */
     public void AimChangeColor()
     {
         var spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -189,7 +187,7 @@ public class Blockbuilder : MonoBehaviour
         blockColor.a = spriteAlpha;
         spriteRenderer.color = blockColor;
 
-        spriteRenderer.sprite = blockPreFab.GetComponent<SpriteRenderer>().sprite;
+       // spriteRenderer.sprite = blockPreFab.GetComponent<SpriteRenderer>().sprite;
 
     }
 

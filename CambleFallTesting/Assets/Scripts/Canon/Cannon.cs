@@ -82,7 +82,7 @@ public class Cannon : MonoBehaviour
 
         var block = blockBuilder.blockPreFab.GetComponent<BlockType>().type;
         nextFire += Time.deltaTime;
-        if (!inventory.CheckInventory(block))
+        if (!inventory.CheckInventoryFor(block))
         {
             if (Input.GetButtonDown(shootButton))
                 SoundManager.PlaySound(SoundManager.Sound.CannonOutOfAmmo);
