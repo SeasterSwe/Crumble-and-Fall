@@ -605,6 +605,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1194010723}
     m_Modifications:
+    - target: {fileID: 43687371703806833, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4928910327109591370, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -922,6 +926,10 @@ PrefabInstance:
       propertyPath: fireRate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6278006578601542447, guid: edf9516364e8cda498059056b84d9b12, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1464058189}
     - target: {fileID: 8796790795582154354, guid: edf9516364e8cda498059056b84d9b12, type: 3}
       propertyPath: m_Name
       value: CannonPlayer2
@@ -1085,7 +1093,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &402090194
 SpriteRenderer:
@@ -1333,7 +1341,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &488869736
 SpriteRenderer:
@@ -1487,17 +1495,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8305307300840963896, guid: 9d30111814877e646b559b8ce77456af, type: 3}
   m_PrefabInstance: {fileID: 565174231}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &518529156 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1718938604861592196, guid: 9d30111814877e646b559b8ce77456af, type: 3}
-  m_PrefabInstance: {fileID: 565174231}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518529155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c4e826605266143a453cd0ac2ddaad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &534458557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1653,6 +1650,10 @@ PrefabInstance:
       propertyPath: moveStep
       value: 0.26
       objectReference: {fileID: 0}
+    - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1464058189}
     - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: inputSpawn
       value: BuildPlayerTwo
@@ -2564,6 +2565,10 @@ PrefabInstance:
       propertyPath: fireRate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8682834307649009962, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1332760395}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
 --- !u!114 &823470927 stripped
@@ -3049,7 +3054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generatorActive: 1
   timeBetweenGenerations: 2.8
-  inventory: {fileID: 518529156}
+  inventory: {fileID: 0}
   currentBlock: 0
 --- !u!114 &989414129
 MonoBehaviour:
@@ -3065,7 +3070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generatorActive: 1
   timeBetweenGenerations: 2.8
-  inventory: {fileID: 1483856187}
+  inventory: {fileID: 0}
   currentBlock: 0
 --- !u!1 &995530857
 GameObject:
@@ -3502,7 +3507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1567538750492806901, guid: a9249f9407ab82444839bc6a765efb9a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1567538750720901556, guid: a9249f9407ab82444839bc6a765efb9a, type: 3}
       propertyPath: m_Color.a
@@ -3627,6 +3632,17 @@ Transform:
   m_Father: {fileID: 837966108}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1332760395 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3444593090932855767, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+  m_PrefabInstance: {fileID: 613058644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c4e826605266143a453cd0ac2ddaad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1357854876 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8305307300840963894, guid: 9d30111814877e646b559b8ce77456af, type: 3}
@@ -3820,7 +3836,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1443491514
 GameObject:
@@ -3852,10 +3868,10 @@ Transform:
   m_Father: {fileID: 837966108}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1483856187 stripped
+--- !u!114 &1464058189 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1718938604861592196, guid: 9d30111814877e646b559b8ce77456af, type: 3}
-  m_PrefabInstance: {fileID: 2136672548}
+  m_CorrespondingSourceObject: {fileID: 3444593090932855767, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+  m_PrefabInstance: {fileID: 210660838}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -3981,7 +3997,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &1593889100
 SpriteRenderer:
@@ -4125,7 +4141,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &1685556996
 SpriteRenderer:
@@ -4481,7 +4497,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &1942315661
 SpriteRenderer:
@@ -5097,6 +5113,10 @@ PrefabInstance:
       value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1332760395}
+    - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: inputSpawn
       value: BuildPlayerOne
       objectReference: {fileID: 0}
@@ -5126,7 +5146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8305307300840963894, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.91
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8305307300840963894, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: m_LocalPosition.z

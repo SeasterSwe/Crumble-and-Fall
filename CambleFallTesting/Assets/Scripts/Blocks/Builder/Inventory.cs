@@ -25,13 +25,12 @@ public class Inventory : MonoBehaviour
     public TextMeshProUGUI uiHeavyTxt;
     public TextMeshProUGUI uiFluffyTxt;
 
-
     [Header("BlockPreFabs")]
     public GameObject speedyBlock;
     public GameObject heavyBlock;
     public GameObject fluffyBlock;
 
-    void Start()
+    private void Start()
     {
         selectedBlock = speedyBlock;
     }
@@ -41,6 +40,7 @@ public class Inventory : MonoBehaviour
         RemoveFromInventory(selectedBlock.GetComponent<BlockType>().type);
         return (selectedBlock);
     }
+
     public void TogggleBlock()
     {
         //Hej Cristian!!
@@ -141,41 +141,47 @@ public class Inventory : MonoBehaviour
     {
         //Remove blockType from inventory
         //If inventory for requested type is smaller then 0, set ui to red
-        if (type == BlockType.types.Speedy)
+        switch (type)
         {
-            numberOfSpeedys--;
-            if (numberOfSpeedys < 1)
-            {
-                uiSpeedyTxt.color = Color.red;
-                uiSpeedyImg.color = Color.red;
-            }
-        }
+            case BlockType.types.Speedy:
+                {
+                    numberOfSpeedys--;
+                    if (numberOfSpeedys < 1)
+                    {
+                        uiSpeedyTxt.color = Color.red;
+                        uiSpeedyImg.color = Color.red;
+                    }
+                }
+                break;
 
-        else if (type == BlockType.types.Heavy)
-        {
-            numberOfFluffys--;
-            if (numberOfFluffys < 1)
-            {
-                uiHeavyTxt.color = Color.red;
-                uiHeavyImg.color = Color.red;
-            }
-        }
+            case BlockType.types.Heavy:
+                {
+                    numberOfFluffys--;
+                    if (numberOfFluffys < 1)
+                    {
+                        uiHeavyTxt.color = Color.red;
+                        uiHeavyImg.color = Color.red;
+                    }
+                }
+                break;
 
-        else if (type == BlockType.types.Fluffy)
-        {
-            numberOfHeavys--;
-            if (numberOfHeavys < 1)
-            {
-                uiFluffyTxt.color = Color.red;
-                uiFluffyImg.color = Color.red;
-            }
-        }
+            case BlockType.types.Fluffy:
+                {
+                    numberOfHeavys--;
+                    if (numberOfHeavys < 1)
+                    {
+                        uiFluffyTxt.color = Color.red;
+                        uiFluffyImg.color = Color.red;
+                    }
+                }
+                break;
 
-        else
-        {
-            Debug.Log("Error : Blockcolor does not exist " + transform.name);
+            default:
+                {
+                    Debug.Log("Error : Blockcolor does not exist " + transform.name);
+                }
+                break;
         }
-
         UpdateUiText();
     }
 
@@ -183,49 +189,50 @@ public class Inventory : MonoBehaviour
     {
         //Check if their is a egnuf of "selectedBlock" in inventory
         //If inventory for requested type is larger then 0, return true else false
-
         BlockType.types type = selectedBlock.GetComponent<BlockType>().type;
-        if (type == BlockType.types.Speedy)
+        switch (type)
         {
-            if (numberOfSpeedys > 0)
-            {
-                return (true);
-            }
-            else
-            {
-                return (false);
-            }
+            case BlockType.types.Speedy:
+                {
+                    if (numberOfSpeedys > 0)
+                    {
+                        return (true);
+                    }
+                    else
+                    {
+                        return (false);
+                    }
+                }
+            case BlockType.types.Heavy:
+                {
+                    if (numberOfFluffys > 0)
+                    {
+                        return (true);
+                    }
+                    else
+                    {
+                        return (false);
+                    }
+                }
+            case BlockType.types.Fluffy:
+                {
+                    if (numberOfHeavys > 0)
+                    {
+                        return (true);
+                    }
+                    else
+                    {
+                        return (false);
+                    }
+                }
+            default:
+                {
+                    Debug.Log("ErrorCubeDoesntExist");
+                    return (false);
+                }
         }
-        else if (type == BlockType.types.Heavy)
-        {
-            if (numberOfFluffys > 0)
-            {
-                return (true);
-            }
-            else
-            {
-                return (false);
-            }
-        }
-        else if (type == BlockType.types.Fluffy)
-        {
-            if (numberOfHeavys > 0)
-            {
-                return (true);
-            }
-            else
-            {
-                return (false);
-            }
-        }
-        else
-        {
-            Debug.Log("ErrorCubeDoesntExist");
-
-            return (false);
-        }
-
     }
+
     public bool CheckInventoryFor(BlockType.types type)
     {
         //Check if their is a block of "type" in inventory
@@ -258,6 +265,7 @@ public class Inventory : MonoBehaviour
                     }
                 }
                 break;
+
             case BlockType.types.Speedy:
                 {
                     if (numberOfSpeedys > 0)

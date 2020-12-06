@@ -57,7 +57,7 @@ public class Cannon : MonoBehaviour
 
         chargeIsntStarted = true;
 
-        UpdateLoadImage(blockBuilder.blockPreFab);
+        UpdateLoadImage(inventory.selectedBlock);
     }
     void SetAnglePoints()
     {
@@ -76,13 +76,13 @@ public class Cannon : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            UpdateLoadImage(blockBuilder.blockPreFab);
+            UpdateLoadImage(inventory.selectedBlock);
 
         Rotatation(rotationSpeed + bonunsRotationSpeed);
 
-        var block = blockBuilder.blockPreFab.GetComponent<BlockType>().type;
+        //GameObject block = inventory.selectedBlock;// blockBuilder.blockPreFab.GetComponent<BlockType>().type;
         nextFire += Time.deltaTime;
-        if (!inventory.CheckInventoryFor(block))
+        if (!inventory.SelectedBlockIsInInventory())
         {
             if (Input.GetButtonDown(shootButton))
                 SoundManager.PlaySound(SoundManager.Sound.CannonOutOfAmmo);
@@ -110,11 +110,10 @@ public class Cannon : MonoBehaviour
         //Shoot      
         if (Input.GetButtonUp(shootButton) && nextFire > time)
         {
-            inventory.RemoveFromInventory(block);
             holdTimer = 0;
             time = fireRate;
             nextFire = 0;
-            Shoot(blockBuilder.blockPreFab, chargePower);
+            Shoot( chargePower);
             GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, 90, 0));
             chargePower = 1;
             
@@ -150,9 +149,9 @@ public class Cannon : MonoBehaviour
             lerpVal = 0;
         }
     }
-    void Shoot(GameObject block, float extraForce = 0)
+    void Shoot( float extraForce = 0)
     {
-        GameObject clone = Instantiate(block, shootPos.position, shootPos.rotation);
+        GameObject clone = Instantiate(inventory.TakeActiveBlockFromInventory(), shootPos.position, shootPos.rotation);
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
         float mass = rb.mass/2;
         float totaltForce = (launchForce * mass) + extraForce + velBouns;
