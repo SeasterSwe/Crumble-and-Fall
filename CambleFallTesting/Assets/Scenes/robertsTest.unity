@@ -745,7 +745,6 @@ GameObject:
   - component: {fileID: 235842261}
   - component: {fileID: 235842264}
   - component: {fileID: 235842263}
-  - component: {fileID: 235842262}
   m_Layer: 0
   m_Name: MarkAngleTwo
   m_TagString: Untagged
@@ -767,19 +766,6 @@ Transform:
   m_Father: {fileID: 464512347}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
---- !u!65 &235842262
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235842260}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &235842263
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1417,23 +1403,27 @@ MonoBehaviour:
   angleMarkerOne: {fileID: 2135821094}
   angleMarkerTwo: {fileID: 235842260}
   firerate: 1
-  maxCharge: 10
-  minCharge: 2
-  chargePerSec: 2
-  inventory: {fileID: 0}
---- !u!135 &464512344
-SphereCollider:
+  maxCharge: 20
+  minCharge: 10
+  chargePerSec: 4
+  inventory: {fileID: 1332760395}
+  evCheck: {fileID: 1026241725}
+--- !u!58 &464512344
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464512342}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &464512345
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1491,7 +1481,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464512342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.66, y: 2.01, z: -3.2747893}
+  m_LocalPosition: {x: 0.12, y: 2.97, z: -3.2747893}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 595898775}
@@ -2026,7 +2016,6 @@ GameObject:
   - component: {fileID: 595898775}
   - component: {fileID: 595898778}
   - component: {fileID: 595898777}
-  - component: {fileID: 595898776}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2048,19 +2037,6 @@ Transform:
   m_Father: {fileID: 464512347}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &595898776
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595898774}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &595898777
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2684,7 +2660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: buildTime
-      value: 5
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: fightText
@@ -5406,7 +5382,6 @@ GameObject:
   - component: {fileID: 2135821095}
   - component: {fileID: 2135821098}
   - component: {fileID: 2135821097}
-  - component: {fileID: 2135821096}
   m_Layer: 0
   m_Name: MarkAngleOne
   m_TagString: Untagged
@@ -5428,19 +5403,6 @@ Transform:
   m_Father: {fileID: 464512347}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
---- !u!65 &2135821096
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2135821094}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2135821097
 MeshRenderer:
   m_ObjectHideFlags: 0

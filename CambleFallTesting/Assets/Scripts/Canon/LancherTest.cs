@@ -60,7 +60,6 @@ public class LancherTest : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetAngle, rotationSpeeed * Time.deltaTime);
     }
 
-
     void FireOperation()
     {
         coolDown -= Time.deltaTime;
@@ -97,7 +96,7 @@ public class LancherTest : MonoBehaviour
     void MoveCannon()
     {
         transform.position = evCheck.highestBlock.ClosestPoint(evCheck.highestBlock.transform.position + Vector3.up) + Vector2.up * 0.5f;
-        transform.parent = evCheck.transform;
+        transform.parent = evCheck.highestBlock.transform;
     }
 
     void OnCollisionEnter2D(Collision2D col)
