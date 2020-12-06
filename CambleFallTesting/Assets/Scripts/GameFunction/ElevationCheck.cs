@@ -50,9 +50,9 @@ public class ElevationCheck : MonoBehaviour
         RaycastHit2D hit = Physics2D.BoxCast(transform.position + Vector3.up * 20, areaBounds, 0, Vector2.down, Mathf.Infinity, blockLayer);
         if (hit.collider)
         {
-            Debug.DrawRay(hit.point, Vector2.one, Color.yellow);
             towerHight = hit.point.y - groundlevel;
             highestBlock = hit.collider;
+            Debug.DrawRay(hit.point, hit.normal, Color.yellow, 0.1f);
         }
     }
 

@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -736477825628492944}
   - component: {fileID: 1614449001440131710}
   - component: {fileID: -192862889044682216}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: BB Heavy
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -218,6 +218,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerteam: 1
+  projectileLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 256
   type: 2
   state: 0
 --- !u!114 &-736477825628492944

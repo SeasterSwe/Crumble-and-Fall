@@ -134,6 +134,7 @@ public class Blockbuilder : MonoBehaviour
             if (inventory.SelectedBlockIsInInventory())
             {
                 GameObject newBlock = Instantiate(inventory.TakeActiveBlockFromInventory(), spawnerObject.position, Quaternion.identity);
+                newBlock.GetComponent<BlockType>().SetState(BlockType.states.Idle);
             }
         }
     }
