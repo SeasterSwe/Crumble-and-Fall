@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    int playerTeam = 0;
     protected Rigidbody2D rb;
     bool hasHit = false;
     bool hasDoneDmg = false;
@@ -14,15 +15,42 @@ public class Projectile : MonoBehaviour
         print("Start has run");
         rb = GetComponent<Rigidbody2D>();
         PlayLaunchSound();
+
+        if (transform.position.x < 0)
+            playerTeam = 1;
+        else
+            playerTeam = 2;
     }
 
     void Update()
     {
         if (!hasHit)
         {
-            RotateWithVelocity();
-            rb.freezeRotation = false;
+           // RotateWithVelocity();
+           // rb.freezeRotation = false;
         }
+
+        if(playerTeam == 1)
+        {
+            if(transform.position.x > 0)
+            {
+                //past halfway
+                PastHalfWay();
+            }
+        }
+        else
+        {
+            if(transform.position.x < 0)
+            {
+                //past halfway1
+                PastHalfWay();
+            }
+        }
+    }
+
+    protected virtual void PastHalfWay()
+    {
+
     }
 
     void RotateWithVelocity()

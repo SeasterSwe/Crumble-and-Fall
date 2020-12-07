@@ -25,6 +25,10 @@ public class BlockType : MonoBehaviour
         spRenderer = GetComponent<SpriteRenderer>();
         GetLowerLeftCorner();
         //BlockManager.AddBlockToList(gameObject);
+        if (transform.position.x < 0)
+            playerteam = 1;
+        else
+            playerteam = 2;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
