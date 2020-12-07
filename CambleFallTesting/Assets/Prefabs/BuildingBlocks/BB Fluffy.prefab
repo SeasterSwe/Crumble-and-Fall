@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -6539799831039996785}
   - component: {fileID: 5076150456772443069}
   - component: {fileID: -5837322709008703730}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: BB Fluffy
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.99, y: 0.99}
   m_EdgeRadius: 0
 --- !u!50 &6369240829330474525
 Rigidbody2D:
@@ -271,7 +271,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -297,7 +297,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -344,6 +344,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerteam: 1
+  projectileLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 256
   type: 0
   state: 0
 --- !u!114 &-5837322709008703730
@@ -358,3 +364,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b5ddb166384c74d8be818a4051bf1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocityMulti: 0.4

@@ -4,11 +4,14 @@ using UnityEngine;
 public class BlockType : MonoBehaviour
 {
     public int playerteam = 1;
+
+    public LayerMask projectileLayer;
+    public LayerMask blockLayer;
     //public string category = "Red";
-    public enum types {Fluffy, Speedy, Heavy}
+    public enum types { Fluffy, Speedy, Heavy }
     public types type;
 
-    public enum states { Idle, Flying}
+    public enum states { Idle, Flying }
     public states state = states.Idle;
 
     private SpriteRenderer spRenderer;
@@ -22,6 +25,10 @@ public class BlockType : MonoBehaviour
         spRenderer = GetComponent<SpriteRenderer>();
         GetLowerLeftCorner();
         //BlockManager.AddBlockToList(gameObject);
+        if (transform.position.x < 0)
+            playerteam = 1;
+        else
+            playerteam = 2;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -75,5 +82,44 @@ public class BlockType : MonoBehaviour
     private void OnDestroy()
     {
         //BlockManager.RemoveBlockFromList(gameObject);
+    }
+
+    public void SetState(states toState)
+    {
+        state = toState;
+
+        switch (state)
+        {
+            case states.Idle:
+                {
+                    gameObject.layer = layermaskToLayer(blockLayer);
+                }
+                break;
+
+            case states.Flying:
+                {
+                    gameObject.layer = layermaskToLayer(projectileLayer);
+                }
+                break;
+
+            default:
+                {
+                    gameObject.layer = layermaskToLayer(blockLayer);
+                }
+                break;
+        }
+    }
+
+    //Thx. Reconnoiter - Unity forum
+    public static int layermaskToLayer(LayerMask layerMask)
+    {
+        int layerNumber = 0;
+        int layer = layerMask.value;
+        while (layer > 0)
+        {
+            layer = layer >> 1;
+            layerNumber++;
+        }
+        return layerNumber - 1;
     }
 }

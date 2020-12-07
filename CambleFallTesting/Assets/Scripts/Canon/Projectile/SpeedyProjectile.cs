@@ -14,7 +14,13 @@ public class SpeedyProjectile : Projectile
         rb.velocity *= velMulti;
     }
 
-    protected override void HitEffekt(Collision2D collision)
+   
+    protected override void PastHalfWay()
+    {
+        Fragmentize();
+    }
+
+    void Fragmentize()
     {
         print(transform.name + " Is running disabled function");
         Vector2 dir = GetComponent<Rigidbody2D>().velocity;
