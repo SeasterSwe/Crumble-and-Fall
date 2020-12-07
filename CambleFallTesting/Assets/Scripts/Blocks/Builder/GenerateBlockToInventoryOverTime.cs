@@ -27,7 +27,7 @@ public class GenerateBlockToInventoryOverTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (generatorActive)
+        if (GameState.currentState == GameState.gameStates.Fight)
         {
             timeLeftToNextGen -= Time.deltaTime;
             if (timeLeftToNextGen < 0)
