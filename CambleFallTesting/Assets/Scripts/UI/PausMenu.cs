@@ -9,7 +9,7 @@ public class PausMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject PauseMenu; 
-    
+    //public Animation Testanimation_01;
 
     void Update()
     {
@@ -58,6 +58,9 @@ public class PausMenu : MonoBehaviour
     {
         Debug.Log ("Pause");
         PauseMenu.SetActive(true);
+       // GetComponent<Animation>("Testanimation_01");
+        //animation.Play();
+        //animation.Play("Testanimation_01");
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
