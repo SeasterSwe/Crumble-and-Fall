@@ -16,24 +16,6 @@ public class BlockTypeSpeedy : BlockType
         }
     }
 
-    void OLDVelocityChange(Collision2D collision)
-    {
-        print("Hit Force : " + collision.relativeVelocity.magnitude);
-        //Reflect and absorb
-        if (!GetComponent<Projectile>().isActiveAndEnabled)
-        {
-            GetComponent<Rigidbody2D>().velocity *= 0;
-
-            if (collision.gameObject.GetComponent<Rigidbody2D>())
-            {
-                Vector2 velo = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
-                velo.x *= -reboundForce;
-                velo.y = Mathf.Abs(velo.y) * reboundForce;
-                collision.gameObject.GetComponent<Rigidbody2D>().velocity = velo;
-            }
-        }
-    }
-
     void ReflectForce(Collision2D collision)
     {
         //Reflect the force of colliding object;
