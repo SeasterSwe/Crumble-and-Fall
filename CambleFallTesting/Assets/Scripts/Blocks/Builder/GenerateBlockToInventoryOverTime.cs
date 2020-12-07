@@ -19,7 +19,7 @@ public class GenerateBlockToInventoryOverTime : MonoBehaviour
     {
         if (!inventory)
         {
-            inventory = FindObjectOfType<Inventory>();
+            inventory = GetComponent<Inventory>();// FindObjectOfType<Inventory>();
         }
         timeLeftToNextGen = timeBetweenGenerations;
     }
