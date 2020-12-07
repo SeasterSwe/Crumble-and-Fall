@@ -29,6 +29,7 @@ public class HowToPlayLauncher : MonoBehaviour
         TransferBlockToProjectile(fireBlock);
 
         yield return new WaitForSeconds(restartTime);
+        BruhAatweatesdasd();
         Destroy(wallClone);
         Destroy(fireClone);
         StartCoroutine(Bruh());
@@ -47,5 +48,18 @@ public class HowToPlayLauncher : MonoBehaviour
 
         obj.layer = 2; //ignoreRayCast
         obj.tag = "Untagged";
+    }
+
+    void BruhAatweatesdasd()
+    {
+        //byt till RB eller ngt 
+        Collider2D[] vetEj = GameObject.FindObjectsOfType<Collider2D>();
+
+        foreach(Collider2D collider2D in vetEj)
+        {
+            string name = collider2D.gameObject.name;
+            if (name == "Fragment(Clone)")
+                Destroy(collider2D.gameObject);
+        }
     }
 }
