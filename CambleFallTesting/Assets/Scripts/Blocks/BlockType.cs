@@ -104,7 +104,8 @@ public class BlockType : MonoBehaviour
         //BlockManager.RemoveBlockFromList(gameObject);
         if (GameState.currentState == GameState.gameStates.Build)
         {
-            inventory.AddToInventory(type, 1);
+            if (inventory != null)
+                inventory.AddToInventory(type, 1);
         }
     }
 
