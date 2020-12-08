@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,16 +18,11 @@ public class Cannon : MonoBehaviour
     float maxCharge = 20;
     public Transform shootPos;
     public GameObject shootEffekt;
-    
+
     Vector3 point1;
     Vector3 point2;
 
     SpriteRenderer loadImage;
-    GameObject nextBlock;
-    Rigidbody2D nextBlockRB;
-
-    public GameObject builder;
-    private Blockbuilder blockBuilder;
     public Inventory inventory;
 
     [HideInInspector] public bool chargeIsntStarted;
@@ -41,18 +36,16 @@ public class Cannon : MonoBehaviour
     [HideInInspector] public BarBase loadBar;
     float time;
 
+    private Transform cannonPipe;
     void Start()
     {
-
+        cannonPipe = transform.Find("CannonPipe");
         line = GetComponent<LineRenderer>();
         line.positionCount = numberOfPoints;
 
         loadImage = transform.Find("LoadImage").GetComponent<SpriteRenderer>();
         chargeSpeed = maxCharge / timeToFullCharge;
 
-        blockBuilder = builder.GetComponent<Blockbuilder>();
-        //inventory = builder.GetComponent<Inventory>();
-        
         SetAnglePoints();
 
         chargeIsntStarted = true;
@@ -78,7 +71,7 @@ public class Cannon : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             UpdateLoadImage(inventory.selectedBlock);
 
-        Rotatation(rotationSpeed + bonunsRotationSpeed);
+        RotateCannon(rotationSpeed + bonunsRotationSpeed);
 
         //GameObject block = inventory.selectedBlock;// blockBuilder.blockPreFab.GetComponent<BlockType>().type;
         nextFire += Time.deltaTime;
@@ -102,7 +95,7 @@ public class Cannon : MonoBehaviour
 
             if (holdTimer > 0.3f)
             {
-                Charge();
+                ChargeCannon();
                 chargeIsntStarted = false;
             }
         }
@@ -113,21 +106,21 @@ public class Cannon : MonoBehaviour
             holdTimer = 0;
             time = fireRate;
             nextFire = 0;
-            Shoot( chargePower);
+            ShootBlock(chargePower);
             GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, 90, 0));
             chargePower = 1;
-            
+
             transform.localScale = Vector3.one;
             chargeIsntStarted = true;
         }
     }
-    private void Charge()
+    private void ChargeCannon()
     {
         chargePower += Time.deltaTime * chargeSpeed;
-                if (chargePower > maxCharge)
-                    chargePower = maxCharge;
+        if (chargePower > maxCharge)
+            chargePower = maxCharge;
 
-                transform.localScale = Vector3.one + (Vector3.one * (chargePower / maxCharge) * 0.6f);
+        transform.localScale = Vector3.one + (Vector3.one * (chargePower / maxCharge) * 0.6f);
     }
     public float extraYval()
     {
@@ -135,10 +128,10 @@ public class Cannon : MonoBehaviour
         return val;
     }
     float lerpVal = 0;
-    void Rotatation(float rotationSpeed)
+    void RotateCannon(float rotationSpeed)
     {
         lerpVal += Time.deltaTime * rotationSpeed;
-        transform.localEulerAngles = Vector3.Lerp(point1, point2, lerpVal);
+        cannonPipe.localEulerAngles = Vector3.Lerp(point1, point2, lerpVal);
 
         //lerp tar in värde mellan 0 - 1.
         if (lerpVal >= 1)
@@ -149,28 +142,27 @@ public class Cannon : MonoBehaviour
             lerpVal = 0;
         }
     }
-    void Shoot( float extraForce = 0)
+    void ShootBlock(float extraForce = 0)
     {
         GameObject clone = Instantiate(inventory.TakeActiveBlockFromInventory(), shootPos.position, shootPos.rotation);
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
-        float mass = rb.mass/2;
+        float mass = rb.mass / 2;
         float totaltForce = (launchForce * mass) + extraForce + velBouns;
         rb.AddForce(shootPos.right * totaltForce, ForceMode2D.Impulse);
-        
-        FixBlockToProjectile(clone);
+
+        TransferBlockToProjectile(clone);
 
         if (totaltForce > 15)
             rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
-    private void FixBlockToProjectile(GameObject obj)
+    private void TransferBlockToProjectile(GameObject obj)
     {
-        UpdateLoadImage(obj);
-        nextBlockRB = obj.GetComponent<Rigidbody2D>();
+        UpdateLoadImage(obj);      
 
         if (obj.GetComponent<Projectile>() != null)
             obj.GetComponent<Projectile>().enabled = true;
 
-        if(obj.GetComponent<VelocityTest>() != null)
+        if (obj.GetComponent<VelocityTest>() != null)
             obj.GetComponent<VelocityTest>().enabled = false;
 
         if (obj.GetComponent<TrailRenderer>() != null)

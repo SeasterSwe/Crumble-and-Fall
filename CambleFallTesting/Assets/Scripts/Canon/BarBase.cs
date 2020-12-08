@@ -7,16 +7,16 @@ public class BarBase : MonoBehaviour
 {
     public GameObject cannon;
     public float heightOverCannon = 1;
-    private Image bar;
+    public Image bar;
     protected virtual void Start()
     {
-        bar = transform.Find("Bar").GetComponent<Image>();
+        //bar = transform.Find("Bar").GetComponent<Image>();
     }
     void Update()
     {
-        transform.position = cannon.transform.position + Vector3.up * heightOverCannon;
+        //transform.position = cannon.transform.position + Vector3.up * heightOverCannon;
     }
-    public void UpdateFillAmount(float amount)
+    public virtual void UpdateFillAmount(float amount)
     {
         bar.fillAmount = amount;
     }
