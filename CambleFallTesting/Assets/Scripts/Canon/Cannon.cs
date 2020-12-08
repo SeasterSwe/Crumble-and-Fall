@@ -54,8 +54,8 @@ public class Cannon : MonoBehaviour
     }
     void SetAnglePoints()
     {
-        point1 = (angle1 + transform.localEulerAngles.z) * transform.forward;
-        point2 = (-angle2 + transform.localEulerAngles.z) * transform.forward;
+        point1 = (angle1 + cannonPipe.localEulerAngles.z) * cannonPipe.forward;
+        point2 = (-angle2 + cannonPipe.localEulerAngles.z) * cannonPipe.forward;
 
         if (point1.magnitude > point2.magnitude) //så de åker åt samma håll
         {
