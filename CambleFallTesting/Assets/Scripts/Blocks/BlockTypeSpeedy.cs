@@ -11,8 +11,8 @@ public class BlockTypeSpeedy : BlockType
     {
         if (collision.relativeVelocity.magnitude > minForceToScatter)
         {
-            Fragmentize();
             ReflectForce(collision);
+            Fragmentize();
         }
     }
 
