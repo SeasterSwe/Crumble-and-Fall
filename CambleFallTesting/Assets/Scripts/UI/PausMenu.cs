@@ -34,6 +34,11 @@ public class PausMenu : MonoBehaviour
         GameIsPaused = false;
     }
 
+    public void Controls()
+    {
+        Debug.Log("Show controls");
+    }
+
     public void Quit()
     {   
         Debug.Log ("quit!");
@@ -42,7 +47,7 @@ public class PausMenu : MonoBehaviour
 
     public void Options()
     {   
-        Debug.Log ("Options");
+        Debug.Log ("Show Options");
         
     }
 
