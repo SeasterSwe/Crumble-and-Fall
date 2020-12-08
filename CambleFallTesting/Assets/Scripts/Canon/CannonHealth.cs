@@ -12,6 +12,7 @@ public class CannonHealth : MonoBehaviour
     private List<SpriteRenderer> sprites = new List<SpriteRenderer>();
     Color blinkColor = new Color(144, 104, 59, 159);
     private Color originalColors;
+    public GameObject explotion;
     private void Awake()
     {
         foreach(SpriteRenderer child in GetComponentsInChildren<SpriteRenderer>())
@@ -54,7 +55,8 @@ public class CannonHealth : MonoBehaviour
     }
     void Death()
     {
-        //GameState.currentState = GameState.TogglegameStatesForward
+        GameObject exp = Instantiate(explotion, transform.position, explotion.transform.rotation);
+        //zoom in and out?
         print(gameObject.name + " Lost");
     }
 }

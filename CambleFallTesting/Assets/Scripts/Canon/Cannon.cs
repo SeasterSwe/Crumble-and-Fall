@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [DefaultExecutionOrder(1)]
+[RequireComponent(typeof(CannonHealth))]
+[RequireComponent(typeof(CannonHeightBonuses))]
+[RequireComponent(typeof(CannonMovement))]
 public class Cannon : MonoBehaviour
 {
-    public float angle1;
-    public float angle2;
+    public float degToTheLeft;
+    public float degToTheRight;
     public float fireRate;
     public float launchForce;
     public string shootButton;
@@ -35,11 +38,13 @@ public class Cannon : MonoBehaviour
 
     [HideInInspector] public BarBase loadBar;
     float time;
+    private Vector3 normalScale;
 
     private Transform cannonPipe;
     void Start()
     {
         cannonPipe = transform.Find("CannonPipe");
+        normalScale = transform.localScale;
         line = GetComponent<LineRenderer>();
         line.positionCount = numberOfPoints;
 
@@ -54,8 +59,8 @@ public class Cannon : MonoBehaviour
     }
     void SetAnglePoints()
     {
-        point1 = (angle1 + cannonPipe.localEulerAngles.z) * cannonPipe.forward;
-        point2 = (-angle2 + cannonPipe.localEulerAngles.z) * cannonPipe.forward;
+        point1 = (degToTheLeft + cannonPipe.localEulerAngles.z) * cannonPipe.forward;
+        point2 = (-degToTheRight + cannonPipe.localEulerAngles.z) * cannonPipe.forward;
 
         if (point1.magnitude > point2.magnitude) //så de åker åt samma håll
         {
@@ -64,6 +69,7 @@ public class Cannon : MonoBehaviour
             point2 = tempPoint;
         }
     }
+
     float holdTimer = 0.2f;
     Vector3 startPos = new Vector3();
     void Update()
@@ -110,7 +116,7 @@ public class Cannon : MonoBehaviour
             GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, 90, 0));
             chargePower = 1;
 
-            transform.localScale = Vector3.one;
+            transform.localScale = normalScale;
             chargeIsntStarted = true;
         }
     }
@@ -120,7 +126,7 @@ public class Cannon : MonoBehaviour
         if (chargePower > maxCharge)
             chargePower = maxCharge;
 
-        transform.localScale = Vector3.one + (Vector3.one * (chargePower / maxCharge) * 0.6f);
+        transform.localScale = normalScale + (normalScale * (chargePower / maxCharge) * 0.6f);
     }
     public float extraYval()
     {

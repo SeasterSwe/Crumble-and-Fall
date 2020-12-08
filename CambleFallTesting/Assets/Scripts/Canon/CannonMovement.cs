@@ -6,17 +6,19 @@ using UnityEngine;
 public class CannonMovement : MonoBehaviour
 {
     private GameObject cannonObj;
-    [SerializeField] private ElevationCheck elevationCheck;
+    private ElevationCheck elevationCheck;
     private Cannon cannon;
     public GameObject smoke;
 
     Transform target;
     //public bool targetYeeted = false;
+
     private void Start()
     {
         cannonObj = this.gameObject;
         cannon = cannonObj.GetComponent<Cannon>();
         StartCoroutine(MinHjärnaDog());
+        elevationCheck = FindClosetElevationCheck.GetClosets(gameObject);
     }
     void Update()
     {
