@@ -36,9 +36,10 @@ public class Cannon : MonoBehaviour
     [HideInInspector] public BarBase loadBar;
     float time;
 
+    private Transform cannonPipe;
     void Start()
     {
-
+        cannonPipe = transform.Find("CannonPipe");
         line = GetComponent<LineRenderer>();
         line.positionCount = numberOfPoints;
 
@@ -130,7 +131,7 @@ public class Cannon : MonoBehaviour
     void RotateCannon(float rotationSpeed)
     {
         lerpVal += Time.deltaTime * rotationSpeed;
-        transform.localEulerAngles = Vector3.Lerp(point1, point2, lerpVal);
+        cannonPipe.localEulerAngles = Vector3.Lerp(point1, point2, lerpVal);
 
         //lerp tar in värde mellan 0 - 1.
         if (lerpVal >= 1)
