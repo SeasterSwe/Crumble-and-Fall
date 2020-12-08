@@ -323,7 +323,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20682d7a84d4496409b4a59658f5f777, type: 3}
   m_Name: 
@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerteam: 1
+  inventory: {fileID: 0}
   projectileLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -353,7 +354,7 @@ MonoBehaviour:
   type: 1
   state: 0
   fragment: {fileID: 141114141079268990, guid: b98183462fd27bc479bae265aa8e88ca, type: 3}
-  minForceToScatter: 10
+  minForceToScatter: 2
   reboundForce: 0.5
 --- !u!114 &6218722962349945740
 MonoBehaviour:

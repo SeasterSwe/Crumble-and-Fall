@@ -23,10 +23,6 @@ public class BlockType : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
-
-
         spRenderer = GetComponent<SpriteRenderer>();
         GetLowerLeftCorner();
         //BlockManager.AddBlockToList(gameObject);

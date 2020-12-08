@@ -9,11 +9,14 @@ public class BlockTypeSpeedy : BlockType
     public float reboundForce = 2;
     protected override void OnHitEnter(Collision2D collision)
     {
+        Vector3 pos = transform.position;
         if (collision.relativeVelocity.magnitude > minForceToScatter)
         {
-            Fragmentize();
             ReflectForce(collision);
+            Fragmentize();
         }
+        transform.position = pos;
+
     }
 
     void ReflectForce(Collision2D collision)
@@ -21,40 +24,39 @@ public class BlockTypeSpeedy : BlockType
         //Reflect the force of colliding object;
         if (!GetComponent<Projectile>().isActiveAndEnabled)
         {
-            GetComponent<Rigidbody2D>().velocity *= 0;
-
             if (collision.gameObject.GetComponent<Rigidbody2D>())
             {
+                collision.otherCollider.gameObject.GetComponent<Rigidbody2D>().velocity *= -1;
+
+                print("HIT " + collision.otherCollider.GetComponent<Rigidbody2D>().velocity);
+                
                 //Reflect force of speedy
-                Vector2 velo = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
-                Vector2 normal = collision.gameObject.GetComponent<Collider2D>().ClosestPoint(collision.otherCollider.transform.position);
-                normal -= new Vector2(collision.transform.position.x, collision.transform.position.y);
+                Vector2 velo = collision.otherCollider.GetComponent<Rigidbody2D>().velocity;
+                Vector2 normal = collision.otherCollider.GetComponent<Collider2D>().ClosestPoint(collision.otherCollider.transform.position);
+                normal -= new Vector2(collision.otherCollider.transform.position.x, collision.otherCollider.transform.position.y);
                 normal = normal.normalized;
 
                 Vector2.Reflect(velo, normal);
-                collision.gameObject.GetComponent<Rigidbody2D>().velocity = velo;
-                Debug.DrawRay(collision.transform.position, normal, Color.red, 0.5f);
+                collision.otherCollider.gameObject.GetComponent<Rigidbody2D>().velocity = velo;
+                Debug.DrawRay(collision.transform.position, normal*50, Color.red, 10.5f);
             }
         }
+        GetComponent<Rigidbody2D>().velocity *= 0;
+        print("Hit " + GetComponent<Rigidbody2D>().velocity);
 
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
     void Fragmentize()
     {
         //Split block into 4
-        Vector2 dir = GetComponent<Rigidbody2D>().velocity;
-
         for (int i = 0; i < 4; i++)
         {
             Vector3 plusPos = Quaternion.Euler(0, 0, 90 * i) * Vector3.one;
             plusPos.z = 0;
             plusPos *= 0.25f;
 
-            Vector2 scatter = Random.insideUnitSphere;
-            scatter += dir;
             GameObject frag = Instantiate(fragment, transform.position + plusPos, transform.rotation);
         }
         Destroy(gameObject);
     }
-    
+
 }
