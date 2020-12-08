@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerteam: 1
+  inventory: {fileID: 0}
   projectileLayer:
     serializedVersion: 2
     m_Bits: 1
