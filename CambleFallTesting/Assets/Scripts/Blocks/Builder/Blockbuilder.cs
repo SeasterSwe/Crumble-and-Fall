@@ -46,7 +46,7 @@ public class Blockbuilder : MonoBehaviour
 
        // chooseBlocks = BlockList.buildList;
 
-        AimChangeColor();
+        
     }
 
     // minmaxX från spawn areas volym. Sätter x koordinater. 
@@ -70,6 +70,7 @@ public class Blockbuilder : MonoBehaviour
 
     private void Update()
     {
+        AimChangeColor();
         SpawnerLocation();
         AccurateBlockSpawn();
 
@@ -188,7 +189,7 @@ public class Blockbuilder : MonoBehaviour
         blockColor.a = spriteAlpha;
         spriteRenderer.color = blockColor;
 
-       // spriteRenderer.sprite = blockPreFab.GetComponent<SpriteRenderer>().sprite;
+        spriteRenderer.sprite = inventory.GetIconFromSelection();// blockPreFab.GetComponent<SpriteRenderer>().sprite;
 
     }
 
