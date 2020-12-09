@@ -1,10 +1,12 @@
 ﻿//Robban
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 public class BlockType : MonoBehaviour
 {
-    public int playerteam = 1;
-    public Inventory inventory;
+    [Header("BlockType Settings")]
+
+    public float velocityMultiplier = 1.4f;
+    public float linearDrag = 1;
 
     public LayerMask projectileLayer;
     public LayerMask blockLayer;
@@ -12,20 +14,47 @@ public class BlockType : MonoBehaviour
     public enum types { Fluffy, Speedy, Heavy }
     public types type;
 
-    public enum states { Idle, Flying }
+    public enum states { Idle, Projectile }
     public states state = states.Idle;
 
+    public Inventory inventory;
+    
     private SpriteRenderer spRenderer;
     private Vector2 lowerLeftCorner;
+
+    public int playerteam = 1;
+    public bool hitThisFrame;
 
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         spRenderer = GetComponent<SpriteRenderer>();
         GetLowerLeftCorner();
+        GetPlayerTeam();
+        GetInvetory();
+
         //BlockManager.AddBlockToList(gameObject);
+    }
+
+    public void SetProjectileSpeed(Vector3 dir)
+    {
+        gameObject.GetComponent<Rigidbody2D>().velocity = dir * velocityMultiplier;
+    }
+
+    void GetLowerLeftCorner()
+    {
+        float yHight = Camera.main.orthographicSize;
+        float aspect = Camera.main.aspect;
+        Vector2 pos = Camera.main.transform.position;
+
+        lowerLeftCorner = pos;
+        lowerLeftCorner.y -= yHight;
+        lowerLeftCorner.x -= yHight * aspect;
+    }
+    void GetPlayerTeam()
+    {
         if (transform.position.x < 0)
         {
             playerteam = 1;
@@ -34,7 +63,10 @@ public class BlockType : MonoBehaviour
         {
             playerteam = 2;
         }
+    }
 
+    void GetInvetory()
+    {
         Inventory[] inventorys = FindObjectsOfType<Inventory>();
 
         foreach (Inventory inv in inventorys)
@@ -48,28 +80,31 @@ public class BlockType : MonoBehaviour
                 inventory = inv;
             }
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         OnHitEnter(collision);
     }
-
-    void GetLowerLeftCorner()
+    protected virtual void OnHitEnter(Collision2D collision)
     {
-        float yHight = Camera.main.orthographicSize;
-        float aspect = Camera.main.aspect;
-        Vector2 pos = Camera.main.transform.position;
-
-        lowerLeftCorner = pos;
-        lowerLeftCorner.y -= yHight;
-        lowerLeftCorner.x -= yHight * aspect;
+        SetState(states.Idle);
     }
 
     private void Update()
     {
         spRenderer.sortingOrder = (int)(transform.position.x - lowerLeftCorner.x + transform.position.y - lowerLeftCorner.y);
+        UpdateEachFrame();
+    }
+
+    private void FixedUpdate()
+    {
+        hitThisFrame = false;
+    }
+
+    protected virtual void UpdateEachFrame()
+    {
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -82,22 +117,6 @@ public class BlockType : MonoBehaviour
         //Is insideTrigger
     }
 
-    protected virtual void OnHitEnter(Collision2D collision)
-    {
-
-    }
-
-    public static bool IsFluffy(GameObject checkObject)
-    {
-        if (checkObject.GetComponent<BlockType>())
-        {
-            if (checkObject.GetComponent<BlockType>().type == types.Fluffy)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 
     private void OnDestroy()
     {
@@ -117,13 +136,14 @@ public class BlockType : MonoBehaviour
         {
             case states.Idle:
                 {
-                    gameObject.layer = layermaskToLayer(blockLayer);
+                    StateChangedToIdle();
                 }
                 break;
 
-            case states.Flying:
+            case states.Projectile:
                 {
-                    gameObject.layer = layermaskToLayer(projectileLayer);
+                    StateChagedToProjectile();
+                    
                 }
                 break;
 
@@ -133,6 +153,18 @@ public class BlockType : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    protected virtual void StateChangedToIdle()
+    {
+        gameObject.GetComponent<Rigidbody2D>().drag = linearDrag;
+        gameObject.layer = layermaskToLayer(blockLayer);
+    }
+
+    protected virtual void StateChagedToProjectile()
+    {
+        gameObject.GetComponent<Rigidbody2D>().drag = 0;
+        gameObject.layer = layermaskToLayer(projectileLayer);
     }
 
     //Thx. Reconnoiter - Unity forum
@@ -146,5 +178,17 @@ public class BlockType : MonoBehaviour
             layerNumber++;
         }
         return layerNumber - 1;
+    }
+
+    public static bool IsThisAFluffy(GameObject checkObject)
+    {
+        if (checkObject.GetComponent<BlockType>())
+        {
+            if (checkObject.GetComponent<BlockType>().type == types.Fluffy)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

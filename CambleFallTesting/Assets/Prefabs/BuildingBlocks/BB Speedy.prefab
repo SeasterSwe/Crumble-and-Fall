@@ -15,8 +15,7 @@ GameObject:
   - component: {fileID: 6369240829330474524}
   - component: {fileID: 6369240829330474525}
   - component: {fileID: 8361624068037934464}
-  - component: {fileID: 6218722962349945740}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BB Speedy
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -253,14 +252,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 2
-  m_LinearDrag: 0.1
-  m_AngularDrag: 0.1
+  m_LinearDrag: 10
+  m_AngularDrag: 25
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: aa6c6c6c9cf694d42b24de858474dd50, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &8361624068037934464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,8 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3287316dcafc0c49859869ecc2715c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerteam: 1
-  inventory: {fileID: 0}
+  velocityMultiplier: 20
+  linearDrag: 1
   projectileLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -283,21 +282,9 @@ MonoBehaviour:
     m_Bits: 256
   type: 1
   state: 0
+  inventory: {fileID: 0}
+  playerteam: 1
+  hitThisFrame: 0
   fragment: {fileID: 141114141079268990, guid: b98183462fd27bc479bae265aa8e88ca, type: 3}
-  minForceToScatter: 2
-  reboundForce: 0.5
---- !u!114 &6218722962349945740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f2c4f22fb446e4da7be7d72b8ccbe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fragment: {fileID: 141114141079268990, guid: b98183462fd27bc479bae265aa8e88ca, type: 3}
-  exForce: 1
-  velMulti: 1.4
+  minForceToBreak: 10
+  scatterForce: 5

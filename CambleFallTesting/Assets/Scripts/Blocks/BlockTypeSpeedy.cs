@@ -4,48 +4,76 @@ using UnityEngine;
 
 public class BlockTypeSpeedy : BlockType
 {
+    [Header("Speedy Settings")]
     public GameObject fragment;
-    public float minForceToScatter = 10;
-    public float reboundForce = 2;
+    public float minForceToBreak = 10;
+    [Header("SpeedyProjectile Settings")]
+    public float scatterForce = 5;
+
+    private Vector2 normal;
+    private Vector3 lastPos;
+
     protected override void OnHitEnter(Collision2D collision)
     {
-        Vector3 pos = transform.position;
-        if (collision.relativeVelocity.magnitude > minForceToScatter)
+        //base.OnHitEnter(collision);
+        
+        if (collision.relativeVelocity.magnitude > minForceToBreak && state == states.Idle)
         {
             ReflectForce(collision);
-            Fragmentize();
+            Scatter();
         }
-        transform.position = pos;
+    }
 
+    protected override void UpdateEachFrame()
+    {
+        base.UpdateEachFrame();
+        
+        if (state == states.Projectile)
+        {
+            if (transform.position.x > 0 && playerteam == 1)
+            {
+                print("Past 0");
+                ScatterProjectile();
+            }
+            else if (transform.position.x < 0 && playerteam == 2)
+            {
+                ScatterProjectile();
+            }
+        }
+
+        lastPos = transform.position;
     }
 
     void ReflectForce(Collision2D collision)
     {
         //Reflect the force of colliding object;
-        if (!GetComponent<Projectile>().isActiveAndEnabled)
+        if (collision.collider.gameObject.GetComponent<Rigidbody2D>())
         {
-            if (collision.gameObject.GetComponent<Rigidbody2D>())
+            Debug.DrawRay(collision.collider.transform.position, Vector2.up * 10, Color.white, 10);
+            if (collision.collider.GetComponent<BlockType>())
             {
-                collision.otherCollider.gameObject.GetComponent<Rigidbody2D>().velocity *= -1;
+                if (!collision.collider.GetComponent<BlockType>().hitThisFrame)
+                {
+                    normal += collision.contacts[0].normal * -1;
+                    Vector2 velo = collision.collider.gameObject.GetComponent<Rigidbody2D>().velocity;
+                    velo = Vector3.Reflect(velo, normal.normalized);
+                    collision.collider.gameObject.GetComponent<Rigidbody2D>().velocity = velo;
 
-                print("HIT " + collision.otherCollider.GetComponent<Rigidbody2D>().velocity);
-                
-                //Reflect force of speedy
-                Vector2 velo = collision.otherCollider.GetComponent<Rigidbody2D>().velocity;
-                Vector2 normal = collision.otherCollider.GetComponent<Collider2D>().ClosestPoint(collision.otherCollider.transform.position);
-                normal -= new Vector2(collision.otherCollider.transform.position.x, collision.otherCollider.transform.position.y);
-                normal = normal.normalized;
 
-                Vector2.Reflect(velo, normal);
-                collision.otherCollider.gameObject.GetComponent<Rigidbody2D>().velocity = velo;
-                Debug.DrawRay(collision.transform.position, normal*50, Color.red, 10.5f);
+                    Debug.DrawRay(collision.collider.transform.position, collision.collider.GetComponent<Rigidbody2D>().velocity, Color.green, 1);
+                    Debug.DrawRay(collision.collider.transform.position, normal * 5, Color.red, 10.5f);
+                    Debug.DrawRay(collision.collider.transform.position, collision.collider.gameObject.GetComponent<Rigidbody2D>().velocity, Color.blue, 2);
+
+
+                    collision.collider.GetComponent<BlockType>().hitThisFrame = true;
+                }
             }
         }
-        GetComponent<Rigidbody2D>().velocity *= 0;
-        print("Hit " + GetComponent<Rigidbody2D>().velocity);
-
+        
+        collision.otherCollider.GetComponent<Rigidbody2D>().velocity *= 0;
     }
-    void Fragmentize()
+
+    void Scatter()
     {
         //Split block into 4
         for (int i = 0; i < 4; i++)
@@ -54,9 +82,27 @@ public class BlockTypeSpeedy : BlockType
             plusPos.z = 0;
             plusPos *= 0.25f;
 
-            GameObject frag = Instantiate(fragment, transform.position + plusPos, transform.rotation);
+            GameObject frag = Instantiate(fragment, lastPos + plusPos, transform.rotation);
         }
         Destroy(gameObject);
     }
 
+    void ScatterProjectile()
+    {
+        print(transform.name + " Fragmentet as projectile");
+        Vector2 dir = GetComponent<Rigidbody2D>().velocity;
+
+        for (int i = 0; i < 4; i++)
+        {
+            Vector3 plusPos = Quaternion.Euler(0, 0, 90 * i) * Vector3.one;
+            plusPos.z = 0;
+            plusPos *= 0.25f;
+
+            Vector2 scatter = Random.insideUnitSphere * scatterForce;
+            scatter += dir;
+            GameObject frag = Instantiate(fragment, transform.position + plusPos, transform.rotation);
+            frag.GetComponent<Rigidbody2D>().velocity = scatter;
+        }
+        Destroy(gameObject);
+    }
 }

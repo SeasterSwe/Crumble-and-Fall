@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6369240829330474524}
   - component: {fileID: 6369240829330474525}
   - component: {fileID: 2121244205791743170}
-  - component: {fileID: -736477825628492944}
   - component: {fileID: 1614449001440131710}
   - component: {fileID: -192862889044682216}
   m_Layer: 0
@@ -127,14 +126,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 7
-  m_LinearDrag: 0.1
-  m_AngularDrag: 0.5
+  m_LinearDrag: 10
+  m_AngularDrag: 25
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 8629a205e3d1ea144a1706087ad5e624, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &2121244205791743170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa17a5b41b7c474ab889ba31f4e325a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerteam: 1
-  inventory: {fileID: 0}
+  velocityMultiplier: 15
+  linearDrag: 1
   projectileLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -157,18 +156,9 @@ MonoBehaviour:
     m_Bits: 256
   type: 2
   state: 0
---- !u!114 &-736477825628492944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfe1a4236fc4d3499d8e69dfc322f62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  playerteam: 1
+  hitThisFrame: 0
 --- !u!96 &1614449001440131710
 TrailRenderer:
   serializedVersion: 2
