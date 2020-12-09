@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 2121244205791743170}
   - component: {fileID: 1614449001440131710}
   - component: {fileID: -192862889044682216}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BB Heavy
-  m_TagString: Block
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,6 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+
 --- !u!114 &2121244205791743170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocityMultiplier: 15
   linearDrag: 1
+
   projectileLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -159,6 +161,7 @@ MonoBehaviour:
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0
+
 --- !u!96 &1614449001440131710
 TrailRenderer:
   serializedVersion: 2
@@ -167,7 +170,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

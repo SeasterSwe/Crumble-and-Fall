@@ -44,13 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingBlocks:
-  - {fileID: 6369240829330474514, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
   - {fileID: 6369240829330474514, guid: 0ef146d6ab4ef6d4ea4aae837279e461, type: 3}
   - {fileID: 6369240829330474514, guid: 184eb979f339f2147a3e5f2f6f14026d, type: 3}
-  playerShoots:
-  - {fileID: 6369240829330474514, guid: 6ed2c8a668acedb40b7e8be889888204, type: 3}
-  - {fileID: 6369240829330474514, guid: 59007460e1884bd4c9353b096c41bbe2, type: 3}
-  - {fileID: 6369240829330474514, guid: 976782833ab237042abe0f0c0fcf291b, type: 3}
+  - {fileID: 6369240829330474514, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
+  playerShoots: []
 --- !u!1 &2018457290990995806
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,7 +73,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018457290990995806}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.815884, y: -0.42186248, z: -6.134762}
+  m_LocalPosition: {x: 0.43411636, y: 4.3281374, z: -6.134762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2018457291238536049}
@@ -203,6 +200,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
+      propertyPath: easein
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
+      propertyPath: easeOut
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
       propertyPath: hightOne
       value: 
       objectReference: {fileID: 0}
@@ -215,8 +220,16 @@ PrefabInstance:
       value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
+      propertyPath: buildText
+      value: BuildPeriod
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
       propertyPath: buildTime
-      value: 7
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
+      propertyPath: fightText
+      value: FIGHT
       objectReference: {fileID: 0}
     - target: {fileID: 5516176350081993840, guid: 87a84b6e6706cfa488f2e72713d77176, type: 3}
       propertyPath: canonHPOne

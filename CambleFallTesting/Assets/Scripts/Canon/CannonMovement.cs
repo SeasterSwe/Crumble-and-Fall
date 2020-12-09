@@ -6,17 +6,19 @@ using UnityEngine;
 public class CannonMovement : MonoBehaviour
 {
     private GameObject cannonObj;
-    [SerializeField] private ElevationCheck elevationCheck;
+    private ElevationCheck elevationCheck;
     private Cannon cannon;
     public GameObject smoke;
 
     Transform target;
     //public bool targetYeeted = false;
+
     private void Start()
     {
         cannonObj = this.gameObject;
         cannon = cannonObj.GetComponent<Cannon>();
         StartCoroutine(MinHjärnaDog());
+        elevationCheck = FindClosetElevationCheck.GetClosets(gameObject);
     }
     void Update()
     {
@@ -28,11 +30,11 @@ public class CannonMovement : MonoBehaviour
 
             if (target.gameObject.GetComponent<Rigidbody2D>() != null)
             {
-                if (!(target.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 2))
+                if (!(target.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 1.7f))
                 {
                     float totalDist = Vector2.Distance(target.position, elevationCheck.highestBlock.gameObject.transform.position);
                     float distX = target.position.x - elevationCheck.highestBlock.gameObject.transform.position.x;
-                    if (totalDist > 1.6 || Mathf.Abs(distX) < 0.6f)
+                    if (totalDist > 2.2 || Mathf.Abs(distX) < 0.6f)
                         target = elevationCheck.highestBlock.gameObject.transform;
                 }
 
@@ -56,8 +58,8 @@ public class CannonMovement : MonoBehaviour
 
     void Swap()
     {
-        GameObject smokeClone = Instantiate(smoke, transform.position, smoke.transform.rotation);
         target = elevationCheck.highestBlock.gameObject.transform;
+        GameObject smokeClone = Instantiate(smoke, target.position + Vector3.up, smoke.transform.rotation);
     }
     IEnumerator MinHjärnaDog()
     {

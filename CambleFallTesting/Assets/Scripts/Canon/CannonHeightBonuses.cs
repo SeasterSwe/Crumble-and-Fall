@@ -13,7 +13,7 @@ public class CannonHeightBonuses : MonoBehaviour
 
     private float maxHeight = 20;        
 
-    public ElevationCheck elevationCheck;
+    private ElevationCheck elevationCheck;
     private float currentHeight;
 
     private void Start()
@@ -21,6 +21,7 @@ public class CannonHeightBonuses : MonoBehaviour
         cannon = GetComponent<Cannon>();
         bonusVelPerBlock = maxVelBouns / maxHeight;
         bonusRotationSpeedPerBlock = maxRotationSpeed / maxHeight;
+        elevationCheck = FindClosetElevationCheck.GetClosets(gameObject);
     }
     float currentTime;
     private void Update()

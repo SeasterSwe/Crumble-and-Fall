@@ -21,6 +21,7 @@ public class BlockTypeSpeedy : BlockType
         {
             ReflectForce(collision);
             Scatter();
+
         }
     }
 

@@ -8,11 +8,13 @@ public class PausMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject PauseMenu; 
-    
+    public GameObject Optionsmenu;
+    public GameObject Controlsmenu;
+    //public Animation Testanimation_01;
 
     void Update()
     {
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
             {
@@ -31,6 +33,13 @@ public class PausMenu : MonoBehaviour
         Debug.Log ("Resume game");
         PauseMenu.SetActive(false);
         GameIsPaused = false;
+        
+    }
+
+    public void Controls()
+    {
+        Debug.Log("Show controls");
+        Controlsmenu.SetActive(true);
     }
 
     public void Quit()
@@ -41,8 +50,8 @@ public class PausMenu : MonoBehaviour
 
     public void Options()
     {   
-        Debug.Log ("Options");
-        
+        Debug.Log ("Show Options");
+        Optionsmenu.SetActive(true);
     }
 
     public void ResetScene()
@@ -57,6 +66,9 @@ public class PausMenu : MonoBehaviour
     {
         Debug.Log ("Pause");
         PauseMenu.SetActive(true);
+       // GetComponent<Animation>("Testanimation_01");
+        //animation.Play();
+        //animation.Play("Testanimation_01");
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
