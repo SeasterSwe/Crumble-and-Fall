@@ -285,6 +285,6 @@ MonoBehaviour:
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0
-  fragment: {fileID: 0}
+  fragment: {fileID: 141114141079268990, guid: b98183462fd27bc479bae265aa8e88ca, type: 3}
   minForceToBreak: 10
   scatterForce: 5

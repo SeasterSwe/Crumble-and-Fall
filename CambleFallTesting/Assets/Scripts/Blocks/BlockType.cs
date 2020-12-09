@@ -25,11 +25,12 @@ public class BlockType : MonoBehaviour
     public int playerteam = 1;
     public bool hitThisFrame;
 
-
+    Rigidbody2D rb;
 
     // Start is called before the first frame update
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         spRenderer = GetComponent<SpriteRenderer>();
         GetLowerLeftCorner();
         GetPlayerTeam();
@@ -95,6 +96,13 @@ public class BlockType : MonoBehaviour
     {
         spRenderer.sortingOrder = (int)(transform.position.x - lowerLeftCorner.x + transform.position.y - lowerLeftCorner.y);
         UpdateEachFrame();
+        
+        if(state == states.Projectile)
+        {
+            //transform.right = rb.velocity;
+            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg; //quickmath
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 
     private void FixedUpdate()

@@ -154,7 +154,7 @@ public class Cannon : MonoBehaviour
         GameObject clone = Instantiate(inventory.TakeActiveBlockFromInventory(), shootPos.position, shootPos.rotation);
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
 
-        clone.GetComponent<BlockType>().SetProjectileSpeed(transform.right);
+        clone.GetComponent<BlockType>().SetProjectileSpeed(shootPos.right * shootPos.localScale.x * (1 + chargePower/maxCharge));
         //float mass = rb.mass/2;
         //float totaltForce = (launchForce * mass) + extraForce + velBouns;
         //rb.AddForce(shootPos.right * totaltForce, ForceMode2D.Impulse);
