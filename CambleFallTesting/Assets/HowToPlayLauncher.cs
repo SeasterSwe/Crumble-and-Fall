@@ -21,10 +21,9 @@ public class HowToPlayLauncher : MonoBehaviour
         GameObject wallClone = Instantiate(wall, wallSpawn.position, wall.transform.rotation);
         GameObject fireClone = Instantiate(fireBlock, transform.position, transform.rotation);
         Rigidbody2D rb = fireClone.GetComponent<Rigidbody2D>();
-        
-        float mass = rb.mass / 2;
-        float totaltForce = (startVelocity * mass);
-        rb.AddForce(transform.right * -totaltForce, ForceMode2D.Impulse);
+
+        fireClone.GetComponent<BlockType>().SetState(BlockType.states.Projectile);
+        fireClone.GetComponent<BlockType>().SetProjectileSpeed(transform.right * -startVelocity);
 
         TransferBlockToProjectile(fireBlock);
 

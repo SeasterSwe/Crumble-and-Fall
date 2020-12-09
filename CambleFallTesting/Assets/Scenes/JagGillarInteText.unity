@@ -669,7 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartTime: 6
-  startVelocity: 35
+  startVelocity: 1.2
   wall: {fileID: 1557660136}
   fireBlock: {fileID: 6369240829330474514, guid: 0ef146d6ab4ef6d4ea4aae837279e461, type: 3}
   wallSpawn: {fileID: 995174134}
@@ -1909,7 +1909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartTime: 6
-  startVelocity: 35
+  startVelocity: 1.2
   wall: {fileID: 1557660136}
   fireBlock: {fileID: 6369240829330474514, guid: 184eb979f339f2147a3e5f2f6f14026d, type: 3}
   wallSpawn: {fileID: 436672225}
@@ -2768,7 +2768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartTime: 6
-  startVelocity: 68.62
+  startVelocity: 1.2
   wall: {fileID: 1557660136}
   fireBlock: {fileID: 6369240829330474514, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
   wallSpawn: {fileID: 1926194509}
@@ -2830,7 +2830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartTime: 6
-  startVelocity: 35
+  startVelocity: 1.2
   wall: {fileID: 1754363727}
   fireBlock: {fileID: 6369240829330474514, guid: 184eb979f339f2147a3e5f2f6f14026d, type: 3}
   wallSpawn: {fileID: 69192984}
@@ -2864,7 +2864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartTime: 6
-  startVelocity: 45
+  startVelocity: 1.2
   wall: {fileID: 788695893}
   fireBlock: {fileID: 6369240829330474514, guid: 184eb979f339f2147a3e5f2f6f14026d, type: 3}
   wallSpawn: {fileID: 776442548}
@@ -2912,7 +2912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartTime: 6
-  startVelocity: 68.62
+  startVelocity: 1.2
   wall: {fileID: 1754363727}
   fireBlock: {fileID: 6369240829330474514, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
   wallSpawn: {fileID: 2051476189}
