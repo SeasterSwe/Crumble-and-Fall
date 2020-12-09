@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+[DefaultExecutionOrder(1)]
 
 public class Blockbuilder : MonoBehaviour
 {
@@ -44,9 +45,11 @@ public class Blockbuilder : MonoBehaviour
         //inventory = GetComponent<Inventory>();
         //blockPreFab;// = BlockList.GetARandomBlock();
 
-       // chooseBlocks = BlockList.buildList;
+        // chooseBlocks = BlockList.buildList;
 
+        blockPreFab = inventory.selectedBlock;
         AimChangeColor();
+
     }
 
     // minmaxX från spawn areas volym. Sätter x koordinater. 
@@ -142,6 +145,8 @@ public class Blockbuilder : MonoBehaviour
     public void ToggleBetweenBlocks()
     {
         inventory.TogggleBlock();
+        blockPreFab = inventory.selectedBlock;
+        AimChangeColor();
         /*
         //TODO : Change to switch
         int nextBlock = activeBlock + 1;
@@ -182,13 +187,15 @@ public class Blockbuilder : MonoBehaviour
     */
     public void AimChangeColor()
     {
-        var spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        var spriteRenderer = spawnerObject.gameObject.GetComponent<SpriteRenderer>();
 
         Color blockColor = spriteRenderer.color;
         blockColor.a = spriteAlpha;
         spriteRenderer.color = blockColor;
 
-       // spriteRenderer.sprite = blockPreFab.GetComponent<SpriteRenderer>().sprite;
+        spriteRenderer.sprite = blockPreFab.GetComponent<SpriteRenderer>().sprite;
+
+        
 
     }
 
