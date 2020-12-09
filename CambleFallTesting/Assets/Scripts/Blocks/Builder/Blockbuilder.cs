@@ -183,13 +183,19 @@ public class Blockbuilder : MonoBehaviour
     */
     public void AimChangeColor()
     {
+        /*
         var spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
         Color blockColor = spriteRenderer.color;
         blockColor.a = spriteAlpha;
         spriteRenderer.color = blockColor;
-
+        */
+        SpriteRenderer spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = inventory.GetIconFromSelection();// blockPreFab.GetComponent<SpriteRenderer>().sprite;
+
+        Color aimColor = spriteRenderer.color;
+        aimColor.a = spriteAlpha;
+        spriteRenderer.color = aimColor;
 
     }
 
