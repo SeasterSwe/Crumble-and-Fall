@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6369240829330474525}
   - component: {fileID: 8361624068037934464}
   m_Layer: 8
-
   m_Name: BB Speedy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +260,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
-
 --- !u!114 &8361624068037934464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +274,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocityMultiplier: 20
   linearDrag: 1
-
   projectileLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -288,6 +285,6 @@ MonoBehaviour:
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0
-  fragment: {fileID: 141114141079268990, guid: b98183462fd27bc479bae265aa8e88ca, type: 3}
+  fragment: {fileID: 0}
   minForceToBreak: 10
   scatterForce: 5

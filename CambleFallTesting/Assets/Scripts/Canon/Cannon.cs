@@ -158,7 +158,7 @@ public class Cannon : MonoBehaviour
         //float totaltForce = (launchForce * mass) + extraForce + velBouns;
         //rb.AddForce(shootPos.right * totaltForce, ForceMode2D.Impulse);
 
-        FixBlockToProjectile(clone);
+        TransferBlockToProjectile(clone);
 
 
 //        if (totaltForce > 15)

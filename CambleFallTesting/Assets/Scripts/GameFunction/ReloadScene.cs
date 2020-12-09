@@ -6,7 +6,7 @@ public class ReloadScene : MonoBehaviour
 {
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown((KeyCode.P)))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

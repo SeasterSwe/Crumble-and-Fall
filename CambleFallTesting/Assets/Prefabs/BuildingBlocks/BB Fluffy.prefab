@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6369240829330474525}
   - component: {fileID: 5076150456772443069}
   m_Layer: 0
-
   m_Name: BB Fluffy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +260,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
-
 --- !u!114 &5076150456772443069
 MonoBehaviour:
   m_ObjectHideFlags: 0

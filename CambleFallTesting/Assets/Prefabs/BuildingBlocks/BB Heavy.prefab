@@ -134,7 +134,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
-
 --- !u!114 &2121244205791743170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocityMultiplier: 15
   linearDrag: 1
-
   projectileLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -161,7 +159,6 @@ MonoBehaviour:
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0
-
 --- !u!96 &1614449001440131710
 TrailRenderer:
   serializedVersion: 2
