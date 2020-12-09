@@ -43,6 +43,7 @@ public class Cannon : MonoBehaviour
     private Transform cannonPipe;
     void Start()
     {
+
         cannonPipe = transform.Find("CannonPipe");
         normalScale = transform.localScale;
         line = GetComponent<LineRenderer>();

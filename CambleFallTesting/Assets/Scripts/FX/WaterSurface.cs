@@ -12,6 +12,7 @@ public class WaterSurface : MonoBehaviour
     //private LineRenderer line;
     //private List<Vector3> points = new List<Vector3>(); 
     public GameObject waterParticle;
+    public GameObject waterSplash;
     //public float speed1, speed2;
     //public int count = 10;
     //private int orbitalX = 0;
@@ -45,7 +46,7 @@ public class WaterSurface : MonoBehaviour
             return;
 
         t += Time.deltaTime;
-        if(t >= drownRate)
+        if (t >= drownRate)
         {
             t = 0;
             SoundManager.PlaySound(SoundManager.Sound.CannonDrownSound, collision.transform.position);
@@ -58,6 +59,21 @@ public class WaterSurface : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
             t = 2;
+
+        if (gjordesFörAttRetaRobert && Time.time > 2f)
+        {
+            StartCoroutine(ParticleDelay());
+            GameObject waterClone = Instantiate(waterSplash, collision.transform.position, waterSplash.transform.rotation);
+        }
+
+    }
+
+    bool gjordesFörAttRetaRobert = true;
+    IEnumerator ParticleDelay()
+    {
+        gjordesFörAttRetaRobert = false;
+        yield return new WaitForSeconds(0.2f);
+        gjordesFörAttRetaRobert = true;
     }
 
     //void Splash(Vector3 pos)

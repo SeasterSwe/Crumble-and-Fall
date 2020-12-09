@@ -10,9 +10,9 @@ public class CannonHealth : MonoBehaviour
     //TODO : Private when Lose state is set.
     public float currentHeatlh;
     private List<SpriteRenderer> sprites = new List<SpriteRenderer>();
-    Color blinkColor = new Color(144, 104, 59, 159);
     private Color originalColors;
     public GameObject explotion;
+    public Color blinkColor;
     private void Awake()
     {
         foreach(SpriteRenderer child in GetComponentsInChildren<SpriteRenderer>())
@@ -55,8 +55,15 @@ public class CannonHealth : MonoBehaviour
     }
     void Death()
     {
+        Camera.main.GetComponent<CameraZoom>().ZoomOnObj(gameObject, 3f);
+        StartCoroutine(BrainDead());
+    }
+    IEnumerator BrainDead()
+    {
+        yield return new WaitForSeconds(0.2f);
         GameObject exp = Instantiate(explotion, transform.position, explotion.transform.rotation);
-        //zoom in and out?
+        Destroy(gameObject);
         print(gameObject.name + " Lost");
+
     }
 }
