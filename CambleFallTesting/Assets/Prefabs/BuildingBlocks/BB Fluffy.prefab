@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6369240829330474524}
   - component: {fileID: 6369240829330474525}
   - component: {fileID: 5076150456772443069}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BB Fluffy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.5
-  m_LinearDrag: 10
+  m_LinearDrag: 2
   m_AngularDrag: 25
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 657a18f5364371349935eda7f4f6a4fb, type: 2}

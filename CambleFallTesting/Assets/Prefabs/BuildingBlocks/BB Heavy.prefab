@@ -126,7 +126,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 7
-  m_LinearDrag: 10
+  m_LinearDrag: 0
   m_AngularDrag: 25
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 8629a205e3d1ea144a1706087ad5e624, type: 2}
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocityMultiplier: 15
-  linearDrag: 1
+  linearDrag: 0
   projectileLayer:
     serializedVersion: 2
     m_Bits: 1
