@@ -37,35 +37,24 @@ public class WaterSurface : MonoBehaviour
         //    line.SetPosition(i, points[i]);
         //}
     }
-    float t = 0;
-    float drownRate = 1f;
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player"))
             return;
 
-        t += Time.deltaTime;
-        if (t >= drownRate)
-        {
-            t = 0;
+       
             SoundManager.PlaySound(SoundManager.Sound.CannonDrownSound, collision.transform.position);
-            GameObject waterBubble = Instantiate(waterParticle, collision.transform.position, waterParticle.transform.rotation);
-            collision.GetComponent<CannonHealth>().TakeDmg(1f, false);
-        }
+            //GameObject waterBubble = Instantiate(waterParticle, collision.transform.position, waterParticle.transform.rotation);
+            collision.GetComponent<CannonHealth>().TakeDmg(waterParticle, 1f, false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-            t = 2;
-
         if (gjordesFörAttRetaRobert && Time.time > 2f)
         {
             StartCoroutine(ParticleDelay());
             GameObject waterClone = Instantiate(waterSplash, collision.transform.position, waterSplash.transform.rotation);
         }
-
     }
 
     bool gjordesFörAttRetaRobert = true;

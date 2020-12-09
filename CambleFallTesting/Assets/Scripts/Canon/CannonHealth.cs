@@ -15,7 +15,7 @@ public class CannonHealth : MonoBehaviour
     public Color blinkColor;
     private void Awake()
     {
-        foreach(SpriteRenderer child in GetComponentsInChildren<SpriteRenderer>())
+        foreach (SpriteRenderer child in GetComponentsInChildren<SpriteRenderer>())
             sprites.Add(child);
 
         sprites.Remove(transform.Find("LoadImage").GetComponent<SpriteRenderer>());
@@ -24,18 +24,41 @@ public class CannonHealth : MonoBehaviour
         originalColors = sprites[0].color;
         currentHeatlh = startHealth;
     }
-
+    bool canTakeDmg = true;
     public void TakeDmg(float amount = 1, bool playSound = true)
     {
-        currentHeatlh -= amount;
-        StartCoroutine(FadeSprite(0.3f, 5));
-        healthBar.UpdateFillAmount(currentHeatlh / startHealth);
-        if(playSound)
-            SoundManager.PlaySound(SoundManager.Sound.CannonHurtSound);
-
-        if (currentHeatlh <= 0)
+        if (canTakeDmg)
         {
-            Death();
+            canTakeDmg = false;
+            currentHeatlh -= amount;
+            StartCoroutine(FadeSprite(0.3f, 5));
+            healthBar.UpdateFillAmount(currentHeatlh / startHealth);
+            if (playSound)
+                SoundManager.PlaySound(SoundManager.Sound.CannonHurtSound);
+
+            if (currentHeatlh <= 0)
+            {
+                Death();
+            }
+        }
+    }
+
+    public void TakeDmg(GameObject particle, float amount = 1, bool playSound = true)
+    {
+        if (canTakeDmg)
+        {
+            GameObject particleClone = Instantiate(particle, transform.position, particle.transform.rotation);
+            canTakeDmg = false;
+            currentHeatlh -= amount;
+            StartCoroutine(FadeSprite(0.3f, 5));
+            healthBar.UpdateFillAmount(currentHeatlh / startHealth);
+            if (playSound)
+                SoundManager.PlaySound(SoundManager.Sound.CannonHurtSound);
+
+            if (currentHeatlh <= 0)
+            {
+                Death();
+            }
         }
     }
     IEnumerator FadeSprite(float delay, int amount)
@@ -43,15 +66,16 @@ public class CannonHealth : MonoBehaviour
         float t = (delay / 2f);
         for (int i = 0; i < amount; i++)
         {
-            foreach(SpriteRenderer sprite in sprites)                        
+            foreach (SpriteRenderer sprite in sprites)
                 sprite.color = blinkColor;
-            
+
             yield return new WaitForSeconds(t);
             foreach (SpriteRenderer sprite in sprites)
                 sprite.color = originalColors;
 
             yield return new WaitForSeconds(t);
         }
+        canTakeDmg = true;
     }
     void Death()
     {

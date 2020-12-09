@@ -2459,7 +2459,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!1001 &728763647
@@ -3372,8 +3372,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generatorActive: 1
   timeBetweenGenerations: 2.8
+  minBonus: 1
+  maxBonus: 10
+  bonus: 0
   inventory: {fileID: 984035366}
   currentBlock: 0
+  evCheck: {fileID: 0}
+  blockbuilder: {fileID: 0}
 --- !u!114 &989414129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3388,8 +3393,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generatorActive: 1
   timeBetweenGenerations: 2.8
+  minBonus: 1
+  maxBonus: 10
+  bonus: 0
   inventory: {fileID: 1784518500}
   currentBlock: 0
+  evCheck: {fileID: 0}
+  blockbuilder: {fileID: 0}
 --- !u!1 &995530857
 GameObject:
   m_ObjectHideFlags: 0
@@ -3507,7 +3517,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &1124614878

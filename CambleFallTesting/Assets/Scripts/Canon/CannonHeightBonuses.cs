@@ -19,12 +19,16 @@ public class CannonHeightBonuses : MonoBehaviour
     public float currentVelBouns;
     [HideInInspector]
     public float currentRotaionBonus;
+    public GameObject blockBuilder;
     private void Start()
     {
         cannon = GetComponent<Cannon>();
         bonusVelPerBlock = maxVelBouns / maxHeight;
         bonusRotationSpeedPerBlock = maxRotationSpeed / maxHeight;
         elevationCheck = FindClosetElevationCheck.GetClosets(gameObject);
+        
+        if (blockBuilder != null)
+            maxHeight = blockBuilder.GetComponent<Blockbuilder>().maxHeight;  
     }
 
     private void Update()
