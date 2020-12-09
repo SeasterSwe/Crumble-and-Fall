@@ -99,9 +99,13 @@ public class BlockType : MonoBehaviour
         
         if(state == states.Projectile)
         {
-            //transform.right = rb.velocity;
-            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg; //quickmath
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            if (rb.velocity.x > 0)
+                transform.right = rb.velocity;
+            else
+                transform.right = rb.velocity *-1;
+
+            //float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg; //quickmath
+            //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 
