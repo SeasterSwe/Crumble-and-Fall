@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: f42f59b899a860945a6be990376292fd
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2763178612904265679
+    second: Fluffig_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -87,7 +90,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Fluffig_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 82
+        width: 708
+        height: 628
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc78d19fe48c85620800000000000000
+      internalID: 2763178612904265679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

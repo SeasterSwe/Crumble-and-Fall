@@ -152,30 +152,37 @@ public class Cannon : MonoBehaviour
     {
         GameObject clone = Instantiate(inventory.TakeActiveBlockFromInventory(), shootPos.position, shootPos.rotation);
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
-        float mass = rb.mass / 2;
-        float totaltForce = (launchForce * mass) + extraForce + velBouns;
-        rb.AddForce(shootPos.right * totaltForce, ForceMode2D.Impulse);
 
-        TransferBlockToProjectile(clone);
+        clone.GetComponent<BlockType>().SetProjectileSpeed(transform.right);
+        //float mass = rb.mass/2;
+        //float totaltForce = (launchForce * mass) + extraForce + velBouns;
+        //rb.AddForce(shootPos.right * totaltForce, ForceMode2D.Impulse);
 
-        if (totaltForce > 15)
-            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        FixBlockToProjectile(clone);
+
+
+//        if (totaltForce > 15)
+  //          rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
     private void TransferBlockToProjectile(GameObject obj)
     {
         UpdateLoadImage(obj);      
 
+        obj.GetComponent<BlockType>().SetState(BlockType.states.Projectile);
+
+        /*
         if (obj.GetComponent<Projectile>() != null)
             obj.GetComponent<Projectile>().enabled = true;
+        /*
+        if(obj.GetComponent<VelocityTest>() != null)
 
-        if (obj.GetComponent<VelocityTest>() != null)
             obj.GetComponent<VelocityTest>().enabled = false;
-
+        */
         if (obj.GetComponent<TrailRenderer>() != null)
             obj.GetComponent<TrailRenderer>().enabled = true;
 
-        obj.layer = 2; //ignoreRayCast
-        obj.tag = "Untagged";
+       // obj.layer = 2; //ignoreRayCast
+       // obj.tag = "Untagged";
     }
     private void UpdateLoadImage(GameObject newBlock)
     {

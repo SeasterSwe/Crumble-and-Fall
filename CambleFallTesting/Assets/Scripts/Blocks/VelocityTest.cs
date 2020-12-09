@@ -11,7 +11,7 @@ public class VelocityTest : MonoBehaviour
     private void Update()
     {
         //RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 1f);
-        //if (hit.collider != null)
+       // if (hit.collider != null)
         //{
             if (gameObject.transform.rotation.eulerAngles.z > 25 || gameObject.transform.rotation.eulerAngles.z < -25)
                 isRotated = true;
