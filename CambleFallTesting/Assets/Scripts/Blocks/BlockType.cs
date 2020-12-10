@@ -1,5 +1,9 @@
 ﻿//Robban
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
+[RequireComponent(typeof (BlockAnimations))]
 //using UnityEngine.UI;
 public class BlockType : MonoBehaviour
 {
@@ -27,6 +31,7 @@ public class BlockType : MonoBehaviour
 
     Rigidbody2D rb;
 
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -36,10 +41,10 @@ public class BlockType : MonoBehaviour
         GetPlayerTeam();
         GetInvetory();
 
-        //BlockManager.AddBlockToList(gameObject);
-    }
+    //BlockManager.AddBlockToList(gameObject);
+}
 
-    public void SetProjectileSpeed(Vector3 dir)
+public void SetProjectileSpeed(Vector3 dir)
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = dir * velocityMultiplier;
     }
@@ -148,20 +153,27 @@ public class BlockType : MonoBehaviour
         {
             case states.Idle:
                 {
+                    print(transform.name + " State set to Idle");
                     StateChangedToIdle();
+                    //bAnimations.SetAnimationToBlock(0);
+                  
                 }
                 break;
 
             case states.Projectile:
                 {
+                    print(transform.name + " State set to Projectile");
                     StateChagedToProjectile();
-                    
+                   
+//                    bAnimations.SetAnimationToBlock(1);
                 }
                 break;
 
             default:
                 {
                     gameObject.layer = layermaskToLayer(blockLayer);
+                    GetComponent<Animator>().SetInteger("State", 2);
+//                    bAnimations.SetAnimationToBlock(2);
                 }
                 break;
         }
@@ -171,12 +183,14 @@ public class BlockType : MonoBehaviour
     {
         gameObject.GetComponent<Rigidbody2D>().drag = linearDrag;
         gameObject.layer = layermaskToLayer(blockLayer);
+        StartCoroutine(Anim(0));
     }
 
     protected virtual void StateChagedToProjectile()
     {
         gameObject.GetComponent<Rigidbody2D>().drag = 0;
         gameObject.layer = layermaskToLayer(projectileLayer);
+        StartCoroutine(Anim(1));
     }
 
     //Thx. Reconnoiter - Unity forum
@@ -202,5 +216,11 @@ public class BlockType : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private IEnumerator Anim(int i)
+    {
+        yield return null;
+        gameObject.GetComponent<Animator>().SetInteger("State", i);
     }
 }

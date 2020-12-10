@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6369240829330474526}
   - component: {fileID: 6369240829330474527}
+  - component: {fileID: -192862889044682216}
   - component: {fileID: 6369240829330474524}
   - component: {fileID: 6369240829330474525}
-  - component: {fileID: 2121244205791743170}
   - component: {fileID: 1614449001440131710}
-  - component: {fileID: -192862889044682216}
+  - component: {fileID: 2121244205791743170}
+  - component: {fileID: 5081347933846854325}
   m_Layer: 2
   m_Name: BB Heavy
   m_TagString: Untagged
@@ -87,6 +88,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &-192862889044682216
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369240829330474514}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6bf8a92c7460fa841bbcb267421e33a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &6369240829330474524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,31 +154,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2121244205791743170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa17a5b41b7c474ab889ba31f4e325a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityMultiplier: 15
-  linearDrag: 0
-  projectileLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  blockLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  type: 2
-  state: 0
-  inventory: {fileID: 0}
-  playerteam: 1
-  hitThisFrame: 0
 --- !u!96 &1614449001440131710
 TrailRenderer:
   serializedVersion: 2
@@ -266,22 +261,42 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!95 &-192862889044682216
-Animator:
-  serializedVersion: 3
+--- !u!114 &2121244205791743170
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6369240829330474514}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6bf8a92c7460fa841bbcb267421e33a4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa17a5b41b7c474ab889ba31f4e325a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityMultiplier: 15
+  linearDrag: 0
+  projectileLayer:
+    serializedVersion: 2
+    m_Bits: 4
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  type: 2
+  state: 0
+  inventory: {fileID: 0}
+  playerteam: 1
+  hitThisFrame: 0
+  bAnimations: {fileID: 5081347933846854325}
+--- !u!114 &5081347933846854325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369240829330474514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: babc68974d4ce3f47bb62add0bff583e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: -192862889044682216}
