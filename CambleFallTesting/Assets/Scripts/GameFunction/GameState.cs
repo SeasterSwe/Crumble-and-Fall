@@ -143,6 +143,7 @@ public class GameState : MonoBehaviour
     {
         roundTimeLeft -= Time.deltaTime;
         uiGameTimeText.text = roundTimeLeft.ToString("F0").PadLeft(2,'0');    
+        ScaleText();
 
         if (roundTimeLeft < 0)
         {
