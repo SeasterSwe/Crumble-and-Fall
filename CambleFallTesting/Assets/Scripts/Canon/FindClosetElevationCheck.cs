@@ -25,4 +25,43 @@ public class FindClosetElevationCheck : MonoBehaviour
         }
         return best;
     }
+
+    public static ElevationCheck GetTheLeftOne()
+    {
+        ElevationCheck[] all = Object.FindObjectsOfType<ElevationCheck>();
+        ElevationCheck left = null;
+
+        float minDist = Mathf.Infinity;
+        foreach (ElevationCheck gitFtw in all)
+        {
+            float x = gitFtw.gameObject.transform.position.x;
+
+            if(x < minDist)
+            {
+                minDist = x;
+                left = gitFtw;
+            }
+        }
+
+        return left;
+    }
+    public static ElevationCheck GetTheRighttOne()
+    {
+        ElevationCheck[] all = Object.FindObjectsOfType<ElevationCheck>();
+        ElevationCheck right = null;
+
+        float minDist = -1000000f;
+        foreach (ElevationCheck gitFtw in all)
+        {
+            float x = gitFtw.gameObject.transform.position.x;
+
+            if (x > minDist)
+            {
+                minDist = x;
+                right = gitFtw;
+            }
+        }
+
+        return right;
+    }
 }

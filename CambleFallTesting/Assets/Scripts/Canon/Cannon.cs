@@ -41,8 +41,12 @@ public class Cannon : MonoBehaviour
     private Vector3 normalScale;
 
     private Transform cannonPipe;
+
+    float particleRotation = 90;
     void Start()
     {
+        if (transform.position.x > 0)
+            particleRotation = -90;
 
         cannonPipe = transform.Find("CannonPipe");
         normalScale = transform.localScale;
@@ -114,7 +118,7 @@ public class Cannon : MonoBehaviour
             time = fireRate;
             nextFire = 0;
             ShootBlock(chargePower);
-            GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, 90, 0));
+            GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, particleRotation, 0));
             chargePower = 1;
 
             transform.localScale = normalScale;

@@ -13,7 +13,7 @@ public class CannonHeightBonuses : MonoBehaviour
 
     private float maxHeight = 20;        
 
-    private ElevationCheck elevationCheck;
+    public ElevationCheck elevationCheck;
     private float currentHeight;
     [HideInInspector]
     public float currentVelBouns;
