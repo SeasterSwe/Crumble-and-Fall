@@ -3377,6 +3377,7 @@ MonoBehaviour:
   bonus: 0
   inventory: {fileID: 984035366}
   currentBlock: 0
+  getLeftOne: 1
   evCheck: {fileID: 0}
   blockbuilder: {fileID: 0}
 --- !u!114 &989414129
@@ -3398,6 +3399,7 @@ MonoBehaviour:
   bonus: 0
   inventory: {fileID: 1784518500}
   currentBlock: 0
+  getLeftOne: 0
   evCheck: {fileID: 0}
   blockbuilder: {fileID: 0}
 --- !u!1 &995530857

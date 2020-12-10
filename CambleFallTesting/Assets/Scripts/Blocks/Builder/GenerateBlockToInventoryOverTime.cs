@@ -19,9 +19,10 @@ public class GenerateBlockToInventoryOverTime : MonoBehaviour
     // public enum blockType {red, green, blue};
     public BlockType.types currentBlock = BlockType.types.Fluffy;
 
+    public bool getLeftOne = true;
     public ElevationCheck evCheck;
     public Blockbuilder blockbuilder;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,26 +32,19 @@ public class GenerateBlockToInventoryOverTime : MonoBehaviour
             inventory = GetComponent<Inventory>();
         }
 
-        ElevationCheck[] evCheckers = FindObjectsOfType<ElevationCheck>();
-
-        foreach(ElevationCheck evc in evCheckers)
-        {
-            if (GetComponent<RectTransform>().localPosition.x < 0 && evc.transform.position.x < 0)
-                evCheck = evc;
-
-            if (GetComponent<RectTransform>().localPosition.x > 0 && evc.transform.position.x > 0)
-                evCheck = evc;
-        }
-
+        if (getLeftOne)
+            evCheck = FindClosetElevationCheck.GetTheLeftOne();
+        else
+            evCheck = FindClosetElevationCheck.GetTheRighttOne();
 
         Blockbuilder[] bbs = FindObjectsOfType<Blockbuilder>();
 
         foreach(Blockbuilder bs in bbs)
         {
-            if (GetComponent<RectTransform>().localPosition.x < 0 && bs.transform.position.x < 0)
+            if (GetComponent<Transform>().localPosition.x < 0 && bs.transform.position.x < 0)
                 blockbuilder = bs;
 
-            if (GetComponent<RectTransform>().localPosition.x > 0 && bs.transform.position.x > 0)
+            if (GetComponent<Transform>().localPosition.x > 0 && bs.transform.position.x > 0)
                 blockbuilder = bs;
         }
 
