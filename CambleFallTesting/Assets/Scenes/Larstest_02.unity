@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 970049165, guid: c2f856f68ed6cfd4a859a79f49bec2d5, type: 3}
       propertyPath: cannon
       value: 
-      objectReference: {fileID: 1674088717}
+      objectReference: {fileID: 0}
     - target: {fileID: 729755659497050003, guid: c2f856f68ed6cfd4a859a79f49bec2d5, type: 3}
       propertyPath: m_Name
       value: AmmoBarPlayerOne
@@ -493,7 +493,7 @@ PrefabInstance:
     - target: {fileID: -4450227469136555892, guid: 03510d0ae3fb4514cb41e669f9449bf2, type: 3}
       propertyPath: cannon
       value: 
-      objectReference: {fileID: 1674088717}
+      objectReference: {fileID: 0}
     - target: {fileID: -4450227469136555892, guid: 03510d0ae3fb4514cb41e669f9449bf2, type: 3}
       propertyPath: heightOverCannon
       value: 1.5
@@ -846,6 +846,7 @@ GameObject:
   m_Component:
   - component: {fileID: 265838760}
   - component: {fileID: 265838759}
+  - component: {fileID: 265838761}
   m_Layer: 0
   m_Name: Speedy_attackflyg
   m_TagString: Untagged
@@ -918,6 +919,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &265838761
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265838758}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8fd65fffe441ebc438b1ff5281b8809d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &333823373 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5131734773017531990, guid: c02cfd2624efb654baed5c6d95c3184e, type: 3}
@@ -1416,7 +1436,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &518529155 stripped
 GameObject:
@@ -1541,8 +1561,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38fac78adcb5504290c9066a2cff657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannon: {fileID: 1674088717}
+  cannon: {fileID: 0}
   heightOverCannon: 1.5
+  bar: {fileID: 0}
+  ease: 0
 --- !u!1001 &565174231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1881,7 +1903,7 @@ Transform:
   m_LocalScale: {x: 35.730732, y: 4.083819, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &671954193
 BoxCollider2D:
@@ -1922,6 +1944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterParticle: {fileID: 5580052433228493647, guid: 36943ecdbc012cc429406d63226f7b53, type: 3}
+  waterSplash: {fileID: 0}
 --- !u!50 &671954195
 Rigidbody2D:
   serializedVersion: 4
@@ -2103,7 +2126,7 @@ PrefabInstance:
     - target: {fileID: 2018457290990995804, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: cannonPlOne
       value: 
-      objectReference: {fileID: 1674088717}
+      objectReference: {fileID: 0}
     - target: {fileID: 2018457290990995804, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: cannonPlTwo
       value: 
@@ -2119,7 +2142,7 @@ PrefabInstance:
     - target: {fileID: 2018457291125282753, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: hpPlOne
       value: 
-      objectReference: {fileID: 823470927}
+      objectReference: {fileID: 0}
     - target: {fileID: 2018457291125282753, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: hpPlTwo
       value: 
@@ -2262,7 +2285,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &742150128
 GameObject:
@@ -2293,7 +2316,7 @@ Transform:
   m_Children:
   - {fileID: 995530858}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &770274559
 GameObject:
@@ -2327,7 +2350,7 @@ Transform:
   - {fileID: 40390736}
   - {fileID: 184398889}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &799103953 stripped
 Transform:
@@ -2423,17 +2446,6 @@ PrefabInstance:
       objectReference: {fileID: 1332760395}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
---- !u!114 &823470927 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7506503249154676261, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
-  m_PrefabInstance: {fileID: 823470926}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674088717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d02565d68446894dae5ea3beda27262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &828375657
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,7 +2720,7 @@ Transform:
   - {fileID: 105779873}
   - {fileID: 1695350141}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &918402720
 GameObject:
@@ -2831,8 +2843,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generatorActive: 1
   timeBetweenGenerations: 2.8
+  minBonus: 1
+  maxBonus: 10
+  bonus: 0
   inventory: {fileID: 0}
   currentBlock: 0
+  getLeftOne: 1
+  evCheck: {fileID: 0}
+  blockbuilder: {fileID: 0}
 --- !u!114 &989414129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2847,8 +2865,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generatorActive: 1
   timeBetweenGenerations: 2.8
+  minBonus: 1
+  maxBonus: 10
+  bonus: 0
   inventory: {fileID: 0}
   currentBlock: 0
+  getLeftOne: 1
+  evCheck: {fileID: 0}
+  blockbuilder: {fileID: 0}
 --- !u!1 &995530857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,6 +2987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterParticle: {fileID: 5580052433228493647, guid: 36943ecdbc012cc429406d63226f7b53, type: 3}
+  waterSplash: {fileID: 0}
 --- !u!61 &1124614879
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3052,7 +3077,7 @@ Transform:
   m_LocalScale: {x: 35.730732, y: 4.083819, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1194010719
 GameObject:
@@ -3151,7 +3176,7 @@ RectTransform:
   - {fileID: 697258183}
   - {fileID: 626554415}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3172,7 +3197,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1567538750492806900, guid: a9249f9407ab82444839bc6a765efb9a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1567538750492806900, guid: a9249f9407ab82444839bc6a765efb9a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3261,6 +3286,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannon: {fileID: 1960453800}
   heightOverCannon: 1.5
+  bar: {fileID: 0}
+  ease: 0
 --- !u!114 &1332760395 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3444593090932855767, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
@@ -3857,11 +3884,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1674088717 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7506503249154676260, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
-  m_PrefabInstance: {fileID: 823470926}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1685556993
 GameObject:
   m_ObjectHideFlags: 0
@@ -4408,7 +4430,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2019690236
 MonoBehaviour:
