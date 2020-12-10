@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6884562154498909844}
   - component: {fileID: 2811968050131365813}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Kanon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1651015161292967579}
   - component: {fileID: 1651015161292967582}
   - component: {fileID: 1651015161292967580}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: CannonPlayer1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -363,6 +363,8 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   startHealth: 12
   currentHeatlh: 0
+  explotion: {fileID: 0}
+  blinkColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1651015161292967582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8266152bb38faa448b50ccf8e2f4fec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevationCheck: {fileID: 0}
   smoke: {fileID: 0}
 --- !u!114 &1651015161292967580
 MonoBehaviour:
@@ -392,6 +393,9 @@ MonoBehaviour:
   maxVelBouns: 30
   maxRotationSpeed: 1
   elevationCheck: {fileID: 0}
+  currentVelBouns: 0
+  currentRotaionBonus: 0
+  blockBuilder: {fileID: 0}
 --- !u!1 &1651015161312892574
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1651015161312892575}
   - component: {fileID: 1651015161312892572}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: LoadImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 62213242393019590}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CannonPoint
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
@@ -514,7 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8111557759811730575}
   - component: {fileID: 1517448147662820568}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: kanon_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3939665714485641165}
   - component: {fileID: 13798297189940915}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CannonPipe
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -681,7 +685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9134955245392565923}
   - component: {fileID: 9134955245392565924}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: kanon_arm (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

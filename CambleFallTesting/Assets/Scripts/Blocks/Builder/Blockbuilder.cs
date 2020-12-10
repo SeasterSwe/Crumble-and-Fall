@@ -20,6 +20,8 @@ public class Blockbuilder : MonoBehaviour
     private Vector3 spawnerPosition;
     public Inventory inventory;
 
+    public LayerMask buildLayer;
+
     //private Inventory inventory;
     public string pickButton = "VerticalPlayerOne";
     int activeBlock = 0;
@@ -122,7 +124,7 @@ public class Blockbuilder : MonoBehaviour
 
     private void AccurateBlockSpawn()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(spawnerObject.position + Vector3.up * 20, Vector2.one, 0, Vector2.down);
+        RaycastHit2D hit = Physics2D.BoxCast(spawnerObject.position + Vector3.up * 20, Vector2.one, 0, Vector2.down, Mathf.Infinity, buildLayer);
         if (hit != null)
         {
             Debug.DrawRay(hit.point, hit.normal, Color.green);

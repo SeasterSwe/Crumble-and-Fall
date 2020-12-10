@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1614449001440131710}
   - component: {fileID: 2121244205791743170}
   - component: {fileID: 5081347933846854325}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: BB Heavy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa17a5b41b7c474ab889ba31f4e325a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityMultiplier: 15
+  velocityMultiplier: 7
   linearDrag: 0
   projectileLayer:
     serializedVersion: 2
@@ -286,7 +286,6 @@ MonoBehaviour:
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0
-  bAnimations: {fileID: 5081347933846854325}
 --- !u!114 &5081347933846854325
 MonoBehaviour:
   m_ObjectHideFlags: 0

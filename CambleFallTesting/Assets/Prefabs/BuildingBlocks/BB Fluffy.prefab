@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6369240829330474525}
   - component: {fileID: 5076150456772443069}
   - component: {fileID: 5155694545619096875}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: BB Fluffy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd670c2f9d082343aba8299fe8bf0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityMultiplier: 10
+  velocityMultiplier: 5
   linearDrag: 1
   projectileLayer:
     serializedVersion: 2
@@ -286,7 +286,6 @@ MonoBehaviour:
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0
-  bAnimations: {fileID: 5155694545619096875}
   boundTo: []
 --- !u!114 &5155694545619096875
 MonoBehaviour:

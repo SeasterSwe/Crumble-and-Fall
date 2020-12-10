@@ -15,8 +15,7 @@ GameObject:
   - component: {fileID: 6369240829330474524}
   - component: {fileID: 6369240829330474525}
   - component: {fileID: 8361624068037934464}
-  - component: {fileID: 8971760547924962325}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: BB Speedy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3287316dcafc0c49859869ecc2715c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityMultiplier: 20
+  velocityMultiplier: 12
   linearDrag: 0
   projectileLayer:
     serializedVersion: 2
@@ -286,20 +285,6 @@ MonoBehaviour:
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0
-  bAnimations: {fileID: 8971760547924962325}
   fragment: {fileID: 141114141079268990, guid: b98183462fd27bc479bae265aa8e88ca, type: 3}
   minForceToBreak: 10
   scatterForce: 5
---- !u!114 &8971760547924962325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: babc68974d4ce3f47bb62add0bff583e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: -1712579360293837130}

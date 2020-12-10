@@ -191,8 +191,8 @@ public class Cannon : MonoBehaviour
     }
     private void UpdateLoadImage(GameObject newBlock)
     {
-        loadImage.sprite = newBlock.GetComponent<SpriteRenderer>().sprite;
-        loadImage.color = newBlock.GetComponent<SpriteRenderer>().color;
+        loadImage.sprite = inventory.GetIconFromSelection();//.GetComponent<SpriteRenderer>().sprite;
+        loadImage.color = loadImage.GetComponent<SpriteRenderer>().color;
     }
 
     public void IncreasMaxCharge(float amount)
