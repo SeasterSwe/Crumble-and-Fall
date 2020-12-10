@@ -127,11 +127,17 @@ public class GameState : MonoBehaviour
     //STARTFIGHT
     void StartFight()
     {
+        StartCoroutine(fightTextDisapear());
         uiGameStateText.text = fightText;
         roundTimeLeft = RoundTime;
         TogglegameStatesForward();
     }
-    
+    IEnumerator fightTextDisapear()
+    {
+        yield return new WaitForSeconds(3);
+        uiGameStateText.text = null;
+    }
+
     //FIGHTING
     void Fighting()
     {
