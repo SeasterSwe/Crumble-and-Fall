@@ -93,6 +93,9 @@ public void SetProjectileSpeed(Vector3 dir)
     }
     protected virtual void OnHitEnter(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+            collision.gameObject.GetComponent<CannonHealth>().TakeDmg();
+
         SetState(states.Idle);
     }
 
