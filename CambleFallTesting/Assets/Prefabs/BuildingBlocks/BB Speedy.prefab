@@ -13,12 +13,8 @@ GameObject:
   - component: {fileID: -1712579360293837130}
   - component: {fileID: 1225343612441641402}
   - component: {fileID: 6369240829330474524}
-  - component: {fileID: -6648937520174678256}
-  - component: {fileID: -6031443138071160178}
   - component: {fileID: 6369240829330474525}
-  - component: {fileID: 2907755207440770173}
   - component: {fileID: 8361624068037934464}
-  - component: {fileID: 6218722962349945740}
   m_Layer: 2
   m_Name: BB Speedy
   m_TagString: Untagged
@@ -243,58 +239,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.99, y: 0.99}
   m_EdgeRadius: 0
---- !u!61 &-6648937520174678256
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.625641, y: 2.625641}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.15}
-  m_EdgeRadius: 0
---- !u!61 &-6031443138071160178
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.625641, y: 2.625641}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.15, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &6369240829330474525
 Rigidbody2D:
   serializedVersion: 4
@@ -308,29 +252,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 2
-  m_LinearDrag: 0.1
-  m_AngularDrag: 0.1
+  m_LinearDrag: 2
+  m_AngularDrag: 25
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: aa6c6c6c9cf694d42b24de858474dd50, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2907755207440770173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20682d7a84d4496409b4a59658f5f777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collAmount: 0
-  freeze: 1
-  isRotated: 0
 --- !u!114 &8361624068037934464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,8 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3287316dcafc0c49859869ecc2715c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerteam: 1
-  inventory: {fileID: 0}
+  velocityMultiplier: 20
+  linearDrag: 0
   projectileLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -353,21 +282,9 @@ MonoBehaviour:
     m_Bits: 256
   type: 1
   state: 0
+  inventory: {fileID: 0}
+  playerteam: 1
+  hitThisFrame: 0
   fragment: {fileID: 141114141079268990, guid: b98183462fd27bc479bae265aa8e88ca, type: 3}
-  minForceToScatter: 10
-  reboundForce: 0.5
---- !u!114 &6218722962349945740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f2c4f22fb446e4da7be7d72b8ccbe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fragment: {fileID: 141114141079268990, guid: b98183462fd27bc479bae265aa8e88ca, type: 3}
-  exForce: 1
-  velMulti: 1.4
+  minForceToBreak: 10
+  scatterForce: 5

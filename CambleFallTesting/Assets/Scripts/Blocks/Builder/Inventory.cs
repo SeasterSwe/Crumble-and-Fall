@@ -87,6 +87,40 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public Sprite GetIconFromSelection()
+    {
+        BlockType.types type = selectedBlock.GetComponent<BlockType>().type;
+        switch (type)
+        {
+            case BlockType.types.Fluffy:
+                {
+                    return (uiFluffyImg.sprite);
+                }
+                break;
+
+            case BlockType.types.Heavy:
+                {
+                    return (uiHeavyImg.sprite);
+                }
+                break;
+
+
+            case BlockType.types.Speedy:
+                {
+                    return (uiSpeedyImg.sprite);
+                }
+                break;
+
+            default:
+                {
+                    Debug.LogError("Block type does not exist in inventory");
+                    return (uiFluffyImg.sprite);
+                }
+                break;
+        }
+    }
+
+
     public void AddToInventory(BlockType.types type, int amount)
     {
         //Add a "amount" of blocks "Type" to inventory
