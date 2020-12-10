@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 6369240829330474524}
   - component: {fileID: 6369240829330474525}
   - component: {fileID: 8361624068037934464}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: BB Speedy
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   type: 1
-  state: 0
+  state: 1
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0

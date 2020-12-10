@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 1614449001440131710}
   - component: {fileID: 2121244205791743170}
   - component: {fileID: 5081347933846854325}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: BB Heavy
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   type: 2
-  state: 0
+  state: 1
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0

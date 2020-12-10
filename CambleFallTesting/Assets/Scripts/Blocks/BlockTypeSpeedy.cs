@@ -15,7 +15,6 @@ public class BlockTypeSpeedy : BlockType
 
     protected override void OnHitEnter(Collision2D collision)
     {
-        //base.OnHitEnter(collision);
         
         if (collision.relativeVelocity.magnitude > minForceToBreak && state == states.Idle)
         {
@@ -23,6 +22,7 @@ public class BlockTypeSpeedy : BlockType
             Scatter();
 
         }
+        base.OnHitEnter(collision);
     }
 
     protected override void UpdateEachFrame()
