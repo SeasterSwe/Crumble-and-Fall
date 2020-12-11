@@ -75,25 +75,28 @@ public class Blockbuilder : MonoBehaviour
 
     private void Update()
     {
-        SpawnerLocation();
-        AccurateBlockSpawn();
-
-        if (Input.GetButtonDown(inputSpawn))
+        if (Time.timeScale != 0)
         {
-            SpawnBlock();
-        }
+            SpawnerLocation();
+            AccurateBlockSpawn();
 
-        if (Input.GetButtonDown(pickButton))
-        {
-            ToggleBetweenBlocks();
-            //AimChangeColor();
+            if (Input.GetButtonDown(inputSpawn))
+            {
+                SpawnBlock();
+            }
+
+            if (Input.GetButtonDown(pickButton))
+            {
+                ToggleBetweenBlocks();
+                //AimChangeColor();
+            }
         }
 
     }
     // flytta höger vänster via input inom minxmaxx intervallet
     private void SpawnerLocation()
     {
-       // spawnerPosition.x += Input.GetAxisRaw(inputHorizontal) * moveStep;
+        // spawnerPosition.x += Input.GetAxisRaw(inputHorizontal) * moveStep;
         if (Input.GetButton(inputHorizontal))
         {
             timeToNextStep -= Time.deltaTime;
@@ -197,7 +200,7 @@ public class Blockbuilder : MonoBehaviour
 
         spriteRenderer.sprite = blockPreFab.GetComponent<SpriteRenderer>().sprite;
 
-        
+
 
     }
 

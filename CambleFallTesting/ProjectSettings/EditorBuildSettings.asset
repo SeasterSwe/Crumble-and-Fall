@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
     guid: bdcb5c2aa190c0d4c99081ce4303352a
   - enabled: 0
-    path: Assets/Scenes/Larstest.unity
+    path: Assets/Scenes/TestScener/Larstest.unity
     guid: 51cf7f2ceed4ea448bb3ef03dfb9ea5c
   - enabled: 0
-    path: Assets/Scenes/BackUp.unity
+    path: Assets/Scenes/TestScener/BackUp.unity
     guid: f42896d40cc982540976c01be3c1d74e
   - enabled: 0
     path: 

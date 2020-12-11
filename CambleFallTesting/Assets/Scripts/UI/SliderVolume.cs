@@ -11,6 +11,7 @@ public class SliderVolume : MonoBehaviour
     void Start()
     {
         AudioSrc = GetComponent<AudioSource>();
+        AudioVolume = AudioSrc.volume;
     }
 
     void Update()

@@ -34,7 +34,7 @@ public class CannonMovement : MonoBehaviour
                 {
                     float totalDist = Vector2.Distance(target.position, elevationCheck.highestBlock.gameObject.transform.position);
                     float distX = target.position.x - elevationCheck.highestBlock.gameObject.transform.position.x;
-                    if (totalDist > 2.2 || Mathf.Abs(distX) < 0.6f)
+                    if (totalDist > 1.8 || Mathf.Abs(distX) < 0.6f)
                         target = elevationCheck.highestBlock.gameObject.transform;
                 }
 
