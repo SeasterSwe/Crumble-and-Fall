@@ -275,7 +275,7 @@ MonoBehaviour:
   velocityMultiplier: 7
   linearDrag: 1
   BlockMass: 5
-  projectileMass: 4
+  projectileMass: 3
   projectileLayer:
     serializedVersion: 2
     m_Bits: 4
