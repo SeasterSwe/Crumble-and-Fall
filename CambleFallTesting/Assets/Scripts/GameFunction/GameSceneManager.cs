@@ -74,6 +74,10 @@ public class GameSceneManager : MonoBehaviour
 		SceneManager.LoadScene(nextIndex);
 	}
 
+	public void QuitGame()
+    {
+		Application.Quit();
+    }
 	void PlaySound(AudioClip clip)
     {
 		audioSource.clip = clip;
