@@ -406,7 +406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5c1819b9cfb49434db5671303bff05be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89774b21c62a5b747b1a4c010d649e53, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 37619b3fc23c8184c9a7542d00d3b70a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59e1f94822e7e9d4cb4aa6834a73ae98, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 48a441ffc31f6a041abf20ddade6bfb4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ece2f109d56ec64ab622101ff43e7b2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -782,8 +782,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generatorActive: 1
   timeBetweenGenerations: 3
+  minBonus: 1
+  maxBonus: 10
+  bonus: 0
   inventory: {fileID: 3444593090932855767}
   currentBlock: 0
+  getLeftOne: 1
+  evCheck: {fileID: 0}
+  blockbuilder: {fileID: 0}
 --- !u!1 &6797739405320774844
 GameObject:
   m_ObjectHideFlags: 0

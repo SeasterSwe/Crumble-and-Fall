@@ -4194,6 +4194,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 16.6
       objectReference: {fileID: 0}
+    - target: {fileID: 1676402277223412206, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 89774b21c62a5b747b1a4c010d649e53, type: 3}
     - target: {fileID: 3821464404935227842, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -4236,7 +4240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4928910327109591370, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4928910327109591370, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4318,6 +4322,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryPlayerOne
       objectReference: {fileID: 0}
+    - target: {fileID: 6360780897239614082, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 59e1f94822e7e9d4cb4aa6834a73ae98, type: 3}
     - target: {fileID: 6454428360761128960, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -20.6
@@ -4334,6 +4342,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 8853607219129771115, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ece2f109d56ec64ab622101ff43e7b2, type: 3}
     m_RemovedComponents:
     - {fileID: 3046652303285468084, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
@@ -5563,6 +5575,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 1676402277223412206, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 89774b21c62a5b747b1a4c010d649e53, type: 3}
     - target: {fileID: 3821464404935227842, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -5605,7 +5621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4928910327109591370, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4928910327109591370, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5687,6 +5703,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryPlayerTwo
       objectReference: {fileID: 0}
+    - target: {fileID: 6360780897239614082, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 59e1f94822e7e9d4cb4aa6834a73ae98, type: 3}
     - target: {fileID: 6454428360761128960, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 95
@@ -5703,6 +5723,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -20.6
       objectReference: {fileID: 0}
+    - target: {fileID: 8853607219129771115, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ece2f109d56ec64ab622101ff43e7b2, type: 3}
     m_RemovedComponents:
     - {fileID: 3046652303285468084, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
