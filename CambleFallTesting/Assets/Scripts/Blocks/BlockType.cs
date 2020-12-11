@@ -93,7 +93,10 @@ public void SetProjectileSpeed(Vector3 dir)
         if (state == states.Projectile)
         {
             GetComponent<Rigidbody2D>().velocity *= 0.0f;
+            print("NoSpeed");
         }
+        //End TEST
+
         OnHitEnter(collision);
     }
     protected virtual void OnHitEnter(Collision2D collision)
