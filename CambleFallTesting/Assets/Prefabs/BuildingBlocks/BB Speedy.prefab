@@ -273,7 +273,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocityMultiplier: 12
-  linearDrag: 0
+  linearDrag: 1
+  BlockMass: 3
+  projectileMass: 1
   projectileLayer:
     serializedVersion: 2
     m_Bits: 4
