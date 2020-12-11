@@ -17,7 +17,7 @@ public class BlockType : MonoBehaviour
     public enum types { Fluffy, Speedy, Heavy }
     public types type;
 
-    public enum states { Idle, Projectile }
+    public enum states { Idle, Projectile, Worried }
     public states state = states.Idle;
 
     public Inventory inventory;
@@ -89,10 +89,16 @@ public void SetProjectileSpeed(Vector3 dir)
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //TEST :
+        if (state == states.Projectile)
+        {
+            GetComponent<Rigidbody2D>().velocity *= 0.0f;
+        }
         OnHitEnter(collision);
     }
     protected virtual void OnHitEnter(Collision2D collision)
     {
+       
         if (collision.gameObject.CompareTag("Player"))
             collision.gameObject.GetComponent<CannonHealth>().TakeDmg();
 
@@ -118,6 +124,18 @@ public void SetProjectileSpeed(Vector3 dir)
 
     private void FixedUpdate()
     {
+        if(state == states.Idle || state == states.Worried)
+        {
+            if(rb.velocity.sqrMagnitude > 0.5f)
+            {
+                SetState(states.Worried);
+            }
+            else
+            {
+                SetState(states.Idle);
+            }
+        }
+
         hitThisFrame = false;
     }
 
@@ -155,27 +173,28 @@ public void SetProjectileSpeed(Vector3 dir)
         {
             case states.Idle:
                 {
-                    print(transform.name + " State set to Idle");
+                    //print(transform.name + " State set to Idle");
                     StateChangedToIdle();
-                    //bAnimations.SetAnimationToBlock(0);
                   
                 }
                 break;
 
             case states.Projectile:
                 {
-                    print(transform.name + " State set to Projectile");
+                    //print(transform.name + " State set to Projectile");
                     StateChagedToProjectile();
-                   
-//                    bAnimations.SetAnimationToBlock(1);
                 }
                 break;
 
+            case states.Worried:
+                {
+                    StateChagedToWorried();
+                }
+                break;
             default:
                 {
                     gameObject.layer = layermaskToLayer(blockLayer);
                     GetComponent<Animator>().SetInteger("State", 2);
-//                    bAnimations.SetAnimationToBlock(2);
                 }
                 break;
         }
@@ -193,6 +212,13 @@ public void SetProjectileSpeed(Vector3 dir)
         gameObject.GetComponent<Rigidbody2D>().drag = 0;
         gameObject.layer = layermaskToLayer(projectileLayer);
         StartCoroutine(Anim(1));
+    }
+
+    protected virtual void StateChagedToWorried()
+    {
+        gameObject.GetComponent<Rigidbody2D>().drag = linearDrag;
+        gameObject.layer = layermaskToLayer(blockLayer);
+        StartCoroutine(Anim(2));
     }
 
     //Thx. Reconnoiter - Unity forum

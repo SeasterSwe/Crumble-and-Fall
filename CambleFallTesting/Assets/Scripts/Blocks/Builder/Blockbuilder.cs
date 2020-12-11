@@ -26,7 +26,7 @@ public class Blockbuilder : MonoBehaviour
     public string pickButton = "VerticalPlayerOne";
     int activeBlock = 0;
 
-    public float scaleSize = 1.4f;
+    //public float scaleSize = 1.4f;
     public Ease selectEase;
     public Ease unEase;
 
