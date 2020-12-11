@@ -1993,7 +1993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: moveStep
-      value: 0.26
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: inventory
@@ -7498,7 +7498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: moveStep
-      value: 0.26
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: inventory
