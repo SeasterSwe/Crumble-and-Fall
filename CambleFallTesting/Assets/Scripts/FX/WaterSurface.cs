@@ -67,7 +67,7 @@ public class WaterSurface : MonoBehaviour
         Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
         if(rb != null)
         {
-            rb.velocity *= 0.4f;
+            rb.velocity *= 0.3f;
             rb.gravityScale = 0.75f;
         }
 
