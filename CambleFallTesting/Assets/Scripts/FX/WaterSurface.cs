@@ -40,19 +40,37 @@ public class WaterSurface : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player"))
+        {
             return;
-    
-            //GameObject waterBubble = Instantiate(waterParticle, collision.transform.position, waterParticle.transform.rotation);
-            collision.GetComponent<CannonHealth>().TakeDmg(SoundManager.Sound.CannonDrownSound, waterParticle, 1f);
+        }
+
+        collision.GetComponent<CannonHealth>().TakeDmg(SoundManager.Sound.CannonDrownSound, waterParticle, 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        var obj = collision.gameObject;
+        if(obj.GetComponent<BlockType>() != null)
+        {
+            SlowStuffDown(obj);
+        }
+
         if (gjordesFörAttRetaRobert && Time.time > 2f)
         {
             StartCoroutine(ParticleDelay());
             GameObject waterClone = Instantiate(waterSplash, collision.transform.position, waterSplash.transform.rotation);
         }
+    }
+
+    void SlowStuffDown(GameObject obj)
+    {
+        Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+        if(rb != null)
+        {
+            rb.velocity *= 0.4f;
+            rb.gravityScale = 0.75f;
+        }
+
     }
 
     bool gjordesFörAttRetaRobert = true;
