@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3287316dcafc0c49859869ecc2715c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityMultiplier: 12
+  velocityMultiplier: 7
   linearDrag: 1
   BlockMass: 3
   projectileMass: 1
