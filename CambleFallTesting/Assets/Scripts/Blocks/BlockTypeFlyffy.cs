@@ -22,7 +22,7 @@ public class BlockTypeFlyffy : BlockType
         }
     }
 
-    /*
+    
     protected override void StateChangedToIdle()
     {
         base.StateChangedToIdle();
@@ -34,5 +34,4 @@ public class BlockTypeFlyffy : BlockType
         base.StateChagedToProjectile();
         GetComponent<Rigidbody2D>().gravityScale = 0;
     }
-    */
 }
