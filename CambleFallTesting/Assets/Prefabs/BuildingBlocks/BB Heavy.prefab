@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6369240829330474525}
   - component: {fileID: 1614449001440131710}
   - component: {fileID: 2121244205791743170}
-  - component: {fileID: 5081347933846854325}
   m_Layer: 2
   m_Name: BB Heavy
   m_TagString: Block
@@ -274,7 +273,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocityMultiplier: 7
-  linearDrag: 0
+  linearDrag: 1
+  BlockMass: 5
+  projectileMass: 4
   projectileLayer:
     serializedVersion: 2
     m_Bits: 4
@@ -286,16 +287,3 @@ MonoBehaviour:
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0
---- !u!114 &5081347933846854325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: babc68974d4ce3f47bb62add0bff583e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: -192862889044682216}

@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6369240829330474524}
   - component: {fileID: 6369240829330474525}
   - component: {fileID: 5076150456772443069}
-  - component: {fileID: 5155694545619096875}
   m_Layer: 2
   m_Name: BB Fluffy
   m_TagString: Block
@@ -275,6 +274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocityMultiplier: 5
   linearDrag: 1
+  BlockMass: 1
+  projectileMass: 0
   projectileLayer:
     serializedVersion: 2
     m_Bits: 4
@@ -287,16 +288,3 @@ MonoBehaviour:
   playerteam: 1
   hitThisFrame: 0
   boundTo: []
---- !u!114 &5155694545619096875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6369240829330474514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: babc68974d4ce3f47bb62add0bff583e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 9210598149620212365}

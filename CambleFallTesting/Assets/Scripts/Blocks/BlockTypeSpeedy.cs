@@ -90,7 +90,7 @@ public class BlockTypeSpeedy : BlockType
 
     void ScatterProjectile()
     {
-        print(transform.name + " Fragmentet as projectile");
+       // print(transform.name + " Fragmentet as projectile");
         Vector2 dir = GetComponent<Rigidbody2D>().velocity;
 
         for (int i = 0; i < 4; i++)

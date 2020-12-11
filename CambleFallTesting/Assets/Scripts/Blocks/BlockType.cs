@@ -11,6 +11,9 @@ public class BlockType : MonoBehaviour
     public float velocityMultiplier = 1.4f;
     public float linearDrag = 1;
 
+    public float BlockMass = 5;
+    public float projectileMass = 1;
+
     public LayerMask projectileLayer;
     public LayerMask blockLayer;
     //public string category = "Red";
@@ -89,6 +92,7 @@ public void SetProjectileSpeed(Vector3 dir)
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        /*
         //TEST :
         if (state == states.Projectile)
         {
@@ -96,6 +100,7 @@ public void SetProjectileSpeed(Vector3 dir)
             print("NoSpeed");
         }
         //End TEST
+        */
 
         OnHitEnter(collision);
     }
@@ -116,9 +121,14 @@ public void SetProjectileSpeed(Vector3 dir)
         if(state == states.Projectile)
         {
             if (rb.velocity.x > 0)
+            {
                 transform.right = rb.velocity;
+            }
             else
-                transform.right = rb.velocity *-1;
+            {
+                transform.right = rb.velocity * -1;
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            }
 
             //float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg; //quickmath
             //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -138,6 +148,9 @@ public void SetProjectileSpeed(Vector3 dir)
                 SetState(states.Idle);
             }
         }
+
+        
+
 
         hitThisFrame = false;
     }
@@ -178,7 +191,6 @@ public void SetProjectileSpeed(Vector3 dir)
                 {
                     //print(transform.name + " State set to Idle");
                     StateChangedToIdle();
-                  
                 }
                 break;
 
@@ -205,21 +217,31 @@ public void SetProjectileSpeed(Vector3 dir)
 
     protected virtual void StateChangedToIdle()
     {
-        gameObject.GetComponent<Rigidbody2D>().drag = linearDrag;
+        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        rb.drag = linearDrag;
+        rb.mass = BlockMass;
+
         gameObject.layer = layermaskToLayer(blockLayer);
         StartCoroutine(Anim(0));
     }
 
     protected virtual void StateChagedToProjectile()
     {
-        gameObject.GetComponent<Rigidbody2D>().drag = 0;
+
+        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        rb.drag = 0;
+        rb.mass = projectileMass;
+
         gameObject.layer = layermaskToLayer(projectileLayer);
         StartCoroutine(Anim(1));
     }
 
     protected virtual void StateChagedToWorried()
     {
-        gameObject.GetComponent<Rigidbody2D>().drag = linearDrag;
+        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        rb.drag = linearDrag;
+        rb.mass = BlockMass;
+
         gameObject.layer = layermaskToLayer(blockLayer);
         StartCoroutine(Anim(2));
     }
