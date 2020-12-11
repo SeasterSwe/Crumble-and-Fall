@@ -41,11 +41,9 @@ public class WaterSurface : MonoBehaviour
     {
         if (!collision.CompareTag("Player"))
             return;
-
-       
-            SoundManager.PlaySound(SoundManager.Sound.CannonDrownSound, collision.transform.position);
+    
             //GameObject waterBubble = Instantiate(waterParticle, collision.transform.position, waterParticle.transform.rotation);
-            collision.GetComponent<CannonHealth>().TakeDmg(waterParticle, 1f, false);
+            collision.GetComponent<CannonHealth>().TakeDmg(SoundManager.Sound.CannonDrownSound, waterParticle, 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
