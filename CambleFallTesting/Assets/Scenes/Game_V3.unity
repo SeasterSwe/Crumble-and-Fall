@@ -4605,6 +4605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icons: []
   distDown: 40
+  cannonHeightBonuses: {fileID: 0}
   generateBlock: {fileID: 989414128}
 --- !u!1 &1273417752 stripped
 GameObject:
@@ -6543,6 +6544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icons: []
   distDown: 40
+  cannonHeightBonuses: {fileID: 0}
   generateBlock: {fileID: 989414129}
 --- !u!1 &1852297974
 GameObject:

@@ -23,7 +23,7 @@ public class TweemEventUi : MonoBehaviour
     {
         if (eventSystem.currentSelectedGameObject != null)
         {
-            if (eventSystem.currentSelectedGameObject != selected)
+            if (eventSystem.currentSelectedGameObject != selected) 
             {
                 DeScale();
                 selected = eventSystem.currentSelectedGameObject;
