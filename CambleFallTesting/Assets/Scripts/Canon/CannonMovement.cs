@@ -8,7 +8,7 @@ public class CannonMovement : MonoBehaviour
     private GameObject cannonObj;
     private ElevationCheck elevationCheck;
     private Cannon cannon;
-    public GameObject smoke;
+    public GameObject teleportEffekt;
 
     Transform target;
     //public bool targetYeeted = false;
@@ -38,7 +38,6 @@ public class CannonMovement : MonoBehaviour
                         target = elevationCheck.highestBlock.gameObject.transform;
                 }
 
-                //kan bli buggad med fluffy, fix later
                 else if (target.gameObject.GetComponent<Renderer>().isVisible == false)
                 {
                     //om canonen flyger men landar ej i vatten
@@ -59,11 +58,11 @@ public class CannonMovement : MonoBehaviour
     void Swap()
     {
         target = elevationCheck.highestBlock.gameObject.transform;
-        GameObject smokeClone = Instantiate(smoke, target.position + Vector3.up, smoke.transform.rotation);
+        GameObject smokeClone = Instantiate(teleportEffekt, target.position + Vector3.up, teleportEffekt.transform.rotation);
     }
     IEnumerator MinHjärnaDog()
     {
         yield return new WaitForSeconds(0.08f);
-        GameObject smokeClone = Instantiate(smoke, transform.position, smoke.transform.rotation);
+        GameObject smokeClone = Instantiate(teleportEffekt, transform.position, teleportEffekt.transform.rotation);
     }
 }

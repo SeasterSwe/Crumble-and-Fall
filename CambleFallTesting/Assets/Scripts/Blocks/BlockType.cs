@@ -108,8 +108,9 @@ public void SetProjectileSpeed(Vector3 dir)
     {
        
         if (collision.gameObject.CompareTag("Player"))
+        {
             collision.gameObject.GetComponent<CannonHealth>().TakeDmg();
-
+        }
         SetState(states.Idle);
     }
 
@@ -220,10 +221,22 @@ public void SetProjectileSpeed(Vector3 dir)
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         rb.drag = linearDrag;
         rb.mass = BlockMass;
-
         gameObject.layer = layermaskToLayer(blockLayer);
+        //StartCoroutine(ChangeWhenVelIs(0.7f));
         StartCoroutine(Anim(0));
     }
+
+    //IEnumerator ChangeWhenVelIs(float mag)
+    //{
+    //    rb = GetComponent<Rigidbody2D>();
+    //    while(rb.velocity.magnitude > mag)
+    //    {
+    //        gameObject.layer = layermaskToLayer(projectileLayer);
+    //        yield return null;
+    //    }
+    //    yield return new WaitForEndOfFrame();
+    //    gameObject.layer = layermaskToLayer(blockLayer);
+    //}
 
     protected virtual void StateChagedToProjectile()
     {

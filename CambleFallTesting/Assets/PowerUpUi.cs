@@ -9,13 +9,13 @@ public class PowerUpUi : MonoBehaviour
     public GameObject[] icons;
     TextMeshProUGUI[] texts;
     public float distDown = 10;
-    private CannonHeightBonuses cannonHeightBonuses;
+    public CannonHeightBonuses cannonHeightBonuses;
     public GenerateBlockToInventoryOverTime generateBlock;
 
     private void Awake()
     {
         CannonHeightBonuses[] c = Object.FindObjectsOfType<CannonHeightBonuses>();
-
+        //print(c.Length);
         foreach (CannonHeightBonuses a in c)
         {
             if (a.transform.position.x < 0 && GetComponent<RectTransform>().position.x < 0)
@@ -47,7 +47,7 @@ public class PowerUpUi : MonoBehaviour
 
 
     }
-    void Update()
+    void LateUpdate()
     {
         if (GameState.currentState == GameState.gameStates.Fight)
         {
