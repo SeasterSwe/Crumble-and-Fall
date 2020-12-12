@@ -36,10 +36,10 @@ public class TweemEventUi : MonoBehaviour
     void Scale()
     {
         selectedScale = selected.GetComponent<RectTransform>().localScale;
-        selected.GetComponent<RectTransform>().DOScale(selectedScale + (Vector3.one * 0.3f), 0.3f);
+        selected.GetComponent<RectTransform>().DOScale(selectedScale + (Vector3.one * 0.3f), 0.3f).SetUpdate(true);
     }
     void DeScale()
     {
-        selected.GetComponent<RectTransform>().DOScale(selectedScale, 0.3f);
+        selected.GetComponent<RectTransform>().DOScale(selectedScale, 0.3f).SetUpdate(true);
     }
 }
