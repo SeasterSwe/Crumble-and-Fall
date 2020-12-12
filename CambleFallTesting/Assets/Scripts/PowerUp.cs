@@ -12,25 +12,22 @@ public class PowerUp : MonoBehaviour
    public float powerUpActivate = 0.5f;
     public string text;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         GetHeightPercentage();
 
         if (heightPercantage > powerUpActivate)
         {
-            GetComponent<Image>().enabled = true;
+            GetComponent<Image>().enabled = true; 
+            if (transform.GetChild(0) != null)
+                transform.GetChild(0).gameObject.SetActive(true);
 
         }
         else
         {
             GetComponent<Image>().enabled = false;
+            if (transform.GetChild(0) != null)
+                transform.GetChild(0).gameObject.SetActive(false);
         }
 
         text = (heightPercantage * 10).ToString("f0").PadLeft(2,'0');

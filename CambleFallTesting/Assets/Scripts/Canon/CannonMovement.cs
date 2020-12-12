@@ -30,7 +30,7 @@ public class CannonMovement : MonoBehaviour
 
             if (target.gameObject.GetComponent<Rigidbody2D>() != null)
             {
-                if (!(target.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 1.7f))
+                if (!(target.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 1f))
                 {
                     float totalDist = Vector2.Distance(target.position, elevationCheck.highestBlock.gameObject.transform.position);
                     float distX = target.position.x - elevationCheck.highestBlock.gameObject.transform.position.x;
