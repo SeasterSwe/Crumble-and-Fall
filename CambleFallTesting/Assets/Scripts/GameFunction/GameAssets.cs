@@ -22,5 +22,6 @@ public class GameAssets : MonoBehaviour
     {
         public SoundManager.Sound sound;
         public AudioClip audioClip;
+        //public Output output;
     }
 }
