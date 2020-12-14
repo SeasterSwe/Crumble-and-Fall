@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5076150456772443069}
   m_Layer: 2
   m_Name: BB Fluffy
-  m_TagString: Block
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
