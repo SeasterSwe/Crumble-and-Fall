@@ -1878,7 +1878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3927874108970597587, guid: b55e06c9544dc904a8ea668ddb7c79b5, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3927874108970597587, guid: b55e06c9544dc904a8ea668ddb7c79b5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2414,7 +2414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: buildTime
-      value: 40
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: fightText
@@ -2861,7 +2861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7937113602623995606, guid: 45e2410c0302bed41a7e4f948bb6e26b, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7937113602623995606, guid: 45e2410c0302bed41a7e4f948bb6e26b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3265,7 +3265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105261987839197707, guid: 8392cdd30b7d46d4db2620d7cf10041d, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5105261987839197707, guid: 8392cdd30b7d46d4db2620d7cf10041d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4065,11 +4065,11 @@ RectTransform:
   - {fileID: 1402180474}
   - {fileID: 2135441126}
   - {fileID: 253886326}
-  - {fileID: 626554415}
   - {fileID: 855348218}
   - {fileID: 1458567552}
   - {fileID: 1585251856}
   - {fileID: 248610079}
+  - {fileID: 626554415}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4605,7 +4605,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icons: []
   distDown: 40
-  cannonHeightBonuses: {fileID: 0}
   generateBlock: {fileID: 989414128}
 --- !u!1 &1273417752 stripped
 GameObject:
@@ -5307,7 +5306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7937113602623995606, guid: 45e2410c0302bed41a7e4f948bb6e26b, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7937113602623995606, guid: 45e2410c0302bed41a7e4f948bb6e26b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6544,7 +6543,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icons: []
   distDown: 40
-  cannonHeightBonuses: {fileID: 0}
   generateBlock: {fileID: 989414129}
 --- !u!1 &1852297974
 GameObject:
@@ -6647,7 +6645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105261987839197707, guid: 8392cdd30b7d46d4db2620d7cf10041d, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5105261987839197707, guid: 8392cdd30b7d46d4db2620d7cf10041d, type: 3}
       propertyPath: m_AnchorMax.x

@@ -9,7 +9,7 @@ public class PowerUpUi : MonoBehaviour
     public GameObject[] icons;
     TextMeshProUGUI[] texts;
     public float distDown = 10;
-    public CannonHeightBonuses cannonHeightBonuses;
+    private CannonHeightBonuses cannonHeightBonuses;
     public GenerateBlockToInventoryOverTime generateBlock;
 
     private void Awake()
