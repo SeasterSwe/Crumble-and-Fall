@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        selectedBlock = speedyBlock;
+        selectedBlock = heavyBlock;
     }
 
     public GameObject TakeActiveBlockFromInventory()

@@ -114,7 +114,6 @@ public class GameState : MonoBehaviour
             uiGameTimeText.rectTransform.DOScale(Vector3.one * 2.5f, 0.5f).SetEase(easein).OnComplete(ResetText);
         }
     }
-
     void ResetText()
     {
         uiGameTimeText.rectTransform.DOScale(Vector3.one * 2.2f, 0.5f).SetEase(easeOut).OnComplete(ActiveFalse);
@@ -127,15 +126,29 @@ public class GameState : MonoBehaviour
     //STARTFIGHT
     void StartFight()
     {
-        StartCoroutine(fightTextDisapear());
+        StartCoroutine(FightTextDisapear(3));
         uiGameStateText.text = fightText;
         roundTimeLeft = RoundTime;
         TogglegameStatesForward();
     }
-    IEnumerator fightTextDisapear()
+    IEnumerator FightTextDisapear(float t)
     {
-        yield return new WaitForSeconds(3);
+        Scale(0.8f);
+        yield return new WaitForSeconds(t);
         uiGameStateText.text = null;
+    }
+    void Scale(float t)
+    {
+        Vector3 scale = uiGameStateText.rectTransform.localScale;
+        uiGameStateText.rectTransform.DOScale(scale + Vector3.one * 0.4f, t).OnComplete(ScaleBack);
+    }
+
+    void ScaleBack()
+    {
+        Color color = uiGameStateText.color;
+        color.a = 0f;
+        uiGameStateText.DOColor(color, 2.2f);
+        uiGameStateText.rectTransform.DOScale(Vector3.one * 3.184851f, 2.2f);
     }
 
     //FIGHTING
