@@ -8,6 +8,11 @@ using UnityEngine;
 [RequireComponent(typeof(CannonMovement))]
 public class Cannon : MonoBehaviour
 {
+
+    //Test for aim //Robert
+    public float projectileFinalCharge;
+    public AImCannon aim;
+    //End Test
     public float degToTheLeft;
     public float degToTheRight;
     public float fireRate;
@@ -34,7 +39,6 @@ public class Cannon : MonoBehaviour
 
     public int numberOfPoints;
     private List<Vector3> points = new List<Vector3>();
-    LineRenderer line;
 
     [HideInInspector] public BarBase loadBar;
     float time;
@@ -43,6 +47,15 @@ public class Cannon : MonoBehaviour
     private Transform cannonPipe;
 
     float particleRotation = 90;
+
+
+    void RobertsTestAim()
+    {
+        projectileFinalCharge = transform.localScale.x * (1 + 0.5f * (chargePower / maxCharge) + velBouns);
+        aim.Aim();
+    }
+
+
     void Start()
     {
         if (transform.position.x > 0)
@@ -50,8 +63,6 @@ public class Cannon : MonoBehaviour
 
         cannonPipe = transform.Find("CannonPipe");
         normalScale = transform.localScale;
-        line = GetComponent<LineRenderer>();
-        line.positionCount = numberOfPoints;
 
         loadImage = transform.Find("LoadImage").GetComponent<SpriteRenderer>();
         chargeSpeed = maxCharge / timeToFullCharge;
@@ -61,6 +72,9 @@ public class Cannon : MonoBehaviour
         chargeIsntStarted = true;
 
         UpdateLoadImage(inventory.selectedBlock);
+
+        //Test : Roberts Test
+        aim = GetComponent<AImCannon>();
     }
     void SetAnglePoints()
     {
@@ -109,11 +123,16 @@ public class Cannon : MonoBehaviour
                 ChargeCannon();
                 chargeIsntStarted = false;
             }
+
+
+            //TEST : Roberts test aim
+            RobertsTestAim();
         }
 
         //Shoot      
         if (Input.GetButtonUp(shootButton) && nextFire > time)
         {
+            
             holdTimer = 0;
             time = fireRate;
             nextFire = 0;
@@ -158,7 +177,8 @@ public class Cannon : MonoBehaviour
     }
     void ShootBlock(float extraForce = 0)
     {
-        GameObject clone = Instantiate(inventory.TakeActiveBlockFromInventory(), shootPos.position + shootPos.right * transform.localScale.x, shootPos.rotation);
+        RobertsTestAim();
+        GameObject clone = Instantiate(inventory.TakeActiveBlockFromInventory(), shootPos.position, shootPos.rotation);
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
 
         clone.GetComponent<BlockType>().SetProjectileSpeed(shootPos.right * transform.localScale.x * (1 + 0.5f * (chargePower / maxCharge) + velBouns));
@@ -191,6 +211,7 @@ public class Cannon : MonoBehaviour
 
         // obj.layer = 2; //ignoreRayCast
         // obj.tag = "Untagged";
+        Time.timeScale = 0.25f;
     }
     private void UpdateLoadImage(GameObject newBlock)
     {
