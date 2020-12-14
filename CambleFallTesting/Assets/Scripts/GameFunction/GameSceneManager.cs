@@ -34,7 +34,10 @@ public class GameSceneManager : MonoBehaviour
 		if (Time.timeScale < 1)
 			Time.timeScale = 1;
 
-		StartCoroutine(ChangeSceneAnimation(name));
+		if(transition != null)
+			StartCoroutine(ChangeSceneAnimation(name));
+		else
+			SceneManager.LoadScene(name);
 	}
 
     IEnumerator ChangeSceneAnimation(string name)
@@ -74,6 +77,10 @@ public class GameSceneManager : MonoBehaviour
 		SceneManager.LoadScene(nextIndex);
 	}
 
+	public void QuitGame()
+    {
+		Application.Quit();
+    }
 	void PlaySound(AudioClip clip)
     {
 		audioSource.clip = clip;

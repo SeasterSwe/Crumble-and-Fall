@@ -11,13 +11,16 @@ public class BlockType : MonoBehaviour
     public float velocityMultiplier = 1.4f;
     public float linearDrag = 1;
 
+    public float BlockMass = 5;
+    public float projectileMass = 1;
+
     public LayerMask projectileLayer;
     public LayerMask blockLayer;
     //public string category = "Red";
     public enum types { Fluffy, Speedy, Heavy }
     public types type;
 
-    public enum states { Idle, Projectile }
+    public enum states { Idle, Projectile, Worried }
     public states state = states.Idle;
 
     public Inventory inventory;
@@ -89,11 +92,27 @@ public void SetProjectileSpeed(Vector3 dir)
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        /*
+        //TEST :
+        if (state == states.Projectile)
+        {
+            GetComponent<Rigidbody2D>().velocity *= 0.0f;
+            print("NoSpeed");
+        }
+        //End TEST
+        */
+
         OnHitEnter(collision);
     }
     protected virtual void OnHitEnter(Collision2D collision)
     {
-        SetState(states.Idle);
+       
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<CannonHealth>().TakeDmg();
+        }
+        // SetState(states.Idle);
+        StartCoroutine(ChangeWhenVelIs(1));
     }
 
     private void Update()
@@ -104,9 +123,14 @@ public void SetProjectileSpeed(Vector3 dir)
         if(state == states.Projectile)
         {
             if (rb.velocity.x > 0)
+            {
                 transform.right = rb.velocity;
+            }
             else
-                transform.right = rb.velocity *-1;
+            {
+                transform.right = rb.velocity * -1;
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            }
 
             //float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg; //quickmath
             //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -115,6 +139,21 @@ public void SetProjectileSpeed(Vector3 dir)
 
     private void FixedUpdate()
     {
+        if(state == states.Idle || state == states.Worried)
+        {
+            if(rb.velocity.sqrMagnitude > 0.5f)
+            {
+                SetState(states.Worried);
+            }
+            else
+            {
+                SetState(states.Idle);
+            }
+        }
+
+        
+
+
         hitThisFrame = false;
     }
 
@@ -152,27 +191,27 @@ public void SetProjectileSpeed(Vector3 dir)
         {
             case states.Idle:
                 {
-                    print(transform.name + " State set to Idle");
+                    //print(transform.name + " State set to Idle");
                     StateChangedToIdle();
-                    //bAnimations.SetAnimationToBlock(0);
-                  
                 }
                 break;
 
             case states.Projectile:
                 {
-                    print(transform.name + " State set to Projectile");
+                    //print(transform.name + " State set to Projectile");
                     StateChagedToProjectile();
-                   
-//                    bAnimations.SetAnimationToBlock(1);
                 }
                 break;
 
+            case states.Worried:
+                {
+                    StateChagedToWorried();
+                }
+                break;
             default:
                 {
                     gameObject.layer = layermaskToLayer(blockLayer);
                     GetComponent<Animator>().SetInteger("State", 2);
-//                    bAnimations.SetAnimationToBlock(2);
                 }
                 break;
         }
@@ -180,16 +219,49 @@ public void SetProjectileSpeed(Vector3 dir)
 
     protected virtual void StateChangedToIdle()
     {
-        gameObject.GetComponent<Rigidbody2D>().drag = linearDrag;
+        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        rb.drag = linearDrag;
+        rb.mass = BlockMass;
         gameObject.layer = layermaskToLayer(blockLayer);
+        //StartCoroutine(ChangeWhenVelIs(0.7f));
         StartCoroutine(Anim(0));
+    }
+
+    IEnumerator ChangeWhenVelIs(float mag)
+    {
+        rb = GetComponent<Rigidbody2D>();
+        bool exitToIdle = false;
+        while (!exitToIdle)
+        {
+            if(rb.velocity.sqrMagnitude < mag*mag)
+            {
+                SetState(states.Idle);
+                exitToIdle = true;
+            }
+            yield return null;
+        }
+        yield return new WaitForEndOfFrame();
     }
 
     protected virtual void StateChagedToProjectile()
     {
-        gameObject.GetComponent<Rigidbody2D>().drag = 0;
+
+        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        rb.drag = 0;
+        rb.mass = projectileMass;
+
         gameObject.layer = layermaskToLayer(projectileLayer);
         StartCoroutine(Anim(1));
+    }
+
+    protected virtual void StateChagedToWorried()
+    {
+        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        rb.drag = linearDrag;
+        rb.mass = BlockMass;
+
+        gameObject.layer = layermaskToLayer(blockLayer);
+        StartCoroutine(Anim(2));
     }
 
     //Thx. Reconnoiter - Unity forum

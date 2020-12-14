@@ -22,6 +22,7 @@ public class BlockTypeFlyffy : BlockType
         }
     }
 
+    
     protected override void StateChangedToIdle()
     {
         base.StateChangedToIdle();

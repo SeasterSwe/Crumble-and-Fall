@@ -15,7 +15,6 @@ public class BlockTypeSpeedy : BlockType
 
     protected override void OnHitEnter(Collision2D collision)
     {
-        //base.OnHitEnter(collision);
         
         if (collision.relativeVelocity.magnitude > minForceToBreak && state == states.Idle)
         {
@@ -23,6 +22,7 @@ public class BlockTypeSpeedy : BlockType
             Scatter();
 
         }
+        base.OnHitEnter(collision);
     }
 
     protected override void UpdateEachFrame()
@@ -90,7 +90,7 @@ public class BlockTypeSpeedy : BlockType
 
     void ScatterProjectile()
     {
-        print(transform.name + " Fragmentet as projectile");
+       // print(transform.name + " Fragmentet as projectile");
         Vector2 dir = GetComponent<Rigidbody2D>().velocity;
 
         for (int i = 0; i < 4; i++)

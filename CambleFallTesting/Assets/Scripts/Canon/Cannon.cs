@@ -117,8 +117,11 @@ public class Cannon : MonoBehaviour
             holdTimer = 0;
             time = fireRate;
             nextFire = 0;
-            ShootBlock(chargePower);
-            GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, particleRotation, 0));
+            if (Time.timeScale != 0)
+            {
+                ShootBlock(chargePower);
+                GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, particleRotation, 0));
+            }
             chargePower = 1;
 
             transform.localScale = normalScale;
@@ -155,10 +158,10 @@ public class Cannon : MonoBehaviour
     }
     void ShootBlock(float extraForce = 0)
     {
-        GameObject clone = Instantiate(inventory.TakeActiveBlockFromInventory(), shootPos.position, shootPos.rotation);
+        GameObject clone = Instantiate(inventory.TakeActiveBlockFromInventory(), shootPos.position + shootPos.right * transform.localScale.x, shootPos.rotation);
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
 
-        clone.GetComponent<BlockType>().SetProjectileSpeed(shootPos.right * transform.localScale.x * (1 + chargePower/maxCharge));
+        clone.GetComponent<BlockType>().SetProjectileSpeed(shootPos.right * transform.localScale.x * (1 + 0.5f * (chargePower / maxCharge) + velBouns));
         //float mass = rb.mass/2;
         //float totaltForce = (launchForce * mass) + extraForce + velBouns;
         //rb.AddForce(shootPos.right * totaltForce, ForceMode2D.Impulse);
@@ -166,12 +169,12 @@ public class Cannon : MonoBehaviour
         TransferBlockToProjectile(clone);
 
 
-//        if (totaltForce > 15)
-  //          rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        //        if (totaltForce > 15)
+        //          rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
     private void TransferBlockToProjectile(GameObject obj)
     {
-        UpdateLoadImage(obj);      
+        UpdateLoadImage(obj);
 
         obj.GetComponent<BlockType>().SetState(BlockType.states.Projectile);
 
@@ -186,8 +189,8 @@ public class Cannon : MonoBehaviour
         if (obj.GetComponent<TrailRenderer>() != null)
             obj.GetComponent<TrailRenderer>().enabled = true;
 
-       // obj.layer = 2; //ignoreRayCast
-       // obj.tag = "Untagged";
+        // obj.layer = 2; //ignoreRayCast
+        // obj.tag = "Untagged";
     }
     private void UpdateLoadImage(GameObject newBlock)
     {

@@ -52,6 +52,7 @@ public class CannonHealth : MonoBehaviour
             currentHeatlh -= amount;
             StartCoroutine(FadeSprite(0.3f, 5));
             healthBar.UpdateFillAmount(currentHeatlh / startHealth);
+            
             if (playSound)
                 SoundManager.PlaySound(SoundManager.Sound.CannonHurtSound);
 
@@ -61,6 +62,26 @@ public class CannonHealth : MonoBehaviour
             }
         }
     }
+
+    public void TakeDmg(SoundManager.Sound sound, GameObject particle, float amount = 1)
+    {
+        if (canTakeDmg)
+        {
+            GameObject particleClone = Instantiate(particle, transform.position, particle.transform.rotation);
+            canTakeDmg = false;
+            currentHeatlh -= amount;
+            StartCoroutine(FadeSprite(0.3f, 5));
+            healthBar.UpdateFillAmount(currentHeatlh / startHealth);
+
+            SoundManager.PlaySound(sound);
+
+            if (currentHeatlh <= 0)
+            {
+                Death();
+            }
+        }
+    }
+
     IEnumerator FadeSprite(float delay, int amount)
     {
         float t = (delay / 2f);

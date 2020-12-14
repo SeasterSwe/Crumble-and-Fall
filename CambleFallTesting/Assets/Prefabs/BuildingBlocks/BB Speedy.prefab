@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6369240829330474524}
   - component: {fileID: 6369240829330474525}
   - component: {fileID: 8361624068037934464}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: BB Speedy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6369240829330474514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.141341, y: -2.1662745, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -237,7 +237,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.99, y: 0.99}
+  m_Size: {x: 0.95, y: 0.95}
   m_EdgeRadius: 0
 --- !u!50 &6369240829330474525
 Rigidbody2D:
@@ -257,7 +257,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: aa6c6c6c9cf694d42b24de858474dd50, type: 2}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &8361624068037934464
@@ -272,8 +272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3287316dcafc0c49859869ecc2715c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityMultiplier: 12
-  linearDrag: 0
+  velocityMultiplier: 7
+  linearDrag: 1
+  BlockMass: 3
+  projectileMass: 1
   projectileLayer:
     serializedVersion: 2
     m_Bits: 4
@@ -281,7 +283,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   type: 1
-  state: 0
+  state: 1
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0
