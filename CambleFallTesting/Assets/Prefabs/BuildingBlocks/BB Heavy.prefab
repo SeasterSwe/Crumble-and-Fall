@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2121244205791743170}
   m_Layer: 2
   m_Name: BB Heavy
-  m_TagString: Block
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
