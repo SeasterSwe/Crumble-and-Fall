@@ -199,9 +199,6 @@ public class Blockbuilder : MonoBehaviour
         spriteRenderer.color = blockColor;
 
         spriteRenderer.sprite = blockPreFab.GetComponent<SpriteRenderer>().sprite;
-
-
-
     }
 
 }
