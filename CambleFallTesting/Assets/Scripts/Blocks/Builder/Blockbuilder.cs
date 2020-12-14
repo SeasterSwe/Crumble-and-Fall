@@ -41,13 +41,12 @@ public class Blockbuilder : MonoBehaviour
     public float maxHeight = 10.0f;
     public float spriteAlpha = 0.5f;
 
+    private GameObject spawnParticle;
 
     private void Start()
     {
         SpawnAreaSize();
-
-        
-
+     
         spawnerObject = transform.Find("Spawner");
         spawnerPosition = spawnerObject.parent.position;
         //inventory = GetComponent<Inventory>();
@@ -59,6 +58,7 @@ public class Blockbuilder : MonoBehaviour
 
         blockPreFab = inventory.selectedBlock;
         AimChangeColor();
+        spawnParticle = (Resources.Load("Dust") as GameObject);
 
     }
 
@@ -160,9 +160,18 @@ public class Blockbuilder : MonoBehaviour
         {
             if (inventory.SelectedBlockIsInInventory())
             {
+                SoundManager.PlaySound(SoundManager.Sound.BuilderPlacementSound, spawnerPosition);
+
+                //vatenhöjd på localspawner
+                if (spawnerObject.localPosition.y >= -15f) { 
+                    GameObject dust = Instantiate(spawnParticle, spawnerObject.position, spawnParticle.transform.rotation);
+                }
+
                 GameObject newBlock = Instantiate(inventory.TakeActiveBlockFromInventory(), spawnerObject.position, Quaternion.identity);
                 newBlock.GetComponent<BlockType>().SetState(BlockType.states.Idle);
             }
+            else
+                SoundManager.PlaySound(SoundManager.Sound.CannonOutOfAmmo, spawnerPosition);
         }
     }
 

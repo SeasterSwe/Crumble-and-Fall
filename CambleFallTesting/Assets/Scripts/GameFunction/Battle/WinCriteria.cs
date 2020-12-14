@@ -10,8 +10,8 @@ public class WinCriteria : MonoBehaviour
     public CannonHealth hpPlOne;
     public CannonHealth hpPlTwo;
 
-    public ElevationCheck hightPlOne;
-    public ElevationCheck hightPlTwo;
+    //public ElevationCheck hightPlOne;
+    //public ElevationCheck hightPlTwo;
 
 
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class WinCriteria : MonoBehaviour
     {
         if (GameState.currentState == GameState.gameStates.Fight)
         {
-            if (hpPlOne.currentHeatlh <= 0 && hpPlOne.isActiveAndEnabled == true || hpPlTwo.currentHeatlh <= 0 && hpPlTwo.isActiveAndEnabled == true) // || hightPlOne.towerHight == 0 || hightPlTwo.towerHight == 0)
+            if (hpPlOne.currentHeatlh <= 0 && /*hpPlOne.isActiveAndEnabled == true*/ /*||*/ hpPlTwo.currentHeatlh <= 0) /*&&*/ /*hpPlTwo.isActiveAndEnabled == true*/ // || hightPlOne.towerHight == 0 || hightPlTwo.towerHight == 0)
             {
                 gS.StartGameOver(hpPlOne.currentHeatlh, hpPlTwo.currentHeatlh);
             }
