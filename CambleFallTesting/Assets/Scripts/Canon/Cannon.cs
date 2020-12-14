@@ -52,6 +52,7 @@ public class Cannon : MonoBehaviour
     void RobertsTestAim()
     {
         projectileFinalCharge = transform.localScale.x * (1 + 0.5f * (chargePower / maxCharge) + velBouns);
+
         aim.Aim();
     }
 
@@ -211,7 +212,6 @@ public class Cannon : MonoBehaviour
 
         // obj.layer = 2; //ignoreRayCast
         // obj.tag = "Untagged";
-        Time.timeScale = 0.25f;
     }
     private void UpdateLoadImage(GameObject newBlock)
     {
