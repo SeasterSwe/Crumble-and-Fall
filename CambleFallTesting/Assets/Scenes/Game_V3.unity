@@ -2395,7 +2395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: buildTime
-      value: 5
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: fightText
@@ -3620,7 +3620,7 @@ MonoBehaviour:
   generatorActive: 1
   timeBetweenGenerations: 5
   minBonus: 1
-  maxBonus: 2
+  maxBonus: 4
   bonus: 0
   inventory: {fileID: 116862144}
   currentBlock: 0
@@ -3642,7 +3642,7 @@ MonoBehaviour:
   generatorActive: 1
   timeBetweenGenerations: 5
   minBonus: 1
-  maxBonus: 2
+  maxBonus: 4
   bonus: 0
   inventory: {fileID: 1027877832}
   currentBlock: 0
