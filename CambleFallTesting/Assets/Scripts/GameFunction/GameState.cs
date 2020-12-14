@@ -30,9 +30,10 @@ public class GameState : MonoBehaviour
     [Header("TMP")]
     //TODO : Move to game over;
     public Canvas canvas;
-    public ElevationCheck hightOne;
-    public ElevationCheck hightTwo;
+    public CannonHealth canonOne;
+    public CannonHealth canonTwo;
     public GameOverUIMaster GameOverPreFab;
+
 
     public Ease easein;
     public Ease easeOut;
@@ -70,7 +71,9 @@ public class GameState : MonoBehaviour
 
             case gameStates.StartGameOver:
                 {
-                    StartGameOver(hightOne.towerHight, hightTwo.towerHight);
+                    StartGameOver(canonOne.currentHeatlh, canonTwo.currentHeatlh);
+
+                    
                 }
                 break;
             case gameStates.GameOver:
