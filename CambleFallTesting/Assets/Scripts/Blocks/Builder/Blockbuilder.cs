@@ -19,8 +19,12 @@ public class Blockbuilder : MonoBehaviour
     public float timeToNextStep;
     private Vector3 spawnerPosition;
     public Inventory inventory;
+    public Color aimColor;
+    public Color normalColor;
 
     public LayerMask buildLayer;
+
+    private SpriteRenderer spriteRenderer;
 
     //private Inventory inventory;
     public string pickButton = "VerticalPlayerOne";
@@ -42,12 +46,16 @@ public class Blockbuilder : MonoBehaviour
     {
         SpawnAreaSize();
 
+        
+
         spawnerObject = transform.Find("Spawner");
         spawnerPosition = spawnerObject.parent.position;
         //inventory = GetComponent<Inventory>();
         //blockPreFab;// = BlockList.GetARandomBlock();
 
         // chooseBlocks = BlockList.buildList;
+
+        spriteRenderer = spawnerObject.gameObject.GetComponent<SpriteRenderer>();
 
         blockPreFab = inventory.selectedBlock;
         AimChangeColor();
@@ -71,6 +79,7 @@ public class Blockbuilder : MonoBehaviour
         maxX = cornerPosition.x + size.x;
 
         Destroy(spawnArea);
+
     }
 
     private void Update()
@@ -90,6 +99,16 @@ public class Blockbuilder : MonoBehaviour
                 ToggleBetweenBlocks();
                 //AimChangeColor();
             }
+        }
+
+        if (inventory.SelectedBlockIsInInventory())
+        {
+            spriteRenderer.color = normalColor;
+        }
+
+        else
+        {
+            spriteRenderer.color = aimColor;
         }
 
     }
@@ -192,12 +211,6 @@ public class Blockbuilder : MonoBehaviour
     */
     public void AimChangeColor()
     {
-        var spriteRenderer = spawnerObject.gameObject.GetComponent<SpriteRenderer>();
-
-        Color blockColor = spriteRenderer.color;
-        blockColor.a = spriteAlpha;
-        spriteRenderer.color = blockColor;
-
         spriteRenderer.sprite = blockPreFab.GetComponent<SpriteRenderer>().sprite;
     }
 
