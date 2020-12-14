@@ -17,10 +17,13 @@ public class ClickSound : MonoBehaviour
 
     void PlaySound()
     {
-        soundPlay = Instantiate(gameObject.AddComponent<AudioSource>());
-        soundPlay.clip = sound;
-        soundPlay.playOnAwake = false;
-        soundPlay.PlayOneShot(sound);
-        DestroyObject(soundPlay, 0.5f);
+        if (GetComponent<Image>().color.a > 0.4f)
+        {
+            soundPlay = Instantiate(gameObject.AddComponent<AudioSource>());
+            soundPlay.clip = sound;
+            soundPlay.playOnAwake = false;
+            soundPlay.PlayOneShot(sound);
+            DestroyObject(soundPlay, 0.5f);
+        }
     }
 }
