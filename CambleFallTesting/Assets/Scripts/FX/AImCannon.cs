@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Cannon))]
 [RequireComponent(typeof(LineRenderer))]
 
-public class AImCannon : MonoBehaviour
+public class AimCannon : MonoBehaviour
 {
     private LineRenderer lineRenderer;
     private Cannon cannon;
