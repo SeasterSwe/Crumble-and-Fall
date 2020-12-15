@@ -1859,7 +1859,7 @@ PrefabInstance:
       objectReference: {fileID: 3105772690431258551, guid: 463d8207766087741a04e35bb3529bfa, type: 3}
     - target: {fileID: 7822398094458808286, guid: 9e9ba8119c86f4a4eaeb6ec6e037ca96, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7822398094458808288, guid: 9e9ba8119c86f4a4eaeb6ec6e037ca96, type: 3}
       propertyPath: inventory
@@ -2618,7 +2618,7 @@ PrefabInstance:
       objectReference: {fileID: 333823373}
     - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: RoundTime
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: buildText
@@ -5312,7 +5312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1651015161292966242, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1651015161292967577, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: m_RootOrder
