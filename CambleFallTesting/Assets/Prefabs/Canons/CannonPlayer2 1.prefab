@@ -31,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7822398094458808282}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.62, y: -13.333639, z: -2.4235113}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b6def02885dbc194d88d2b448930f63a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c649c75aa2bd31949b7e74a64a3d2f4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,14 +107,14 @@ MonoBehaviour:
   projectileFinalCharge: 0
   aim: {fileID: 0}
   degToTheLeft: 20
-  degToTheRight: 70
+  degToTheRight: 90
   fireRate: 1
   launchForce: 10
   shootButton: FirePlayerTwo
   rotationSpeed: 0.2
   timeToFullCharge: 2
   shootPos: {fileID: 8264167776511110629}
-  shootEffekt: {fileID: 0}
+  shootEffekt: {fileID: 4419148443464245188, guid: f1ddc869e886ca6479f86bf9b6d4f8e6, type: 3}
   inventory: {fileID: 0}
   chargeIsntStarted: 0
   bonunsRotationSpeed: 0
@@ -159,7 +159,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7822398094458808282}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -273,10 +273,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  startHealth: 8
+  startHealth: 12
   currentHeatlh: 0
   explotion: {fileID: 3105772690431258551, guid: d93879754766ac64d97185c5886a0c40, type: 3}
-  blinkColor: {r: 1, g: 1, b: 1, a: 0.44705883}
+  blinkColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0.3882353}
 --- !u!114 &7822398094458808285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8266152bb38faa448b50ccf8e2f4fec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportEffekt: {fileID: 0}
+  teleportEffekt: {fileID: 3105772690431258551, guid: 463d8207766087741a04e35bb3529bfa, type: 3}
 --- !u!114 &7822398094458808284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,7 +474,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 0f7bb7d51374e77479aa8abab568dbfb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c26393b523c95e04e9796773db7bb3b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -708,7 +708,7 @@ Transform:
   m_GameObject: {fileID: 8264167777875698208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.601, y: 0.101, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.4}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 7822398094458808290}
   m_RootOrder: 2
@@ -754,7 +754,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 027c30b10d9b25d4ebb6d776e1f77853, type: 3}
-  m_Color: {r: 0.3679245, g: 0.25444487, b: 0.15445887, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
