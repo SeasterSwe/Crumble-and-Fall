@@ -52,7 +52,6 @@ public class Cannon : MonoBehaviour
     void RobertsTestAim()
     {
         projectileFinalCharge = transform.localScale.x * (1 + 0.5f * (chargePower / maxCharge) + velBouns);
-
         aim.Aim();
     }
 
@@ -94,6 +93,17 @@ public class Cannon : MonoBehaviour
     Vector3 startPos = new Vector3();
     void Update()
     {
+        if (Input.GetButtonUp(shootButton))
+        {
+            aim.Disable();
+        }
+        if (Input.GetButtonDown(shootButton))
+        {
+            aim.Enable();
+        }
+
+
+
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             UpdateLoadImage(inventory.selectedBlock);
 

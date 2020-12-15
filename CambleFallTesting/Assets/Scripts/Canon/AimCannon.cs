@@ -24,6 +24,7 @@ public class AimCannon : MonoBehaviour
 
     public void Aim()
     {
+
         Rigidbody2D pRB = cannon.inventory.selectedBlock.GetComponent<Rigidbody2D>();
         Vector2 gravity = (Physics2D.gravity) * pRB.gravityScale;
         if (cannon.inventory.selectedBlock.GetComponent<BlockType>().type == BlockType.types.Fluffy)
@@ -46,4 +47,14 @@ public class AimCannon : MonoBehaviour
             lineRenderer.SetPosition(i, fakePos + fakeDir * stepLength + 0.5f * gravity * stepLength * stepLength);
         }
     }
+
+    public void Enable()
+    {
+        lineRenderer.forceRenderingOff = false;
+    }
+    public void Disable()
+    {
+        lineRenderer.forceRenderingOff = true;
+    }
+
 }
