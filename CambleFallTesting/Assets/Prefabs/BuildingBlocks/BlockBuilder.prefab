@@ -52,8 +52,12 @@ MonoBehaviour:
   timeBetweenStep: 0.25
   timeToNextStep: 0
   inventory: {fileID: 0}
+  aimColor: {r: 0, g: 0, b: 0, a: 0}
+  normalColor: {r: 0, g: 0, b: 0, a: 0}
+  buildLayer:
+    serializedVersion: 2
+    m_Bits: 0
   pickButton: VerticalPlayerOne
-  scaleSize: 1.4
   selectEase: 0
   unEase: 0
   maxHeight: 10
@@ -149,6 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8305307302421642151}
   - component: {fileID: 4039127774304344751}
+  - component: {fileID: 8531396836184288375}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -221,3 +226,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8531396836184288375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305307302421642150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94fb1ec71c2e3454aa9eb1b9f9c40449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aim: {fileID: 8305307302421642151}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0

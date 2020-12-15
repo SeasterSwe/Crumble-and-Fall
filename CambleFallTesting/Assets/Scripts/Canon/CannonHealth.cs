@@ -61,6 +61,7 @@ public class CannonHealth : MonoBehaviour
                 Death();
             }
         }
+        GetComponent<CannonMovement>().movePos();
     }
 
     public void TakeDmg(SoundManager.Sound sound, GameObject particle, float amount = 1)

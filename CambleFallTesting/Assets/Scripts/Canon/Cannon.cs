@@ -11,7 +11,7 @@ public class Cannon : MonoBehaviour
 
     //Test for aim //Robert
     public float projectileFinalCharge;
-    public AImCannon aim;
+    public AimCannon aim;
     //End Test
     public float degToTheLeft;
     public float degToTheRight;
@@ -75,7 +75,7 @@ public class Cannon : MonoBehaviour
         UpdateLoadImage(inventory.selectedBlock);
 
         //Test : Roberts Test
-        aim = GetComponent<AImCannon>();
+        aim = GetComponent<AimCannon>();
     }
     void SetAnglePoints()
     {
@@ -139,6 +139,11 @@ public class Cannon : MonoBehaviour
             nextFire = 0;
             if (Time.timeScale != 0)
             {
+                if (BlockType.IsThisAFluffy(inventory.selectedBlock))
+                {
+                    StartCoroutine(Burst());
+                }
+
                 ShootBlock(chargePower);
                 GameObject particleEffekt = Instantiate(shootEffekt, shootPos.position - (shootPos.right * 0.5f), shootPos.rotation * Quaternion.Euler(0, particleRotation, 0));
             }
@@ -176,8 +181,19 @@ public class Cannon : MonoBehaviour
             lerpVal = 0;
         }
     }
+
+ 
+    IEnumerator Burst()
+    {
+        yield return new WaitForSeconds(0.1f);
+        ShootBlock(0);
+        yield return new WaitForSeconds(0.1f);
+        ShootBlock(0);
+    }
     void ShootBlock(float extraForce = 0)
     {
+      
+
         RobertsTestAim();
         GameObject clone = Instantiate(inventory.TakeActiveBlockFromInventory(), shootPos.position, shootPos.rotation);
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();

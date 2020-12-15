@@ -11,6 +11,9 @@ public class CannonMovement : MonoBehaviour
     public GameObject teleportEffekt;
 
     Transform target;
+
+    float time = 5;
+    
     //public bool targetYeeted = false;
 
     private void Start()
@@ -20,7 +23,16 @@ public class CannonMovement : MonoBehaviour
         StartCoroutine(MinHjärnaDog());
         elevationCheck = FindClosetElevationCheck.GetClosets(gameObject);
     }
-    void Update()
+
+    private void Update()
+    {
+        time -= Time.deltaTime;
+        if(time < 0)
+        {
+            movePos(); 
+        }
+    }
+    public void movePos()
     {
         if (elevationCheck.highestBlock.gameObject != null)
         {

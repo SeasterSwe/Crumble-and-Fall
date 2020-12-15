@@ -15,8 +15,6 @@ public class GameState : MonoBehaviour
     public TextMeshProUGUI uiGameTimeText;
     public TextMeshProUGUI uiGameStateText;
 
-
-
     [Header("BuildMode")]
     public string buildText = "Build time left ";
     public float buildTime = 30;
