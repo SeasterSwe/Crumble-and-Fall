@@ -11,19 +11,22 @@ public class PowerUpUi : MonoBehaviour
     public float distDown = 10;
 
     public CannonHeightBonuses cannonHeightBonuses;
-  
+
     public GenerateBlockToInventoryOverTime generateBlock;
 
     private void Awake()
     {
-        CannonHeightBonuses[] c = Object.FindObjectsOfType<CannonHeightBonuses>();
-        //print(c.Length);
-        foreach (CannonHeightBonuses a in c)
+        if (cannonHeightBonuses == null)
         {
-            if (a.transform.position.x < 0 && GetComponent<RectTransform>().position.x < 0)
-                cannonHeightBonuses = a;
-            else
-                cannonHeightBonuses = a;
+            CannonHeightBonuses[] c = Object.FindObjectsOfType<CannonHeightBonuses>();
+            //print(c.Length);
+            foreach (CannonHeightBonuses a in c)
+            {
+                if (a.transform.position.x < 0 && GetComponent<RectTransform>().position.x < 0)
+                    cannonHeightBonuses = a;
+                else
+                    cannonHeightBonuses = a;
+            }
         }
     }
     void Start()

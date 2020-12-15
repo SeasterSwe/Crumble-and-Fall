@@ -47,18 +47,25 @@ MonoBehaviour:
   soundAudioClipArray:
   - sound: 0
     audioClip: {fileID: 8300000, guid: 3ec3ea2ee2ea3a946903f858a815c0f2, type: 3}
+    output: {fileID: 0}
   - sound: 1
     audioClip: {fileID: 8300000, guid: 9e19b16c0e808454284e9741905719ca, type: 3}
+    output: {fileID: 0}
   - sound: 2
     audioClip: {fileID: 8300000, guid: 5306be5bc29722443812e34d91d59c6f, type: 3}
+    output: {fileID: 0}
   - sound: 3
     audioClip: {fileID: 8300000, guid: 94e0f171658737b4593d7175568f9201, type: 3}
+    output: {fileID: 0}
   - sound: 4
     audioClip: {fileID: 8300000, guid: 199e77bf48bf8824ea39712b4dbaf9c1, type: 3}
+    output: {fileID: 0}
   - sound: 6
     audioClip: {fileID: 8300000, guid: bf4147c29dfd35c4fb695bb2fe596748, type: 3}
+    output: {fileID: 0}
   - sound: 5
     audioClip: {fileID: 8300000, guid: ea40eb9ae1cf17a4e859b57f6742b61c, type: 3}
+    output: {fileID: 0}
 --- !u!82 &8687681484481766459
 AudioSource:
   m_ObjectHideFlags: 0

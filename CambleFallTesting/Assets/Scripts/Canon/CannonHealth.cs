@@ -22,7 +22,8 @@ public class CannonHealth : MonoBehaviour
         sprites.Add(GetComponent<SpriteRenderer>());
 
         originalColors = sprites[0].color;
-        currentHeatlh = startHealth;
+        currentHeatlh = GameStats.cannonStartHealth;
+        startHealth = GameStats.cannonStartHealth;
     }
     bool canTakeDmg = true;
     public void TakeDmg(float amount = 1, bool playSound = true)

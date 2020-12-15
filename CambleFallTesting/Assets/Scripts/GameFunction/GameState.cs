@@ -41,7 +41,7 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buildTimeLeft = buildTime;
+        buildTimeLeft = GameStats.buildTime;
         currentState = gameStates.Build;
     }
 
@@ -131,7 +131,7 @@ public class GameState : MonoBehaviour
     {
         StartCoroutine(FightTextDisapear(3));
         uiGameStateText.text = fightText;
-        roundTimeLeft = RoundTime;
+        roundTimeLeft = GameStats.fightTime;
         TogglegameStatesForward();
     }
     IEnumerator FightTextDisapear(float t)
