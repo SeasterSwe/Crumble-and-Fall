@@ -11,7 +11,7 @@ public class Cannon : MonoBehaviour
 
     //Test for aim //Robert
     public float projectileFinalCharge;
-    public AImCannon aim;
+    public AimCannon aim;
     //End Test
     public float degToTheLeft;
     public float degToTheRight;
@@ -75,7 +75,7 @@ public class Cannon : MonoBehaviour
         UpdateLoadImage(inventory.selectedBlock);
 
         //Test : Roberts Test
-        aim = GetComponent<AImCannon>();
+        aim = GetComponent<AimCannon>();
     }
     void SetAnglePoints()
     {

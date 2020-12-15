@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7822398094458808283}
   - component: {fileID: 7822398094458808285}
   - component: {fileID: 7822398094458808284}
+  - component: {fileID: 3420665259171832979}
   m_Layer: 10
   m_Name: CannonPlayer2 1
   m_TagString: Player
@@ -103,6 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad544fbf2aaaec94993ee6124839bb46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileFinalCharge: 0
+  aim: {fileID: 0}
   degToTheLeft: 20
   degToTheRight: 70
   fireRate: 1
@@ -295,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8266152bb38faa448b50ccf8e2f4fec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoke: {fileID: 0}
+  teleportEffekt: {fileID: 0}
 --- !u!114 &7822398094458808284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +317,19 @@ MonoBehaviour:
   currentVelBouns: 0
   currentRotaionBonus: 0
   blockBuilder: {fileID: 0}
+--- !u!114 &3420665259171832979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7822398094458808282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd45bda9e709dbf4c86acc5ccd389a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  segmentStep: 0.1
 --- !u!1 &8264167776321599249
 GameObject:
   m_ObjectHideFlags: 0
