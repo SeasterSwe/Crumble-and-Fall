@@ -93,14 +93,16 @@ public class Cannon : MonoBehaviour
     Vector3 startPos = new Vector3();
     void Update()
     {
+        /*
         if (Input.GetButtonUp(shootButton))
         {
             aim.Disable();
         }
         if (Input.GetButtonDown(shootButton))
         {
+        */
             aim.Enable();
-        }
+        //}
 
 
 
@@ -123,7 +125,7 @@ public class Cannon : MonoBehaviour
 
         loadBar.UpdateFillAmount(nextFire / time);
         //holdCharge
-        if (Input.GetButton(shootButton) && nextFire > time)
+        if (nextFire > time)
         {
             holdTimer += Time.deltaTime;
             if (chargeIsntStarted)
@@ -141,7 +143,7 @@ public class Cannon : MonoBehaviour
         }
 
         //Shoot      
-        if (Input.GetButtonUp(shootButton) && nextFire > time)
+        if (Input.GetButtonDown(shootButton) && nextFire > time)
         {
             
             holdTimer = 0;
