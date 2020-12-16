@@ -1704,10 +1704,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f75e2f8b17f724796a4caac4904c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildTime: 16
+  buildTime: 45
   cannonHealth: 10
-  fightTime: 120
-  startBlocks: 30
+  fightTime: 140
+  startBlocks: 20
 --- !u!114 &1328410959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2101,9 +2101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Chaos
-
-'
+  m_text: Pro Builder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2512,10 +2510,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f75e2f8b17f724796a4caac4904c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildTime: 15
+  buildTime: 10
   cannonHealth: 6
   fightTime: 60
-  startBlocks: 6
+  startBlocks: 7
 --- !u!114 &1934180360
 MonoBehaviour:
   m_ObjectHideFlags: 0
