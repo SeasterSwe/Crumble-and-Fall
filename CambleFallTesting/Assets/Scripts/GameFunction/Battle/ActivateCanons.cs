@@ -44,7 +44,6 @@ public class ActivateCanons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (GameState.currentState == GameState.gameStates.StartFight)
         {
             cannonPlOne.SetActive(true);

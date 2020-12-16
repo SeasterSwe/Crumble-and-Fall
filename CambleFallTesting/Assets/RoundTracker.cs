@@ -10,36 +10,28 @@ public class RoundTracker : MonoBehaviour
     private int winsLeft;
     private int winsRight;
 
-    public static RoundTracker instance; 
+    public static RoundTracker instance;
 
     void Start()
     {
         if (instance == null)
         {
-            instance = this; 
+            instance = this;
             DontDestroyOnLoad(gameObject);
             roundsToWin = Mathf.FloorToInt((totalRounds / 2f) + 1);
         }
         else
         {
-            Destroy(gameObject);  
+            Destroy(gameObject);
         }
     }
-
-    //public void CheckWhoWon()
-    //{
-    //    if (winsLeft >= roundsToWin)
-    //        Debug.Log("LeftWins");
-    //    if (winsRight >= roundsToWin)
-    //        Debug.Log("RightWins");            
-    //}
     public bool CheckIfWin()
     {
         if (winsLeft >= roundsToWin)
             return true;
         else if (winsRight >= roundsToWin)
             return true;
-        else     
+        else
             return false;
     }
 
@@ -47,16 +39,37 @@ public class RoundTracker : MonoBehaviour
     {
         winsLeft++;
         if (CheckIfWin())
-            Debug.Log("LeftWon");
+            ChangeScene();
         else
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameObject.FindGameObjectWithTag("GameSceneManager").GetComponent<GameSceneManager>().ChangeScene(SceneManager.GetActiveScene().name);
     }
     public void RightWin()
     {
         winsRight++;
         if (CheckIfWin())
-            Debug.Log("RightWon");
+            ChangeScene();
         else
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameObject.FindGameObjectWithTag("GameSceneManager").GetComponent<GameSceneManager>().ChangeScene(SceneManager.GetActiveScene().name);
+    }
+
+    void ChangeScene()
+    {
+       GameObject.FindGameObjectWithTag("GameSceneManager").GetComponent<GameSceneManager>().ChangeScene("GameOver");
+    }
+
+    public void ActivateAnimations()
+    {
+        Transform[] animations = GameObject.FindGameObjectWithTag("GameOverAnimations").GetComponentsInChildren<Transform>();
+        print(animations.Length);
+        if (winsLeft > winsRight)
+        {
+            animations[1].gameObject.SetActive(false);
+            animations[4].gameObject.SetActive(false);
+        }
+        if (winsLeft < winsRight)
+        {
+            animations[2].gameObject.SetActive(false);
+            animations[3].gameObject.SetActive(false);
+        }
     }
 }
