@@ -7,11 +7,13 @@ public class BlockTypeSpeedy : BlockType
     [Header("Speedy Settings")]
     public GameObject fragment;
     public float minForceToBreak = 10;
+
     [Header("SpeedyProjectile Settings")]
     public float scatterForce = 5;
 
     private Vector2 normal;
     private Vector3 lastPos;
+
 
     protected override void OnHitEnter(Collision2D collision)
     {

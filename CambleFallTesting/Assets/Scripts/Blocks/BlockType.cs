@@ -16,7 +16,7 @@ public class BlockType : MonoBehaviour
 
     public LayerMask projectileLayer;
     public LayerMask blockLayer;
-    //public string category = "Red";
+
     public enum types { Fluffy, Speedy, Heavy }
     public types type;
 
@@ -24,15 +24,15 @@ public class BlockType : MonoBehaviour
     public states state = states.Idle;
 
     public Inventory inventory;
-    
+
     private SpriteRenderer spRenderer;
     private Vector2 lowerLeftCorner;
 
     public int playerteam = 1;
-    public bool hitThisFrame;
 
     Rigidbody2D rb;
 
+    public bool hitThisFrame;
 
     // Start is called before the first frame update
     private void Start()
@@ -43,10 +43,10 @@ public class BlockType : MonoBehaviour
         GetPlayerTeam();
         GetInvetory();
 
-    //BlockManager.AddBlockToList(gameObject);
-}
+        //BlockManager.AddBlockToList(gameObject);
+    }
 
-public void SetProjectileSpeed(Vector3 dir)
+    public void SetProjectileSpeed(Vector3 dir)
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = dir * velocityMultiplier;
     }
@@ -92,21 +92,12 @@ public void SetProjectileSpeed(Vector3 dir)
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*
-        //TEST :
-        if (state == states.Projectile)
-        {
-            GetComponent<Rigidbody2D>().velocity *= 0.0f;
-            print("NoSpeed");
-        }
-        //End TEST
-        */
-
         OnHitEnter(collision);
+        print(collision.relativeVelocity.magnitude);
     }
     protected virtual void OnHitEnter(Collision2D collision)
     {
-       
+
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<CannonHealth>().TakeDmg();
@@ -119,8 +110,8 @@ public void SetProjectileSpeed(Vector3 dir)
     {
         spRenderer.sortingOrder = (int)(transform.position.x - lowerLeftCorner.x + transform.position.y - lowerLeftCorner.y);
         UpdateEachFrame();
-        
-        if(state == states.Projectile)
+
+        if (state == states.Projectile)
         {
             if (rb.velocity.x > 0)
             {
@@ -131,17 +122,14 @@ public void SetProjectileSpeed(Vector3 dir)
                 transform.right = rb.velocity * -1;
                 gameObject.GetComponent<SpriteRenderer>().flipX = true;
             }
-
-            //float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg; //quickmath
-            //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 
     private void FixedUpdate()
     {
-        if(state == states.Idle || state == states.Worried)
+        if (state == states.Idle || state == states.Worried)
         {
-            if(rb.velocity.sqrMagnitude > 0.5f)
+            if (rb.velocity.sqrMagnitude > 0.5f)
             {
                 SetState(states.Worried);
             }
@@ -150,9 +138,6 @@ public void SetProjectileSpeed(Vector3 dir)
                 SetState(states.Idle);
             }
         }
-
-        
-
 
         hitThisFrame = false;
     }
@@ -233,7 +218,7 @@ public void SetProjectileSpeed(Vector3 dir)
         bool exitToIdle = false;
         while (!exitToIdle)
         {
-            if(rb.velocity.sqrMagnitude < mag*mag)
+            if (rb.velocity.sqrMagnitude < mag * mag)
             {
                 SetState(states.Idle);
                 exitToIdle = true;
