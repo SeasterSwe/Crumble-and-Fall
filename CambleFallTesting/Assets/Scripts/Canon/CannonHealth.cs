@@ -109,7 +109,7 @@ public class CannonHealth : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         GameObject exp = Instantiate(explotion, transform.position, explotion.transform.rotation);
         Destroy(gameObject);
-        print(gameObject.name + " Lost");
+        GameState.TogglegameStatesForward();
 
     }
 }
