@@ -41,7 +41,7 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buildTimeLeft = buildTime;
+        buildTimeLeft = GameStats.buildTime;
         currentState = gameStates.Build;
     }
 
@@ -131,7 +131,7 @@ public class GameState : MonoBehaviour
     {
         StartCoroutine(FightTextDisapear(3));
         uiGameStateText.text = fightText;
-        roundTimeLeft = RoundTime;
+        roundTimeLeft = GameStats.fightTime;
         TogglegameStatesForward();
     }
     IEnumerator FightTextDisapear(float t)
@@ -167,10 +167,25 @@ public class GameState : MonoBehaviour
             //switchStateTo(gameStates.StartGameOver);
         }
     }
-
     public void StartGameOver(float scoreOne, float scoreTwo)
     {
-        Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
+        //Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
+        if (scoreOne > scoreTwo)
+            GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>().LeftWin();
+        else if(scoreOne < scoreTwo)
+            GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>().RightWin();
+        else
+        {
+            if(scoreOne != 0)
+            {
+                roundTimeLeft += 30f;
+                switchStateTo(gameStates.Fight);
+                return;
+            }
+            else
+               Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
+        }
+
         switchStateTo(gameStates.GameOver);
         print("StartGameOver");
     }

@@ -22,7 +22,8 @@ public class CannonHealth : MonoBehaviour
         sprites.Add(GetComponent<SpriteRenderer>());
 
         originalColors = sprites[0].color;
-        currentHeatlh = startHealth;
+        currentHeatlh = GameStats.cannonStartHealth;
+        startHealth = GameStats.cannonStartHealth;
     }
     bool canTakeDmg = true;
     public void TakeDmg(float amount = 1, bool playSound = true)
@@ -108,7 +109,7 @@ public class CannonHealth : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         GameObject exp = Instantiate(explotion, transform.position, explotion.transform.rotation);
         Destroy(gameObject);
-        print(gameObject.name + " Lost");
+        GameState.TogglegameStatesForward();
 
     }
 }
