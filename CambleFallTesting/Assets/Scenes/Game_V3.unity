@@ -2663,7 +2663,7 @@ PrefabInstance:
       objectReference: {fileID: 333823373}
     - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: RoundTime
-      value: 50
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: buildText
@@ -2671,7 +2671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: buildTime
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
       propertyPath: fightText
