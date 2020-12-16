@@ -12,10 +12,12 @@ public class CannonMovement : MonoBehaviour
 
     Transform target;
     //public bool targetYeeted = false;
+    private Animator animator;
 
     private void Start()
     {
         cannonObj = this.gameObject;
+        animator = GetComponent<Animator>();
         cannon = cannonObj.GetComponent<Cannon>();
         StartCoroutine(MinHjärnaDog());
         elevationCheck = FindClosetElevationCheck.GetClosets(gameObject);
@@ -51,6 +53,7 @@ public class CannonMovement : MonoBehaviour
             else
                 target = elevationCheck.highestBlock.gameObject.transform;
 
+            animator.SetFloat("Velocity", target.GetComponent<Rigidbody2D>().velocity.magnitude);
             cannonObj.transform.position = target.position + Vector3.up + (Vector3.up * cannon.extraYval());
         }
     }

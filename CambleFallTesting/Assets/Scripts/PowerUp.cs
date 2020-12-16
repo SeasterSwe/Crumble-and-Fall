@@ -16,7 +16,7 @@ public class PowerUp : MonoBehaviour
     {
         GetHeightPercentage();
 
-        if (heightPercantage > powerUpActivate)
+        if (GameState.currentState == GameState.gameStates.Fight)
         {
             GetComponent<Image>().enabled = true; 
             if (transform.GetChild(0) != null)

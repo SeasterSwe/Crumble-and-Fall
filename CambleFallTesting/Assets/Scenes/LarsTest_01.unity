@@ -519,7 +519,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4b398518a7b257848a67c715d08b4eaa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 12.29, y: 10.78}
@@ -1845,6 +1845,10 @@ PrefabInstance:
     - target: {fileID: 3927874108970597586, guid: b55e06c9544dc904a8ea668ddb7c79b5, type: 3}
       propertyPath: m_Name
       value: Image
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927874108970597586, guid: b55e06c9544dc904a8ea668ddb7c79b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3927874108970597587, guid: b55e06c9544dc904a8ea668ddb7c79b5, type: 3}
       propertyPath: m_Pivot.x
