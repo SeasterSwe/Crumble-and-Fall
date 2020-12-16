@@ -32,7 +32,12 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
+        numberOfFluffys = GameStats.startBlocks;
+        numberOfHeavys = GameStats.startBlocks;
+        numberOfSpeedys = GameStats.startBlocks;
+
         selectedBlock = heavyBlock;
+        UpdateUiText();
     }
 
     public GameObject TakeActiveBlockFromInventory()

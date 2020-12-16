@@ -3656,6 +3656,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1651015161292967578, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
   m_PrefabInstance: {fileID: 1384714315}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &938368512 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1651015161292967580, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
+  m_PrefabInstance: {fileID: 1384714315}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938368510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82951ab3411f01b4eb8c5a1efaeb5b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &938368513 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1651015161292967579, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
@@ -4817,7 +4828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icons: []
   distDown: 40
-  cannonHeightBonuses: {fileID: 0}
+  cannonHeightBonuses: {fileID: 938368512}
   generateBlock: {fileID: 989414128}
 --- !u!1 &1273417752 stripped
 GameObject:
