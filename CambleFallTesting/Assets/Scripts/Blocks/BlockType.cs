@@ -34,6 +34,8 @@ public class BlockType : MonoBehaviour
 
     public bool hitThisFrame;
 
+
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -97,6 +99,21 @@ public class BlockType : MonoBehaviour
     }
     protected virtual void OnHitEnter(Collision2D collision)
     {
+        if (state == states.Projectile)
+        {
+            BlockFX blockFX = GetComponent<BlockFX>();
+            if (blockFX != null)
+            {
+                Vector2 point = Vector2.zero;
+                Vector2 norm = Vector2.zero;
+                foreach (ContactPoint2D hit in collision.contacts)
+                {
+                    point += hit.point;
+                    norm += hit.normal;
+                }
+                blockFX.SpawnFX(point, norm);
+            }
+        }
 
         if (collision.gameObject.CompareTag("Player"))
         {

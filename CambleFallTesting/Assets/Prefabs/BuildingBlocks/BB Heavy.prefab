@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6369240829330474525}
   - component: {fileID: 1614449001440131710}
   - component: {fileID: 2121244205791743170}
+  - component: {fileID: 2851688538815568519}
   m_Layer: 2
   m_Name: BB Heavy
   m_TagString: Untagged
@@ -287,3 +288,16 @@ MonoBehaviour:
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0
+--- !u!114 &2851688538815568519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369240829330474514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74eed7d8d7057b345a646efd94beeebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FXpreFab: {fileID: 7915189286833707435, guid: 2f3751ffe9a47574b84a9251b0ea145f, type: 3}
