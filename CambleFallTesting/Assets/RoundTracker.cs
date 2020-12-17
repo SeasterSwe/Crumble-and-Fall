@@ -44,25 +44,23 @@ public class RoundTracker : MonoBehaviour
             return false;
     }
 
+    public bool leftPlayerWon;
+
     public void LeftWin()
     {
-        wins[winsLeft + winsRight] = 1;
+        wins[winsLeft] = 1;
         winsLeft++;
-
-        if (CheckIfWin())
-            ChangeScene();
-        else
-            GameObject.FindGameObjectWithTag("GameSceneManager").GetComponent<GameSceneManager>().ChangeScene(SceneManager.GetActiveScene().name);
+        leftPlayerWon = true;
+        
+        ChangeScene();
     }
     public void RightWin()
     {
-        wins[winsLeft + winsRight] = 2;
+        wins[(totalRounds - 1) - winsRight] = 2;
         winsRight++;
+        leftPlayerWon = false;
 
-        if (CheckIfWin())
-            ChangeScene();
-        else
-            GameObject.FindGameObjectWithTag("GameSceneManager").GetComponent<GameSceneManager>().ChangeScene(SceneManager.GetActiveScene().name);
+        ChangeScene();
     }
 
     void ChangeScene()
@@ -73,13 +71,12 @@ public class RoundTracker : MonoBehaviour
     public void ActivateAnimations()
     {
         Transform[] animations = GameObject.FindGameObjectWithTag("GameOverAnimations").GetComponentsInChildren<Transform>();
-        print(animations.Length);
-        if (winsLeft > winsRight)
+        if (leftPlayerWon == true)
         {
             animations[1].gameObject.SetActive(false);
             animations[4].gameObject.SetActive(false);
         }
-        if (winsLeft < winsRight)
+        if (leftPlayerWon == false)
         {
             animations[2].gameObject.SetActive(false);
             animations[3].gameObject.SetActive(false);
@@ -113,7 +110,7 @@ public class RoundTracker : MonoBehaviour
     }
 
 
-    private void ResetStats()
+    public void ResetStats()
     {
         wins = new int[totalRounds];
         winsLeft = 0;

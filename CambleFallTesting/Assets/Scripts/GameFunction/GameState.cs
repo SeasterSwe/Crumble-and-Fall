@@ -17,12 +17,12 @@ public class GameState : MonoBehaviour
 
     [Header("BuildMode")]
     public string buildText = "Build time left ";
-    public float buildTime = 30;
+    private float buildTime = 30;
     private float buildTimeLeft;
 
     [Header("Fight")]
     public string fightText = "FIGHT";
-    public float RoundTime = 60;
+    private float RoundTime = 60;
     private float roundTimeLeft;
 
     [Header("TMP")]
@@ -31,7 +31,7 @@ public class GameState : MonoBehaviour
     public CannonHealth canonOne;
     public CannonHealth canonTwo;
     public GameOverUIMaster GameOverPreFab;
-
+    public GameObject startParticle;
 
     public Ease easein;
     public Ease easeOut;
@@ -56,6 +56,8 @@ public class GameState : MonoBehaviour
             yield return null;
         }
         yield return new WaitForEndOfFrame();
+        Instantiate(startParticle, Vector3.up * -9.8f, startParticle.transform.rotation);
+        StartCoroutine(FightTextDisapear(5));
         buildTimeLeft = GameStats.buildTime;
         currentState = gameStates.Build;
     }
@@ -139,29 +141,34 @@ public class GameState : MonoBehaviour
     //STARTFIGHT
     void StartFight()
     {
-        StartCoroutine(FightTextDisapear(3));
+        Color color = uiGameStateText.color;
+        color.a = 1f;
+        uiGameStateText.rectTransform.DOScale(Vector3.one * 7f, 0.1f);
+        uiGameStateText.DOColor(color, 0.1f);
+        
+        StartCoroutine(FightTextDisapear(5));
         uiGameStateText.text = fightText;
         roundTimeLeft = GameStats.fightTime;
         TogglegameStatesForward();
     }
     IEnumerator FightTextDisapear(float t)
     {
-        Scale(0.8f);
+        Scale(2f);
         yield return new WaitForSeconds(t);
         uiGameStateText.text = null;
     }
     void Scale(float t)
     {
-        Vector3 scale = uiGameStateText.rectTransform.localScale;
-        uiGameStateText.rectTransform.DOScale(scale + Vector3.one * 0.4f, t).OnComplete(ScaleBack);
+        //Vector3 scale = uiGameStateText.rectTransform.localScale;
+        uiGameStateText.rectTransform.DOScale(Vector3.one * 7f, t).OnComplete(ScaleBack);
     }
 
     void ScaleBack()
     {
         Color color = uiGameStateText.color;
         color.a = 0f;
-        uiGameStateText.DOColor(color, 2.2f);
-        uiGameStateText.rectTransform.DOScale(Vector3.one * 3.184851f, 2.2f);
+        uiGameStateText.DOColor(color, 1f);
+        uiGameStateText.rectTransform.DOScale(Vector3.one, 1f);
     }
 
     //FIGHTING

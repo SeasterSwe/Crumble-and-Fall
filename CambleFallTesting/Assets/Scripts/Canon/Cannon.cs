@@ -181,6 +181,9 @@ public class Cannon : MonoBehaviour
     float lerpVal = 0;
     void RotateCannon(float rotationSpeed)
     {
+        if (GameState.currentState != GameState.gameStates.Fight && GameState.currentState != GameState.gameStates.SuddenDeath)
+            return;
+
         lerpVal += Time.deltaTime * rotationSpeed;
         cannonPipe.localEulerAngles = Vector3.Lerp(point1, point2, lerpVal);
 

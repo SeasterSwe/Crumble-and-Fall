@@ -42,7 +42,7 @@ public class CannonHeightBonuses : MonoBehaviour
             currentHeight = elevationCheck.towerHight;
 
             currentVelBouns = currentHeight / maxHeight;/*Mathf.Clamp(Mathf.Round(currentHeight/maxHeight), 0f, maxVelBouns);*/
-            cannon.velBouns = currentVelBouns;
+            cannon.velBouns = currentVelBouns; 
 
             currentRotaionBonus = Mathf.Clamp(bonusRotationSpeedPerBlock * currentHeight, 0, maxRotationSpeed);
             cannon.bonunsRotationSpeed = currentRotaionBonus;
