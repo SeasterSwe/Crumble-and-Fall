@@ -91,6 +91,7 @@ public class GameState : MonoBehaviour
                     StartSuddenDeath();
                 }
                 break;
+
             case gameStates.SuddenDeath:
                 {
                     SuddenDeath(canonOne.currentHeatlh, canonTwo.currentHeatlh);
@@ -307,6 +308,12 @@ public class GameState : MonoBehaviour
                     currentState = gameStates.Fight;
                 }
                 break;
+            case gameStates.StartSuddenDeath:
+                {
+                    currentState = gameStates.StartSuddenDeath;
+                }
+                break;
+
             case gameStates.SuddenDeath:
                 {
                     currentState = gameStates.SuddenDeath;
