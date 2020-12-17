@@ -186,7 +186,7 @@ public class GameState : MonoBehaviour
 
     public void SuddenDeath(float scoreOne, float scoreTwo)
     {
-        if(scoreOne != scoreTwo)
+        if(scoreOne != scoreTwo || scoreOne == 0 && scoreTwo == 0)
         {
             Debug.Log("Print Exit Sudden Death");
             TogglegameStatesForward(); 
@@ -196,31 +196,20 @@ public class GameState : MonoBehaviour
     public void StartGameOver(float scoreOne, float scoreTwo)
     {
         //Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
-        if(scoreOne == scoreTwo)
-        {
-            switchStateTo(gameStates.StartSuddenDeath);
-            return;
-
-        }else if (scoreOne > scoreTwo)
+        if (scoreOne > scoreTwo)
             GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>().LeftWin();
         else if (scoreOne < scoreTwo)
             GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>().RightWin();
-
-        /*
-        else
+        else if(scoreOne == 0 && scoreTwo == 0)
         {
-            
-            if (scoreOne != 0)
-            {
-                roundTimeLeft += 30f;
-                switchStateTo(gameStates.Fight);
-                return;
-            }
-            else
+            //Draw
                 Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
+        }else if(scoreOne == scoreTwo )
+        {
+            switchStateTo(gameStates.StartSuddenDeath);
+            return;
         }
-            */
-
+        
         switchStateTo(gameStates.GameOver);
         print("StartGameOver");
     }
