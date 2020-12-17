@@ -2315,7 +2315,7 @@ PrefabInstance:
       objectReference: {fileID: 1027877832}
     - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: maxHeight
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: aimColor.a
@@ -8012,7 +8012,7 @@ PrefabInstance:
       objectReference: {fileID: 116862144}
     - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: maxHeight
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 193178457106989711, guid: 9d30111814877e646b559b8ce77456af, type: 3}
       propertyPath: aimColor.a
