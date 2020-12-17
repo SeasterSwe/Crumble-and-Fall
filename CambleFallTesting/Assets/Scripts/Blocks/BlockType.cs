@@ -34,6 +34,8 @@ public class BlockType : MonoBehaviour
     public GameObject particle;
     public bool hitThisFrame;
 
+
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -103,6 +105,7 @@ public class BlockType : MonoBehaviour
             var contactPoint = collision.GetContact(0).point;
             GameObject particleClone = Instantiate(particle, contactPoint, particle.transform.rotation);
         }
+
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<CannonHealth>().TakeDmg();
