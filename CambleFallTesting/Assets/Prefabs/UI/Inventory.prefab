@@ -376,7 +376,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 128, y: 128}
+  m_SizeDelta: {x: 92, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5718378696479276495
 CanvasRenderer:
@@ -586,7 +586,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 128, y: 128}
+  m_SizeDelta: {x: 92, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7323350022062603002
 CanvasRenderer:
@@ -662,7 +662,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 128, y: 128}
+  m_SizeDelta: {x: 92, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6513300462739696758
 CanvasRenderer:
@@ -754,7 +754,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c4e826605266143a453cd0ac2ddaad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedScale: 1.2
+  scrollSpeed: 5
+  highPoint: {x: 0, y: 0}
+  spaceBetweenIcons: {x: 0, y: 0}
+  uiInvNumberOffsett: {x: 1, y: 1, z: 1}
+  selectedScale: 1.5
   selectedBlock: {fileID: 0}
   numberOfSpeedys: 10
   numberOfHeavys: 10

@@ -8,6 +8,11 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     [Header("Settings")]
+    public float scrollSpeed = 5f;
+    public Vector2 highPoint;
+    public Vector2 spaceBetweenIcons;
+    public Vector3 uiInvNumberOffsett = Vector3.one;
+
     public float selectedScale = 1.2f;
     public GameObject selectedBlock;
 
@@ -38,9 +43,41 @@ public class Inventory : MonoBehaviour
 
         selectedBlock = heavyBlock;
         UpdateUiText();
+
+        GetSpaceBetweenIcons();
+        GetHighPoint();
     }
 
-    public GameObject TakeActiveBlockFromInventory()
+    private void GetSpaceBetweenIcons()
+    {
+        float spaceBetweenIconsOne = Mathf.Abs(uiFluffyImg.rectTransform.position.y - uiSpeedyImg.rectTransform.position.y);
+        float spaceBetweenIconsTwo = Mathf.Abs(uiFluffyImg.rectTransform.position.y - uiHeavyImg.rectTransform.position.y);
+        if (spaceBetweenIconsOne > spaceBetweenIconsTwo)
+        {
+            spaceBetweenIconsOne = spaceBetweenIconsTwo;
+        }
+        spaceBetweenIcons = new Vector2(0, spaceBetweenIconsOne);
+        print(spaceBetweenIcons);
+    }
+
+    private void GetHighPoint()
+    {
+        highPoint = -Vector2.one * Mathf.Infinity;
+        if (highPoint.y < uiFluffyImg.rectTransform.position.y)
+        {
+            highPoint = uiFluffyImg.rectTransform.position;
+        }
+        if (highPoint.y < uiHeavyImg.rectTransform.position.y)
+        {
+            highPoint = uiHeavyImg.rectTransform.position;
+        }
+        if (highPoint.y < uiSpeedyImg.rectTransform.position.y)
+        {
+            highPoint= uiSpeedyImg.rectTransform.position;
+        }
+    }
+    
+        public GameObject TakeActiveBlockFromInventory()
     {
         RemoveFromInventory(selectedBlock.GetComponent<BlockType>().type);
         return (selectedBlock);
@@ -56,6 +93,10 @@ public class Inventory : MonoBehaviour
         uiHeavyImg.rectTransform.localScale = Vector3.one;
         uiSpeedyImg.rectTransform.localScale = Vector3.one;
 
+        SetSemiTransperent(uiFluffyImg);
+        SetSemiTransperent(uiHeavyImg);
+        SetSemiTransperent(uiSpeedyImg);
+        
         //Kolla vilken typ det är, set valt block, skala ui bild
         BlockType.types type = selectedBlock.GetComponent<BlockType>().type;
 
@@ -65,6 +106,10 @@ public class Inventory : MonoBehaviour
                 {
                     selectedBlock = speedyBlock;
                     uiSpeedyImg.rectTransform.localScale = Vector3.one * selectedScale;
+                    SetNonTransperent(uiSpeedyImg);
+                    uiSpeedyImg.rectTransform.position = highPoint;
+                    uiHeavyImg.rectTransform.position = highPoint - spaceBetweenIcons;
+                    uiFluffyImg.rectTransform.position = highPoint - spaceBetweenIcons * 2;
                 }
                 break;
 
@@ -72,6 +117,10 @@ public class Inventory : MonoBehaviour
                 {
                     selectedBlock = fluffyBlock;
                     uiFluffyImg.rectTransform.localScale = Vector3.one * selectedScale;
+                    SetNonTransperent(uiFluffyImg);
+                    uiFluffyImg.rectTransform.position = highPoint;
+                    uiSpeedyImg.rectTransform.position = highPoint - spaceBetweenIcons;
+                    uiHeavyImg.rectTransform.position = highPoint - spaceBetweenIcons * 2;
                 }
                 break;
 
@@ -80,6 +129,10 @@ public class Inventory : MonoBehaviour
                 {
                     selectedBlock = heavyBlock;
                     uiHeavyImg.rectTransform.localScale = Vector3.one * selectedScale;
+                    SetNonTransperent(uiHeavyImg);
+                    uiHeavyImg.rectTransform.position = highPoint;
+                    uiFluffyImg.rectTransform.position = highPoint - spaceBetweenIcons;
+                    uiSpeedyImg.rectTransform.position = highPoint - spaceBetweenIcons * 2;
                 }
                 break;
 
@@ -87,9 +140,27 @@ public class Inventory : MonoBehaviour
                 {
                     Debug.LogError("Block type does not exist in inventory");
                     selectedBlock = speedyBlock;
+                    uiSpeedyImg.rectTransform.localScale = Vector3.one * selectedScale;
+                    uiSpeedyImg.rectTransform.position = highPoint;
+                    uiHeavyImg.rectTransform.position = highPoint + spaceBetweenIcons;
+                    uiFluffyImg.rectTransform.position = highPoint + spaceBetweenIcons * 2;
                 }
                 break;
         }
+    }
+
+    void SetSemiTransperent(Image img)
+    {
+        Color col = img.color;
+        col.a = 0.5f;
+        img.color = col;
+    }
+
+    void SetNonTransperent(Image img)
+    {
+        Color col = img.color;
+        col.a = 1;
+        img.color = col;
     }
 
     public Sprite GetIconFromSelection()
@@ -140,6 +211,8 @@ public class Inventory : MonoBehaviour
                     {
                         uiSpeedyTxt.color = Color.white;
                         uiSpeedyImg.color = Color.white;
+                        if (selectedBlock != speedyBlock)
+                            SetSemiTransperent(uiSpeedyImg);
                     }
                     UpdateUiText();
                 }
@@ -152,6 +225,8 @@ public class Inventory : MonoBehaviour
                     {
                         uiFluffyTxt.color = Color.white;
                         uiFluffyImg.color = Color.white;
+                        if (selectedBlock != fluffyBlock)
+                            SetSemiTransperent(uiFluffyImg);
                     }
                     UpdateUiText();
                 }
@@ -164,6 +239,8 @@ public class Inventory : MonoBehaviour
                     {
                         uiHeavyTxt.color = Color.white;
                         uiHeavyImg.color = Color.white;
+                        if (selectedBlock != heavyBlock)
+                            SetSemiTransperent(uiHeavyImg);
                     }
                     UpdateUiText();
                 }
@@ -331,7 +408,11 @@ public class Inventory : MonoBehaviour
     public void UpdateUiText()
     {
         uiSpeedyTxt.text = numberOfSpeedys.ToString().PadLeft(2, '0');
-        uiFluffyTxt.text = numberOfHeavys.ToString().PadLeft(2, '0');
         uiHeavyTxt.text = numberOfFluffys.ToString().PadLeft(2, '0');
+        uiFluffyTxt.text = numberOfHeavys.ToString().PadLeft(2, '0');
+
+        uiSpeedyTxt.rectTransform.position = uiSpeedyImg.rectTransform.position + uiInvNumberOffsett;
+        uiHeavyTxt.rectTransform.position = uiHeavyImg.rectTransform.position + uiInvNumberOffsett;
+        uiFluffyTxt.rectTransform.position = uiFluffyImg.rectTransform.position + uiInvNumberOffsett;
     }
 }
