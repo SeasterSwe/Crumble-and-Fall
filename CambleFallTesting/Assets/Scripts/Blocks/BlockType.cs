@@ -95,7 +95,7 @@ public class BlockType : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         OnHitEnter(collision);
-        print(collision.relativeVelocity.magnitude);
+        //print(collision.relativeVelocity.magnitude);
     }
     protected virtual void OnHitEnter(Collision2D collision)
     {

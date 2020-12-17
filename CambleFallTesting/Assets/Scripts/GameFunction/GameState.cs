@@ -9,13 +9,11 @@ public class GameState : MonoBehaviour
 {
     [Header("gameState")]
     public static gameStates currentState;
-    public enum gameStates { BuildCountDown, Build, StartFight, Fight, StartGameOver, GameOver };
+    public enum gameStates { BuildCountDown, Build, StartFight, Fight, StartSuddenDeath, SuddenDeath, StartGameOver, GameOver };
 
     [Header("Indicators")]
     public TextMeshProUGUI uiGameTimeText;
     public TextMeshProUGUI uiGameStateText;
-
-
 
     [Header("BuildMode")]
     public string buildText = "Build time left ";
@@ -63,7 +61,7 @@ public class GameState : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         //Enter function depending of gameStates
         switch (currentState)
@@ -88,11 +86,20 @@ public class GameState : MonoBehaviour
                 }
                 break;
 
+            case gameStates.StartSuddenDeath:
+                {
+                    StartSuddenDeath();
+                }
+                break;
+            case gameStates.SuddenDeath:
+                {
+                    SuddenDeath(canonOne.currentHeatlh, canonTwo.currentHeatlh);
+                }
+                break;
+
             case gameStates.StartGameOver:
                 {
                     StartGameOver(canonOne.currentHeatlh, canonTwo.currentHeatlh);
-
-
                 }
                 break;
             case gameStates.GameOver:
@@ -169,15 +176,39 @@ public class GameState : MonoBehaviour
             //switchStateTo(gameStates.StartGameOver);
         }
     }
+
+    public void StartSuddenDeath()
+    {
+        Debug.Log("Start Sudden Death");
+        TogglegameStatesForward();
+    }
+
+    public void SuddenDeath(float scoreOne, float scoreTwo)
+    {
+        if(scoreOne != scoreTwo)
+        {
+            Debug.Log("Print Exit Sudden Death");
+            TogglegameStatesForward(); 
+        }
+    }
+
     public void StartGameOver(float scoreOne, float scoreTwo)
     {
         //Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
-        if (scoreOne > scoreTwo)
+        if(scoreOne == scoreTwo)
+        {
+            switchStateTo(gameStates.StartSuddenDeath);
+            return;
+
+        }else if (scoreOne > scoreTwo)
             GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>().LeftWin();
         else if (scoreOne < scoreTwo)
             GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>().RightWin();
+
+        /*
         else
         {
+            
             if (scoreOne != 0)
             {
                 roundTimeLeft += 30f;
@@ -187,6 +218,7 @@ public class GameState : MonoBehaviour
             else
                 Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
         }
+            */
 
         switchStateTo(gameStates.GameOver);
         print("StartGameOver");
@@ -221,11 +253,24 @@ public class GameState : MonoBehaviour
                 }
                 break;
 
+            case gameStates.StartSuddenDeath:
+                {
+                    currentState = gameStates.SuddenDeath;
+                }
+                break;
+
+            case gameStates.SuddenDeath:
+                {
+                    currentState = gameStates.StartGameOver;
+                }
+                break;
+
             case gameStates.StartGameOver:
                 {
                     currentState = gameStates.GameOver;
                 }
                 break;
+
             case gameStates.GameOver:
                 {
                     currentState = gameStates.Build;
@@ -262,7 +307,11 @@ public class GameState : MonoBehaviour
                     currentState = gameStates.Fight;
                 }
                 break;
-
+            case gameStates.SuddenDeath:
+                {
+                    currentState = gameStates.SuddenDeath;
+                }
+                break;
             case gameStates.StartGameOver:
                 {
                     currentState = gameStates.StartGameOver;
