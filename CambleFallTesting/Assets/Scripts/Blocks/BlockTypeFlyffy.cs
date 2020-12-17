@@ -11,12 +11,9 @@ public class BlockTypeFlyffy : BlockType
     private bool alreadyJointed = false;
     private bool doNotJoint = false;
 
-
-
     protected override void OnHitEnter(Collision2D collision)
     {
         base.OnHitEnter(collision);
-
         if (collision.relativeVelocity.magnitude > breakForce)
         {
             BreakJoint();

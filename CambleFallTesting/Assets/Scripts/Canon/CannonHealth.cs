@@ -19,7 +19,7 @@ public class CannonHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         foreach (SpriteRenderer child in GetComponentsInChildren<SpriteRenderer>())
             sprites.Add(child);
-
+        
         sprites.Remove(transform.Find("LoadImage").GetComponent<SpriteRenderer>());
         sprites.Add(GetComponent<SpriteRenderer>());
 
@@ -36,7 +36,6 @@ public class CannonHealth : MonoBehaviour
             animator.SetTrigger("TakeDmg");
             canTakeDmg = false;
             currentHeatlh -= amount;
-            StartCoroutine(FadeSprite(0.3f, 5));
             healthBar.UpdateFillAmount(currentHeatlh / startHealth);
             if (playSound)
                 SoundManager.PlaySound(SoundManager.Sound.CannonHurtSound);
@@ -45,6 +44,9 @@ public class CannonHealth : MonoBehaviour
             {
                 Death();
             }
+            else 
+                StartCoroutine(FadeSprite(0.3f, 5));
+
         }
     }
 
@@ -55,7 +57,6 @@ public class CannonHealth : MonoBehaviour
             GameObject particleClone = Instantiate(particle, transform.position, particle.transform.rotation);
             canTakeDmg = false;
             currentHeatlh -= amount;
-            StartCoroutine(FadeSprite(0.3f, 5));
             healthBar.UpdateFillAmount(currentHeatlh / startHealth);
 
             if (playSound)
@@ -65,6 +66,8 @@ public class CannonHealth : MonoBehaviour
             {
                 Death();
             }
+            else
+                StartCoroutine(FadeSprite(0.3f, 5));
         }
     }
 
@@ -76,7 +79,6 @@ public class CannonHealth : MonoBehaviour
             GameObject particleClone = Instantiate(particle, transform.position, particle.transform.rotation);
             canTakeDmg = false;
             currentHeatlh -= amount;
-            StartCoroutine(FadeSprite(0.3f, 5));
             healthBar.UpdateFillAmount(currentHeatlh / startHealth);
 
             SoundManager.PlaySound(sound);
@@ -85,6 +87,8 @@ public class CannonHealth : MonoBehaviour
             {
                 Death();
             }
+            else
+                StartCoroutine(FadeSprite(0.3f, 5));
         }
     }
 
@@ -102,7 +106,7 @@ public class CannonHealth : MonoBehaviour
 
             yield return new WaitForSeconds(t);
         }
-        animator.SetTrigger("Shoot");
+        animator.SetTrigger("ExitTakeDmg");
         canTakeDmg = true;
     }
     void Death()

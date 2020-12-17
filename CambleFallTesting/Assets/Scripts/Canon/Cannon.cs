@@ -105,9 +105,6 @@ public class Cannon : MonoBehaviour
         if (Input.GetButtonDown(shootButton))
         {
             aim.Enable();
-
-            //if (cannonHealth.canTakeDmg == true)
-            //    animator.SetTrigger("Shoot");
         }
 
 
@@ -132,7 +129,7 @@ public class Cannon : MonoBehaviour
         //holdCharge
         if (Input.GetButton(shootButton) && nextFire > time)
         {
-
+            animator.SetBool("Shooting", true);
             holdTimer += Time.deltaTime;
             if (chargeIsntStarted)
                 startPos = transform.position;
@@ -165,6 +162,7 @@ public class Cannon : MonoBehaviour
 
             transform.localScale = normalScale;
             chargeIsntStarted = true;
+            animator.SetBool("Shooting", false);
         }
     }
     private void ChargeCannon()

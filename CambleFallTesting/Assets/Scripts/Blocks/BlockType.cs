@@ -31,7 +31,7 @@ public class BlockType : MonoBehaviour
     public int playerteam = 1;
 
     Rigidbody2D rb;
-
+    public GameObject particle;
     public bool hitThisFrame;
 
     // Start is called before the first frame update
@@ -97,7 +97,12 @@ public class BlockType : MonoBehaviour
     }
     protected virtual void OnHitEnter(Collision2D collision)
     {
-
+         //fx
+        if (state == states.Projectile || state == states.Worried)
+        {
+            var contactPoint = collision.GetContact(0).point;
+            GameObject particleClone = Instantiate(particle, contactPoint, particle.transform.rotation);
+        }
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<CannonHealth>().TakeDmg();

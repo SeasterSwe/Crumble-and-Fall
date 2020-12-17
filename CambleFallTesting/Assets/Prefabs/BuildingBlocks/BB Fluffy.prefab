@@ -288,3 +288,4 @@ MonoBehaviour:
   playerteam: 1
   hitThisFrame: 0
   breakForce: 15
+  particle: {fileID: 4912011183112775897, guid: a7f45b04eeb3b884bb6f32b873ce4307, type: 3}
