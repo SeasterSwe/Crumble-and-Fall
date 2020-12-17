@@ -27,9 +27,15 @@ public class AimCannon : MonoBehaviour
 
         Rigidbody2D pRB = cannon.inventory.selectedBlock.GetComponent<Rigidbody2D>();
         Vector2 gravity = (Physics2D.gravity) * pRB.gravityScale;
+        
         if (cannon.inventory.selectedBlock.GetComponent<BlockType>().type == BlockType.types.Fluffy)
         {
             gravity = Vector2.zero;
+            segmentStep = 10;
+        }
+        else
+        {
+            segmentStep = 0.1f;
         }
 
         float speedMul = cannon.inventory.selectedBlock.GetComponent<BlockType>().velocityMultiplier;

@@ -83,6 +83,7 @@ public class GameSceneManager : MonoBehaviour
     }
 	void PlaySound(AudioClip clip)
     {
+		audioSource = GetComponent<AudioSource>();
 		audioSource.clip = clip;
 		audioSource.Play();
     }

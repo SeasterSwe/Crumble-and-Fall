@@ -9,7 +9,7 @@ public class GameState : MonoBehaviour
 {
     [Header("gameState")]
     public static gameStates currentState;
-    public enum gameStates { Build, StartFight, Fight, StartGameOver, GameOver};
+    public enum gameStates { BuildCountDown, Build, StartFight, Fight, StartGameOver, GameOver };
 
     [Header("Indicators")]
     public TextMeshProUGUI uiGameTimeText;
@@ -42,6 +42,23 @@ public class GameState : MonoBehaviour
     void Start()
     {
         buildTimeLeft = GameStats.buildTime;
+        currentState = gameStates.BuildCountDown;
+        StartCoroutine(StartDelay(3f));
+    }
+
+    IEnumerator StartDelay(float counterTime)
+    {
+        float t = counterTime;
+        while (t >= 0)
+        {
+            ScaleTextPeriod();
+            uiGameTimeText.text = "";
+            uiGameStateText.text = t.ToString("F0").PadLeft(2, '0');
+            t -= Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForEndOfFrame();
+        buildTimeLeft = GameStats.buildTime;
         currentState = gameStates.Build;
     }
 
@@ -49,8 +66,10 @@ public class GameState : MonoBehaviour
     void Update()
     {
         //Enter function depending of gameStates
-        switch(currentState)
+        switch (currentState)
         {
+            case gameStates.BuildCountDown:
+                break;
             case gameStates.Build:
                 {
                     BuildMode();
@@ -73,7 +92,7 @@ public class GameState : MonoBehaviour
                 {
                     StartGameOver(canonOne.currentHeatlh, canonTwo.currentHeatlh);
 
-                    
+
                 }
                 break;
             case gameStates.GameOver:
@@ -90,7 +109,7 @@ public class GameState : MonoBehaviour
         }
     }
 
-    
+
 
     //BUILDMODE
     void BuildMode()
@@ -99,7 +118,7 @@ public class GameState : MonoBehaviour
         if (buildTimeLeft > 0)
         {
             uiGameStateText.text = buildText;
-            uiGameTimeText.text = buildTimeLeft.ToString("F0").PadLeft(2,'0');
+            uiGameTimeText.text = buildTimeLeft.ToString("F0").PadLeft(2, '0');
             ScaleText();
         }
         else
@@ -108,23 +127,6 @@ public class GameState : MonoBehaviour
         }
     }
 
-    bool active = false;
-    void ScaleText()
-    {
-        if(!active)
-        {
-            active = true;
-            uiGameTimeText.rectTransform.DOScale(Vector3.one * 2.5f, 0.5f).SetEase(easein).OnComplete(ResetText);
-        }
-    }
-    void ResetText()
-    {
-        uiGameTimeText.rectTransform.DOScale(Vector3.one * 2.2f, 0.5f).SetEase(easeOut).OnComplete(ActiveFalse);
-    }
-    void ActiveFalse()
-    {
-        active = false;
-    }
 
     //STARTFIGHT
     void StartFight()
@@ -158,7 +160,7 @@ public class GameState : MonoBehaviour
     void Fighting()
     {
         roundTimeLeft -= Time.deltaTime;
-        uiGameTimeText.text = roundTimeLeft.ToString("F0").PadLeft(2,'0');    
+        uiGameTimeText.text = roundTimeLeft.ToString("F0").PadLeft(2, '0');
         ScaleText();
 
         if (roundTimeLeft < 0)
@@ -172,18 +174,18 @@ public class GameState : MonoBehaviour
         //Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
         if (scoreOne > scoreTwo)
             GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>().LeftWin();
-        else if(scoreOne < scoreTwo)
+        else if (scoreOne < scoreTwo)
             GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>().RightWin();
         else
         {
-            if(scoreOne != 0)
+            if (scoreOne != 0)
             {
                 roundTimeLeft += 30f;
                 switchStateTo(gameStates.Fight);
                 return;
             }
             else
-               Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
+                Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
         }
 
         switchStateTo(gameStates.GameOver);
@@ -193,9 +195,9 @@ public class GameState : MonoBehaviour
     //GAMEOVER
     void GameOver()
     {
-        print("GameOver");
+        //print("GameOver");
     }
-   
+
     //TOGGLE gameStates
     public static void TogglegameStatesForward()
     {
@@ -238,7 +240,7 @@ public class GameState : MonoBehaviour
         }
     }
 
-    
+
     public static void switchStateTo(gameStates newState)
     {
         switch (newState)
@@ -259,7 +261,7 @@ public class GameState : MonoBehaviour
                 {
                     currentState = gameStates.Fight;
                 }
-            break;
+                break;
 
             case gameStates.StartGameOver:
                 {
@@ -271,13 +273,48 @@ public class GameState : MonoBehaviour
                 {
                     currentState = gameStates.GameOver;
                 }
-            break;
+                break;
 
             default:
                 {
                     currentState = gameStates.Build;
                 }
-            break;
+                break;
         }
+    }
+    bool active = false;
+    void ScaleText()
+    {
+        if (!active)
+        {
+            active = true;
+            uiGameTimeText.rectTransform.DOScale(Vector3.one * 2.5f, 0.5f).SetEase(easein).OnComplete(ResetText);
+        }
+    }
+    void ResetText()
+    {
+        uiGameTimeText.rectTransform.DOScale(Vector3.one * 2.2f, 0.5f).SetEase(easeOut).OnComplete(ActiveFalse);
+    }
+    void ActiveFalse()
+    {
+        active = false;
+    }
+
+    bool activePeriod = false;
+    void ScaleTextPeriod()
+    {
+        if (!activePeriod)
+        {
+            activePeriod = true;
+            uiGameStateText.rectTransform.DOScale(Vector3.one * 3.5f, 0.5f).SetEase(easein).OnComplete(ResetTextPeriod);
+        }
+    }
+    void ResetTextPeriod()
+    {
+        uiGameStateText.rectTransform.DOScale(Vector3.one * 3f, 0.5f).SetEase(easeOut).OnComplete(ActivePeriodFalse);
+    }
+    void ActivePeriodFalse()
+    {
+        activePeriod = false;
     }
 }

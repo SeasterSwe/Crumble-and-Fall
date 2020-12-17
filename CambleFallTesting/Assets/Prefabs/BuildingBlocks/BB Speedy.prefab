@@ -286,7 +286,10 @@ MonoBehaviour:
   state: 1
   inventory: {fileID: 0}
   playerteam: 1
+  particle: {fileID: 4912011183112775897, guid: a7f45b04eeb3b884bb6f32b873ce4307, type: 3}
   hitThisFrame: 0
   fragment: {fileID: 141114141079268990, guid: b98183462fd27bc479bae265aa8e88ca, type: 3}
   minForceToBreak: 10
   scatterForce: 5
+  particle: {fileID: 4912011183112775897, guid: a7f45b04eeb3b884bb6f32b873ce4307, type: 3}
+  reflect: {fileID: 4912011183112775897, guid: ba80b3e51fd8c494a91c874f5743f4aa, type: 3}

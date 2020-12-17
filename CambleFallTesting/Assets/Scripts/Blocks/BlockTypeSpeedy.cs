@@ -13,11 +13,12 @@ public class BlockTypeSpeedy : BlockType
 
     private Vector2 normal;
     private Vector3 lastPos;
-
+    public GameObject particle;
+    public GameObject reflect;
 
     protected override void OnHitEnter(Collision2D collision)
     {
-        
+
         if (collision.relativeVelocity.magnitude > minForceToBreak && state == states.Idle)
         {
             ReflectForce(collision);
@@ -30,7 +31,7 @@ public class BlockTypeSpeedy : BlockType
     protected override void UpdateEachFrame()
     {
         base.UpdateEachFrame();
-        
+
         if (state == states.Projectile)
         {
             if (transform.position.x > 0 && playerteam == 1)
@@ -72,19 +73,24 @@ public class BlockTypeSpeedy : BlockType
                 }
             }
         }
-        
+
         collision.otherCollider.GetComponent<Rigidbody2D>().velocity *= 0;
     }
 
     void Scatter()
     {
+        //fx
+        var rotation = Quaternion.Euler(0, 90, 0);
+        if(transform.position.x > 0)
+            rotation = Quaternion.Euler(0, -90, 0);
+        GameObject particleClone = Instantiate(reflect, transform.position, rotation);
+
         //Split block into 4
         for (int i = 0; i < 4; i++)
         {
             Vector3 plusPos = Quaternion.Euler(0, 0, 90 * i) * Vector3.one;
             plusPos.z = 0;
             plusPos *= 0.25f;
-
             GameObject frag = Instantiate(fragment, lastPos + plusPos, transform.rotation);
         }
         Destroy(gameObject);
@@ -92,7 +98,7 @@ public class BlockTypeSpeedy : BlockType
 
     void ScatterProjectile()
     {
-       // print(transform.name + " Fragmentet as projectile");
+        // print(transform.name + " Fragmentet as projectile");
         Vector2 dir = GetComponent<Rigidbody2D>().velocity;
 
         for (int i = 0; i < 4; i++)
@@ -101,6 +107,8 @@ public class BlockTypeSpeedy : BlockType
             plusPos.z = 0;
             plusPos *= 0.25f;
 
+            //fx
+            GameObject particleClone = Instantiate(particle, lastPos + plusPos, particle.transform.rotation);
             Vector2 scatter = Random.insideUnitSphere * scatterForce;
             scatter += dir;
             GameObject frag = Instantiate(fragment, transform.position + plusPos, transform.rotation);
