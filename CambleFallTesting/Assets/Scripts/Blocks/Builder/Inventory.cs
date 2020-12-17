@@ -9,11 +9,13 @@ public class Inventory : MonoBehaviour
 {
     [Header("Settings")]
     public float scrollSpeed = 5f;
-    public Vector2 highPoint;
+    public Vector2 lowestPoint;
     public Vector2 spaceBetweenIcons;
     public Vector3 uiInvNumberOffsett = Vector3.one;
 
-    public float selectedScale = 1.2f;
+    public float selectedScale = 1;
+    public float midScale = 0.75f;
+    public float smallScale = 0.5f;
     public GameObject selectedBlock;
 
     [Header("Numbers")]
@@ -46,6 +48,7 @@ public class Inventory : MonoBehaviour
 
         GetSpaceBetweenIcons();
         GetHighPoint();
+        TogggleBlock();
     }
 
     private void GetSpaceBetweenIcons()
@@ -59,29 +62,23 @@ public class Inventory : MonoBehaviour
         spaceBetweenIcons = new Vector2(0, spaceBetweenIconsOne);
         print(spaceBetweenIcons);
     }
-
     private void GetHighPoint()
     {
-        highPoint = -Vector2.one * Mathf.Infinity;
-        if (highPoint.y < uiFluffyImg.rectTransform.position.y)
+        lowestPoint = Vector2.one * Mathf.Infinity;
+        if (lowestPoint.y > uiFluffyImg.rectTransform.position.y)
         {
-            highPoint = uiFluffyImg.rectTransform.position;
+            lowestPoint = uiFluffyImg.rectTransform.position;
         }
-        if (highPoint.y < uiHeavyImg.rectTransform.position.y)
+        if (lowestPoint.y > uiHeavyImg.rectTransform.position.y)
         {
-            highPoint = uiHeavyImg.rectTransform.position;
+            lowestPoint = uiHeavyImg.rectTransform.position;
         }
-        if (highPoint.y < uiSpeedyImg.rectTransform.position.y)
+        if (lowestPoint.y > uiSpeedyImg.rectTransform.position.y)
         {
-            highPoint= uiSpeedyImg.rectTransform.position;
+            lowestPoint = uiSpeedyImg.rectTransform.position;
         }
     }
-    
-        public GameObject TakeActiveBlockFromInventory()
-    {
-        RemoveFromInventory(selectedBlock.GetComponent<BlockType>().type);
-        return (selectedBlock);
-    }
+
 
     public void TogggleBlock()
     {
@@ -96,7 +93,7 @@ public class Inventory : MonoBehaviour
         SetSemiTransperent(uiFluffyImg);
         SetSemiTransperent(uiHeavyImg);
         SetSemiTransperent(uiSpeedyImg);
-        
+
         //Kolla vilken typ det är, set valt block, skala ui bild
         BlockType.types type = selectedBlock.GetComponent<BlockType>().type;
 
@@ -105,22 +102,20 @@ public class Inventory : MonoBehaviour
             case BlockType.types.Fluffy:
                 {
                     selectedBlock = speedyBlock;
-                    uiSpeedyImg.rectTransform.localScale = Vector3.one * selectedScale;
-                    SetNonTransperent(uiSpeedyImg);
-                    uiSpeedyImg.rectTransform.position = highPoint;
-                    uiHeavyImg.rectTransform.position = highPoint - spaceBetweenIcons;
-                    uiFluffyImg.rectTransform.position = highPoint - spaceBetweenIcons * 2;
+
+                    SetFirst(uiSpeedyImg, uiSpeedyTxt);
+                    SetSecond(uiHeavyImg, uiHeavyTxt);
+                    SetThird(uiFluffyImg, uiFluffyTxt);
                 }
                 break;
 
             case BlockType.types.Heavy:
                 {
                     selectedBlock = fluffyBlock;
-                    uiFluffyImg.rectTransform.localScale = Vector3.one * selectedScale;
-                    SetNonTransperent(uiFluffyImg);
-                    uiFluffyImg.rectTransform.position = highPoint;
-                    uiSpeedyImg.rectTransform.position = highPoint - spaceBetweenIcons;
-                    uiHeavyImg.rectTransform.position = highPoint - spaceBetweenIcons * 2;
+
+                    SetFirst(uiFluffyImg, uiFluffyTxt);
+                    SetSecond(uiSpeedyImg, uiSpeedyTxt);
+                    SetThird(uiHeavyImg, uiHeavyTxt);
                 }
                 break;
 
@@ -128,11 +123,10 @@ public class Inventory : MonoBehaviour
             case BlockType.types.Speedy:
                 {
                     selectedBlock = heavyBlock;
-                    uiHeavyImg.rectTransform.localScale = Vector3.one * selectedScale;
-                    SetNonTransperent(uiHeavyImg);
-                    uiHeavyImg.rectTransform.position = highPoint;
-                    uiFluffyImg.rectTransform.position = highPoint - spaceBetweenIcons;
-                    uiSpeedyImg.rectTransform.position = highPoint - spaceBetweenIcons * 2;
+
+                    SetFirst(uiHeavyImg, uiHeavyTxt);
+                    SetSecond(uiFluffyImg, uiFluffyTxt);
+                    SetThird(uiSpeedyImg, uiSpeedyTxt);
                 }
                 break;
 
@@ -140,29 +134,124 @@ public class Inventory : MonoBehaviour
                 {
                     Debug.LogError("Block type does not exist in inventory");
                     selectedBlock = speedyBlock;
-                    uiSpeedyImg.rectTransform.localScale = Vector3.one * selectedScale;
-                    uiSpeedyImg.rectTransform.position = highPoint;
-                    uiHeavyImg.rectTransform.position = highPoint + spaceBetweenIcons;
-                    uiFluffyImg.rectTransform.position = highPoint + spaceBetweenIcons * 2;
+
+                    SetFirst(uiSpeedyImg, uiSpeedyTxt);
+                    SetSecond(uiHeavyImg, uiHeavyTxt);
+                    SetThird(uiFluffyImg, uiFluffyTxt);
                 }
                 break;
         }
     }
+    private void SetFirst(Image img, TextMeshProUGUI txt)
+    {
+        img.rectTransform.position = lowestPoint;
+        img.rectTransform.localScale = Vector3.one * selectedScale;
+        SetNonTransperent(img);
 
-    void SetSemiTransperent(Image img)
+        txt.rectTransform.position = img.rectTransform.position + uiInvNumberOffsett;
+        txt.color = Color.white;
+    }
+    private void SetSecond(Image img, TextMeshProUGUI txt)
+    {
+        img.rectTransform.position = lowestPoint + spaceBetweenIcons * midScale;
+        img.rectTransform.localScale = Vector3.one * midScale;
+        SetSemiTransperent(img);
+
+        txt.rectTransform.position = img.rectTransform.position + uiInvNumberOffsett * midScale;
+        txt.color = Color.clear;
+    }
+    private void SetThird(Image img, TextMeshProUGUI txt)
+    {
+        img.rectTransform.position = lowestPoint + spaceBetweenIcons * midScale + spaceBetweenIcons * smallScale;
+        img.rectTransform.localScale = Vector3.one * smallScale;
+        SetSemiTransperent(img);
+
+        txt.rectTransform.position = img.rectTransform.position + uiInvNumberOffsett * smallScale;
+        txt.color = Color.clear;
+    }
+    private void SetSemiTransperent(Image img)
     {
         Color col = img.color;
         col.a = 0.5f;
         img.color = col;
     }
-
-    void SetNonTransperent(Image img)
+    private void SetNonTransperent(Image img)
     {
         Color col = img.color;
         col.a = 1;
         img.color = col;
     }
+    public void UpdateUiText()
+    {
+        uiSpeedyTxt.text = numberOfSpeedys.ToString().PadLeft(2, '0');
+        uiHeavyTxt.text = numberOfFluffys.ToString().PadLeft(2, '0');
+        uiFluffyTxt.text = numberOfHeavys.ToString().PadLeft(2, '0');
+    }
 
+
+    public GameObject TakeActiveBlockFromInventory()
+    {
+        RemoveFromInventory(selectedBlock.GetComponent<BlockType>().type);
+        return (selectedBlock);
+    }
+    public void AddToInventory(BlockType.types type, int amount)
+    {
+        //Add a "amount" of blocks "Type" to inventory
+        //Set ui to normal if inventory is larger then 0
+
+        switch (type)
+        {
+            case BlockType.types.Speedy:
+                {
+                    numberOfSpeedys += amount;
+                    if (numberOfSpeedys > 0)
+                    {
+                        uiSpeedyImg.color = Color.white;
+                        if (selectedBlock != speedyBlock)
+                            SetSemiTransperent(uiSpeedyImg);
+                        else
+                            uiSpeedyTxt.color = Color.white;
+                    }
+                    UpdateUiText();
+                }
+                break;
+
+            case BlockType.types.Heavy:
+                {
+                    numberOfHeavys += amount;
+                    if (numberOfHeavys > 0)
+                    {
+                        uiFluffyImg.color = Color.white;
+                        if (selectedBlock != fluffyBlock)
+                            SetSemiTransperent(uiFluffyImg);
+                        else
+                            uiFluffyTxt.color = Color.white;
+                    }
+                    UpdateUiText();
+                }
+                break;
+
+            case BlockType.types.Fluffy:
+                {
+                    numberOfFluffys += amount;
+                    if (numberOfFluffys > 0)
+                    {
+                        uiHeavyImg.color = Color.white;
+                        if (selectedBlock != heavyBlock)
+                            SetSemiTransperent(uiHeavyImg);
+                        else
+                            uiHeavyTxt.color = Color.white;
+                    }
+                    UpdateUiText();
+                }
+                break;
+
+
+            default:
+                Debug.Log("Error : Blockcolor does not exist " + transform.name);
+                break;
+        }
+    }
     public Sprite GetIconFromSelection()
     {
         BlockType.types type = selectedBlock.GetComponent<BlockType>().type;
@@ -195,64 +284,6 @@ public class Inventory : MonoBehaviour
                 break;
         }
     }
-
-
-    public void AddToInventory(BlockType.types type, int amount)
-    {
-        //Add a "amount" of blocks "Type" to inventory
-        //Set ui to normal if inventory is larger then 0
-
-        switch (type)
-        {
-            case BlockType.types.Speedy:
-                {
-                    numberOfSpeedys += amount;
-                    if (numberOfSpeedys > 0)
-                    {
-                        uiSpeedyTxt.color = Color.white;
-                        uiSpeedyImg.color = Color.white;
-                        if (selectedBlock != speedyBlock)
-                            SetSemiTransperent(uiSpeedyImg);
-                    }
-                    UpdateUiText();
-                }
-                break;
-
-            case BlockType.types.Heavy:
-                {
-                    numberOfHeavys += amount;
-                    if (numberOfHeavys > 0)
-                    {
-                        uiFluffyTxt.color = Color.white;
-                        uiFluffyImg.color = Color.white;
-                        if (selectedBlock != fluffyBlock)
-                            SetSemiTransperent(uiFluffyImg);
-                    }
-                    UpdateUiText();
-                }
-                break;
-
-            case BlockType.types.Fluffy:
-                {
-                    numberOfFluffys += amount;
-                    if (numberOfFluffys > 0)
-                    {
-                        uiHeavyTxt.color = Color.white;
-                        uiHeavyImg.color = Color.white;
-                        if (selectedBlock != heavyBlock)
-                            SetSemiTransperent(uiHeavyImg);
-                    }
-                    UpdateUiText();
-                }
-                break;
-
-
-            default:
-                Debug.Log("Error : Blockcolor does not exist " + transform.name);
-                break;
-        }
-    }
-
     public void RemoveFromInventory(BlockType.types type)
     {
         //Remove blockType from inventory
@@ -300,7 +331,6 @@ public class Inventory : MonoBehaviour
         }
         UpdateUiText();
     }
-
     public bool SelectedBlockIsInInventory()
     {
         //Check if their is a egnuf of "selectedBlock" in inventory
@@ -348,7 +378,6 @@ public class Inventory : MonoBehaviour
                 }
         }
     }
-
     public bool CheckInventoryFor(BlockType.types type)
     {
         //Check if their is a block of "type" in inventory
@@ -405,14 +434,4 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void UpdateUiText()
-    {
-        uiSpeedyTxt.text = numberOfSpeedys.ToString().PadLeft(2, '0');
-        uiHeavyTxt.text = numberOfFluffys.ToString().PadLeft(2, '0');
-        uiFluffyTxt.text = numberOfHeavys.ToString().PadLeft(2, '0');
-
-        uiSpeedyTxt.rectTransform.position = uiSpeedyImg.rectTransform.position + uiInvNumberOffsett;
-        uiHeavyTxt.rectTransform.position = uiHeavyImg.rectTransform.position + uiInvNumberOffsett;
-        uiFluffyTxt.rectTransform.position = uiFluffyImg.rectTransform.position + uiInvNumberOffsett;
-    }
 }
