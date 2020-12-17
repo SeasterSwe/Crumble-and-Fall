@@ -287,4 +287,4 @@ MonoBehaviour:
   inventory: {fileID: 0}
   playerteam: 1
   hitThisFrame: 0
-  boundTo: []
+  breakForce: 15

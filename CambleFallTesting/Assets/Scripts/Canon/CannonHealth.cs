@@ -13,8 +13,10 @@ public class CannonHealth : MonoBehaviour
     private Color originalColors;
     public GameObject explotion;
     public Color blinkColor;
+    private Animator animator;
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         foreach (SpriteRenderer child in GetComponentsInChildren<SpriteRenderer>())
             sprites.Add(child);
 
@@ -25,11 +27,13 @@ public class CannonHealth : MonoBehaviour
         currentHeatlh = GameStats.cannonStartHealth;
         startHealth = GameStats.cannonStartHealth;
     }
-    bool canTakeDmg = true;
+    [HideInInspector]
+    public bool canTakeDmg = true;
     public void TakeDmg(float amount = 1, bool playSound = true)
     {
         if (canTakeDmg)
         {
+            animator.SetTrigger("TakeDmg");
             canTakeDmg = false;
             currentHeatlh -= amount;
             StartCoroutine(FadeSprite(0.3f, 5));
@@ -53,7 +57,7 @@ public class CannonHealth : MonoBehaviour
             currentHeatlh -= amount;
             StartCoroutine(FadeSprite(0.3f, 5));
             healthBar.UpdateFillAmount(currentHeatlh / startHealth);
-            
+
             if (playSound)
                 SoundManager.PlaySound(SoundManager.Sound.CannonHurtSound);
 
@@ -68,6 +72,7 @@ public class CannonHealth : MonoBehaviour
     {
         if (canTakeDmg)
         {
+            animator.SetTrigger("TakeDmg");
             GameObject particleClone = Instantiate(particle, transform.position, particle.transform.rotation);
             canTakeDmg = false;
             currentHeatlh -= amount;
@@ -97,6 +102,7 @@ public class CannonHealth : MonoBehaviour
 
             yield return new WaitForSeconds(t);
         }
+        animator.SetTrigger("Shoot");
         canTakeDmg = true;
     }
     void Death()
@@ -106,9 +112,9 @@ public class CannonHealth : MonoBehaviour
     }
     IEnumerator BrainDead()
     {
-        yield return new WaitForSeconds(0.2f);
-        GameObject exp = Instantiate(explotion, transform.position, explotion.transform.rotation);
-        Destroy(gameObject);
+        animator.SetTrigger("Death");
+        yield return new WaitForSeconds(0.8f);
+        //GameObject exp = Instantiate(explotion, transform.position, explotion.transform.rotation);
         GameState.TogglegameStatesForward();
 
     }

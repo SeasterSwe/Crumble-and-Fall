@@ -47,7 +47,8 @@ public class Cannon : MonoBehaviour
     private Transform cannonPipe;
 
     float particleRotation = 90;
-
+    private Animator animator;
+    CannonHealth cannonHealth;
 
     void RobertsTestAim()
     {
@@ -72,6 +73,10 @@ public class Cannon : MonoBehaviour
         chargeIsntStarted = true;
 
         UpdateLoadImage(inventory.selectedBlock);
+
+        animator = GetComponent<Animator>();
+
+        cannonHealth = GetComponent<CannonHealth>();
 
         //Test : Roberts Test
         aim = GetComponent<AimCannon>();
@@ -100,8 +105,10 @@ public class Cannon : MonoBehaviour
         if (Input.GetButtonDown(shootButton))
         {
             aim.Enable();
-        }
 
+            //if (cannonHealth.canTakeDmg == true)
+            //    animator.SetTrigger("Shoot");
+        }
 
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -125,9 +132,11 @@ public class Cannon : MonoBehaviour
         //holdCharge
         if (Input.GetButton(shootButton) && nextFire > time)
         {
+
             holdTimer += Time.deltaTime;
             if (chargeIsntStarted)
                 startPos = transform.position;
+
 
             if (holdTimer > 0.3f)
             {
@@ -143,7 +152,7 @@ public class Cannon : MonoBehaviour
         //Shoot      
         if (Input.GetButtonUp(shootButton) && nextFire > time)
         {
-            
+
             holdTimer = 0;
             time = fireRate;
             nextFire = 0;
