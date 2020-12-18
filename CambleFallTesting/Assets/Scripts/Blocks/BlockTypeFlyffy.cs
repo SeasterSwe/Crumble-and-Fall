@@ -47,11 +47,12 @@ public class BlockTypeFlyffy : BlockType
 
                 float dotToAttachment = Vector2.Dot(dirToC, dir);
 
-                Debug.DrawRay(transform.position + Vector3.back, dir, Color.red);
                 Debug.DrawRay(transform.position + Vector3.back, dirToC, Color.green);
+                Debug.DrawRay(transform.position + Vector3.back, transform.TransformDirection( dir), Color.red);
 
                 if(dotToAttachment > breakDot)
                 {
+                    StartCoroutine(FreezeJointing());
                     Destroy(joint);
                 }
             }
