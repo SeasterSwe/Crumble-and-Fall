@@ -60,7 +60,6 @@ public class Inventory : MonoBehaviour
             spaceBetweenIconsOne = spaceBetweenIconsTwo;
         }
         spaceBetweenIcons = new Vector2(0, spaceBetweenIconsOne);
-        print(spaceBetweenIcons);
     }
     private void GetHighPoint()
     {
@@ -158,7 +157,7 @@ public class Inventory : MonoBehaviour
         SetSemiTransperent(img);
 
         txt.rectTransform.position = img.rectTransform.position + uiInvNumberOffsett * midScale;
-        txt.color = Color.clear;
+       // txt.color = Color.clear;
     }
     private void SetThird(Image img, TextMeshProUGUI txt)
     {
@@ -167,7 +166,7 @@ public class Inventory : MonoBehaviour
         SetSemiTransperent(img);
 
         txt.rectTransform.position = img.rectTransform.position + uiInvNumberOffsett * smallScale;
-        txt.color = Color.clear;
+       // txt.color = Color.clear;
     }
     private void SetSemiTransperent(Image img)
     {
