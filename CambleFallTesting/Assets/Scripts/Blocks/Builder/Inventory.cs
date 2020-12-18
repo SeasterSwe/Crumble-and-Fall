@@ -43,7 +43,7 @@ public class Inventory : MonoBehaviour
         numberOfHeavys = GameStats.startBlocks;
         numberOfSpeedys = GameStats.startBlocks;
 
-        selectedBlock = heavyBlock;
+        selectedBlock = speedyBlock;
         UpdateUiText();
 
         GetSpaceBetweenIcons();
