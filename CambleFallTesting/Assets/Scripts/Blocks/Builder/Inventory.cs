@@ -206,10 +206,10 @@ public class Inventory : MonoBehaviour
                     if (numberOfSpeedys > 0)
                     {
                         uiSpeedyImg.color = Color.white;
+                            uiSpeedyTxt.color = Color.white;
                         if (selectedBlock != speedyBlock)
                             SetSemiTransperent(uiSpeedyImg);
-                        else
-                            uiSpeedyTxt.color = Color.white;
+                        
                     }
                     UpdateUiText();
                 }
@@ -221,10 +221,10 @@ public class Inventory : MonoBehaviour
                     if (numberOfHeavys > 0)
                     {
                         uiHeavyImg.color = Color.white;
+                            uiHeavyTxt.color = Color.white;
                         if (selectedBlock != heavyBlock)
                             SetSemiTransperent(uiHeavyImg);
-                        else
-                            uiHeavyTxt.color = Color.white;
+                        
                     }
                     UpdateUiText();
                 }
@@ -236,10 +236,9 @@ public class Inventory : MonoBehaviour
                     if (numberOfFluffys > 0)
                     {
                         uiFluffyImg.color = Color.white;
+                            uiFluffyTxt.color = Color.white;
                         if (selectedBlock != fluffyBlock)
                             SetSemiTransperent(uiFluffyImg);
-                        else
-                            uiFluffyTxt.color = Color.white;
                     }
                     UpdateUiText();
                 }

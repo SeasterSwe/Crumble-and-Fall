@@ -99,7 +99,7 @@ public class Cannon : MonoBehaviour
     void Update()
     {
         //TODO : Remove CrapCode Fix
-        if (inventory.selectedBlock == inventory.fluffyBlock)
+       /* if (inventory.selectedBlock == inventory.fluffyBlock)
         {
             aim.Enable();
             RobertsTestAim();
@@ -107,7 +107,7 @@ public class Cannon : MonoBehaviour
         else
         {
             aim.Disable();
-        }
+        }*/
         if (Input.GetButtonUp(shootButton))
         {
             aim.Disable();
