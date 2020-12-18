@@ -98,6 +98,16 @@ public class Cannon : MonoBehaviour
     Vector3 startPos = new Vector3();
     void Update()
     {
+        //TODO : Remove CrapCode Fix
+        if (inventory.selectedBlock == inventory.fluffyBlock)
+        {
+            aim.Enable();
+            RobertsTestAim();
+        }
+        else
+        {
+            aim.Disable();
+        }
         if (Input.GetButtonUp(shootButton))
         {
             aim.Disable();
