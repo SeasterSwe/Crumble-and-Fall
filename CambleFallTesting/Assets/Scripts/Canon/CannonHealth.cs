@@ -118,7 +118,7 @@ public class CannonHealth : MonoBehaviour
     IEnumerator BrainDead()
     {
         animator.SetTrigger("Death");
-        GameObject.FindGameObjectWithTag("Music").GetComponent<BackRoundMusic>().SwapToHype();
+        //GameObject.FindGameObjectWithTag("Music").GetComponent<BackRoundMusic>().SwapToHype();
         yield return new WaitForSeconds(0.8f);
         //GameObject exp = Instantiate(explotion, transform.position, explotion.transform.rotation);
         GameState.TogglegameStatesForward();

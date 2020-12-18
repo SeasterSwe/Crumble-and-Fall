@@ -422,7 +422,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &105779872
 PrefabInstance:
@@ -1127,7 +1127,7 @@ Transform:
   m_LocalScale: {x: 306.75323, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &319048161
 PrefabInstance:
@@ -1335,7 +1335,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &402043522
 GameObject:
@@ -1626,6 +1626,7 @@ GameObject:
   - component: {fileID: 488869734}
   - component: {fileID: 488869736}
   - component: {fileID: 488869735}
+  - component: {fileID: 488869737}
   m_Layer: 8
   m_Name: BuildFloorRight
   m_TagString: Untagged
@@ -1724,6 +1725,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &488869737
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488869733}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &512076705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,7 +2242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3927874108970597586, guid: b55e06c9544dc904a8ea668ddb7c79b5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3927874108970597587, guid: b55e06c9544dc904a8ea668ddb7c79b5, type: 3}
       propertyPath: m_Pivot.x
@@ -3584,9 +3606,10 @@ GameObject:
   m_Component:
   - component: {fileID: 871691775}
   - component: {fileID: 871691774}
+  - component: {fileID: 871691776}
   m_Layer: 0
   m_Name: BackroundMusic
-  m_TagString: Untagged
+  m_TagString: Music
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3694,13 +3717,28 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871691773}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1002, y: -97, z: -2.6817255}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1002, y: -97, z: -2.6817245}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &871691776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871691773}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb9ad240dd93f74c95322f3962f8f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuMusic: {fileID: 0}
+  normalMusic: {fileID: 8300000, guid: f39f62088718f6044afd8397d4ab193e, type: 3}
+  hype: {fileID: 8300000, guid: 0c174af5630bfcb41941eaf4c7afad85, type: 3}
 --- !u!1 &872546495
 GameObject:
   m_ObjectHideFlags: 0
@@ -4173,7 +4211,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989414125}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76804bec0dd1e954090504cb91e37dd8, type: 3}
   m_Name: 
@@ -4195,7 +4233,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989414125}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76804bec0dd1e954090504cb91e37dd8, type: 3}
   m_Name: 
@@ -4402,7 +4440,7 @@ RectTransform:
   m_Children:
   - {fileID: 626554415}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5191,6 +5229,10 @@ PrefabInstance:
       propertyPath: InitialModule.startLifetime.minMaxState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1591002638108667153, guid: a9249f9407ab82444839bc6a765efb9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1694281284855836715, guid: a9249f9407ab82444839bc6a765efb9a, type: 3}
       propertyPath: m_RootOrder
       value: 61
@@ -5293,6 +5335,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1402180474}
     m_Modifications:
+    - target: {fileID: 3046652303285468084, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+      propertyPath: maxBonus
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046652303285468084, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+      propertyPath: timeBetweenGenerations
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3444593090932855767, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
       propertyPath: uiInvNumberOffsett.x
       value: 0
@@ -5569,6 +5619,7 @@ GameObject:
   - component: {fileID: 1380444258}
   - component: {fileID: 1380444259}
   - component: {fileID: 1380444260}
+  - component: {fileID: 1380444261}
   m_Layer: 8
   m_Name: BuildFloorLeft
   m_TagString: Untagged
@@ -5667,6 +5718,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &1380444261
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380444257}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1001 &1384714315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6702,6 +6774,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1402180474}
     m_Modifications:
+    - target: {fileID: 3046652303285468084, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+      propertyPath: maxBonus
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046652303285468084, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
+      propertyPath: timeBetweenGenerations
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3444593090932855767, guid: b17c8d4ae2844b745a2b092435927dbe, type: 3}
       propertyPath: uiInvNumberOffsett.x
       value: 0
@@ -7007,7 +7087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 357137014931805189, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 357137014931805189, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
       propertyPath: m_LocalPosition.x

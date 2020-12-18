@@ -13,7 +13,7 @@ public class BlockTypeSpeedy : BlockType
 
     private Vector2 normal;
     private Vector3 lastPos;
-    public GameObject particle;
+    //public GameObject particle;
     public GameObject reflect;
 
     protected override void OnHitEnter(Collision2D collision)
