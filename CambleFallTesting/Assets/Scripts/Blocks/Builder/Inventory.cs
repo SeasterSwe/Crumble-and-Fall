@@ -60,7 +60,7 @@ public class Inventory : MonoBehaviour
             spaceBetweenIconsOne = spaceBetweenIconsTwo;
         }
         spaceBetweenIcons = new Vector2(0, spaceBetweenIconsOne);
-        print(spaceBetweenIcons);
+        //print(spaceBetweenIcons);
     }
     private void GetHighPoint()
     {
