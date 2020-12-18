@@ -14,16 +14,16 @@ public class StartAnimationsGameOver : MonoBehaviour
         if(roundTracker.CheckIfWin())
         {
             if (roundTracker.leftPlayerWon)
-                text.text = "Left Wins The Game";
+                text.text = "Player1 is victorious";
             else
-                text.text = "Right Wins The Game";
+                text.text = "Player2 is victorious";
         }
         else
         {
             if (roundTracker.leftPlayerWon)
-                text.text = "LeftWonRound";
+                text.text = "Player1 won the round";
             else
-                text.text = "RightWonRound";
+                text.text = "Player2 won the round";
         }
             roundTracker.ActivateAnimations();
     }

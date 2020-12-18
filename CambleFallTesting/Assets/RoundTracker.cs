@@ -57,6 +57,7 @@ public class RoundTracker : MonoBehaviour
     public void RightWin()
     {
         wins[(totalRounds - 1) - winsRight] = 2;
+        //instansiate redstar in middle?
         winsRight++;
         leftPlayerWon = false;
 

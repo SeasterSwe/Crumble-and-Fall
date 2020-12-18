@@ -29,5 +29,10 @@ public class RematchButton : MonoBehaviour
             Debug.LogWarning("ResetedGame");
             roundTracker.ResetStats();
         }
+        //GameObject.FindGameObjectWithTag("Music").GetComponent<BackRoundMusic>().SwapToNormal();
+    }
+    public void ResetStats()
+    {
+        roundTracker.ResetStats();
     }
 }

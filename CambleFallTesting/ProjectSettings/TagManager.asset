@@ -8,6 +8,7 @@ TagManager:
   - GameOverAnimations
   - GameSceneManager
   - Star
+  - Music
   layers:
   - Default
   - TransparentFX
