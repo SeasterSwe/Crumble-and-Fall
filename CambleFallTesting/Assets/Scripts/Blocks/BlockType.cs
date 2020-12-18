@@ -20,7 +20,7 @@ public class BlockType : MonoBehaviour
     public enum types { Fluffy, Speedy, Heavy }
     public types type;
 
-    public enum states { Idle, Projectile, Worried }
+    public enum states { Idle, Projectile, Worried, Brace }
     public states state = states.Idle;
 
     public Inventory inventory;
@@ -34,7 +34,22 @@ public class BlockType : MonoBehaviour
     public GameObject particle;
     public bool hitThisFrame;
 
+    private CircleCollider2D circleCol;
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(state != states.Projectile)
+        {
+            SetState(states.Brace);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(state == states.Brace)
+        {
+            SetState(states.Idle);
+        }
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -119,6 +134,7 @@ public class BlockType : MonoBehaviour
         spRenderer.sortingOrder = (int)(transform.position.x - lowerLeftCorner.x + transform.position.y - lowerLeftCorner.y);
         UpdateEachFrame();
 
+        
         if (state == states.Projectile)
         {
             if (rb.velocity.x > 0)
@@ -131,6 +147,7 @@ public class BlockType : MonoBehaviour
                 gameObject.GetComponent<SpriteRenderer>().flipX = true;
             }
         }
+
     }
 
     private void FixedUpdate()
@@ -178,6 +195,10 @@ public class BlockType : MonoBehaviour
 
     public void SetState(states toState)
     {
+        if(circleCol != null)
+        {
+            Destroy(circleCol);
+        }
         state = toState;
 
         switch (state)
@@ -199,6 +220,12 @@ public class BlockType : MonoBehaviour
             case states.Worried:
                 {
                     StateChagedToWorried();
+                }
+                break;
+
+            case states.Brace:
+                {
+                    StateChagedToBrace();
                 }
                 break;
             default:
@@ -238,13 +265,16 @@ public class BlockType : MonoBehaviour
 
     protected virtual void StateChagedToProjectile()
     {
+        circleCol = gameObject.AddComponent<CircleCollider2D>();
+        circleCol.isTrigger = true;
+        circleCol.radius = 10;
 
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         rb.drag = 0;
         rb.mass = projectileMass;
 
         gameObject.layer = layermaskToLayer(projectileLayer);
-        StartCoroutine(Anim(1));
+        StartCoroutine(Anim(3));
     }
 
     protected virtual void StateChagedToWorried()
@@ -257,6 +287,15 @@ public class BlockType : MonoBehaviour
         StartCoroutine(Anim(2));
     }
 
+    protected virtual void StateChagedToBrace()
+    {
+        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        rb.drag = linearDrag;
+        rb.mass = BlockMass;
+        gameObject.layer = layermaskToLayer(blockLayer);
+        //StartCoroutine(ChangeWhenVelIs(0.7f));
+        StartCoroutine(Anim(0));
+    }
     //Thx. Reconnoiter - Unity forum
     public static int layermaskToLayer(LayerMask layerMask)
     {
