@@ -148,7 +148,7 @@ public class Inventory : MonoBehaviour
         SetNonTransperent(img);
 
         txt.rectTransform.position = img.rectTransform.position + uiInvNumberOffsett;
-        txt.color = Color.white;
+        //txt.color = Color.white;
     }
     private void SetSecond(Image img, TextMeshProUGUI txt)
     {
