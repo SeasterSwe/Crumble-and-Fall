@@ -38,7 +38,7 @@ public class BlockType : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(state != states.Projectile)
+        if(state == states.Idle)
         {
             SetState(states.Brace);
         }
@@ -199,6 +199,7 @@ public class BlockType : MonoBehaviour
         {
             Destroy(circleCol);
         }
+
         state = toState;
 
         switch (state)
@@ -228,6 +229,7 @@ public class BlockType : MonoBehaviour
                     StateChagedToBrace();
                 }
                 break;
+
             default:
                 {
                     gameObject.layer = layermaskToLayer(blockLayer);
@@ -265,9 +267,9 @@ public class BlockType : MonoBehaviour
 
     protected virtual void StateChagedToProjectile()
     {
-        circleCol = gameObject.AddComponent<CircleCollider2D>();
-        circleCol.isTrigger = true;
-        circleCol.radius = 10;
+        //circleCol = gameObject.AddComponent<CircleCollider2D>();
+        //circleCol.isTrigger = true;
+        //circleCol.radius = 10;
 
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         rb.drag = 0;
