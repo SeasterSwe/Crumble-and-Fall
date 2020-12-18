@@ -11,7 +11,7 @@ public class ElevationCheck : MonoBehaviour
     public float towerHight;
     public Transform uiMeter;
 
-    private float groundlevel;
+    public float groundlevel;
     public Collider2D highestBlock;
 
     // Start is called before the first frame update
