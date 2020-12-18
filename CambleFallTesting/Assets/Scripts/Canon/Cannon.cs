@@ -98,23 +98,9 @@ public class Cannon : MonoBehaviour
     Vector3 startPos = new Vector3();
     void Update()
     {
-        //TODO : Remove CrapCode Fix
-       /* if (inventory.selectedBlock == inventory.fluffyBlock)
-        {
-            aim.Enable();
-            RobertsTestAim();
-        }
-        else
-        {
-            aim.Disable();
-        }*/
         if (Input.GetButtonUp(shootButton))
         {
             aim.Disable();
-        }
-        if (Input.GetButtonDown(shootButton))
-        {
-            aim.Enable();
         }
 
 
@@ -139,6 +125,9 @@ public class Cannon : MonoBehaviour
         //holdCharge
         if (Input.GetButton(shootButton) && nextFire > time)
         {
+            //Test Robban
+            aim.Enable();
+
             animator.SetBool("Shooting", true);
             holdTimer += Time.deltaTime;
             if (chargeIsntStarted)
@@ -159,7 +148,6 @@ public class Cannon : MonoBehaviour
         //Shoot      
         if (Input.GetButtonUp(shootButton) && nextFire > time)
         {
-
             holdTimer = 0;
             time = fireRate;
             nextFire = 0;
