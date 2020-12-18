@@ -303,22 +303,22 @@ public class Inventory : MonoBehaviour
 
             case BlockType.types.Heavy:
                 {
-                    numberOfFluffys--;
-                    if (numberOfFluffys < 1)
+                    numberOfHeavys--;
+                    if (numberOfHeavys < 1)
                     {
-                        uiFluffyTxt.color = Color.red;
-                        uiFluffyImg.color = Color.red;
+                        uiHeavyTxt.color = Color.red;
+                        uiHeavyImg.color = Color.red;
                     }
                 }
                 break;
 
             case BlockType.types.Fluffy:
                 {
-                    numberOfHeavys--;
-                    if (numberOfHeavys < 1)
+                    numberOfFluffys--;
+                    if (numberOfFluffys < 1)
                     {
-                        uiHeavyTxt.color = Color.red;
-                        uiHeavyImg.color = Color.red;
+                        uiFluffyTxt.color = Color.red;
+                        uiFluffyImg.color = Color.red;
                     }
                 }
                 break;
