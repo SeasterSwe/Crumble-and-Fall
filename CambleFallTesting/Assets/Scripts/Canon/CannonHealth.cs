@@ -14,6 +14,7 @@ public class CannonHealth : MonoBehaviour
     public GameObject explotion;
     public Color blinkColor;
     private Animator animator;
+    public AudioClip audioClip;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -117,6 +118,7 @@ public class CannonHealth : MonoBehaviour
     IEnumerator BrainDead()
     {
         animator.SetTrigger("Death");
+        GameObject.FindGameObjectWithTag("Music").GetComponent<BackRoundMusic>().SwapToHype();
         yield return new WaitForSeconds(0.8f);
         //GameObject exp = Instantiate(explotion, transform.position, explotion.transform.rotation);
         GameState.TogglegameStatesForward();
