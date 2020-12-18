@@ -184,8 +184,8 @@ public class Inventory : MonoBehaviour
     public void UpdateUiText()
     {
         uiSpeedyTxt.text = numberOfSpeedys.ToString().PadLeft(2, '0');
-        uiHeavyTxt.text = numberOfFluffys.ToString().PadLeft(2, '0');
-        uiFluffyTxt.text = numberOfHeavys.ToString().PadLeft(2, '0');
+        uiHeavyTxt.text = numberOfHeavys.ToString().PadLeft(2, '0');
+        uiFluffyTxt.text = numberOfFluffys.ToString().PadLeft(2, '0');
     }
 
 
@@ -221,11 +221,11 @@ public class Inventory : MonoBehaviour
                     numberOfHeavys += amount;
                     if (numberOfHeavys > 0)
                     {
-                        uiFluffyImg.color = Color.white;
-                        if (selectedBlock != fluffyBlock)
-                            SetSemiTransperent(uiFluffyImg);
+                        uiHeavyImg.color = Color.white;
+                        if (selectedBlock != heavyBlock)
+                            SetSemiTransperent(uiHeavyImg);
                         else
-                            uiFluffyTxt.color = Color.white;
+                            uiHeavyTxt.color = Color.white;
                     }
                     UpdateUiText();
                 }
@@ -236,11 +236,11 @@ public class Inventory : MonoBehaviour
                     numberOfFluffys += amount;
                     if (numberOfFluffys > 0)
                     {
-                        uiHeavyImg.color = Color.white;
-                        if (selectedBlock != heavyBlock)
-                            SetSemiTransperent(uiHeavyImg);
+                        uiFluffyImg.color = Color.white;
+                        if (selectedBlock != fluffyBlock)
+                            SetSemiTransperent(uiFluffyImg);
                         else
-                            uiHeavyTxt.color = Color.white;
+                            uiFluffyTxt.color = Color.white;
                     }
                     UpdateUiText();
                 }
@@ -306,8 +306,8 @@ public class Inventory : MonoBehaviour
                     numberOfFluffys--;
                     if (numberOfFluffys < 1)
                     {
-                        uiHeavyTxt.color = Color.red;
-                        uiHeavyImg.color = Color.red;
+                        uiFluffyTxt.color = Color.red;
+                        uiFluffyImg.color = Color.red;
                     }
                 }
                 break;
@@ -317,8 +317,8 @@ public class Inventory : MonoBehaviour
                     numberOfHeavys--;
                     if (numberOfHeavys < 1)
                     {
-                        uiFluffyTxt.color = Color.red;
-                        uiFluffyImg.color = Color.red;
+                        uiHeavyTxt.color = Color.red;
+                        uiHeavyImg.color = Color.red;
                     }
                 }
                 break;
@@ -351,7 +351,7 @@ public class Inventory : MonoBehaviour
                 }
             case BlockType.types.Heavy:
                 {
-                    if (numberOfFluffys > 0)
+                    if (numberOfHeavys > 0)
                     {
                         return (true);
                     }
@@ -362,7 +362,7 @@ public class Inventory : MonoBehaviour
                 }
             case BlockType.types.Fluffy:
                 {
-                    if (numberOfHeavys > 0)
+                    if (numberOfFluffys > 0)
                     {
                         return (true);
                     }
