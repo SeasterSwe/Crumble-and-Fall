@@ -7,6 +7,7 @@ public class BlockTypeFlyffy : BlockType
 {
     [Header("Joint")]
     public float breakForce = 15.0f;
+    public float breakDot = 0.95f;
 
     private bool alreadyJointed = false;
     private bool doNotJoint = false;
@@ -14,15 +15,46 @@ public class BlockTypeFlyffy : BlockType
     protected override void OnHitEnter(Collision2D collision)
     {
         base.OnHitEnter(collision);
-        if (collision.relativeVelocity.magnitude > breakForce && state != states.Projectile)
+        
+/*        if (collision.relativeVelocity.magnitude > breakForce && state != states.Projectile)
         {
             BreakJoint();
         }
-
+*/
         if (!doNotJoint)
         {
             CheckSurroundingBlocks();
             StartCoroutine(ResetJointCheckUp());
+        }
+    }
+
+    protected override void UpdateEachFrame()
+    {
+        base.UpdateEachFrame();
+        BreakJointByAngle();
+    }
+
+    void BreakJointByAngle()
+    {
+        FixedJoint2D[] joints = GetComponents<FixedJoint2D>();
+        if (joints.Length > 0)
+        {
+            foreach(FixedJoint2D joint in joints)
+            {
+                Vector2 dirToC = joint.connectedBody.position;
+                dirToC -= new Vector2( transform.position.x, transform.position.y);
+                Vector2 dir = (joint.connectedAnchor);
+
+                float dotToAttachment = Vector2.Dot(dirToC, dir);
+
+                Debug.DrawRay(transform.position + Vector3.back, dir, Color.red);
+                Debug.DrawRay(transform.position + Vector3.back, dirToC, Color.green);
+
+                if(dotToAttachment > breakDot)
+                {
+                    Destroy(joint);
+                }
+            }
         }
     }
 
