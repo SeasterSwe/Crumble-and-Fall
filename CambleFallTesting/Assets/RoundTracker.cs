@@ -73,15 +73,17 @@ public class RoundTracker : MonoBehaviour
     public void ActivateAnimations()
     {
         Transform[] animations = GameObject.FindGameObjectWithTag("GameOverAnimations").GetComponentsInChildren<Transform>();
+        print(animations.Length);
         if (leftPlayerWon == true)
         {
             animations[1].gameObject.SetActive(false);
-            animations[4].gameObject.SetActive(false);
+            animations[5].gameObject.SetActive(false);
         }
+        //höger
         if (leftPlayerWon == false)
         {
             animations[2].gameObject.SetActive(false);
-            animations[3].gameObject.SetActive(false);
+            animations[4].gameObject.SetActive(false);
         }
     }
 

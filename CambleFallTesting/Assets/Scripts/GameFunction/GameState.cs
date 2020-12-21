@@ -141,6 +141,7 @@ public class GameState : MonoBehaviour
     //STARTFIGHT
     void StartFight()
     {
+        Instantiate(startParticle, Vector3.up * -9.8f, startParticle.transform.rotation);
         Color color = uiGameStateText.color;
         color.a = 1f;
         uiGameStateText.rectTransform.DOScale(Vector3.one * 7f, 0.1f);
