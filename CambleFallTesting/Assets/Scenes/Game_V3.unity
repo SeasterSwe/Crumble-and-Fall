@@ -2319,7 +2319,7 @@ PrefabInstance:
       objectReference: {fileID: 1273417755}
     - target: {fileID: 7822398094458808284, guid: 9e9ba8119c86f4a4eaeb6ec6e037ca96, type: 3}
       propertyPath: cannonRotationBonus
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7822398094458808284, guid: 9e9ba8119c86f4a4eaeb6ec6e037ca96, type: 3}
       propertyPath: cannonVelocityBonus
@@ -6370,7 +6370,7 @@ PrefabInstance:
       objectReference: {fileID: 1162784090}
     - target: {fileID: 1651015161292967580, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: cannonRotationBonus
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1651015161292967580, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: cannonVelocityBonus
