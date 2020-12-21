@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public static class SoundManager
 {
+    
     public enum Sound
     {
         HeavyBlockShoot,
@@ -31,6 +33,10 @@ public static class SoundManager
         audioSource.dopplerLevel = 0f;
         audioSource.Play();
         Object.Destroy(soundObj, audioSource.clip.length);
+
+        AudioMixer audioMixer = Resources.Load<AudioMixer>("SoundEffectMixer");
+        AudioMixerGroup[] audioMixGroup = audioMixer.FindMatchingGroups("Master");
+        audioSource.outputAudioMixerGroup = audioMixGroup[0];
     }
     public static void PlaySound(Sound sound)
     {
@@ -38,6 +44,10 @@ public static class SoundManager
         {
             oneShotGameObject =  new GameObject("Sound");
             oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
+            AudioMixer audioMixer = Resources.Load<AudioMixer>("SoundEffectMixer");
+            AudioMixerGroup[] audioMixGroup = audioMixer.FindMatchingGroups("Master");
+            oneShotAudioSource.outputAudioMixerGroup = audioMixGroup[0];
+
         }
 
         oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
