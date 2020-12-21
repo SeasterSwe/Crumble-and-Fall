@@ -24,6 +24,7 @@ public class RoundTracker : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            totalRounds = GameStats.amountOfRounds;
             roundsToWin = Mathf.FloorToInt((totalRounds / 2f) + 1);
         }
         else
@@ -87,6 +88,7 @@ public class RoundTracker : MonoBehaviour
     public void Setup(GameObject obj)
     {
         Vector3 sPos = obj.transform.position;
+        totalRounds = GameStats.amountOfRounds;
         float walla = (totalRounds - 1) * distBetwean / 2;
 
         starPos = obj;
