@@ -47,8 +47,8 @@ public class AimCannon : MonoBehaviour
         Vector2 fakePos = cannon.shootPos.position;// + cannon.shootPos.right * cannon.transform.localScale.x;
 
 
-        lineRenderer.startColor = color;
-        lineRenderer.endColor = color;
+        //lineRenderer.startColor = color;
+        //lineRenderer.endColor = color;
         lineRenderer.SetPosition(0, fakePos);
         for (int i = 1; i < lineRenderer.positionCount; i++)
         {

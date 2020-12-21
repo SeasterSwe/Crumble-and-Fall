@@ -6,6 +6,6 @@ public class HeavyProjectile : Projectile
 {
     public override void PlayLaunchSound()
     {
-        SoundManager.PlaySound(SoundManager.Sound.HeavyBlockShoot, transform.position);
+        SoundManager.PlaySound(SoundManager.Sound.Heavy, transform.position);
     }
 }
