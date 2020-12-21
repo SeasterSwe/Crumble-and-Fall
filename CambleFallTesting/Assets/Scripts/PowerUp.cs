@@ -3,38 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(1)]
 public class PowerUp : MonoBehaviour
 {
-
-   public ElevationCheck evCheck;
-   public Blockbuilder bbCheck;
-   float heightPercantage;
-   public float powerUpActivate = 0.5f;
-    public string text;
-
-    void Update()
+    public float restictValue;
+    public bool leftElevation;
+    private ElevationCheck elevationCheck;
+    private Image img;
+    public Color color;
+    float height;
+    private void Start()
     {
-        GetHeightPercentage();
-
-        if (GameState.currentState == GameState.gameStates.Fight)
+        if(leftElevation)
+            elevationCheck = FindClosetElevationCheck.GetTheLeftOne();
+        else
+            elevationCheck = FindClosetElevationCheck.GetTheRighttOne();
+       
+        img = GetComponent<Image>();
+        img.color = color; 
+    }
+    private void Update()
+    {
+        if (GameState.currentState == GameState.gameStates.StartFight || GameState.currentState == GameState.gameStates.Fight)
         {
-            GetComponent<Image>().enabled = true; 
-            if (transform.GetChild(0) != null)
-                transform.GetChild(0).gameObject.SetActive(true);
-
+            Destroy(gameObject.GetComponent<PowerUp>());
         }
         else
         {
-            GetComponent<Image>().enabled = false;
-            if (transform.GetChild(0) != null)
-                transform.GetChild(0).gameObject.SetActive(false);
+            if (elevationCheck.towerHight > restictValue)
+            {
+                //print(elevationCheck.towerHight);
+                img.color = Color.white;
+            }
+            else
+                img.color = color;
         }
-
-        text = (heightPercantage * 10).ToString("f0").PadLeft(2,'0');
-    }
-
-    public void GetHeightPercentage()
-    {
-        heightPercantage = evCheck.towerHight / bbCheck.maxHeight;
     }
 }
+

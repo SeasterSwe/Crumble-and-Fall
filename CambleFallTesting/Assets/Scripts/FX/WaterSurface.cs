@@ -55,7 +55,7 @@ public class WaterSurface : MonoBehaviour
             SlowStuffDown(obj);
         }
 
-        if (gjordesFörAttRetaRobert && Time.time > 2f)
+        if (canSpawnParticle && Time.timeSinceLevelLoad > 2f)
         {
             StartCoroutine(ParticleDelay());
             GameObject waterClone = Instantiate(waterSplash, collision.transform.position, waterSplash.transform.rotation);
@@ -73,12 +73,12 @@ public class WaterSurface : MonoBehaviour
 
     }
 
-    bool gjordesFörAttRetaRobert = true;
+    bool canSpawnParticle = true;
     IEnumerator ParticleDelay()
     {
-        gjordesFörAttRetaRobert = false;
+        canSpawnParticle = false;
         yield return new WaitForSeconds(0.1f);
-        gjordesFörAttRetaRobert = true;
+        canSpawnParticle = true;
     }
 
     //void Splash(Vector3 pos)
