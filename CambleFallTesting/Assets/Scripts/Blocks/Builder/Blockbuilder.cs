@@ -43,6 +43,13 @@ public class Blockbuilder : MonoBehaviour
 
     private GameObject spawnParticle;
 
+    [Header("Sound")]
+    public float pitchLevelMin = 0.5f;
+    public float pitchLevelMax = 1.5f;
+    public int pitchLevels = 5;
+    private int currentPitchLevel;
+    private float pStep;
+
     private void Start()
     {
         SpawnAreaSize();
@@ -59,7 +66,12 @@ public class Blockbuilder : MonoBehaviour
         blockPreFab = inventory.selectedBlock;
         AimChangeColor();
         spawnParticle = (Resources.Load("Dust") as GameObject);
+        InitPitch();
+    }
 
+    private void InitPitch()
+    {
+        pStep = (pitchLevelMax - pitchLevelMin) / pitchLevels;
     }
 
     // minmaxX från spawn areas volym. Sätter x koordinater. 
@@ -160,7 +172,7 @@ public class Blockbuilder : MonoBehaviour
         {
             if (inventory.SelectedBlockIsInInventory())
             {
-                SoundManager.PlaySound(SoundManager.Sound.BuilderPlacementSound, spawnerPosition);
+                SoundManager.PlaySound(SoundManager.Sound.BuilderPlacementSound, spawnerPosition, TogglePitchUp());
 
                 //vatenhöjd på localspawner
                 if (spawnerObject.localPosition.y >= -15f) { 
@@ -174,6 +186,16 @@ public class Blockbuilder : MonoBehaviour
                 SoundManager.PlaySound(SoundManager.Sound.CannonOutOfAmmo, spawnerPosition);
         }
     }
+
+    public float TogglePitchUp()
+    {
+        currentPitchLevel++;
+        if (currentPitchLevel > pitchLevels)
+        {
+            currentPitchLevel = 0;
+        }
+        return (pitchLevelMin + pStep * currentPitchLevel);
+    } 
 
     public void ToggleBetweenBlocks()
     {
