@@ -245,6 +245,20 @@ public class BlockType : MonoBehaviour
 
         gameObject.layer = layermaskToLayer(projectileLayer);
         StartCoroutine(Anim(1));
+        if (type == types.Heavy)
+        {
+            SoundManager.PlaySound(SoundManager.Sound.Heavy, transform.position);
+        }
+        else if (type == types.Fluffy)
+        {
+            SoundManager.PlaySound(SoundManager.Sound.Fluffy, transform.position);
+        }
+        else
+        {
+            SoundManager.PlaySound(SoundManager.Sound.Speedy, transform.position);
+        }
+        
+
     }
 
     protected virtual void StateChagedToWorried()
