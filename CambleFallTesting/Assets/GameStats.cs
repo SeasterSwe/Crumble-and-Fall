@@ -9,4 +9,5 @@ public static class GameStats
     public static float fightTime = 120f;
     public static float cannonStartHealth = 10f;
     public static int startBlocks = 12;
+    public static int amountOfRounds = 3;
 }
