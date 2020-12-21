@@ -8,9 +8,9 @@ public static class SoundManager
     
     public enum Sound
     {
-        HeavyBlockShoot,
-        FastBlockShoot,
-        NormalBlockShoot,
+        Heavy,
+        Fluffy,
+        Speedy,
         CannonDrownSound,
         CannonHurtSound,
         CannonOutOfAmmo,
