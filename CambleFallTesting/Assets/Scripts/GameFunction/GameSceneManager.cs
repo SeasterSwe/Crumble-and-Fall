@@ -79,8 +79,19 @@ public class GameSceneManager : MonoBehaviour
 
 	public void QuitGame()
     {
+		if (transition != null)
+			StartCoroutine(Quit(1));		
+		else
+			Application.Quit();
+	}
+
+	IEnumerator Quit(float t)
+    {
+		transition.SetTrigger("Start");
+		yield return new WaitForSeconds(t);
 		Application.Quit();
-    }
+	}
+
 	void PlaySound(AudioClip clip)
     {
 		audioSource = GetComponent<AudioSource>();

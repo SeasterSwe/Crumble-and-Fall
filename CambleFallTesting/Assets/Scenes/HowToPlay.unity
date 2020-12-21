@@ -1851,11 +1851,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 870959691609467682, guid: 3d8745dae737b3b41b673d8d074bbc0e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -317
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 870959691609467682, guid: 3d8745dae737b3b41b673d8d074bbc0e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -59
+      value: -202
       objectReference: {fileID: 0}
     - target: {fileID: 870959691609467682, guid: 3d8745dae737b3b41b673d8d074bbc0e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1874,9 +1874,13 @@ PrefabInstance:
       value: StartButton (2)
       objectReference: {fileID: 0}
     - target: {fileID: 870959691609467684, guid: 3d8745dae737b3b41b673d8d074bbc0e, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 870959691609467684, guid: 3d8745dae737b3b41b673d8d074bbc0e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c2a8de00ead5bce478c2ab483dfd4cb2, type: 3}
+      objectReference: {fileID: 21300000, guid: 075326efe231f0c498d7e7320e796b7e, type: 3}
     - target: {fileID: 870959691609467685, guid: 3d8745dae737b3b41b673d8d074bbc0e, type: 3}
       propertyPath: m_Colors.m_NormalColor.a
       value: 0.6039216

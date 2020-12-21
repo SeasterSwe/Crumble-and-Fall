@@ -56,9 +56,9 @@ public class PowerUpUi : MonoBehaviour
     {
         if (GameState.currentState == GameState.gameStates.Fight)
         {
-            texts[0].text = "+" + (cannonHeightBonuses.currentRotaionBonus * 100).ToString("F0").PadLeft(3, '0') + "%";
-            texts[1].text = "+" + (cannonHeightBonuses.currentVelBouns * 100).ToString("F0").PadLeft(3, '0') + "%";
-            texts[2].text = "+" + (generateBlock.bonus * 100).ToString("F0").PadLeft(3, '0') + "%";
+            //texts[0].text = "+" + (cannonHeightBonuses.currentRotaionBonus * 100).ToString("F0").PadLeft(3, '0') + "%";
+            //texts[1].text = "+" + (cannonHeightBonuses.currentVelBouns * 100).ToString("F0").PadLeft(3, '0') + "%";
+            //texts[2].text = "+" + (generateBlock.bonus * 100).ToString("F0").PadLeft(3, '0') + "%";
         }
     }
 }

@@ -1,51 +1,73 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CannonHeightBonuses : MonoBehaviour
 {
-    Cannon cannon;
-    public float maxVelBouns;
-    private float bonusVelPerBlock;
+    [Header("Sources")]
+    private ElevationCheck elevationCheck;
+    public GenerateBlockToInventoryOverTime generator;
+    private Cannon cannon;
 
-    public float maxRotationSpeed = 1;
-    private float bonusRotationSpeedPerBlock;
+    public Image uiBonusRotation;
+    public Image uibonusVelocity;
+    public Image uiBonusGenerator;
 
-    private float maxHeight = 20;        
+    [Header("Give Bonus At")]
+    public float bonusRotationAt = 7;
+    public float bonusVelocityAt = 9;
+    public float bonusGeneratorAt = 11;
 
-    public ElevationCheck elevationCheck;
-    private float currentHeight;
-    [HideInInspector]
-    public float currentVelBouns;
-    [HideInInspector]
-    public float currentRotaionBonus;
-    public GameObject blockBuilder;
-    private void Start()
+    [Header("Bonus Values")]
+    public float cannonRotationBonus = 2;
+    public float cannonVelocityBonus = 2;
+    public float blockGenBonus = 2;
+
+    private float cannonRotationBaseValue;
+    private float cannonVelocityBaseValue;
+    private float blockGenBaseValue;
+
+    public Color inaktiveCol = new Color(1, 0, 0, 0.5f);
+
+    // Start is called before the first frame update
+    void Awake()
     {
-        cannon = GetComponent<Cannon>();
-        bonusVelPerBlock = maxVelBouns / maxHeight;
-        bonusRotationSpeedPerBlock = maxRotationSpeed / maxHeight;
-        elevationCheck = FindClosetElevationCheck.GetClosets(gameObject);
+        Transform parent = transform.parent;
+        elevationCheck = parent.GetComponentInChildren<ElevationCheck>();
+        cannon = parent.GetComponentInChildren<Cannon>();
         
-        if (blockBuilder != null)
-            maxHeight = blockBuilder.GetComponent<Blockbuilder>().maxHeight;  
+        if(generator == null)
+            generator = parent.GetComponentInChildren<GenerateBlockToInventoryOverTime>();
+
+        cannonRotationBaseValue = cannon.bonunsRotationSpeed;
+        cannonVelocityBaseValue = cannon.velBouns;
+        blockGenBaseValue = generator.bonus;
+
+        bonusRotationAt = bonusRotationAt + elevationCheck.groundlevel;
+        bonusVelocityAt = bonusVelocityAt + elevationCheck.groundlevel;
+        bonusGeneratorAt = bonusGeneratorAt + elevationCheck.groundlevel;
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        //currentHeight = elevationCheck.towerHight;
-        //cannon.velBouns = Mathf.Clamp(Mathf.Round(bonusVelPerBlock * currentHeight), 0f, maxVelBouns);
-        //cannon.bonunsRotationSpeed = Mathf.Clamp((bonusRotationSpeedPerBlock * currentHeight), 0, maxRotationSpeed);
+        cannon.bonunsRotationSpeed = Bonus(bonusRotationAt, uiBonusRotation, cannonRotationBaseValue, cannonRotationBonus);
+        cannon.velBouns = Bonus(bonusVelocityAt, uibonusVelocity, cannonVelocityBaseValue, cannonVelocityBonus);
+        generator.bonus = Bonus(bonusGeneratorAt, uiBonusGenerator, blockGenBaseValue, blockGenBonus);
+    }
 
-        if (currentHeight != elevationCheck.towerHight)
+    float Bonus(float restictValue, Image img, float baseValue, float bonus)
+    {
+        if (elevationCheck.towerHight > restictValue)
         {
-            currentHeight = elevationCheck.towerHight;
-
-            currentVelBouns = currentHeight / maxHeight;/*Mathf.Clamp(Mathf.Round(currentHeight/maxHeight), 0f, maxVelBouns);*/
-            cannon.velBouns = currentVelBouns; 
-
-            currentRotaionBonus = Mathf.Clamp(bonusRotationSpeedPerBlock * currentHeight, 0, maxRotationSpeed);
-            cannon.bonunsRotationSpeed = currentRotaionBonus;
+            img.color = Color.white;
+            return bonus;
+        }
+        else
+        {
+            img.color = inaktiveCol;
+            return baseValue;
         }
     }
 }
