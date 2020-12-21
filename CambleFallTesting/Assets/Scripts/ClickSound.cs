@@ -7,12 +7,12 @@ public class ClickSound : MonoBehaviour
 {
 
     public AudioClip sound;
-    private Button button { get { return GetComponent<Button>(); } }
+    private Button menuButtons { get { return GetComponent<Button>(); } }
     private static AudioSource soundPlay;
 
     void Start()
     {
-        button.onClick.AddListener(() => PlaySound());
+        menuButtons.onClick.AddListener(() => PlaySound());
     }
 
     void PlaySound()
@@ -23,7 +23,7 @@ public class ClickSound : MonoBehaviour
             soundPlay.clip = sound;
             soundPlay.playOnAwake = false;
             soundPlay.PlayOneShot(sound);
-            DestroyObject(soundPlay, 0.5f);
+            Object.Destroy(soundPlay, 0.5f);
         }
     }
 }
