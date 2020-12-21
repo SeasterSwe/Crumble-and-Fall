@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(Button))]
 
@@ -20,6 +21,10 @@ public class ClickSound : MonoBehaviour
         if (GetComponent<Image>().color.a > 0.4f)
         {
             soundPlay = Instantiate(gameObject.AddComponent<AudioSource>());
+            AudioMixer audioMixer = Resources.Load<AudioMixer>("SoundEffectMixer");
+            AudioMixerGroup[] audioMixGroup = audioMixer.FindMatchingGroups("Master");
+            soundPlay.outputAudioMixerGroup = audioMixGroup[0];
+            
             soundPlay.clip = sound;
             soundPlay.playOnAwake = false;
             soundPlay.PlayOneShot(sound);
