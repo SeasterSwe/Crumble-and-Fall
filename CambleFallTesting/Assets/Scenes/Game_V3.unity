@@ -7982,6 +7982,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: "MenuChrisR\xF6rInteMigLars"
       objectReference: {fileID: 0}
+    - target: {fileID: 2654385852642471073, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4aa1ca490c440754f901a48966984e86, type: 3}
     - target: {fileID: 4270615047053688144, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
       propertyPath: m_MinValue
       value: 0.0001

@@ -21,7 +21,7 @@ public class FluffyProjectile : Projectile
     }
     public override void PlayLaunchSound()
     {
-        SoundManager.PlaySound(SoundManager.Sound.NormalBlockShoot, transform.position);
+        SoundManager.PlaySound(SoundManager.Sound.Fluffy, transform.position);
     }
 
     protected override void HitEffekt(Collision2D collision)

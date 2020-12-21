@@ -41,6 +41,6 @@ public class SpeedyProjectile : Projectile
 
     public override void PlayLaunchSound()
     {
-        SoundManager.PlaySound(SoundManager.Sound.FastBlockShoot, transform.position);
+        SoundManager.PlaySound(SoundManager.Sound.Speedy, transform.position);
     }
 }
