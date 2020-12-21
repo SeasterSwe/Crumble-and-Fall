@@ -12,7 +12,7 @@ public class AimCannon : MonoBehaviour
     private Cannon cannon;
     public float segmentStep = 0.1f;
 
-
+    public GameObject noFire;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +22,10 @@ public class AimCannon : MonoBehaviour
     }
 
 
-    public void Aim()
+    public void Aim(Color color)
     {
+        noFire.SetActive(false);
+        lineRenderer.forceRenderingOff = false;
 
         Rigidbody2D pRB = cannon.inventory.selectedBlock.GetComponent<Rigidbody2D>();
         Vector2 gravity = (Physics2D.gravity) * pRB.gravityScale;
@@ -45,13 +47,21 @@ public class AimCannon : MonoBehaviour
         Vector2 fakePos = cannon.shootPos.position;// + cannon.shootPos.right * cannon.transform.localScale.x;
 
 
-
+        lineRenderer.startColor = color;
+        lineRenderer.endColor = color;
         lineRenderer.SetPosition(0, fakePos);
         for (int i = 1; i < lineRenderer.positionCount; i++)
         {
             float stepLength = i * segmentStep;
             lineRenderer.SetPosition(i, fakePos + fakeDir * stepLength + 0.5f * gravity * stepLength * stepLength);
         }
+    }
+
+    public void NoFire()
+    {
+        lineRenderer.forceRenderingOff = true;
+        noFire.SetActive(true);
+        noFire.transform.position = cannon.shootPos.position;
     }
 
     public void Enable()
@@ -61,6 +71,7 @@ public class AimCannon : MonoBehaviour
     public void Disable()
     {
         lineRenderer.forceRenderingOff = true;
+        noFire.SetActive(false);
     }
 
 }

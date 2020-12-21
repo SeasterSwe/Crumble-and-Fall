@@ -50,10 +50,34 @@ public class Cannon : MonoBehaviour
     private Animator animator;
     CannonHealth cannonHealth;
 
-    void RobertsTestAim()
+    void RobertsTestAim(bool active)
     {
-        projectileFinalCharge = transform.localScale.x * (1 + 0.5f * (chargePower / maxCharge) + velBouns);
-        aim.Aim();
+        if (active)
+        {
+            projectileFinalCharge = transform.localScale.x * (1 + 0.5f * (chargePower / maxCharge) + velBouns);
+            if (inventory.SelectedBlockIsInInventory())
+            {
+                if (nextFire > time)
+                {
+                    aim.Aim(Color.white);
+                    return;
+                }
+                else
+                {
+                    aim.NoFire();
+                    return;
+                }
+            }
+            else
+            {
+                aim.NoFire();
+                return;
+            }
+        }
+        else
+        {
+            aim.Disable();
+        }
     }
 
 
@@ -98,11 +122,15 @@ public class Cannon : MonoBehaviour
     Vector3 startPos = new Vector3();
     void Update()
     {
-        if (Input.GetButtonUp(shootButton))
+            //TEST : Roberts test aim
+        if (Input.GetButton(shootButton))
         {
-            aim.Disable();
+            RobertsTestAim(true);
         }
-
+        else
+        {
+            RobertsTestAim(false);
+        }
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             UpdateLoadImage(inventory.selectedBlock);
@@ -141,8 +169,7 @@ public class Cannon : MonoBehaviour
             }
 
 
-            //TEST : Roberts test aim
-            RobertsTestAim();
+    
         }
 
         //Shoot      
@@ -196,7 +223,6 @@ public class Cannon : MonoBehaviour
     }
     void ShootBlock(float extraForce = 0)
     {
-        RobertsTestAim();
         GameObject clone = Instantiate(inventory.TakeActiveBlockFromInventory(), shootPos.position, shootPos.rotation);
         Rigidbody2D rb = clone.GetComponent<Rigidbody2D>();
 
