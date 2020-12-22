@@ -869,8 +869,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 475}
-  m_SizeDelta: {x: 283.78, y: 50}
+  m_AnchoredPosition: {x: 0, y: 470}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &253886327
 MonoBehaviour:
@@ -921,8 +921,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3151,6 +3151,86 @@ PrefabInstance:
       propertyPath: uiGameStateText
       value: 
       objectReference: {fileID: 2135441127}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceFadeCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceScaleCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceFadeCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceFadeCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceFadeCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceScaleCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceScaleCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceScaleCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceFadeCurve.m_Curve.Array.data[0].inSlope
+      value: 6.8085732
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceFadeCurve.m_Curve.Array.data[1].inSlope
+      value: 0.009653823
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceFadeCurve.m_Curve.Array.data[0].outSlope
+      value: 6.8085732
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceFadeCurve.m_Curve.Array.data[1].inWeight
+      value: 0.12560901
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceFadeCurve.m_Curve.Array.data[1].outSlope
+      value: 0.009653823
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceScaleCurve.m_Curve.Array.data[0].inSlope
+      value: 6.8085732
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceScaleCurve.m_Curve.Array.data[1].inSlope
+      value: 0.009653823
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceFadeCurve.m_Curve.Array.data[0].outWeight
+      value: 0.008482914
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceScaleCurve.m_Curve.Array.data[0].outSlope
+      value: 6.8085732
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceScaleCurve.m_Curve.Array.data[1].inWeight
+      value: 0.12560901
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceScaleCurve.m_Curve.Array.data[1].outSlope
+      value: 0.009653823
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804688142118874509, guid: 04f8479515149474899855cff8307b11, type: 3}
+      propertyPath: juiceScaleCurve.m_Curve.Array.data[0].outWeight
+      value: 0.008482914
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04f8479515149474899855cff8307b11, type: 3}
 --- !u!1 &731219887
@@ -9140,7 +9220,7 @@ RectTransform:
   m_GameObject: {fileID: 2135441125}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.220744, y: 7.220744, z: 7.220744}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1194010723}
   m_RootOrder: 3
@@ -9148,7 +9228,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 283.78, y: 50}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2135441127
 MonoBehaviour:
@@ -9199,8 +9279,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
