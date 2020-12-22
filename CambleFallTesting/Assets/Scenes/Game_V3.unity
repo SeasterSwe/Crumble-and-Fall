@@ -1206,7 +1206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105261987839197707, guid: 8392cdd30b7d46d4db2620d7cf10041d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 205
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 5105261987839197707, guid: 8392cdd30b7d46d4db2620d7cf10041d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2258,7 +2258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7822398094458808284, guid: 9e9ba8119c86f4a4eaeb6ec6e037ca96, type: 3}
       propertyPath: bonusVelocityAt
-      value: 9
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7822398094458808284, guid: 9e9ba8119c86f4a4eaeb6ec6e037ca96, type: 3}
       propertyPath: uiBonusRotation
@@ -2270,7 +2270,7 @@ PrefabInstance:
       objectReference: {fileID: 697762585}
     - target: {fileID: 7822398094458808284, guid: 9e9ba8119c86f4a4eaeb6ec6e037ca96, type: 3}
       propertyPath: bonusGeneratorAt
-      value: 13
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7822398094458808284, guid: 9e9ba8119c86f4a4eaeb6ec6e037ca96, type: 3}
       propertyPath: uiBonusGenerator
@@ -2282,7 +2282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7822398094458808284, guid: 9e9ba8119c86f4a4eaeb6ec6e037ca96, type: 3}
       propertyPath: cannonVelocityBonus
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7822398094458808285, guid: 9e9ba8119c86f4a4eaeb6ec6e037ca96, type: 3}
       propertyPath: smoke
@@ -2806,7 +2806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39fe9b8c252a11a45a65c1f0f05cd23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restictValue: 9
+  restictValue: 13
   leftElevation: 1
   color: {r: 0.93333334, g: 0.8235294, b: 0.8235294, a: 0.20392157}
 --- !u!1 &613269679
@@ -2978,7 +2978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39fe9b8c252a11a45a65c1f0f05cd23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restictValue: 9
+  restictValue: 13
   leftElevation: 0
   color: {r: 0.93333334, g: 0.8235294, b: 0.8235294, a: 0.20392157}
 --- !u!114 &697762585 stripped
@@ -3360,7 +3360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105261987839197707, guid: 8392cdd30b7d46d4db2620d7cf10041d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15
+      value: 205
       objectReference: {fileID: 0}
     - target: {fileID: 5105261987839197707, guid: 8392cdd30b7d46d4db2620d7cf10041d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4425,7 +4425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105261987839197707, guid: 8392cdd30b7d46d4db2620d7cf10041d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 205
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 5105261987839197707, guid: 8392cdd30b7d46d4db2620d7cf10041d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5025,7 +5025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39fe9b8c252a11a45a65c1f0f05cd23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restictValue: 13
+  restictValue: 9
   leftElevation: 1
   color: {r: 0.93333334, g: 0.8235294, b: 0.8235294, a: 0.20392157}
 --- !u!1 &1194010719
@@ -5703,7 +5703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39fe9b8c252a11a45a65c1f0f05cd23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restictValue: 13
+  restictValue: 9
   leftElevation: 0
   color: {r: 0.93333334, g: 0.8235294, b: 0.8235294, a: 0.20392157}
 --- !u!114 &1273417755 stripped
@@ -6281,7 +6281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1651015161292967580, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: bonusVelocityAt
-      value: 9
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1651015161292967580, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: uiBonusRotation
@@ -6293,7 +6293,7 @@ PrefabInstance:
       objectReference: {fileID: 611303853}
     - target: {fileID: 1651015161292967580, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: bonusGeneratorAt
-      value: 13
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1651015161292967580, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: uiBonusGenerator
@@ -6305,7 +6305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1651015161292967580, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: cannonVelocityBonus
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1651015161292967582, guid: 5d2684c3a4a570949bf1cc6b31f174a2, type: 3}
       propertyPath: smoke
@@ -7274,7 +7274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105261987839197707, guid: 8392cdd30b7d46d4db2620d7cf10041d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15
+      value: 205
       objectReference: {fileID: 0}
     - target: {fileID: 5105261987839197707, guid: 8392cdd30b7d46d4db2620d7cf10041d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

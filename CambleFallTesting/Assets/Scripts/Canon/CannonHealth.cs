@@ -39,7 +39,7 @@ public class CannonHealth : MonoBehaviour
             currentHeatlh -= amount;
             healthBar.UpdateFillAmount(currentHeatlh / startHealth);
             if (playSound)
-                SoundManager.PlaySound(SoundManager.Sound.CannonHurtSound);
+                SoundManager.PlaySound(SoundManager.Sound.CannonHurtSound, Random.Range(0.8f, 1.2f));
 
             if (currentHeatlh <= 0)
             {
@@ -47,7 +47,6 @@ public class CannonHealth : MonoBehaviour
             }
             else 
                 StartCoroutine(FadeSprite(0.3f, 5));
-
         }
     }
 
@@ -61,7 +60,7 @@ public class CannonHealth : MonoBehaviour
             healthBar.UpdateFillAmount(currentHeatlh / startHealth);
 
             if (playSound)
-                SoundManager.PlaySound(SoundManager.Sound.CannonHurtSound);
+                SoundManager.PlaySound(SoundManager.Sound.CannonHurtSound, Random.Range(0.8f, 1.2f));
 
             if (currentHeatlh <= 0)
             {
@@ -82,7 +81,7 @@ public class CannonHealth : MonoBehaviour
             currentHeatlh -= amount;
             healthBar.UpdateFillAmount(currentHeatlh / startHealth);
 
-            SoundManager.PlaySound(sound);
+            SoundManager.PlaySound(sound, Random.Range(0.8f, 1.2f));
 
             if (currentHeatlh <= 0)
             {
