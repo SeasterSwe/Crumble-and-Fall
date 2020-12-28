@@ -5,22 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: "Assets/Scenes/MenuChrisR\xF6rInteMigLars.unity"
     guid: 08469ee9056ab3744a1a774a93dcdad8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game_V3.unity
     guid: 6e9db4de27794d54d95203b9fef8c03c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HowToPlay.unity
     guid: 598872f09b7c72044bf22a22618a7933
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOver.unity
     guid: f49fd2c001ca78146af46475ef49267c
-  - enabled: 1
+  - enabled: 0
     path: Assets/GameSettings.unity
     guid: c5825fe076f77ed459fbfd66d1be6db6
-  - enabled: 1
+  - enabled: 0
     path: Assets/LoadingScreen.unity
     guid: 77ec253961955004db0e3261415663d7
+  - enabled: 1
+    path: Assets/Scenes/TRAILER.unity
+    guid: 6fb0259ae8cdc204f96938541c54fd30
   m_configObjects: {}
