@@ -176,7 +176,7 @@ public class GameState : MonoBehaviour
         }
         else
         {
-            Instantiate(startParticle, Vector3.up * -9.8f, startParticle.transform.rotation);
+           // Instantiate(startParticle, Vector3.up * -9.8f, startParticle.transform.rotation);
             TogglegameStatesForward();
         }
     }

@@ -116,7 +116,7 @@ public class BlockType : MonoBehaviour
 
     private void Update()
     {
-        spRenderer.sortingOrder = (int)(transform.position.x - lowerLeftCorner.x + transform.position.y - lowerLeftCorner.y);
+        spRenderer.sortingOrder = (int)(55 - transform.position.x - lowerLeftCorner.x - transform.position.y - lowerLeftCorner.y);
         UpdateEachFrame();
 
         if (state == states.Projectile)
