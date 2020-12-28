@@ -11,6 +11,9 @@ public class GameState : MonoBehaviour
     public static gameStates currentState;
     public enum gameStates { Intermission, StartBuild, Build, StartFight, Fight, StartSuddenDeath, SuddenDeath, StartGameOver, GameOver };
 
+    [Header ("Voice and Sound")]
+    
+
     [Header("Indicators")]
     public TextMeshProUGUI uiGameTimeText;
     public TextMeshProUGUI uiGameStateText;
@@ -24,7 +27,6 @@ public class GameState : MonoBehaviour
 
 
     private float buildTimeLeft;
-    private float tempTimeFloor;
 
     [Header("Fight")]
     public string fightText = "FIGHT";
@@ -47,6 +49,8 @@ public class GameState : MonoBehaviour
     public Ease easein;
     public Ease easeOut;
 
+    private float tempTimeFloor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +58,44 @@ public class GameState : MonoBehaviour
         currentState = gameStates.Intermission;
     }
 
+
+    void CountDownVoice(float t)
+    {
+        if(t < 0)
+        {
+            return;
+        }
+        if(t < 1)
+        {
+            //PlaySound
+            SoundManager.PlaySound(SoundManager.Sound.count1);
+            return;
+        }
+        if(t < 2)
+        {
+            //PlaySound
+            SoundManager.PlaySound(SoundManager.Sound.count2);
+            return;
+        }
+        if (t < 3)
+        {
+            //PlaySound
+            SoundManager.PlaySound(SoundManager.Sound.count3);
+            return;
+        }
+        if(t < 4)
+        {
+            //PlaySound
+            SoundManager.PlaySound(SoundManager.Sound.count4);
+            return;
+        }
+        if(t < 5)
+        {
+            //PlaySound
+            SoundManager.PlaySound(SoundManager.Sound.count5);
+            return;
+        }
+    }
 
     //New Juice
     /*
@@ -171,6 +213,7 @@ public class GameState : MonoBehaviour
                 uiGameTimeText.text = "";
                 uiGameStateText.text = timeTillGameStart.ToString("F0").PadLeft(2, '0');
                 StartCoroutine(JuiceScale(uiGameStateText, 1, Vector3.one));
+                CountDownVoice(ttsFloor);
                 tempTimeFloor = ttsFloor;
             }
         }
@@ -206,6 +249,7 @@ public class GameState : MonoBehaviour
 
                 if (buildTimeLeft < 5)
                 {
+                    CountDownVoice(bTimeFloor);
                     uiGameTimeText.color = Color.red;
                     uiGameStateText.color = Color.red;
                     uiGameStateText.text = buildTimeLeft.ToString("F0").PadLeft(2, '0');
@@ -248,14 +292,15 @@ public class GameState : MonoBehaviour
         {
             uiGameTimeText.text = roundTimeLeft.ToString("F0").PadLeft(2, '0');
             StartCoroutine(JuiceScale(uiGameTimeText, 1, Vector3.one));
-            tempTimeFloor = fTimeFloor;
             if(fTimeFloor < 5)
             {
+                CountDownVoice(fTimeFloor);
                 uiGameTimeText.color = Color.red;
                 uiGameStateText.color = Color.red;
                 uiGameStateText.text = roundTimeLeft.ToString("F0").PadLeft(2, '0');
                 StartCoroutine(JuiceScale(uiGameStateText, 1, Vector3.one));
             }
+            tempTimeFloor = fTimeFloor;
         }
         if (roundTimeLeft < 0)
         {
