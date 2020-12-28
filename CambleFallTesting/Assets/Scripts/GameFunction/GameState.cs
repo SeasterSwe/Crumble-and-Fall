@@ -97,19 +97,6 @@ public class GameState : MonoBehaviour
         }
     }
 
-    //New Juice
-    /*
-    IEnumerator JuiceInfoText(TextMeshProUGUI text, float speedMul)
-    {
-        float lerpTime = 0;
-        while(lerpTime > 0)
-        {
-            text.rectTransform.localScale = Vector3.one * juiceScaleCurve.Evaluate(lerpTime);
-            lerpTime += speedMul * Time.deltaTime;
-            yield return null;
-        }
-    }
-    */
     IEnumerator JuiceFadeInfoText(TextMeshProUGUI text, float speed, Color from, Color to)
     {
         float lerpTime = 0;
