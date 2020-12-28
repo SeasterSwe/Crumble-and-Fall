@@ -10752,12 +10752,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5076150456772443069, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
+      propertyPath: linearDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6369240829330474514, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
       propertyPath: m_Name
       value: BB Fluffy
       objectReference: {fileID: 0}
+    - target: {fileID: 6369240829330474524, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6369240829330474525, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
       propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369240829330474525, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
+      propertyPath: m_AngularDrag
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6369240829330474525, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
@@ -12450,11 +12462,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1738495008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6369240829330474514, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
+  m_PrefabInstance: {fileID: 1525359783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &1738495010 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 6369240829330474525, guid: af90bf57ee613c54a8cce5e73280ac0e, type: 3}
   m_PrefabInstance: {fileID: 1525359783}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &1738495016
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738495008}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1001 &1740234531
 PrefabInstance:
   m_ObjectHideFlags: 0

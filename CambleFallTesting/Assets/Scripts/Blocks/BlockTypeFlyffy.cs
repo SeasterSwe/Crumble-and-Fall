@@ -14,7 +14,9 @@ public class BlockTypeFlyffy : BlockType
     protected override void OnHitEnter(Collision2D collision)
     {
         base.OnHitEnter(collision);
-        StateChangedToIdle();
+        GetComponent<Rigidbody2D>().velocity += Vector2.right * -2;
+        GetComponent<Rigidbody2D>().AddTorque(10);
+
         if (collision.relativeVelocity.magnitude > breakForce && state != states.Projectile)
         {
             BreakJoint();

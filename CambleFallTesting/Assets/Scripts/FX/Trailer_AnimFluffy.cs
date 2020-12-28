@@ -29,4 +29,8 @@ public class Trailer_AnimFluffy : MonoBehaviour
         if(cam.transform.position.x < 13.25f)
         cam.transform.position = new Vector3((rb.transform.position.x + 2) * 0.75f,-1, -20);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       
+    }
 }

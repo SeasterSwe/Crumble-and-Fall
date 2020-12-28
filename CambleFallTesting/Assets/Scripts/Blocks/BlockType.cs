@@ -213,8 +213,8 @@ public class BlockType : MonoBehaviour
     protected virtual void StateChangedToIdle()
     {
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
-        rb.drag = linearDrag;
-        rb.mass = BlockMass;
+        //rb.drag = linearDrag;
+        //rb.mass = BlockMass;
         gameObject.layer = layermaskToLayer(blockLayer);
         //StartCoroutine(ChangeWhenVelIs(0.7f));
         StartCoroutine(Anim(0));
