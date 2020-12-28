@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &305787055927495688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 305787055927495690}
+  - component: {fileID: 305787055927495689}
+  m_Layer: 0
+  m_Name: RoundTracker
+  m_TagString: Finish
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &305787055927495690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305787055927495688}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 916.7211, y: 356.04962, z: -34.251717}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &305787055927495689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305787055927495688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 232b4745f0a0d8746a1dda73a0d48231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalRounds: 3
+  roundsToWin: 0
+  wins: 
+  starPos: {fileID: 0}
+  distBetwean: 60
+  star: {fileID: 8835985021610411580, guid: 8817f1602490bf548995464c7d49ddb9, type: 3}
+  redStar: {fileID: 6843467520404239749, guid: 26c61625cf32d1b46b687b37e0f82841, type: 3}
+  yellowStar: {fileID: 8325791658547539876, guid: f3b0298daf877564f998416dbbfc1048, type: 3}
+  particle: {fileID: 1685439902423622609, guid: c59e14ffeb70084498b390c54e2f0d6f, type: 3}
+  leftPlayerWon: 0
