@@ -184,6 +184,8 @@ public class RoundTracker : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         starImage.DOColor(color, 0.2f);
         SpawnParticle(Camera.main.ScreenToWorldPoint(endPos));
+        
+        SoundManager.PlaySound(SoundManager.Sound.StarSound);    
         spinStar = false;
 
         if (leftPlayerWon == false)
@@ -198,7 +200,6 @@ public class RoundTracker : MonoBehaviour
             temp.GetComponent<Image>().sprite = star.sprite;
             StartCoroutine(TweenSmallStar(temp));
         }
-        //insert sound here
     }
     IEnumerator SpinStar(Image star)
     {
