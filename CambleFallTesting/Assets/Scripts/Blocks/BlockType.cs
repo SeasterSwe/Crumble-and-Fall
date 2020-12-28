@@ -245,17 +245,19 @@ public class BlockType : MonoBehaviour
 
         gameObject.layer = layermaskToLayer(projectileLayer);
         StartCoroutine(Anim(1));
+        float pitch = Random.Range(0.8f, 1.2f);
         if (type == types.Heavy)
         {
-            SoundManager.PlaySound(SoundManager.Sound.Heavy, transform.position);
+            
+            SoundManager.PlaySound(SoundManager.Sound.Heavy, transform.position, pitch);
         }
         else if (type == types.Fluffy)
         {
-            SoundManager.PlaySound(SoundManager.Sound.Fluffy, transform.position);
+            SoundManager.PlaySound(SoundManager.Sound.Fluffy, transform.position, pitch);
         }
         else
         {
-            SoundManager.PlaySound(SoundManager.Sound.Speedy, transform.position);
+            SoundManager.PlaySound(SoundManager.Sound.Speedy, transform.position, pitch);
         }
         
 

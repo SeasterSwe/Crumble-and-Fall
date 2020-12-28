@@ -14,7 +14,7 @@ public class HowToPlayButtonFix : MonoBehaviour
         //currentState = HowToPlayLauncherCamera.howToPlayerLauncherPos;
         var b = canvas.GetComponentsInChildren<Button>();
         buttons = new GameObject[b.Length];
-        print(b.Length);
+        //print(b.Length);
         int n = 0;
         foreach(Button button in b)
         {
