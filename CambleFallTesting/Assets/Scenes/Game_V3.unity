@@ -5420,22 +5420,6 @@ PrefabInstance:
       propertyPath: InitialModule.startLifetime.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1567538750128602784, guid: a9249f9407ab82444839bc6a765efb9a, type: 3}
-      propertyPath: lengthInSec
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567538750128602784, guid: a9249f9407ab82444839bc6a765efb9a, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567538750128602784, guid: a9249f9407ab82444839bc6a765efb9a, type: 3}
-      propertyPath: InitialModule.startLifetime.minScalar
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567538750128602784, guid: a9249f9407ab82444839bc6a765efb9a, type: 3}
-      propertyPath: InitialModule.startLifetime.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 1567538750203799848, guid: a9249f9407ab82444839bc6a765efb9a, type: 3}
       propertyPath: lengthInSec
       value: 0.6
