@@ -11,7 +11,28 @@ public class StartAnimationsGameOver : MonoBehaviour
     {
         var roundTracker = GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>();
 
-        if(roundTracker.CheckIfWin())
+        //if(roundTracker.CheckIfWin())
+        //{
+        //    if (roundTracker.leftPlayerWon)
+        //        text.text = "Player1 is victorious";
+        //    else
+        //        text.text = "Player2 is victorious";
+        //}
+        //else
+        //{
+        //    if (roundTracker.leftPlayerWon)
+        //        text.text = "Player1 won the round";
+        //    else
+        //        text.text = "Player2 won the round";
+        //}
+            roundTracker.ActivateAnimations();
+    }
+
+    public string Text()
+    {
+        var roundTracker = GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>();
+
+        if (roundTracker.CheckIfWin())
         {
             if (roundTracker.leftPlayerWon)
                 text.text = "Player1 is victorious";
@@ -25,6 +46,7 @@ public class StartAnimationsGameOver : MonoBehaviour
             else
                 text.text = "Player2 won the round";
         }
-            roundTracker.ActivateAnimations();
+
+        return text.text;
     }
 }

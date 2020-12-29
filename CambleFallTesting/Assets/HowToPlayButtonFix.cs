@@ -14,7 +14,7 @@ public class HowToPlayButtonFix : MonoBehaviour
         //currentState = HowToPlayLauncherCamera.howToPlayerLauncherPos;
         var b = canvas.GetComponentsInChildren<Button>();
         buttons = new GameObject[b.Length];
-        print(b.Length);
+        //print(b.Length);
         int n = 0;
         foreach(Button button in b)
         {
@@ -34,7 +34,7 @@ public class HowToPlayButtonFix : MonoBehaviour
         }
         if(buttons[1] != null)
         {
-            if (HowToPlayLauncherCamera.howToPlayerLauncherPos == 2)
+            if (HowToPlayLauncherCamera.howToPlayerLauncherPos == 5)
                 FadeOut(buttons[1]);
             else
                 FadeIn(buttons[1]);
