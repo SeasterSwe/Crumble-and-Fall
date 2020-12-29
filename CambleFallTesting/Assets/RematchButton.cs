@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RematchButton : MonoBehaviour
 {
@@ -11,20 +12,24 @@ public class RematchButton : MonoBehaviour
     private Sprite image;
     void Start()
     {
-        if(rematch == null)
-            rematch = GetComponent<Image>().sprite;
+        if (SceneManager.GetActiveScene().name == "GameOver")
+        {
 
-        roundTracker = GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>();
-        if (roundTracker.CheckIfWin())
-            image = rematch;
-        else
-            image = newRound;
+            if (rematch == null)
+                rematch = GetComponent<Image>().sprite;
 
-       GetComponent<Image>().sprite = image;
+            roundTracker = GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>();
+            if (roundTracker.CheckIfWin())
+                image = rematch;
+            else
+                image = newRound;
+
+            GetComponent<Image>().sprite = image;
+        }
     }
     public void Button()
     {
-        if(roundTracker.CheckIfWin())
+        if (roundTracker.CheckIfWin())
         {
             Debug.LogWarning("ResetedGame");
             roundTracker.ResetStats();
@@ -33,6 +38,7 @@ public class RematchButton : MonoBehaviour
     }
     public void ResetStats()
     {
+        roundTracker = GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>();
         roundTracker.ResetStats();
     }
 }
