@@ -99,6 +99,9 @@ public class RoundTracker : MonoBehaviour
         totalRounds = GameStats.amountOfRounds;
         float fixedDist = (totalRounds - 1) * distBetwean / 2;
 
+        roundsToWin = Mathf.FloorToInt((totalRounds / 2f) + 1);
+
+
         starPos = obj;
 
         if (wins.Length == 0)
@@ -184,8 +187,8 @@ public class RoundTracker : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         starImage.DOColor(color, 0.2f);
         SpawnParticle(Camera.main.ScreenToWorldPoint(endPos));
-        
-        SoundManager.PlaySound(SoundManager.Sound.StarSound);    
+
+        SoundManager.PlaySound(SoundManager.Sound.StarSound);
         spinStar = false;
 
         if (leftPlayerWon == false)
