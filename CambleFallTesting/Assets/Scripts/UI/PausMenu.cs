@@ -64,7 +64,6 @@ public class PausMenu : MonoBehaviour
 
     void Pause ()
     {
-        Debug.Log ("Pause");
         PauseMenu.SetActive(true);
        // GetComponent<Animation>("Testanimation_01");
         //animation.Play();
