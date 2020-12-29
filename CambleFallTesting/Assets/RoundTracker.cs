@@ -98,7 +98,9 @@ public class RoundTracker : MonoBehaviour
         Vector3 sPos = obj.transform.position;
         totalRounds = GameStats.amountOfRounds;
         float fixedDist = (totalRounds - 1) * distBetwean / 2;
+
         roundsToWin = Mathf.FloorToInt((totalRounds / 2f) + 1);
+
 
         starPos = obj;
 
@@ -137,9 +139,11 @@ public class RoundTracker : MonoBehaviour
                 else
                     startClone = Instantiate(star, sPos + (Vector3.right * (-fixedDist + distBetwean * i)), star.transform.rotation);
 
+
                 startClone.transform.SetParent(obj.transform);
             }
         }
+
 
         stars = starPos.GetComponentsInChildren<Image>();
         if (SceneManager.GetActiveScene().name == "GameOver")
@@ -171,6 +175,63 @@ public class RoundTracker : MonoBehaviour
         starImage.rectTransform.DOScale(Vector3.one * 2.5f, 1.4f);
         starImage.rectTransform.DOMove(starImage.transform.position + Vector3.up * 120, 1.4f);
 
+
+
+        yield return new WaitForSeconds(0.4f);
+        starImage.DOColor(color, 0.2f);
+        SpawnParticle(Camera.main.ScreenToWorldPoint(endPos));
+        
+        SoundManager.PlaySound(SoundManager.Sound.StarSound);    
+        spinStar = false;
+
+        if (leftPlayerWon == false)
+        {
+            var temp = stars[totalRounds - winsRight];
+            temp.GetComponent<Image>().sprite = star.sprite;
+            StartCoroutine(TweenSmallStar(temp));
+        }
+        else
+        {
+            var temp = stars[winsLeft - 1];
+            temp.GetComponent<Image>().sprite = star.sprite;
+            StartCoroutine(TweenSmallStar(temp));
+        }
+    }
+    IEnumerator SpinStar(Image star)
+    {
+        float rotationSpeed = 360;
+        float currentLerpTime = 0;
+        float lerpTime = 3f;
+        Vector3 startRot = Vector3.zero;
+        Vector3 endRot = new Vector3(0, 0, rotationSpeed * lerpTime);
+        while (spinStar)
+        {
+            currentLerpTime += Time.deltaTime;
+            if (currentLerpTime > lerpTime)
+                currentLerpTime = lerpTime;
+
+            float t = currentLerpTime / lerpTime;
+            t = t * t * (3f - 2f * t);
+
+            star.transform.rotation = Quaternion.Euler(Vector3.Lerp(startRot, endRot, t));
+            yield return null;
+        }
+        yield return new WaitForEndOfFrame();
+    }
+
+    void SpawnParticle(Vector3 pos)
+    {
+        pos.z = 0;
+        GameObject clone = Instantiate(particle, pos, particle.transform.rotation);
+    }
+
+    IEnumerator TweenSmallStar(Image star)
+    {
+        Vector3 startScale = star.rectTransform.localScale;
+        star.rectTransform.DOScale(startScale + Vector3.one * 0.3f, 0.4f);
+        yield return new WaitForSeconds(0.4f);
+        star.rectTransform.DOScale(startScale + Vector3.one * 0.1f, 0.4f);
+    }
 
         yield return new WaitForSeconds(1.4f);
         starImage.rectTransform.DOMove(endPos, 1f);
