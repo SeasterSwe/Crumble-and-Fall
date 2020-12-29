@@ -1870,6 +1870,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1510437816}
+        m_TargetAssemblyTypeName: HighLightSelectedButton, Assembly-CSharp
+        m_MethodName: SwapSelectedRoundButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 676320593}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &676320594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2401,6 +2413,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1510437816}
+        m_TargetAssemblyTypeName: HighLightSelectedButton, Assembly-CSharp
+        m_MethodName: SwapSelectedRoundButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1638024851}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3307,6 +3331,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1510437816}
+        m_TargetAssemblyTypeName: HighLightSelectedButton, Assembly-CSharp
+        m_MethodName: SwapSelectedRoundButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2031913909}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

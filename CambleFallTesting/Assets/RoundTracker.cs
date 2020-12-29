@@ -98,10 +98,11 @@ public class RoundTracker : MonoBehaviour
         Vector3 sPos = obj.transform.position;
         totalRounds = GameStats.amountOfRounds;
         float fixedDist = (totalRounds - 1) * distBetwean / 2;
+        roundsToWin = Mathf.FloorToInt((totalRounds / 2f) + 1);
 
         starPos = obj;
 
-        if (wins.Length == 0)
+        if (wins.Length == 0 || wins.Length != totalRounds)
             wins = new int[totalRounds];
 
         Image startClone = null;
@@ -239,7 +240,9 @@ public class RoundTracker : MonoBehaviour
 
     public void ResetStats()
     {
+        totalRounds = GameStats.amountOfRounds;
         wins = new int[totalRounds];
+        roundsToWin = Mathf.FloorToInt((totalRounds / 2f) + 1);
         winsLeft = 0;
         winsRight = 0;
     }
