@@ -9,21 +9,32 @@ public class GameState : MonoBehaviour
 {
     [Header("gameState")]
     public static gameStates currentState;
-    public enum gameStates { BuildCountDown, Build, StartFight, Fight, StartSuddenDeath, SuddenDeath, StartGameOver, GameOver };
+    public enum gameStates { Intermission, StartBuild, Build, StartFight, Fight, StartSuddenDeath, SuddenDeath, StartGameOver, GameOver };
 
     [Header("Indicators")]
     public TextMeshProUGUI uiGameTimeText;
     public TextMeshProUGUI uiGameStateText;
 
+    [Header("Intermission")]
+    public float timeTillGameStart = 3;
+
     [Header("BuildMode")]
     public string buildText = "Build time left ";
     private float buildTime = 30;
+
+
     private float buildTimeLeft;
+    private float tempTimeFloor;
 
     [Header("Fight")]
     public string fightText = "FIGHT";
     private float RoundTime = 60;
     private float roundTimeLeft;
+
+    [Header("Juice")]
+    public AnimationCurve juiceScaleCurve;
+    public AnimationCurve juiceFadeCurve;
+
 
     [Header("TMP")]
     //TODO : Move to game over;
@@ -40,27 +51,45 @@ public class GameState : MonoBehaviour
     void Start()
     {
         buildTimeLeft = GameStats.buildTime;
-        currentState = gameStates.BuildCountDown;
-        StartCoroutine(StartDelay(3f));
+        currentState = gameStates.Intermission;
     }
 
-    IEnumerator StartDelay(float counterTime)
+
+    //New Juice
+    /*
+    IEnumerator JuiceInfoText(TextMeshProUGUI text, float speedMul)
     {
-        float t = counterTime;
-        while (t >= 0)
+        float lerpTime = 0;
+        while(lerpTime > 0)
         {
-            ScaleTextPeriod();
-            uiGameTimeText.text = "";
-            uiGameStateText.text = t.ToString("F0").PadLeft(2, '0');
-            t -= Time.deltaTime;
+            text.rectTransform.localScale = Vector3.one * juiceScaleCurve.Evaluate(lerpTime);
+            lerpTime += speedMul * Time.deltaTime;
             yield return null;
         }
-        yield return new WaitForEndOfFrame();
-        Instantiate(startParticle, Vector3.up * -9.8f, startParticle.transform.rotation);
-        StartCoroutine(FightTextDisapear(5));
-        buildTimeLeft = GameStats.buildTime;
-        currentState = gameStates.Build;
     }
+    */
+    IEnumerator JuiceFadeInfoText(TextMeshProUGUI text, float speed, Color from, Color to)
+    {
+        float lerpTime = 0;
+        while (lerpTime < 1)
+        {
+            text.rectTransform.localScale = Vector3.one * juiceFadeCurve.Evaluate(lerpTime);
+            text.color = Color.Lerp(to, from, juiceFadeCurve.Evaluate(lerpTime));
+            lerpTime += speed * Time.deltaTime;
+            yield return null;
+        }
+    }
+    IEnumerator JuiceScale(TextMeshProUGUI text, float speed, Vector3 from)
+    {
+        float lerpTime = 0;
+        while (lerpTime < 1)
+        {
+            text.rectTransform.localScale = from * juiceScaleCurve.Evaluate(lerpTime);
+            lerpTime += speed * Time.deltaTime;
+            yield return null;
+        }
+    }
+
 
     // Update is called once per frame
     void LateUpdate()
@@ -68,11 +97,22 @@ public class GameState : MonoBehaviour
         //Enter function depending of gameStates
         switch (currentState)
         {
-            case gameStates.BuildCountDown:
+            case gameStates.Intermission:
+                {
+                    Intermission();
+                }
                 break;
+
+            case gameStates.StartBuild:
+                {
+                    StartBuild();
+                }
+                break;
+
             case gameStates.Build:
                 {
                     BuildMode();
+
                 }
                 break;
 
@@ -119,17 +159,64 @@ public class GameState : MonoBehaviour
         }
     }
 
+    void Intermission()
+    {
+        timeTillGameStart -= Time.deltaTime;
+        float ttsFloor = Mathf.Floor(timeTillGameStart);
 
-
+        if (timeTillGameStart > 0)
+        {
+            if (ttsFloor != tempTimeFloor)
+            {
+                uiGameTimeText.text = "";
+                uiGameStateText.text = timeTillGameStart.ToString("F0").PadLeft(2, '0');
+                StartCoroutine(JuiceScale(uiGameStateText, 1, Vector3.one));
+                tempTimeFloor = ttsFloor;
+            }
+        }
+        else
+        {
+            Instantiate(startParticle, Vector3.up * -9.8f, startParticle.transform.rotation);
+            TogglegameStatesForward();
+        }
+    }
     //BUILDMODE
+    void StartBuild()
+    {
+        uiGameTimeText.color = Color.white;
+        uiGameStateText.color = Color.white;
+        uiGameStateText.rectTransform.localScale = Vector3.one;
+        uiGameTimeText.rectTransform.localScale = Vector3.one;
+
+
+        uiGameStateText.text = buildText;
+        StartCoroutine(JuiceFadeInfoText(uiGameStateText, 0.5f, Color.white, Color.clear));
+        TogglegameStatesForward();
+    }
     void BuildMode()
     {
         buildTimeLeft -= Time.deltaTime;
+        float bTimeFloor = Mathf.Floor(buildTimeLeft);
+
         if (buildTimeLeft > 0)
         {
-            uiGameStateText.text = buildText;
-            uiGameTimeText.text = buildTimeLeft.ToString("F0").PadLeft(2, '0');
-            ScaleText();
+            if (bTimeFloor != tempTimeFloor)
+            {
+                uiGameTimeText.text = buildTimeLeft.ToString("F0").PadLeft(2, '0');
+
+                if (buildTimeLeft < 5)
+                {
+                    uiGameTimeText.color = Color.red;
+                    uiGameStateText.color = Color.red;
+                    uiGameStateText.text = buildTimeLeft.ToString("F0").PadLeft(2, '0');
+                    StartCoroutine(JuiceScale(uiGameStateText, 1, Vector3.one));
+                }
+
+                tempTimeFloor = bTimeFloor;
+
+                StartCoroutine(JuiceScale(uiGameTimeText, 1, Vector3.one));
+            }
+
         }
         else
         {
@@ -142,43 +229,34 @@ public class GameState : MonoBehaviour
     void StartFight()
     {
         Instantiate(startParticle, Vector3.up * -9.8f, startParticle.transform.rotation);
-        Color color = uiGameStateText.color;
-        color.a = 1f;
-        uiGameStateText.rectTransform.DOScale(Vector3.one * 7f, 0.1f);
-        uiGameStateText.DOColor(color, 0.1f);
-        
-        StartCoroutine(FightTextDisapear(5));
-        uiGameStateText.text = fightText;
-        roundTimeLeft = GameStats.fightTime;
-        TogglegameStatesForward();
-    }
-    IEnumerator FightTextDisapear(float t)
-    {
-        Scale(2f);
-        yield return new WaitForSeconds(t);
-        uiGameStateText.text = null;
-    }
-    void Scale(float t)
-    {
-        //Vector3 scale = uiGameStateText.rectTransform.localScale;
-        uiGameStateText.rectTransform.DOScale(Vector3.one * 7f, t).OnComplete(ScaleBack);
-    }
 
-    void ScaleBack()
-    {
-        Color color = uiGameStateText.color;
-        color.a = 0f;
-        uiGameStateText.DOColor(color, 1f);
-        uiGameStateText.rectTransform.DOScale(Vector3.one, 1f);
+        roundTimeLeft = GameStats.fightTime;
+        uiGameTimeText.color = Color.white;
+        uiGameStateText.text = fightText;
+        StartCoroutine(JuiceFadeInfoText(uiGameStateText, 0.5f, Color.white, Color.clear));
+
+        TogglegameStatesForward();
     }
 
     //FIGHTING
     void Fighting()
     {
         roundTimeLeft -= Time.deltaTime;
-        uiGameTimeText.text = roundTimeLeft.ToString("F0").PadLeft(2, '0');
-        ScaleText();
+        float fTimeFloor = Mathf.Floor(roundTimeLeft);
 
+        if (fTimeFloor != tempTimeFloor)
+        {
+            uiGameTimeText.text = roundTimeLeft.ToString("F0").PadLeft(2, '0');
+            StartCoroutine(JuiceScale(uiGameTimeText, 1, Vector3.one));
+            tempTimeFloor = fTimeFloor;
+            if(fTimeFloor < 5)
+            {
+                uiGameTimeText.color = Color.red;
+                uiGameStateText.color = Color.red;
+                uiGameStateText.text = roundTimeLeft.ToString("F0").PadLeft(2, '0');
+                StartCoroutine(JuiceScale(uiGameStateText, 1, Vector3.one));
+            }
+        }
         if (roundTimeLeft < 0)
         {
             TogglegameStatesForward();
@@ -188,16 +266,21 @@ public class GameState : MonoBehaviour
 
     public void StartSuddenDeath()
     {
+        uiGameStateText.color = Color.red;
+        uiGameStateText.text = "SuddenDeath";
+
+        StartCoroutine(JuiceFadeInfoText(uiGameStateText, 0.5f, Color.red, Color.clear));
+
         Debug.Log("Start Sudden Death");
         TogglegameStatesForward();
     }
 
     public void SuddenDeath(float scoreOne, float scoreTwo)
     {
-        if(scoreOne != scoreTwo || scoreOne == 0 && scoreTwo == 0)
+        if (scoreOne != scoreTwo || scoreOne == 0 && scoreTwo == 0)
         {
             Debug.Log("Print Exit Sudden Death");
-            TogglegameStatesForward(); 
+            TogglegameStatesForward();
         }
     }
 
@@ -208,16 +291,17 @@ public class GameState : MonoBehaviour
             GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>().LeftWin();
         else if (scoreOne < scoreTwo)
             GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>().RightWin();
-        else if(scoreOne == 0 && scoreTwo == 0)
+        else if (scoreOne == 0 && scoreTwo == 0)
         {
             //Draw
-                Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
-        }else if(scoreOne == scoreTwo )
+            Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
+        }
+        else if (scoreOne == scoreTwo)
         {
             switchStateTo(gameStates.StartSuddenDeath);
             return;
         }
-        
+
         switchStateTo(gameStates.GameOver);
         print("StartGameOver");
     }
@@ -233,6 +317,16 @@ public class GameState : MonoBehaviour
     {
         switch (currentState)
         {
+            case gameStates.Intermission:
+                {
+                    currentState = gameStates.StartBuild;
+                }
+                break;
+            case gameStates.StartBuild:
+                {
+                    currentState = gameStates.Build;
+                }
+                break;
             case gameStates.Build:
                 {
                     currentState = gameStates.StartFight;
@@ -288,6 +382,16 @@ public class GameState : MonoBehaviour
     {
         switch (newState)
         {
+            case gameStates.Intermission:
+                {
+                    currentState = gameStates.Intermission;
+                }
+                break;
+            case gameStates.StartBuild:
+                {
+                    currentState = gameStates.StartBuild;
+                }
+                break;
             case gameStates.Build:
                 {
                     currentState = gameStates.Build;
@@ -334,40 +438,5 @@ public class GameState : MonoBehaviour
                 }
                 break;
         }
-    }
-    bool active = false;
-    void ScaleText()
-    {
-        if (!active)
-        {
-            active = true;
-            uiGameTimeText.rectTransform.DOScale(Vector3.one * 2.5f, 0.5f).SetEase(easein).OnComplete(ResetText);
-        }
-    }
-    void ResetText()
-    {
-        uiGameTimeText.rectTransform.DOScale(Vector3.one * 2.2f, 0.5f).SetEase(easeOut).OnComplete(ActiveFalse);
-    }
-    void ActiveFalse()
-    {
-        active = false;
-    }
-
-    bool activePeriod = false;
-    void ScaleTextPeriod()
-    {
-        if (!activePeriod)
-        {
-            activePeriod = true;
-            uiGameStateText.rectTransform.DOScale(Vector3.one * 3.5f, 0.5f).SetEase(easein).OnComplete(ResetTextPeriod);
-        }
-    }
-    void ResetTextPeriod()
-    {
-        uiGameStateText.rectTransform.DOScale(Vector3.one * 3f, 0.5f).SetEase(easeOut).OnComplete(ActivePeriodFalse);
-    }
-    void ActivePeriodFalse()
-    {
-        activePeriod = false;
     }
 }
