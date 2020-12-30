@@ -30,7 +30,7 @@ public class GameSceneManager : MonoBehaviour
 
     public void ChangeScene(string name)
 	{
-		PlaySound(clickSound);
+		//PlaySound(clickSound);
 		if (Time.timeScale < 1)
 			Time.timeScale = 1;
 

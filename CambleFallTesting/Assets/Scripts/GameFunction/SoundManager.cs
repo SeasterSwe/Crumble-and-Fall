@@ -20,7 +20,9 @@ public static class SoundManager
         count3,
         count2,
         count1,
-        StarSound
+        StarSound,
+        Build,
+        Fight
     }
     private static GameObject oneShotGameObject;
     private static AudioSource oneShotAudioSource;

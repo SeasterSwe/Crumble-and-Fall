@@ -58,7 +58,7 @@ public class GameState : MonoBehaviour
         currentState = gameStates.Intermission;
     }
 
-
+    //Sounds////////////////////////////////////////////////////////////////////////////////////////////////////////
     void CountDownVoice(float t)
     {
         if(t < 0)
@@ -96,20 +96,18 @@ public class GameState : MonoBehaviour
             return;
         }
     }
-
-    //New Juice
-    /*
-    IEnumerator JuiceInfoText(TextMeshProUGUI text, float speedMul)
+    void FightVoice()
     {
-        float lerpTime = 0;
-        while(lerpTime > 0)
-        {
-            text.rectTransform.localScale = Vector3.one * juiceScaleCurve.Evaluate(lerpTime);
-            lerpTime += speedMul * Time.deltaTime;
-            yield return null;
-        }
+        SoundManager.PlaySound(SoundManager.Sound.Fight);
     }
-    */
+    void BuildVoice()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.Build);
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////SoundEnd//
+ 
+
+    //Juices////////////////////////////////////////////////////////////////////////////////////////////////////////
     IEnumerator JuiceFadeInfoText(TextMeshProUGUI text, float speed, Color from, Color to)
     {
         float lerpTime = 0;
@@ -131,8 +129,10 @@ public class GameState : MonoBehaviour
             yield return null;
         }
     }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////JuicesEnd//
 
 
+    //GAME STATES///////////////////////////////////////////////////////////////////////////////////////////////////
     // Update is called once per frame
     void LateUpdate()
     {
@@ -201,6 +201,7 @@ public class GameState : MonoBehaviour
         }
     }
 
+    //Start Game Intermission
     void Intermission()
     {
         timeTillGameStart -= Time.deltaTime;
@@ -223,6 +224,8 @@ public class GameState : MonoBehaviour
             TogglegameStatesForward();
         }
     }
+    
+
     //BUILDMODE
     void StartBuild()
     {
@@ -234,6 +237,7 @@ public class GameState : MonoBehaviour
 
         uiGameStateText.text = buildText;
         StartCoroutine(JuiceFadeInfoText(uiGameStateText, 0.5f, Color.white, Color.clear));
+        BuildVoice();
         TogglegameStatesForward();
     }
     void BuildMode()
@@ -264,12 +268,13 @@ public class GameState : MonoBehaviour
         }
         else
         {
+
             TogglegameStatesForward();
         }
     }
 
 
-    //STARTFIGHT
+    //FIGHTING
     void StartFight()
     {
         Instantiate(startParticle, Vector3.up * -9.8f, startParticle.transform.rotation);
@@ -278,11 +283,9 @@ public class GameState : MonoBehaviour
         uiGameTimeText.color = Color.white;
         uiGameStateText.text = fightText;
         StartCoroutine(JuiceFadeInfoText(uiGameStateText, 0.5f, Color.white, Color.clear));
-
+        FightVoice();
         TogglegameStatesForward();
     }
-
-    //FIGHTING
     void Fighting()
     {
         roundTimeLeft -= Time.deltaTime;
@@ -305,10 +308,11 @@ public class GameState : MonoBehaviour
         if (roundTimeLeft < 0)
         {
             TogglegameStatesForward();
-            //switchStateTo(gameStates.StartGameOver);
         }
     }
 
+ 
+    //GAMEOVER
     public void StartSuddenDeath()
     {
         uiGameStateText.color = Color.red;
@@ -319,7 +323,6 @@ public class GameState : MonoBehaviour
         Debug.Log("Start Sudden Death");
         TogglegameStatesForward();
     }
-
     public void SuddenDeath(float scoreOne, float scoreTwo)
     {
         if (scoreOne != scoreTwo || scoreOne == 0 && scoreTwo == 0)
@@ -328,10 +331,8 @@ public class GameState : MonoBehaviour
             TogglegameStatesForward();
         }
     }
-
     public void StartGameOver(float scoreOne, float scoreTwo)
     {
-        //Instantiate(GameOverPreFab, canvas.transform.position, canvas.transform.rotation, canvas.transform).GameOver(scoreOne, scoreTwo);
         if (scoreOne > scoreTwo)
             GameObject.FindGameObjectWithTag("Finish").GetComponent<RoundTracker>().LeftWin();
         else if (scoreOne < scoreTwo)
@@ -350,14 +351,13 @@ public class GameState : MonoBehaviour
         switchStateTo(gameStates.GameOver);
         print("StartGameOver");
     }
-
-    //GAMEOVER
     void GameOver()
     {
         //print("GameOver");
     }
 
-    //TOGGLE gameStates
+  
+    //TOGGLE gameStates/////////////////////////////////////////////////////////////////////////////////////////////
     public static void TogglegameStatesForward()
     {
         switch (currentState)
@@ -421,8 +421,6 @@ public class GameState : MonoBehaviour
                 break;
         }
     }
-
-
     public static void switchStateTo(gameStates newState)
     {
         switch (newState)
