@@ -96,7 +96,7 @@ public class Blockbuilder : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale != 0 && GameState.currentState == GameState.gameStates.Build || GameState.currentState == GameState.gameStates.Fight)
+        if (Time.timeScale != 0 && GameState.currentState != GameState.gameStates.StartBuild || GameState.currentState == GameState.gameStates.GameOver)
         {
             SpawnerLocation();
             AccurateBlockSpawn();
