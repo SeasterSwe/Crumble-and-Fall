@@ -4752,6 +4752,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2222718171627505404, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222718171627505404, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222718171627505404, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505405, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -4813,12 +4825,20 @@ PrefabInstance:
       value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
+      propertyPath: spread
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
+      propertyPath: damping
+      value: 0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: maxHeight
-      value: -7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: minHeight
-      value: -3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: waterMesh
@@ -4839,6 +4859,10 @@ PrefabInstance:
     - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: waveFrequancy
       value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
+      propertyPath: springconstant
+      value: 0.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}

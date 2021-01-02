@@ -15,9 +15,9 @@ public class DynamicWater : MonoBehaviour
     GameObject[] colliders;
     Mesh[] meshes;
 
-    const float springconstant = 0.02f;
-    const float damping = 0.04f;
-    const float spread = 0.05f;
+    public float springconstant = 0.02f;
+    public float damping = 0.03f;
+    public float spread = 0.05f;
     const float z = -1f;
 
     //dimensions of the water.
@@ -165,10 +165,10 @@ public class DynamicWater : MonoBehaviour
             //float offset = Mathf.Sin(Mathf.Sin((Time.time * waveSpeed) + (i * waveFrequancy)) / waveDamper);
             float offset = Mathf.Sin(Mathf.Sin((Time.time * waveSpeed) + (i * waveFrequancy)) / waveDamper);
             //offset = Mathf.Abs(offset);
-            offset = Mathf.Clamp(offset,0,Mathf.Infinity);
+            offset = Mathf.Clamp(offset, 0, Mathf.Infinity);
             Vector3[] Vertices = new Vector3[4];
-            Vertices[0] = new Vector3(xPositions[i], yPositions[i] + offset, z);
-            Vertices[1] = new Vector3(xPositions[i + 1], yPositions[i + 1] + offset, z);
+            Vertices[0] = new Vector3(xPositions[i], Mathf.Clamp(yPositions[i], minHeight, maxHeight) + offset, z);
+            Vertices[1] = new Vector3(xPositions[i + 1], Mathf.Clamp(yPositions[i + 1], minHeight, maxHeight) + offset, z);
             Vertices[2] = new Vector3(xPositions[i], bottom, z);
             Vertices[3] = new Vector3(xPositions[i + 1], bottom, z);
 
@@ -236,6 +236,13 @@ public class DynamicWater : MonoBehaviour
             xPos -= xPositions[0];
             //vilken node den träffar
             int index = Mathf.RoundToInt((xPositions.Length - 1) * (xPos / (xPositions[xPositions.Length - 1] - xPositions[0])));
+
+            if (Mathf.Abs(velocities[index]) > 0.3f)
+            {
+               // print(velocities[index]);
+                return;
+            }
+
 
             velocities[index] = velocity;
 
