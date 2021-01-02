@@ -22,7 +22,7 @@ public class DynamicWater : MonoBehaviour
 
     //dimensions of the water.
     public float baseHeight;
-    public float left;
+    private float left;
     public float bottom;
     public float width;
 
@@ -35,8 +35,13 @@ public class DynamicWater : MonoBehaviour
     public Material mat;
     public GameObject waterMesh;
 
+    public float forceDivider = 1.4f;
+    public float waveSpeed = 1.2f;
+    public float waveFrequancy = 20;
+    public float waveDamper = 20;
     private void Start()
     {
+        left = -width / 2;
         CreateWater(left, width, baseHeight, bottom);
         maxHeight = baseHeight + maxHeight;
         minHeight = baseHeight - minHeight;
@@ -123,15 +128,47 @@ public class DynamicWater : MonoBehaviour
 
         }
     }
-
     void UpdateMeshes()
     {
+        //float r = Random.Range(0, 100f);
+        //if(r >= 96)
+        //{
+        //    int index = Random.Range(0, velocities.Length);
+        //    if (velocities[index] <= 0.1f && velocities[index] >= -0.1f)
+        //    {
+        //        velocities[index] += Random.Range(-2, 2);
+        //        print(velocities[index]);
+        //    }
+        //}
+        //if(r >= 99)
+        //{
+        //    float index = Random.Range(0, 10f);
+        //    if (index >= 5)
+        //        velocities[velocities.Length - 1] = Random.Range(5,10f);
+        //    else
+        //        velocities[0] = Random.Range(5, 10f);
+        //}
+
+        //for (int i = 0; i < velocities.Length; i++)
+        //{
+        //    if(i % 10 == 0)
+        //        velocities[i] += Mathf.Sin(i + Time.time)/10;
+        //}
+
         for (int i = 0; i < meshes.Length; i++)
         {
-           /* Mathf.Clamp(yPositions[i], minHeight, maxHeight)*/;
+            //ändra offset till robert animationcurve?
+            /* Mathf.Clamp(yPositions[i], minHeight, maxHeight)*/
+            //float offset = Mathf.Pow(Mathf.Abs(xPositions[i] % 6) - 3, 2) * Mathf.Sin(Mathf.Sin((Time.time * waveSpeed) + (i * waveFrequancy)) / waveDamper);
+            //float offset = Mathf.Pow(Mathf.Abs(xPositions[i] % 6) - 3,2); 
+            //float offset = Mathf.Pow(Mathf.Abs(xPositions[i] % 6) - 3,2) * Mathf.Sin(Time.time * 0.01f); 
+            //float offset = Mathf.Sin(Mathf.Sin((Time.time * waveSpeed) + (i * waveFrequancy)) / waveDamper);
+            float offset = Mathf.Sin(Mathf.Sin((Time.time * waveSpeed) + (i * waveFrequancy)) / waveDamper);
+            //offset = Mathf.Abs(offset);
+            offset = Mathf.Clamp(offset,0,Mathf.Infinity);
             Vector3[] Vertices = new Vector3[4];
-            Vertices[0] = new Vector3(xPositions[i], Mathf.Clamp(yPositions[i], minHeight, maxHeight), z);
-            Vertices[1] = new Vector3(xPositions[i + 1], Mathf.Clamp(yPositions[i + 1], minHeight, maxHeight), z);
+            Vertices[0] = new Vector3(xPositions[i], yPositions[i] + offset, z);
+            Vertices[1] = new Vector3(xPositions[i + 1], yPositions[i + 1] + offset, z);
             Vertices[2] = new Vector3(xPositions[i], bottom, z);
             Vertices[3] = new Vector3(xPositions[i + 1], bottom, z);
 
@@ -169,7 +206,7 @@ public class DynamicWater : MonoBehaviour
                     leftDeltas[i] = spread * (yPositions[i] - yPositions[i - 1]);
                     velocities[i - 1] += leftDeltas[i];
                 }
-                if(i < xPositions.Length - 1)
+                if (i < xPositions.Length - 1)
                 {
                     rightDeltas[i] = spread * (yPositions[i] - yPositions[i + 1]);
                     velocities[i + 1] += rightDeltas[i];
@@ -178,11 +215,11 @@ public class DynamicWater : MonoBehaviour
 
             for (int i = 0; i < xPositions.Length; i++)
             {
-                if(i > 0)
+                if (i > 0)
                 {
                     yPositions[i - 1] += leftDeltas[i];
                 }
-                if(i < xPositions.Length - 1)
+                if (i < xPositions.Length - 1)
                 {
                     yPositions[i + 1] += rightDeltas[i];
                 }
@@ -193,8 +230,9 @@ public class DynamicWater : MonoBehaviour
 
     public void Splash(float xPos, float velocity)
     {
-        if(xPos >= xPositions[0] && xPos <= xPositions[xPositions.Length - 1])
+        if (xPos >= xPositions[0] && xPos <= xPositions[xPositions.Length - 1])
         {
+            velocity = velocity / forceDivider;
             xPos -= xPositions[0];
             //vilken node den träffar
             int index = Mathf.RoundToInt((xPositions.Length - 1) * (xPos / (xPositions[xPositions.Length - 1] - xPositions[0])));
@@ -210,7 +248,7 @@ public class DynamicWater : MonoBehaviour
 
             Vector3 position = new Vector3(xPositions[index], yPositions[index] - 0.35f, 5);
             Quaternion rotation = Quaternion.LookRotation(new Vector3(xPositions[Mathf.FloorToInt(xPositions.Length / 2)], baseHeight + 8, 5) - position);
-            
+
             GameObject splish = Instantiate(splash, position, rotation) as GameObject;
             Destroy(splish, lifetime + 0.3f);
 

@@ -211,7 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fdd844c2f9b624db03aa995d8f4f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
 --- !u!50 &71926896
 Rigidbody2D:
   serializedVersion: 4
@@ -439,7 +438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fdd844c2f9b624db03aa995d8f4f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
 --- !u!50 &1141817091
 Rigidbody2D:
   serializedVersion: 4
@@ -675,7 +673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fdd844c2f9b624db03aa995d8f4f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
 --- !u!1 &1937271444
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505405, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -11.65
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505405, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -779,9 +776,17 @@ PrefabInstance:
       value: Water
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
+      propertyPath: bottom
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: waterMesh
       value: 
       objectReference: {fileID: 1325242988}
+    - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
+      propertyPath: baseHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
 --- !u!1001 &7491497523951215926

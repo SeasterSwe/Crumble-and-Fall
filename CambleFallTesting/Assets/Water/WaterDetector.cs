@@ -8,7 +8,7 @@ public class WaterDetector : MonoBehaviour
         var rb = Hit.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            transform.parent.GetComponent<DynamicWater>().Splash(transform.position.x, rb.velocity.y * rb.mass / 40f);
+            transform.parent.GetComponent<DynamicWater>().Splash(transform.position.x, rb.velocity.y * (rb.mass) / 40f);
         }
     }
 }
