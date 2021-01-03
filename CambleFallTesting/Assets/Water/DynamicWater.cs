@@ -15,6 +15,7 @@ public class DynamicWater : MonoBehaviour
     GameObject[] colliders;
     Mesh[] meshes;
 
+    [Header("WaterStats")]
     public float springconstant = 0.02f;
     public float damping = 0.03f;
     public float spread = 0.05f;
@@ -35,16 +36,20 @@ public class DynamicWater : MonoBehaviour
     public Material mat;
     public GameObject waterMesh;
 
+    [Header("IdelWave")]
     public float forceDivider = 1.4f;
     public float waveSpeed = 1.2f;
     public float waveFrequancy = 20;
     public float waveDamper = 20;
+    [Header("NoiseForIdelWave")]
+    public float noiseStreangth = 1f;
+    public float noiseWalk = 1f;
     private void Start()
     {
         left = -width / 2;
-        CreateWater(left, width, baseHeight, bottom);
         maxHeight = baseHeight + maxHeight;
         minHeight = baseHeight - minHeight;
+        CreateWater(left, width, baseHeight, bottom);
     }
 
     public void CreateWater(float left, float width, float top, float bottom)
@@ -130,30 +135,7 @@ public class DynamicWater : MonoBehaviour
     }
     void UpdateMeshes()
     {
-        //float r = Random.Range(0, 100f);
-        //if(r >= 96)
-        //{
-        //    int index = Random.Range(0, velocities.Length);
-        //    if (velocities[index] <= 0.1f && velocities[index] >= -0.1f)
-        //    {
-        //        velocities[index] += Random.Range(-2, 2);
-        //        print(velocities[index]);
-        //    }
-        //}
-        //if(r >= 99)
-        //{
-        //    float index = Random.Range(0, 10f);
-        //    if (index >= 5)
-        //        velocities[velocities.Length - 1] = Random.Range(5,10f);
-        //    else
-        //        velocities[0] = Random.Range(5, 10f);
-        //}
 
-        //for (int i = 0; i < velocities.Length; i++)
-        //{
-        //    if(i % 10 == 0)
-        //        velocities[i] += Mathf.Sin(i + Time.time)/10;
-        //}
 
         for (int i = 0; i < meshes.Length; i++)
         {
@@ -163,9 +145,12 @@ public class DynamicWater : MonoBehaviour
             //float offset = Mathf.Pow(Mathf.Abs(xPositions[i] % 6) - 3,2); 
             //float offset = Mathf.Pow(Mathf.Abs(xPositions[i] % 6) - 3,2) * Mathf.Sin(Time.time * 0.01f); 
             //float offset = Mathf.Sin(Mathf.Sin((Time.time * waveSpeed) + (i * waveFrequancy)) / waveDamper);
+           
             float offset = Mathf.Sin(Mathf.Sin((Time.time * waveSpeed) + (i * waveFrequancy)) / waveDamper);
+            offset += Mathf.PerlinNoise(xPositions[i] * noiseWalk, yPositions[i] + Mathf.Sin(Time.time * 0.1f)) * noiseStreangth;
             //offset = Mathf.Abs(offset);
-            offset = Mathf.Clamp(offset, 0, Mathf.Infinity);
+            //offset = Mathf.Clamp(offset, 0, Mathf.Infinity);
+
             Vector3[] Vertices = new Vector3[4];
             Vertices[0] = new Vector3(xPositions[i], Mathf.Clamp(yPositions[i], minHeight, maxHeight) + offset, z);
             Vertices[1] = new Vector3(xPositions[i + 1], Mathf.Clamp(yPositions[i + 1], minHeight, maxHeight) + offset, z);
@@ -239,7 +224,7 @@ public class DynamicWater : MonoBehaviour
 
             if (Mathf.Abs(velocities[index]) > 0.3f)
             {
-               // print(velocities[index]);
+                // print(velocities[index]);
                 return;
             }
 

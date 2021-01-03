@@ -4757,12 +4757,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505404, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 65342
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222718171627505404, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505404, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505405, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: m_RootOrder
@@ -4841,12 +4845,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
+      propertyPath: noiseWalk
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: waterMesh
       value: 
       objectReference: {fileID: 7491497522631360346, guid: 4e8183fa7df140b4e9094d1264ef7f72, type: 3}
     - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: waveSpeed
-      value: 2.35
+      value: 1.55
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: baseHeight
@@ -4859,6 +4867,10 @@ PrefabInstance:
     - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: waveFrequancy
       value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
+      propertyPath: noiseStreangth
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: springconstant
