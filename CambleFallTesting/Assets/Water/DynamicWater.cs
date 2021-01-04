@@ -58,12 +58,10 @@ public class DynamicWater : MonoBehaviour
         int nodecount = edgecount + 1;
 
         //fixar linerenderer
-        body = gameObject.GetComponent<LineRenderer>();
+        body = GetComponent<LineRenderer>();
         //body.material = mat;
-        body.material.renderQueue = 1000;
+        body.sortingOrder = 220;
         body.SetVertexCount(nodecount);
-
-        //body.SetWidth(0.1f, 0.1f); //tweeka sen
 
         //skapar variablarna i toppen
         xPositions = new float[nodecount];
@@ -169,11 +167,14 @@ public class DynamicWater : MonoBehaviour
 
         for (int i = 0; i < xPositions.Length; i++)
         {
+            float offset = Mathf.Sin(Mathf.Sin((Time.time * waveSpeed) + (i * waveFrequancy)) / waveDamper);
+            offset += Mathf.PerlinNoise(xPositions[i] * noiseWalk, yPositions[i] + Mathf.Sin(Time.time * 0.1f)) * noiseStreangth;
+
             float force = springconstant * (yPositions[i] - baseHeight) + velocities[i] * damping;
             accelerations[i] = -force;
             yPositions[i] += velocities[i];
             velocities[i] += accelerations[i];
-            body.SetPosition(i, new Vector3(xPositions[i], yPositions[i], z));
+            body.SetPosition(i, new Vector3(xPositions[i], yPositions[i] + offset, z));
 
             //we just add the acceleration to the velocity and the velocity to the position, every frame.
             accelerations[i] = -force / 1; //1 kan bli mass
