@@ -111,6 +111,15 @@ public class CannonHealth : MonoBehaviour
     }
     void Death()
     {
+        //akut snabb lösning för build
+        var huh = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject c in huh)
+        {
+            float hp = c.GetComponent<CannonHealth>().currentHeatlh;
+            if (c != gameObject && hp <= 0)
+                return;
+        }
+
         Camera.main.GetComponent<CameraZoom>().ZoomOnObj(gameObject, 3f);
         StartCoroutine(BrainDead());
     }
