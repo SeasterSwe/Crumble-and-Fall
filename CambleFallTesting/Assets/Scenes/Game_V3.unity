@@ -4968,7 +4968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: baseHeight
-      value: -6.5
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 2222718171627505407, guid: 7a425be089d9be94680b9848f31ae0f8, type: 3}
       propertyPath: waveDamper
