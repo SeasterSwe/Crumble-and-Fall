@@ -3340,6 +3340,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8033901597379817147, guid: c02cfd2624efb654baed5c6d95c3184e, type: 3}
   m_PrefabInstance: {fileID: 148308921}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &822658891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 357137016286502814, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+  m_PrefabInstance: {fileID: 1812996759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f641113394b0d4abe99420efceacbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &842829606
 GameObject:
   m_ObjectHideFlags: 0
@@ -5193,6 +5204,25 @@ MonoBehaviour:
   heightOverCannon: 1.5
   bar: {fileID: 0}
   ease: 0
+--- !u!1 &1300711887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 357137014859632496, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+  m_PrefabInstance: {fileID: 1812996759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1300711893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300711887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35282bae563a4748a55e6415c29f83a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newRound: {fileID: 21300000, guid: 075326efe231f0c498d7e7320e796b7e, type: 3}
+  rematch: {fileID: 21300000, guid: 075326efe231f0c498d7e7320e796b7e, type: 3}
 --- !u!4 &1338557954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1331661751507537185, guid: 2a2a50075416dfe4a8c12f403251a7bc, type: 3}
@@ -7178,6 +7208,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1300711893}
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 822658891}
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetStats
+      objectReference: {fileID: 0}
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResetScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RematchButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PausMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: RematchButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 357137014859632502, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 357137014931805188, guid: 15c78d0cb88a7c34d8e7e09584ee26c8, type: 3}
       propertyPath: m_Name
       value: PausMenu
