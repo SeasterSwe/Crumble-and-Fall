@@ -82,6 +82,9 @@ public class Test2 : MonoBehaviour
         this.left = left;
         this.width = width;
 
+        //Robbans Test
+        Vector2[] uvs = new Vector2[vertices.Length];
+
         for (int i = 0, z = 0; z < 2; z++)
         {
             for (int x = 0; x <= xSize; x++)
@@ -89,10 +92,12 @@ public class Test2 : MonoBehaviour
                 if (z == 0)
                 {
                     yPositions[i] = bottom;
+                    uvs[i] = new Vector2(0.25f, 0);//test
                 }
                 else
                 {
                     yPositions[i] = top;
+                    uvs[i] = new Vector2(0.25f, 1);//test
                 }
 
                 xPositions[i] = left + width * x / (vertexCount - 1);
@@ -141,13 +146,16 @@ public class Test2 : MonoBehaviour
         }
         GetComponent<Renderer>().sortingOrder = 200;
         UpdateMesh();
+     
+        /*
         Vector2[] uvs = new Vector2[vertices.Length];
         for (int i = 0; i < vertices.Length; i++)
         {
             uvs[i] = new Vector2(vertices[i].x, vertices[i].y);
         }
+        */
         mesh.uv = uvs;
-        mesh.RecalculateNormals();
+        //  mesh.RecalculateNormals();
     }
 
     void UpdateMesh()
