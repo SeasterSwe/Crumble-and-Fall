@@ -39,5 +39,6 @@ public class BackRoundWater : MonoBehaviour
     {
         mesh.vertices = test2.vertices;
         mesh.triangles = test2.triangels;
+        GetComponent<Renderer>().sortingOrder = sortingOrder;
     }
 }
