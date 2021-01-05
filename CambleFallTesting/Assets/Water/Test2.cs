@@ -145,6 +145,7 @@ public class Test2 : MonoBehaviour
 
         }
         GetComponent<Renderer>().sortingOrder = 200;
+        GetComponent<Renderer>().sortingLayerID = 0;
         UpdateMesh();
      
         /*
