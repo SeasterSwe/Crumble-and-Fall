@@ -1363,9 +1363,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildTime: 40
   cannonHealth: 12
-  fightTime: 120
-  startBlocks: 10
-  rounds: 0
+  fightTime: 160
+  startBlocks: 12
 --- !u!114 &530553264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2058,7 +2057,6 @@ MonoBehaviour:
   cannonHealth: 10
   fightTime: 140
   startBlocks: 20
-  rounds: 0
 --- !u!114 &1328410959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2938,7 +2936,6 @@ MonoBehaviour:
   cannonHealth: 6
   fightTime: 60
   startBlocks: 7
-  rounds: 0
 --- !u!114 &1934180360
 MonoBehaviour:
   m_ObjectHideFlags: 0

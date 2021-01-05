@@ -55,11 +55,11 @@ public class WaterSurface : MonoBehaviour
             SlowStuffDown(obj);
         }
 
-        if (canSpawnParticle && Time.timeSinceLevelLoad > 2f)
-        {
-            StartCoroutine(ParticleDelay());
-            GameObject waterClone = Instantiate(waterSplash, collision.transform.position, waterSplash.transform.rotation);
-        }
+        //if (canSpawnParticle && Time.timeSinceLevelLoad > 2f)
+        //{
+        //    StartCoroutine(ParticleDelay());
+        //    GameObject waterClone = Instantiate(waterSplash, collision.transform.position, waterSplash.transform.rotation);
+        //}
     }
 
     void SlowStuffDown(GameObject obj)

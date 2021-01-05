@@ -176,7 +176,7 @@ public class Test2 : MonoBehaviour
             float x = xPositions[i];
             y = Mathf.Clamp(y, minHeight, maxHeight);
             float offset = Mathf.Sin(Mathf.Sin((Time.time * waveSpeed) + (i * waveFrequancy)) / waveDamper);
-            offset = Mathf.Clamp(offset, 0, Mathf.Infinity);
+           // offset = Mathf.Clamp(offset, 0, Mathf.Infinity);
             offset += Mathf.PerlinNoise(x * noiseWalk + Time.time * noiseMoveSpeed, y + Mathf.Sin(Time.time * 0.1f)) * noiseStreangth;
             
             if (i - xSize != 0)
