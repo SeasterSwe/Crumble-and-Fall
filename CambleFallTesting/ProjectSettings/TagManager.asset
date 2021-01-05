@@ -9,6 +9,7 @@ TagManager:
   - GameSceneManager
   - Star
   - Music
+  - Water
   layers:
   - Default
   - TransparentFX

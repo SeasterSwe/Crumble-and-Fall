@@ -7,6 +7,9 @@ public class WaterDetector : MonoBehaviour
     void OnTriggerEnter2D(Collider2D Hit)
     {
         var rb = Hit.GetComponent<Rigidbody2D>();
+        if (Hit.CompareTag("Water"))
+            return;
+
         if (rb != null)
         {
             if (rb.velocity.magnitude > 0.5f)

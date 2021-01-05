@@ -10026,6 +10026,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7913185623050145234, guid: 3f7f5fd8e33becb4aa8167a056715617, type: 3}
+      propertyPath: xSize
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913185623050145234, guid: 3f7f5fd8e33becb4aa8167a056715617, type: 3}
+      propertyPath: spread
+      value: 0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913185623050145234, guid: 3f7f5fd8e33becb4aa8167a056715617, type: 3}
+      propertyPath: waveSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7913185623050145235, guid: 3f7f5fd8e33becb4aa8167a056715617, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -10080,7 +10092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7913185623050145244, guid: 3f7f5fd8e33becb4aa8167a056715617, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.09090042
+      value: 0.13375473
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f7f5fd8e33becb4aa8167a056715617, type: 3}
